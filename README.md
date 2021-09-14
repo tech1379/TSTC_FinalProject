@@ -16,7 +16,7 @@ Readme.md Version# 2021.08.23
 ![Alternate 'text' description for the image](https://github.com/JamesFlippin/Final-Project-21SP_StudentTemplate/blob/main/OctoCat_SM.png "My Pet Octocat Logo")
 
 # Tek's Kennels & Outfitting [Must Update]
-[Very brief and to the point project description (one sentance preferred)]
+A Quail Outfitter, Training Services, and Bird Dog Supplier
 
 ## Detailed Description [Must Update]
 
