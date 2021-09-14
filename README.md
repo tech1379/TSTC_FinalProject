@@ -96,7 +96,7 @@ Google Group/mailing list | [Your mail distribution list (if applicable)]
 **[For the Final Project course, we will use the GNU General Public License v3.0]**
 **[When you add the License file, make sure you update the references within it to yours]**
 
-### <a href="https://github.com/TSTC-CPT/21FA-FinalProject-TekellE/edit/main/LICENSE" target _blank>License</a>
+### <a href="https://github.com/TSTC-CPT/21FA-FinalProject-TekellE/edit/main/LICENSE.md" target _blank>License</a>
 
 
 GNU General Public License v3.0
