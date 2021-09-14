@@ -20,7 +20,7 @@ Readme.md Version# 2021.08.23
 
 ## Detailed Description [Must Update]
 
-[Clear semi-detailed professional description of your project. (about a paragraph or slightly more)]
+[Tek's Kennels & Outfitting is a small business specializing in quail hunts, training services for bird dogs, the sale of fully trained working dogs, and our line of GSP and English Pointer puppies. From this application you can login as a Customer to buy dogs or other inventory items, book a quail hunt, or book training services. Managers can view sales reports or make changes to the inventory. Employees can change there information and view work schedules.]
 
 ### Project Introduction [Must Update]  
 
