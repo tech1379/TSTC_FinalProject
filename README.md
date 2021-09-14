@@ -15,7 +15,7 @@ Readme.md Version# 2021.08.23
 
 ![Alternate 'text' description for the image](https://github.com/JamesFlippin/Final-Project-21SP_StudentTemplate/blob/main/OctoCat_SM.png "My Pet Octocat Logo")
 
-# Project Name [Must Update]
+# Tek's Kennels & Outfitting [Must Update]
 [Very brief and to the point project description (one sentance preferred)]
 
 ## Detailed Description [Must Update]
