@@ -38,12 +38,12 @@ namespace SU21_Final_Project
             this.ClientSize = new System.Drawing.Size(648, 340);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "2021.08.23";
-            this.Text = "{Your Project Name Goes Here}";
+            this.Text = "Tek\'s Kennels & Outfitting";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.ResumeLayout(false);
 
