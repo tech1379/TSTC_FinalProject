@@ -20,17 +20,17 @@ Readme.md Version# 2021.08.23
 
 ## Detailed Description [Must Update]
 
-[Tek's Kennels & Outfitting is a small business specializing in quail hunts, training services for bird dogs, the sale of fully trained working dogs, and our line of GSP and English Pointer puppies. From this application you can login as a Customer to buy dogs or other inventory items, book a quail hunt, or book training services. Managers can view sales reports or make changes to the inventory. Employees can change there information and view work schedules.]
+Tek's Kennels & Outfitting is a small business specializing in quail hunts, training services for bird dogs, the sale of fully trained working dogs, and our line of GSP and English Pointer puppies. Customers can book quail hunts, book training services, or search from our inventory for trained working dogs or if we have new litter of our GSP and English Pointers. Managers can change inventory, update employee information and view sales reports. Employees can change there information and view their work schedule.
 
 ### Project Introduction [Must Update]  
 
-- [Describe very briefly but clearly what the project does.]
-- [State if it is out-of-the-box user-friendly, so it’s clear to the user.]
-- [List its most useful/innovative/noteworthy features.]
-- [State its goals/what problem(s) it solves.]
-- [Note and briefly describe any key concepts (technical, philosophical, or both) important to the user’s understanding.]
-- [Note its development status.]
-- [If possible, include screenshots and demo videos.]
+- Handles customer purchases using a Shopping Cart check out method.
+- Prints customer receipts via HTML documents (displayed in default browser).
+- Allows employees to conduct customer sales operations.
+- Allows managers to conduct customer sales operations.
+- Allows managers to update inventory.
+- Allows managers to print sales reports.
+
 
 ### Development Environment [Must Update]
 
@@ -40,8 +40,8 @@ Language | C#
 Development Environment | Visual Studio 2019 Community Edition
 SQL Server Type/Dialect | Microsoft SQL (TSTC Server)
 Target Environment | Windows 10 Desktop
-Target Business/Industry | [Whatever your target Business/Industry is]
-Help System | [Describe method used for context sensitive help]
+Target Business/Industry | Quail Hunting enthusiast, NSTRA members
+Help System | Context sensitive help files will be available using dedicated HTML files.
 Report Methods | HTML Reports
 
 ### Core Technical Concepts/Inspiration
@@ -75,7 +75,7 @@ Include any essential instructions for:
 - Thank you (name contributors)
 
 ### TODO [Must Update]
-- [Next steps]
+- Develop and Code the LogOn Screen
 - Features planned
 - Known bugs (shortlist)
 
@@ -83,9 +83,9 @@ Include any essential instructions for:
 
 Contact | Information
 --------|------
-Name | [Your Name]
-Email | [Your Email Address]
-Social Media Link | [Your Social Media link(s) (if applicable)]
+Name | Eric Tekell
+Email | eltekell@mymail.tstc.edu
+Social Media Link | https://www.linkedin.com/in/erictekell/
 Google Group/mailing list | [Your mail distribution list (if applicable)]
 
 ### License [Must Update and add link]
