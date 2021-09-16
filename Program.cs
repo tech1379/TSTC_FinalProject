@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace SU21_Final_Project
+namespace FA21_Final_Project
 {
     internal static class Program
     {
@@ -13,7 +13,7 @@ namespace SU21_Final_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmSplash());
         }
     }
 }
