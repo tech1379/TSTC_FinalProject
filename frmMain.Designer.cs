@@ -30,13 +30,13 @@ namespace FA21_Final_Project
         private void InitializeComponent()
         {
             this.gbxLogIn = new System.Windows.Forms.GroupBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.lblForgot = new System.Windows.Forms.Label();
             this.pbxEye = new System.Windows.Forms.PictureBox();
             this.tbxPassword = new System.Windows.Forms.TextBox();
             this.tbxLogIn = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblLogIn = new System.Windows.Forms.Label();
-            this.lblForgot = new System.Windows.Forms.Label();
-            this.btnLogin = new System.Windows.Forms.Button();
             this.lblWebsite = new System.Windows.Forms.Label();
             this.lblInventory = new System.Windows.Forms.Label();
             this.lblCreate = new System.Windows.Forms.Label();
@@ -61,6 +61,26 @@ namespace FA21_Final_Project
             this.gbxLogIn.TabIndex = 0;
             this.gbxLogIn.TabStop = false;
             this.gbxLogIn.Text = "Tek\'s Login";
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(289, 194);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(105, 38);
+            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Text = "&Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // lblForgot
+            // 
+            this.lblForgot.AutoSize = true;
+            this.lblForgot.Location = new System.Drawing.Point(9, 203);
+            this.lblForgot.Name = "lblForgot";
+            this.lblForgot.Size = new System.Drawing.Size(185, 21);
+            this.lblForgot.TabIndex = 5;
+            this.lblForgot.Text = "&Forgot Password?";
+            this.lblForgot.Click += new System.EventHandler(this.lblForgot_Click);
             // 
             // pbxEye
             // 
@@ -106,26 +126,6 @@ namespace FA21_Final_Project
             this.lblLogIn.TabIndex = 0;
             this.lblLogIn.Text = "Username:";
             // 
-            // lblForgot
-            // 
-            this.lblForgot.AutoSize = true;
-            this.lblForgot.Location = new System.Drawing.Point(9, 203);
-            this.lblForgot.Name = "lblForgot";
-            this.lblForgot.Size = new System.Drawing.Size(185, 21);
-            this.lblForgot.TabIndex = 5;
-            this.lblForgot.Text = "&Forgot Password?";
-            this.lblForgot.Click += new System.EventHandler(this.lblForgot_Click);
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(289, 194);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(105, 38);
-            this.btnLogin.TabIndex = 6;
-            this.btnLogin.Text = "&Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
             // lblWebsite
             // 
             this.lblWebsite.AutoSize = true;
@@ -135,6 +135,7 @@ namespace FA21_Final_Project
             this.lblWebsite.Size = new System.Drawing.Size(145, 21);
             this.lblWebsite.TabIndex = 1;
             this.lblWebsite.Text = "&Tek\'s Website";
+            this.lblWebsite.Click += new System.EventHandler(this.lblWebsite_Click);
             // 
             // lblInventory
             // 
@@ -155,6 +156,7 @@ namespace FA21_Final_Project
             this.lblCreate.Size = new System.Drawing.Size(211, 21);
             this.lblCreate.TabIndex = 3;
             this.lblCreate.Text = "&Create New Account";
+            this.lblCreate.Click += new System.EventHandler(this.lblCreate_Click);
             // 
             // lblHelp
             // 

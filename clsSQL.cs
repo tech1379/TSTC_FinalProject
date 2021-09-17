@@ -15,6 +15,7 @@ namespace FA21_Final_Project
         //build a connection to database
         private static SqlConnection _cntDatabase = new SqlConnection(CONNECT_STRING);
         private static SqlCommand _sqlLogOnCommand;
+        private static SqlCommand _sqlUpdateCommand;
 
         public static void ConnectDatabase()
         {
@@ -56,6 +57,33 @@ namespace FA21_Final_Project
 
 
             return result;
+        }
+        public static void UpdateDatabase(string strQuery)
+        {
+            try
+            {
+                SqlConnection _cntDatabase = new SqlConnection(CONNECT_STRING);
+                //OPEN DB
+                _cntDatabase.Open();
+                //string to build query
+                //establish command object
+                _sqlUpdateCommand = new SqlCommand(strQuery, _cntDatabase);
+                _sqlUpdateCommand.ExecuteNonQuery();
+                //dispose of pub objects
+                _sqlUpdateCommand.Dispose();
+                //close connection
+                _cntDatabase.Close();
+                //dispose
+                _cntDatabase.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
+    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
+    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

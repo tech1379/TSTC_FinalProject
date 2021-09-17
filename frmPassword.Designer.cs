@@ -47,6 +47,10 @@ namespace FA21_Final_Project
             this.lblSC3 = new System.Windows.Forms.Label();
             this.lblAn3 = new System.Windows.Forms.Label();
             this.tbxAn3 = new System.Windows.Forms.TextBox();
+            this.pbxPass1 = new System.Windows.Forms.PictureBox();
+            this.pbxPass2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPass1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPass2)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNew
@@ -71,6 +75,7 @@ namespace FA21_Final_Project
             // 
             this.tbxPassword.Location = new System.Drawing.Point(240, 24);
             this.tbxPassword.Name = "tbxPassword";
+            this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(230, 29);
             this.tbxPassword.TabIndex = 2;
             // 
@@ -78,6 +83,7 @@ namespace FA21_Final_Project
             // 
             this.tbxConfirm.Location = new System.Drawing.Point(240, 82);
             this.tbxConfirm.Name = "tbxConfirm";
+            this.tbxConfirm.PasswordChar = '*';
             this.tbxConfirm.Size = new System.Drawing.Size(230, 29);
             this.tbxConfirm.TabIndex = 3;
             // 
@@ -98,6 +104,7 @@ namespace FA21_Final_Project
             this.btnReset.TabIndex = 10;
             this.btnReset.Text = "&Reset Password";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnClose
             // 
@@ -107,6 +114,7 @@ namespace FA21_Final_Project
             this.btnClose.TabIndex = 11;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblSC1
             // 
@@ -114,7 +122,7 @@ namespace FA21_Final_Project
             this.lblSC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSC1.Location = new System.Drawing.Point(240, 146);
             this.lblSC1.Name = "lblSC1";
-            this.lblSC1.Size = new System.Drawing.Size(465, 34);
+            this.lblSC1.Size = new System.Drawing.Size(465, 29);
             this.lblSC1.TabIndex = 5;
             // 
             // lblAn1
@@ -148,7 +156,7 @@ namespace FA21_Final_Project
             this.lblSC2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSC2.Location = new System.Drawing.Point(240, 249);
             this.lblSC2.Name = "lblSC2";
-            this.lblSC2.Size = new System.Drawing.Size(465, 34);
+            this.lblSC2.Size = new System.Drawing.Size(465, 29);
             this.lblSC2.TabIndex = 15;
             // 
             // lblAn2
@@ -182,7 +190,7 @@ namespace FA21_Final_Project
             this.lblSC3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSC3.Location = new System.Drawing.Point(240, 360);
             this.lblSC3.Name = "lblSC3";
-            this.lblSC3.Size = new System.Drawing.Size(465, 34);
+            this.lblSC3.Size = new System.Drawing.Size(465, 29);
             this.lblSC3.TabIndex = 19;
             // 
             // lblAn3
@@ -201,12 +209,36 @@ namespace FA21_Final_Project
             this.tbxAn3.Size = new System.Drawing.Size(465, 29);
             this.tbxAn3.TabIndex = 21;
             // 
+            // pbxPass1
+            // 
+            this.pbxPass1.Image = global::FA21_Final_Project.Properties.Resources.eye;
+            this.pbxPass1.Location = new System.Drawing.Point(538, 12);
+            this.pbxPass1.Name = "pbxPass1";
+            this.pbxPass1.Size = new System.Drawing.Size(53, 43);
+            this.pbxPass1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPass1.TabIndex = 22;
+            this.pbxPass1.TabStop = false;
+            this.pbxPass1.Click += new System.EventHandler(this.pbxPass1_Click);
+            // 
+            // pbxPass2
+            // 
+            this.pbxPass2.Image = global::FA21_Final_Project.Properties.Resources.eye;
+            this.pbxPass2.Location = new System.Drawing.Point(538, 68);
+            this.pbxPass2.Name = "pbxPass2";
+            this.pbxPass2.Size = new System.Drawing.Size(53, 43);
+            this.pbxPass2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxPass2.TabIndex = 23;
+            this.pbxPass2.TabStop = false;
+            this.pbxPass2.Click += new System.EventHandler(this.pbxPass2_Click);
+            // 
             // frmPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(717, 578);
+            this.Controls.Add(this.pbxPass2);
+            this.Controls.Add(this.pbxPass1);
             this.Controls.Add(this.tbxAn3);
             this.Controls.Add(this.lblAn3);
             this.Controls.Add(this.lblSC3);
@@ -231,6 +263,8 @@ namespace FA21_Final_Project
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Reset";
             this.Load += new System.EventHandler(this.frmPassword_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPass1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxPass2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,5 +290,7 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblSC3;
         private System.Windows.Forms.Label lblAn3;
         private System.Windows.Forms.TextBox tbxAn3;
+        private System.Windows.Forms.PictureBox pbxPass1;
+        private System.Windows.Forms.PictureBox pbxPass2;
     }
 }

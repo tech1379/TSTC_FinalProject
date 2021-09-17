@@ -21,7 +21,9 @@ namespace FA21_Final_Project
 {
     public partial class frmPassword : Form
     {
-        string logInName = frmMain.logInName;
+        string strLogInName = frmMain.strLogInName;
+        int intToggle1 = 0;
+        int intToggle2 = 0;
         public frmPassword()
         {
             InitializeComponent();
@@ -29,17 +31,73 @@ namespace FA21_Final_Project
 
         private void frmPassword_Load(object sender, EventArgs e)
         {
+            lblSC1.Text = clsLogon.GetSecurityQuestion1(strLogInName);
+            lblSC2.Text = clsLogon.GetSecurityQuestion2(strLogInName);
+            lblSC3.Text = clsLogon.GetSecurityQuestion3(strLogInName);
+
+        }
+        private void pbxPass1_Click(object sender, EventArgs e)
+        {
+            if (intToggle1 % 2 == 0)
+            {
+                tbxPassword.PasswordChar = '\0';
+                intToggle1++;
+            }
+            else
+            {
+                tbxPassword.PasswordChar = '*';
+                intToggle1++;
+            }
+        }
+
+        private void pbxPass2_Click(object sender, EventArgs e)
+        {
+            if (intToggle2 % 2 == 0)
+            {
+                tbxConfirm.PasswordChar = '\0';
+                intToggle2++;
+            }
+            else
+            {
+                tbxConfirm.PasswordChar = '*';
+                intToggle2++;
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            //check passwords if they match, then verify password, then verify security answers, then update db password
             try
             {
-                string query = "SELECT FirstChallengeQuestion FROM tekelle21fa2332.Logon WHERE LogonName = '" + logInName + "';";
-                string query2 = "SELECT SecondChallengeQuestion FROM tekelle21fa2332.Logon WHERE LogonName = '" + logInName + "';";
-                string query3 = "SELECT ThirdChallengeQuestion FROM tekelle21fa2332.Logon WHERE LogonName = '" + logInName + "';";
-                string answer1 = clsSQL.DatabaseCommandLogon(query);
-                string answer2 = clsSQL.DatabaseCommandLogon(query2);
-                string answer3 = clsSQL.DatabaseCommandLogon(query3);
-                lblSC1.Text = answer1;
-                lblSC2.Text = answer2;
-                lblSC3.Text = answer3;
+                string strPassword = tbxPassword.Text;
+                string strPassword2 = tbxConfirm.Text;
+                if (strPassword != strPassword2)
+                {
+                    MessageBox.Show("Passwords do not match. Try Again!", "Password Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                bool boolPassword = false;
+                boolPassword = clsLogon.PasswordRequirements(strPassword);
+                if (boolPassword)
+                {
+                    string strSecurityAnswer1 = clsLogon.GetSecurityAnswer1(strLogInName);
+                    string strSecurityAnswer2 = clsLogon.GetSecurityAnswer2(strLogInName);
+                    string strSecurityAnswer3 = clsLogon.GetSecurityAnswer3(strLogInName);
+                    if (tbxAn1.Text.ToUpper() == strSecurityAnswer1.ToUpper() || tbxAn2.Text.ToUpper() == strSecurityAnswer2.ToUpper() || tbxAn3.Text.ToUpper() == strSecurityAnswer3.ToUpper())
+                    {
+                        string strUpdateQuery = "UPDATE tekelle21fa2332.Logon SET Password = '" + strPassword + "' WHERE LogonName = '" + strLogInName + "';";
+                        clsSQL.UpdateDatabase(strUpdateQuery);
+                        MessageBox.Show("Password Changed.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Password Not Changed.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Fail");
+                }
             }
             catch(Exception ex)
             {
@@ -47,6 +105,11 @@ namespace FA21_Final_Project
     "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
     "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

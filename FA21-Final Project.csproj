@@ -64,7 +64,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsLogon.cs" />
     <Compile Include="clsSQL.cs" />
+    <Compile Include="clsValidation.cs" />
+    <Compile Include="frmCreateAcct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateAcct.Designer.cs">
+      <DependentUpon>frmCreateAcct.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +93,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCreateAcct.resx">
+      <DependentUpon>frmCreateAcct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

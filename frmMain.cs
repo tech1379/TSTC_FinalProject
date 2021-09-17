@@ -22,8 +22,9 @@ namespace FA21_Final_Project
 {
     public partial class frmMain : Form
     {
-        int toggle = 0;
-        public static string logInName;
+        //variables 
+        int intToggle = 0;
+        public static string strLogInName;
         public frmMain()
         {
             InitializeComponent();
@@ -36,84 +37,65 @@ namespace FA21_Final_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string query;
-                string query2;
-                string personType;
-                string result;
-                string userName = tbxLogIn.Text;
-                string password = tbxPassword.Text;
-                query = "SELECT COUNT(*) FROM tekelle21fa2332.Logon WHERE LogonName = '" + userName + "' AND Password = '"
-                    + password + "';";
-                result = clsSQL.DatabaseCommandLogon(query);
-                int logon = Int32.Parse(result);
-                query2 = "SELECT PersonType FROM tekelle21fa2332.Person p JOIN tekelle21fa2332.Logon l ON "
-                    + "p.PersonID = l.PersonID " + "WHERE LogonName = '" + userName + "' AND Password = '" +
-                    password + "';";
-                personType = clsSQL.DatabaseCommandLogon(query2);
-
-                if (logon == 1)
-                {
-                    MessageBox.Show(personType, "PersonType", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("You have been denied!", "Logon Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-     "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-     "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            string strUserName = tbxLogIn.Text;
+            string strPassword = tbxPassword.Text;
+            clsLogon.Verify(strUserName, strPassword);
         }
 
         private void pbxEye_Click(object sender, EventArgs e)
         {
-            if (toggle % 2 == 0)
+            if (intToggle % 2 == 0)
             {
                 tbxPassword.PasswordChar = '\0';
-                toggle++;
+                intToggle++;
             }
             else
             {
                 tbxPassword.PasswordChar = '*';
-                toggle++;
+                intToggle++;
             }
         }
 
         private void lblForgot_Click(object sender, EventArgs e)
         {
+            if (tbxLogIn.Text == "")
+            {
+                MessageBox.Show("You must enter a username!", "Username", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            strLogInName = tbxLogIn.Text;
+            bool boolVerify = clsLogon.Reset(strLogInName);
+            if (boolVerify == true)
+            {
+                this.Hide();
+                frmPassword password = new frmPassword();
+                password.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Invalid Username!", "User Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lblWebsite_Click(object sender, EventArgs e)
+        {
             try
             {
-                if (tbxLogIn.Text == "")
-                {
-                    MessageBox.Show("You must enter a username!", "Username", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                string query = "SELECT LogOnName FROM tekelle21fa2332.Logon WHERE LogonName = '" + tbxLogIn.Text + "';";
-                logInName = clsSQL.DatabaseCommandLogon(query);
-                if (logInName == tbxLogIn.Text)
-                {
-                    this.Hide();
-                    frmPassword password = new frmPassword();
-                    password.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid Username!", "User Name", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                System.Diagnostics.Process.Start("http://www.tekskennels.com/");
             }
-           
             catch(Exception ex)
             {
                 MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
     "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
     "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lblCreate_Click(object sender, EventArgs e)
+        {
+            frmCreateAcct createAcct = new frmCreateAcct();
+            createAcct.ShowDialog();
+            this.Hide();
         }
     }
 }
