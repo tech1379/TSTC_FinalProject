@@ -245,7 +245,7 @@ namespace FA21_Final_Project
             this.tbxAddress1.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAddress1.Location = new System.Drawing.Point(202, 234);
             this.tbxAddress1.Name = "tbxAddress1";
-            this.tbxAddress1.Size = new System.Drawing.Size(378, 26);
+            this.tbxAddress1.Size = new System.Drawing.Size(297, 26);
             this.tbxAddress1.TabIndex = 20;
             // 
             // tbxAddress2
@@ -253,7 +253,7 @@ namespace FA21_Final_Project
             this.tbxAddress2.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAddress2.Location = new System.Drawing.Point(202, 271);
             this.tbxAddress2.Name = "tbxAddress2";
-            this.tbxAddress2.Size = new System.Drawing.Size(378, 26);
+            this.tbxAddress2.Size = new System.Drawing.Size(297, 26);
             this.tbxAddress2.TabIndex = 21;
             // 
             // tbxAddress3
@@ -261,7 +261,7 @@ namespace FA21_Final_Project
             this.tbxAddress3.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAddress3.Location = new System.Drawing.Point(202, 312);
             this.tbxAddress3.Name = "tbxAddress3";
-            this.tbxAddress3.Size = new System.Drawing.Size(378, 26);
+            this.tbxAddress3.Size = new System.Drawing.Size(297, 26);
             this.tbxAddress3.TabIndex = 22;
             // 
             // tbxCity
@@ -269,7 +269,7 @@ namespace FA21_Final_Project
             this.tbxCity.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxCity.Location = new System.Drawing.Point(202, 353);
             this.tbxCity.Name = "tbxCity";
-            this.tbxCity.Size = new System.Drawing.Size(378, 26);
+            this.tbxCity.Size = new System.Drawing.Size(225, 26);
             this.tbxCity.TabIndex = 23;
             // 
             // tbxZipCode
@@ -315,11 +315,11 @@ namespace FA21_Final_Project
             // btnCreate
             // 
             this.btnCreate.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(372, 591);
+            this.btnCreate.Location = new System.Drawing.Point(292, 591);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(82, 53);
             this.btnCreate.TabIndex = 29;
-            this.btnCreate.Text = "&Create Person";
+            this.btnCreate.Text = "&Add Info";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
@@ -328,7 +328,7 @@ namespace FA21_Final_Project
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ClientSize = new System.Drawing.Size(825, 656);
+            this.ClientSize = new System.Drawing.Size(655, 656);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.tbxSecPhone);
             this.Controls.Add(this.tbxPrimPhone);
@@ -360,7 +360,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblTitle);
             this.Name = "frmCreateAcct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Create Account";
+            this.Text = "Personal Information";
             this.Load += new System.EventHandler(this.frmCreateAcct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

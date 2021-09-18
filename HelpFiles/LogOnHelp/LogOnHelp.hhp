@@ -1,0 +1,21 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=LogOnHelp.chm
+Contents file=C:\Users\erict\Desktop\Individual\Individual\HelpFiles\LogOnHelp\Table of Contents.hhc
+Default topic=LogOnHelp\LogOnHelp.htm
+Display compile progress=No
+Language=0x409 English (United States)
+
+
+[FILES]
+LogOnHelp\BrowseInventory.htm
+LogOnHelp\CreateNewAccount.htm
+LogOnHelp\LogInGroupBox.htm
+LogOnHelp\LogOnEyeToggle.htm
+LogOnHelp\LogOnForgotPassword.htm
+LogOnHelp\LogOnHelp.htm
+LogOnHelp\LogOnTextBoxes.htm
+LogOnHelp\Tek'sWebsiteLink.htm
+
+[INFOTYPES]
+

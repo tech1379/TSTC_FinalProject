@@ -10,7 +10,8 @@ namespace FA21_Final_Project
 {
     class clsValidation
     {
-
+        public static string message = "I'm sorry an error has occurred in the program. \n\n" +
+    "Please inform the Program Developer that the following error occurred: \n\n\n";
         public static bool ValidZip(string strZipCode)
         {
             bool boolValidZipCode = false;
@@ -30,9 +31,7 @@ namespace FA21_Final_Project
             }
             catch(Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return boolValidZipCode;
         }
@@ -54,9 +53,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return boolValidPhone;
         }
@@ -77,9 +74,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return boolValidEmail;
         }

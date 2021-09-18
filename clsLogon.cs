@@ -9,7 +9,8 @@ namespace FA21_Final_Project
 {
     class clsLogon
     {
-        
+        public static string message = "I'm sorry an error has occurred in the program. \n\n" +
+            "Please inform the Program Developer that the following error occurred: \n\n\n";
 
         public static void Verify(string strUserName, string strPassword)
         {
@@ -31,7 +32,18 @@ namespace FA21_Final_Project
 
                 if (logon == 1)
                 {
-                    MessageBox.Show(strPersonType, "PersonType", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if(strPersonType == "Owner")
+                    {
+                        MessageBox.Show("Managers Form", "Managers", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (strPersonType == "Employee")
+                    {
+                        MessageBox.Show("Employees Form", "Employees", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if(strPersonType == "Customer")
+                    {
+                        MessageBox.Show("Customer Form", "Customers", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
@@ -40,9 +52,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-     "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-     "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message,"Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -69,9 +79,7 @@ namespace FA21_Final_Project
 
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return boolVerify;
         }
@@ -141,9 +149,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return boolPassword;
         }
@@ -161,9 +167,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return strSecurityQuery1;
         }
@@ -180,9 +184,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message,"Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return strSecurityQuery2;
         }
@@ -199,9 +201,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-     "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-     "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message,"Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return strSecurityQuery3;
         }
@@ -218,9 +218,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-      "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-      "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return strSecurityQuery1;
         }
@@ -237,9 +235,7 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-     "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-     "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return strSecurityQuery2;
         }
@@ -256,11 +252,45 @@ namespace FA21_Final_Project
             }
             catch (Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message,"Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return strSecurityQuery3;
+        }
+        public static bool LogOnRequirements(string strUserName)
+        {
+            bool boolLogInName = false;
+            try
+            {
+                int intSpecialCount = 0;
+                for (int i = 0; i < strUserName.Length; i++)
+                {
+                    if (!char.IsLetterOrDigit(strUserName[i]))
+                    {
+                        intSpecialCount++;
+                    }
+                }
+                if (char.IsDigit(strUserName[0]))
+                {
+                    boolLogInName = false;
+                }
+                else if(intSpecialCount > 0)
+                {
+                    boolLogInName = false;
+                }
+                else if(strUserName.Length < 8 || strUserName.Length > 20)
+                {
+                    boolLogInName = false;
+                }
+                else
+                {
+                    boolLogInName = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return boolLogInName;
         }
     }
 }

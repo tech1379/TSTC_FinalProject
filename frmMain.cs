@@ -25,6 +25,10 @@ namespace FA21_Final_Project
         //variables 
         int intToggle = 0;
         public static string strLogInName;
+        public string message = "I'm sorry an error has occurred in the program. \n\n" +
+                    "Please inform the Program Developer that the following error occurred: \n\n\n";
+
+
         public frmMain()
         {
             InitializeComponent();
@@ -32,14 +36,39 @@ namespace FA21_Final_Project
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                hlpMain.HelpNamespace = Application.StartupPath + "\\LogOnHelp.chm";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string strUserName = tbxLogIn.Text;
-            string strPassword = tbxPassword.Text;
-            clsLogon.Verify(strUserName, strPassword);
+            try
+            {
+                string strUserName = tbxLogIn.Text;
+                string strPassword = tbxPassword.Text;
+                if (strUserName == "")
+                {
+                    MessageBox.Show("UserName cannot be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if(strPassword == "")
+                {
+                    MessageBox.Show("Password cannot be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                clsLogon.Verify(strUserName, strPassword);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void pbxEye_Click(object sender, EventArgs e)
@@ -85,9 +114,7 @@ namespace FA21_Final_Project
             }
             catch(Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -96,6 +123,11 @@ namespace FA21_Final_Project
             frmCreateAcct createAcct = new frmCreateAcct();
             createAcct.ShowDialog();
             this.Hide();
+        }
+
+        private void lblHelp_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpMain.HelpNamespace);
         }
     }
 }

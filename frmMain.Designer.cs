@@ -41,6 +41,7 @@ namespace FA21_Final_Project
             this.lblInventory = new System.Windows.Forms.Label();
             this.lblCreate = new System.Windows.Forms.Label();
             this.lblHelp = new System.Windows.Forms.Label();
+            this.hlpMain = new System.Windows.Forms.HelpProvider();
             this.gbxLogIn.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxEye)).BeginInit();
             this.SuspendLayout();
@@ -167,6 +168,11 @@ namespace FA21_Final_Project
             this.lblHelp.Size = new System.Drawing.Size(122, 21);
             this.lblHelp.TabIndex = 4;
             this.lblHelp.Text = "Need &Help?";
+            this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
+            // 
+            // hlpMain
+            // 
+            this.hlpMain.HelpNamespace = "C:\\Users\\erict\\Desktop\\Individual\\Individual\\HelpFiles\\LogOnHelp.chm";
             // 
             // frmMain
             // 
@@ -207,5 +213,6 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblInventory;
         private System.Windows.Forms.Label lblCreate;
         private System.Windows.Forms.Label lblHelp;
+        private System.Windows.Forms.HelpProvider hlpMain;
     }
 }

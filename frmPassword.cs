@@ -24,6 +24,8 @@ namespace FA21_Final_Project
         string strLogInName = frmMain.strLogInName;
         int intToggle1 = 0;
         int intToggle2 = 0;
+        public string message = "I'm sorry an error has occurred in the program. \n\n" +
+    "Please inform the Program Developer that the following error occurred: \n\n\n";
         public frmPassword()
         {
             InitializeComponent();
@@ -31,9 +33,16 @@ namespace FA21_Final_Project
 
         private void frmPassword_Load(object sender, EventArgs e)
         {
-            lblSC1.Text = clsLogon.GetSecurityQuestion1(strLogInName);
-            lblSC2.Text = clsLogon.GetSecurityQuestion2(strLogInName);
-            lblSC3.Text = clsLogon.GetSecurityQuestion3(strLogInName);
+            try
+            {
+                lblSC1.Text = clsLogon.GetSecurityQuestion1(strLogInName);
+                lblSC2.Text = clsLogon.GetSecurityQuestion2(strLogInName);
+                lblSC3.Text = clsLogon.GetSecurityQuestion3(strLogInName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
         private void pbxPass1_Click(object sender, EventArgs e)
@@ -96,14 +105,12 @@ namespace FA21_Final_Project
                 }
                 else
                 {
-                    MessageBox.Show("Fail");
+                    MessageBox.Show("Password not correct format!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch(Exception ex)
             {
-                MessageBox.Show("I'm sorry an error has occurred in the program. \n\n" +
-    "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
-    "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
