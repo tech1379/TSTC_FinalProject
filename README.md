@@ -63,8 +63,8 @@ Include any essential instructions for:
 - Thank you (name contributors)
 
 ### TODO 
-- Develop and Code the LogOn Screen
-- Manager, Customer, and Employee views
+- Develop and Code the Customer view
+- Manager, and Employee views
 - Known bugs (shortlist)
 
 ### Contact 
