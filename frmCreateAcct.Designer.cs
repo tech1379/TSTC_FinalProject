@@ -276,9 +276,11 @@ namespace FA21_Final_Project
             // 
             this.tbxZipCode.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxZipCode.Location = new System.Drawing.Point(202, 394);
+            this.tbxZipCode.MaxLength = 10;
             this.tbxZipCode.Name = "tbxZipCode";
             this.tbxZipCode.Size = new System.Drawing.Size(225, 26);
             this.tbxZipCode.TabIndex = 24;
+            this.tbxZipCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxZipCode_KeyPress);
             // 
             // tbxState
             // 
@@ -300,17 +302,21 @@ namespace FA21_Final_Project
             // 
             this.tbxPrimPhone.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxPrimPhone.Location = new System.Drawing.Point(202, 521);
+            this.tbxPrimPhone.MaxLength = 12;
             this.tbxPrimPhone.Name = "tbxPrimPhone";
             this.tbxPrimPhone.Size = new System.Drawing.Size(225, 26);
             this.tbxPrimPhone.TabIndex = 27;
+            this.tbxPrimPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxPrimPhone_KeyPress);
             // 
             // tbxSecPhone
             // 
             this.tbxSecPhone.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxSecPhone.Location = new System.Drawing.Point(202, 558);
+            this.tbxSecPhone.MaxLength = 12;
             this.tbxSecPhone.Name = "tbxSecPhone";
             this.tbxSecPhone.Size = new System.Drawing.Size(225, 26);
             this.tbxSecPhone.TabIndex = 28;
+            this.tbxSecPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSecPhone_KeyPress);
             // 
             // btnCreate
             // 

@@ -89,7 +89,7 @@ namespace FA21_Final_Project
             bool boolPassword = false;
             try
             {
-               
+
                 int intUpperCaseCount = 0;
                 int intLowerCaseCount = 0;
                 int intNumberCount = 0;
@@ -122,27 +122,27 @@ namespace FA21_Final_Project
                 {
                     boolPassword = false;
                 }
-                if (intSpaceCount >= 1)
+                else if (intSpaceCount >= 1)
                 {
                     boolPassword = false;
                 }
-                if (intLowerCaseCount > 1 || intUpperCaseCount > 1 || intNumberCount > 1 || intSpecialCount > 1)
+                else if (intLowerCaseCount >= 1 && intUpperCaseCount >= 1 && intNumberCount >= 1 && intSpecialCount >= 1)
                 {
                     boolPassword = true;
                 }
-                else if (intUpperCaseCount > 1 || intLowerCaseCount > 1 || intNumberCount > 1)
+                else if (intUpperCaseCount >= 1 && intLowerCaseCount >= 1 && intNumberCount >= 1)
                 {
                     boolPassword = true;
                 }
-                else if (intLowerCaseCount > 1 || intNumberCount > 1 || intSpecialCount > 1)
+                else if (intLowerCaseCount >= 1 && intNumberCount >= 1 && intSpecialCount >= 1)
                 {
                     boolPassword = true;
                 }
-                else if (intNumberCount > 1 || intSpecialCount > 1 || intUpperCaseCount > 1)
+                else if (intNumberCount >= 1 && intSpecialCount >= 1 && intUpperCaseCount >= 1)
                 {
                     boolPassword = true;
                 }
-                else if (intSpecialCount > 1 || intUpperCaseCount > 1 || intLowerCaseCount > 1)
+                else if (intSpecialCount >= 1 && intUpperCaseCount >= 1 && intLowerCaseCount >= 1)
                 {
                     boolPassword = true;
                 }
@@ -229,7 +229,7 @@ namespace FA21_Final_Project
             string strSecurityQuery2 = "";
             try
             {
-                strSecurityAnswer2 = "SELECT FirstChallengeAnswer FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
+                strSecurityAnswer2 = "SELECT SecondChallengeAnswer FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
                 strSecurityQuery2 = clsSQL.DatabaseCommandLogon(strSecurityAnswer2);
 
             }
@@ -246,7 +246,7 @@ namespace FA21_Final_Project
             string strSecurityQuery3 = "";
             try
             {
-                strSecurityAnswer3 = "SELECT FirstChallengeAnswer FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
+                strSecurityAnswer3 = "SELECT ThirdChallengeAnswer FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
                 strSecurityQuery3 = clsSQL.DatabaseCommandLogon(strSecurityAnswer3);
 
             }
@@ -270,6 +270,10 @@ namespace FA21_Final_Project
                     }
                 }
                 if (char.IsDigit(strUserName[0]))
+                {
+                    boolLogInName = false;
+                }
+                else if(char.IsWhiteSpace(strUserName[0]))
                 {
                     boolLogInName = false;
                 }

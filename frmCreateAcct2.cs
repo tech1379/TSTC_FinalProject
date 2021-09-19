@@ -35,19 +35,24 @@ namespace FA21_Final_Project
             try
             {
                 //load combo boxes
-                string[] strQuestionArray = new string[6];
+                string[] strQuestionArray = new string[3];
                 strQuestionArray[0] = "Who is your favorite author?";
                 strQuestionArray[1] = "What is your favorite food?";
                 strQuestionArray[2] = "What is your favorite movie?";
-                strQuestionArray[3] = "What is your favorite band?";
-                strQuestionArray[4] = "What is your favorite color?";
-                strQuestionArray[5] = "Who is your favorite singer?";
+                string[] strQuestionArray2 = new string[3];
+                strQuestionArray2[0] = "What is your favorite band?";
+                strQuestionArray2[1] = "What is your favorite color?";
+                strQuestionArray2[2] = "Who is your favorite singer?";
+                string[] strQuestionArray3 = new string[3];
+                strQuestionArray3[0] = "What is your favorite song?";
+                strQuestionArray3[1] = "Who is your favorite teacher?";
+                strQuestionArray3[2] = "Where were you born?";
 
                 for (int i = 0; i < strQuestionArray.Length; i++)
                 {
                     cbxFirstQ.Items.Add(strQuestionArray[i]);
-                    cbxSecondQ.Items.Add(strQuestionArray[i]);
-                    cbxThirdQ.Items.Add(strQuestionArray[i]);
+                    cbxSecondQ.Items.Add(strQuestionArray2[i]);
+                    cbxThirdQ.Items.Add(strQuestionArray3[i]);
                 }
 
                 //cbxPosition.Items.Add("Manager");
@@ -138,7 +143,7 @@ namespace FA21_Final_Project
                     return;
                 }
                 string strLogOnNameQuery = "SELECT COUNT(LogonName) FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogOnName + "';";
-                MessageBox.Show(strLogOnNameQuery);
+                //MessageBox.Show(strLogOnNameQuery);
                 string strLogOnCount = clsSQL.DatabaseCommandLogon(strLogOnNameQuery);
                 int intLogOnCount = Convert.ToInt32(strLogOnCount);
                 if(intLogOnCount > 0)
@@ -150,8 +155,12 @@ namespace FA21_Final_Project
                 string strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
                     strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
                     strSecondAnswer + "', '" + cbxThirdQ.SelectedItem + "', '" + strThirdAns + "', 'Customer', NULL, NULL)";
-                MessageBox.Show(strInsert);
+                //MessageBox.Show(strInsert);
                 clsSQL.UpdateDatabase(strInsert);
+                MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Hide();
+                frmMain main = new frmMain();
+                main.ShowDialog();
             }
             catch(Exception ex)
             {

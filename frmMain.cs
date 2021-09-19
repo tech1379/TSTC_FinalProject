@@ -50,7 +50,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strUserName = tbxLogIn.Text;
+                string strUserName = tbxLogIn.Text.ToUpper();
                 string strPassword = tbxPassword.Text;
                 if (strUserName == "")
                 {
@@ -92,7 +92,7 @@ namespace FA21_Final_Project
                 MessageBox.Show("You must enter a username!", "Username", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            strLogInName = tbxLogIn.Text;
+            strLogInName = tbxLogIn.Text.ToUpper();
             bool boolVerify = clsLogon.Reset(strLogInName);
             if (boolVerify == true)
             {

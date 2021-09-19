@@ -106,12 +106,12 @@ namespace FA21_Final_Project
                    "', '" + strLastName + "', '" + strSuffix + "', '" + strAddress1 + "', '" + strAddress2 + "', '" + strAddress3 +
                    "', '" + strCity + "', '" + strZipCode + "', '" + strState + "', '" + strEmail + "', '" + strPrimPhone + "', '" +
                    strSecondPhone + "', NULL, NULL, 'Customer');";
-                MessageBox.Show(strInsert);
+                //MessageBox.Show(strInsert);
                 clsSQL.UpdateDatabase(strInsert);
                 //Get Person ID to pass to next form to create LogOn info
                 string strPersonIDQuery = "SELECT MAX(PersonID) FROM tekelle21fa2332.Person;";
                 strPersonID = clsSQL.DatabaseCommandLogon(strPersonIDQuery);
-                MessageBox.Show(strPersonID);
+                //MessageBox.Show(strPersonID);
                 this.Hide();
                 frmCreateAcct2 createAcct2 = new frmCreateAcct2();
                 createAcct2.ShowDialog();
@@ -120,6 +120,54 @@ namespace FA21_Final_Project
             catch (Exception ex)
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tbxPrimPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (int)e.KeyChar == 8)
+            { //acceptable keystrokes
+                e.Handled = false;
+            }
+            else if ((int)e.KeyChar == '-')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxSecPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (int)e.KeyChar == 8)
+            { //acceptable keystrokes
+                e.Handled = false;
+            }
+            else if ((int)e.KeyChar == '-')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxZipCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (int)e.KeyChar == 8)
+            { //acceptable keystrokes
+                e.Handled = false;
+            }
+            else if ((int)e.KeyChar == '-')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

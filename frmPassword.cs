@@ -92,11 +92,15 @@ namespace FA21_Final_Project
                     string strSecurityAnswer1 = clsLogon.GetSecurityAnswer1(strLogInName);
                     string strSecurityAnswer2 = clsLogon.GetSecurityAnswer2(strLogInName);
                     string strSecurityAnswer3 = clsLogon.GetSecurityAnswer3(strLogInName);
-                    if (tbxAn1.Text.ToUpper() == strSecurityAnswer1.ToUpper() || tbxAn2.Text.ToUpper() == strSecurityAnswer2.ToUpper() || tbxAn3.Text.ToUpper() == strSecurityAnswer3.ToUpper())
+
+                    if (tbxAn1.Text.ToUpper() == strSecurityAnswer1.ToUpper() && tbxAn2.Text.ToUpper() == strSecurityAnswer2.ToUpper() && tbxAn3.Text.ToUpper() == strSecurityAnswer3.ToUpper())
                     {
                         string strUpdateQuery = "UPDATE tekelle21fa2332.Logon SET Password = '" + strPassword + "' WHERE LogonName = '" + strLogInName + "';";
                         clsSQL.UpdateDatabase(strUpdateQuery);
                         MessageBox.Show("Password Changed.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Hide();
+                        frmMain main = new frmMain();
+                        main.ShowDialog();
                     }
                     else
                     {

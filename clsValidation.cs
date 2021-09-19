@@ -17,17 +17,24 @@ namespace FA21_Final_Project
             bool boolValidZipCode = false;
             try
             {
-                
-                string strUSZip = @"^\d{5}(?:[-\s]\d{4})?$";
-                if ((Regex.Match(strZipCode, strUSZip).Success))
+
+                int intSpecialCharCount = 0;
+                for (int i = 0; i < strZipCode.Length; i++)
                 {
-                    boolValidZipCode = true;
+                    if (strZipCode[i] == '-')
+                    {
+                        intSpecialCharCount++;
+                    }
                 }
-                else
+                if (intSpecialCharCount > 2)
                 {
                     boolValidZipCode = false;
                 }
-                
+                else
+                {
+                    boolValidZipCode = true;
+                }
+
             }
             catch(Exception ex)
             {
@@ -41,14 +48,30 @@ namespace FA21_Final_Project
             bool boolValidPhone = false;
             try
             {
-                string strPhonePattern = @"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}";
-                if ((Regex.Match(strPhone, strPhonePattern).Success))
+                int intSpecialCharCount = 0;
+                int intNumberCount = 0;
+                for (int i = 0; i < strPhone.Length; i++)
                 {
-                    boolValidPhone = true;
+                    if(strPhone[i] == '-')
+                    {
+                        intSpecialCharCount++;
+                    }
+                    else
+                    {
+                        intNumberCount++;
+                    }
+                }
+                if (intSpecialCharCount > 2)
+                {
+                    boolValidPhone = false;
+                }
+                else if(intNumberCount > 10)
+                {
+                    boolValidPhone = false;
                 }
                 else
                 {
-                    boolValidPhone = false;
+                    boolValidPhone = true;
                 }
             }
             catch (Exception ex)
