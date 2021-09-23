@@ -259,6 +259,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblNew);
             this.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
+            this.MaximizeBox = false;
             this.Name = "frmPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Reset";

@@ -18,6 +18,7 @@ namespace FA21_Final_Project
         private static SqlConnection _cntDatabase = new SqlConnection(CONNECT_STRING);
         private static SqlCommand _sqlLogOnCommand;
         private static SqlCommand _sqlUpdateCommand;
+        private static string strTableName = "tekelle21fa2332.Inventory";
 
         public static void ConnectDatabase()
         {
@@ -80,6 +81,49 @@ namespace FA21_Final_Project
             {
                 MessageBox.Show(message + ex.Message,"Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        public static List<clsInventory> ReloadImageList()
+        {
+            //TODO: Change the SELECT statement to the column names you are trying to use.
+            string strCommand = $"SELECT InventoryID, ItemName, ItemDescription, RetailPrice, Cost, Quantity, ItemImage, Discontinued FROM {strTableName};"; // Query to pull two columns of data from Images table            
+            SqlCommand SelectCommand = new SqlCommand(strCommand, _cntDatabase);
+            SqlDataReader sqlReader;
+            
+            List<clsInventory> lstInventory = new List<clsInventory>();
+            lstInventory.Clear();// Empty the list before loading new images to prevent duplications
+            try
+            {
+                _cntDatabase.Open();
+                sqlReader = SelectCommand.ExecuteReader();
+
+                while (sqlReader.Read())
+                {
+                    clsInventory inventory = new clsInventory();
+                    inventory.intInventoryID = sqlReader.GetInt32(0); // MS SQL Datatype int
+                    inventory.strItemName = sqlReader.GetString(1);
+                    inventory.strItemDescription = sqlReader.GetString(2); // MS SQL Datatype int
+                    inventory.decRetailPrice = (sqlReader.GetDecimal(3));
+                    inventory.decCost = (sqlReader.GetDecimal(4));
+                    inventory.intQuantity = sqlReader.GetInt32(5);
+                    inventory.bytImage = (byte[])sqlReader[6];
+                    if (!(sqlReader.IsDBNull(7)))                  
+                    {
+                        inventory.boolDiscontinued = Convert.ToBoolean(sqlReader.GetBoolean(7));
+                    }
+                    lstInventory.Add(inventory); // Add image object to list
+
+                    // You can use a constructor for this class to accept two parameters
+                    // and add it all at the same time. Just for demo purposes
+
+                    // lstImages.Add(new Images(sqlReader.GetInt32(0), (byte[])sqlReader[1]));
+                }
+                _cntDatabase.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error reloading images.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return lstInventory;
         }
 
     }

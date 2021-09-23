@@ -364,6 +364,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblLast);
             this.Controls.Add(this.lblFirst);
             this.Controls.Add(this.lblTitle);
+            this.MaximizeBox = false;
             this.Name = "frmCreateAcct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personal Information";

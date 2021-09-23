@@ -85,6 +85,7 @@ namespace FA21_Final_Project
             // 
             // pbxEye
             // 
+            this.pbxEye.BackColor = System.Drawing.Color.Transparent;
             this.pbxEye.Image = global::FA21_Final_Project.Properties.Resources.eye;
             this.pbxEye.Location = new System.Drawing.Point(330, 120);
             this.pbxEye.Name = "pbxEye";
@@ -147,6 +148,7 @@ namespace FA21_Final_Project
             this.lblInventory.Size = new System.Drawing.Size(185, 21);
             this.lblInventory.TabIndex = 2;
             this.lblInventory.Text = "&Browse Inventory";
+            this.lblInventory.Click += new System.EventHandler(this.lblInventory_Click);
             // 
             // lblCreate
             // 

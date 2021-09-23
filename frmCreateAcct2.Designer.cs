@@ -316,6 +316,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblConfirm);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblLogOn);
+            this.MaximizeBox = false;
             this.Name = "frmCreateAcct2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account Creation";

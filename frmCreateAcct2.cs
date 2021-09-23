@@ -21,6 +21,7 @@ namespace FA21_Final_Project
     public partial class frmCreateAcct2 : Form
     {
         string strPersonID = frmCreateAcct.strPersonID;
+        string strInsertPerson = frmCreateAcct.strInsert;
         int intToggle1 = 0;
         int intToggle2 = 0;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
@@ -57,7 +58,8 @@ namespace FA21_Final_Project
 
                 //cbxPosition.Items.Add("Manager");
                 //cbxPosition.Items.Add("Employee");
-                cbxPosition.Items.Add("Customer");
+                cbxPosition.Visible = false;
+                lblPosition.Visible = false;
             }
             catch (Exception ex)
             {
@@ -151,11 +153,11 @@ namespace FA21_Final_Project
                     MessageBox.Show("Username already used!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                //insert into db
+                //insert into person then login into db
+                clsSQL.UpdateDatabase(strInsertPerson);
                 string strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
                     strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
                     strSecondAnswer + "', '" + cbxThirdQ.SelectedItem + "', '" + strThirdAns + "', 'Customer', NULL, NULL)";
-                //MessageBox.Show(strInsert);
                 clsSQL.UpdateDatabase(strInsert);
                 MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();

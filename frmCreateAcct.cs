@@ -23,6 +23,7 @@ namespace FA21_Final_Project
         public static string strPersonID;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
     "Please inform the Program Developer that the following error occurred: \n\n\n";
+        public static string strInsert;
         public frmCreateAcct()
         {
             InitializeComponent();
@@ -102,12 +103,11 @@ namespace FA21_Final_Project
                     MessageBox.Show("State cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                string strInsert = "INSERT INTO tekelle21fa2332.Person VALUES ('" + strTitle + "', '" + strFirstName + "', '" + strMiddleName +
+                strInsert = "INSERT INTO tekelle21fa2332.Person VALUES ('" + strTitle + "', '" + strFirstName + "', '" + strMiddleName +
                    "', '" + strLastName + "', '" + strSuffix + "', '" + strAddress1 + "', '" + strAddress2 + "', '" + strAddress3 +
                    "', '" + strCity + "', '" + strZipCode + "', '" + strState + "', '" + strEmail + "', '" + strPrimPhone + "', '" +
                    strSecondPhone + "', NULL, NULL, 'Customer');";
                 //MessageBox.Show(strInsert);
-                clsSQL.UpdateDatabase(strInsert);
                 //Get Person ID to pass to next form to create LogOn info
                 string strPersonIDQuery = "SELECT MAX(PersonID) FROM tekelle21fa2332.Person;";
                 strPersonID = clsSQL.DatabaseCommandLogon(strPersonIDQuery);

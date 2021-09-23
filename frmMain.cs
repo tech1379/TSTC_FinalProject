@@ -25,6 +25,7 @@ namespace FA21_Final_Project
         //variables 
         int intToggle = 0;
         public static string strLogInName;
+        public static bool boolHasAccount = false;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
                     "Please inform the Program Developer that the following error occurred: \n\n\n";
 
@@ -48,6 +49,7 @@ namespace FA21_Final_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            int intFormControl = 0;
             try
             {
                 string strUserName = tbxLogIn.Text.ToUpper();
@@ -62,7 +64,23 @@ namespace FA21_Final_Project
                     MessageBox.Show("Password cannot be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                clsLogon.Verify(strUserName, strPassword);
+                intFormControl = clsLogon.Verify(strUserName, strPassword);
+                if (intFormControl == 1)
+                {
+                    MessageBox.Show("Managers Form");
+                }
+                else if(intFormControl == 2)
+                {
+                    MessageBox.Show("Employees Form");
+                }
+                else if(intFormControl == 3)
+                {
+                    boolHasAccount = true;
+                    this.Hide();
+                    frmCustomer customer = new frmCustomer();
+                    customer.ShowDialog();
+                }
+                   
             }
             catch (Exception ex)
             {
@@ -128,6 +146,13 @@ namespace FA21_Final_Project
         private void lblHelp_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, hlpMain.HelpNamespace);
+        }
+
+        private void lblInventory_Click(object sender, EventArgs e)
+        {
+            boolHasAccount = false;
+            frmCustomer customer = new frmCustomer();
+            customer.ShowDialog();
         }
     }
 }

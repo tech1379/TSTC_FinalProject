@@ -12,11 +12,13 @@ namespace FA21_Final_Project
         public static string message = "I'm sorry an error has occurred in the program. \n\n" +
             "Please inform the Program Developer that the following error occurred: \n\n\n";
 
-        public static void Verify(string strUserName, string strPassword)
+        public static int Verify(string strUserName, string strPassword)
         {
             //password check routine, verify username and password then get person type
+            int intFormControl = 0;
             try
             {
+                
                 string strQueryLogOnPass;
                 string strQueryPersonType;
                 string strPersonType;
@@ -34,15 +36,15 @@ namespace FA21_Final_Project
                 {
                     if(strPersonType == "Owner")
                     {
-                        MessageBox.Show("Managers Form", "Managers", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        intFormControl = 1;
                     }
                     else if (strPersonType == "Employee")
                     {
-                        MessageBox.Show("Employees Form", "Employees", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        intFormControl = 2;
                     }
                     else if(strPersonType == "Customer")
                     {
-                        MessageBox.Show("Customer Form", "Customers", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        intFormControl = 3;
                     }
                 }
                 else
@@ -54,6 +56,7 @@ namespace FA21_Final_Project
             {
                 MessageBox.Show(message + ex.Message,"Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            return intFormControl;
         }
 
         public static bool Reset(string strUserName)
