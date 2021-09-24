@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsCoupon.cs" />
     <Compile Include="clsInventory.cs" />
     <Compile Include="clsLogon.cs" />
     <Compile Include="clsSQL.cs" />
@@ -171,6 +172,7 @@
     <Content Include="Icons\TSTCLogo.ico" />
     <None Include="Resources\next.PNG" />
     <None Include="Resources\previous.PNG" />
+    <None Include="Resources\next2.gif" />
     <Content Include="TSTCLogo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

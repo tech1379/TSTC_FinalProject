@@ -12,7 +12,7 @@ namespace FA21_Final_Project
         public static string message = "I'm sorry an error has occurred in the program. \n\n" +
             "Please inform the Program Developer that the following error occurred: \n\n\n";
 
-        public static int Verify(string strUserName, string strPassword)
+        public static int Verify(string strUserName, string strPassword, ref string strPersonID)
         {
             //password check routine, verify username and password then get person type
             int intFormControl = 0;
@@ -21,6 +21,7 @@ namespace FA21_Final_Project
                 
                 string strQueryLogOnPass;
                 string strQueryPersonType;
+                string strQueryPersonID;
                 string strPersonType;
                 string strResult;
                 strQueryLogOnPass = "SELECT COUNT(*) FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "' AND Password = '"
@@ -31,9 +32,12 @@ namespace FA21_Final_Project
                     + "p.PersonID = l.PersonID " + "WHERE LogonName = '" + strUserName + "' AND Password = '" +
                     strPassword + "';";
                 strPersonType = clsSQL.DatabaseCommandLogon(strQueryPersonType);
+                strQueryPersonID = "SELECT PersonID FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "' AND Password = '"
+                    + strPassword + "';";
 
                 if (logon == 1)
                 {
+                    strPersonID = clsSQL.DatabaseCommandLogon(strQueryPersonID);
                     if(strPersonType == "Owner")
                     {
                         intFormControl = 1;

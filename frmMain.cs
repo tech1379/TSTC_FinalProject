@@ -25,6 +25,7 @@ namespace FA21_Final_Project
         //variables 
         int intToggle = 0;
         public static string strLogInName;
+        public static string strPersonID;
         public static bool boolHasAccount = false;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
                     "Please inform the Program Developer that the following error occurred: \n\n\n";
@@ -64,7 +65,7 @@ namespace FA21_Final_Project
                     MessageBox.Show("Password cannot be empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                intFormControl = clsLogon.Verify(strUserName, strPassword);
+                intFormControl = clsLogon.Verify(strUserName, strPassword, ref strPersonID);
                 if (intFormControl == 1)
                 {
                     MessageBox.Show("Managers Form");
