@@ -50,7 +50,7 @@ namespace FA21_Final_Project
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            int intFormControl = 0;
+            int intFormControl;
             try
             {
                 string strUserName = tbxLogIn.Text.ToUpper();
@@ -68,14 +68,14 @@ namespace FA21_Final_Project
                 intFormControl = clsLogon.Verify(strUserName, strPassword, ref strPersonID);
                 if (intFormControl == 1)
                 {
-                    MessageBox.Show("Managers Form");
+                    MessageBox.Show("Managers");
                 }
-                else if(intFormControl == 2)
+                else if (intFormControl == 2)
                 {
-                    MessageBox.Show("Employees Form");
+                    MessageBox.Show("Employees");
                 }
-                else if(intFormControl == 3)
-                {
+                else if (intFormControl == 3)
+                { 
                     boolHasAccount = true;
                     this.Hide();
                     frmCustomer customer = new frmCustomer();

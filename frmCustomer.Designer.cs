@@ -49,6 +49,13 @@ namespace FA21_Final_Project
             this.tbQuailHunts = new System.Windows.Forms.TabPage();
             this.tbTraining = new System.Windows.Forms.TabPage();
             this.tbShoppingCart = new System.Windows.Forms.TabPage();
+            this.lblDP = new System.Windows.Forms.Label();
+            this.lblDiscPercent = new System.Windows.Forms.Label();
+            this.btnReceipt = new System.Windows.Forms.Button();
+            this.cbxCouponCode = new System.Windows.Forms.ComboBox();
+            this.lblCCode = new System.Windows.Forms.Label();
+            this.lblSubTotalDisc = new System.Windows.Forms.Label();
+            this.lblSBTD = new System.Windows.Forms.Label();
             this.lblDisc = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
             this.tbxExpiration = new System.Windows.Forms.TextBox();
@@ -66,11 +73,6 @@ namespace FA21_Final_Project
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.lblST = new System.Windows.Forms.Label();
             this.dgvResults = new System.Windows.Forms.DataGridView();
-            this.lblSBTD = new System.Windows.Forms.Label();
-            this.lblSubTotalDisc = new System.Windows.Forms.Label();
-            this.lblCCode = new System.Windows.Forms.Label();
-            this.cbxCouponCode = new System.Windows.Forms.ComboBox();
-            this.btnReceipt = new System.Windows.Forms.Button();
             this.tbCustomer.SuspendLayout();
             this.tbInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNext)).BeginInit();
@@ -269,7 +271,7 @@ namespace FA21_Final_Project
             this.tbQuailHunts.Location = new System.Drawing.Point(4, 28);
             this.tbQuailHunts.Name = "tbQuailHunts";
             this.tbQuailHunts.Padding = new System.Windows.Forms.Padding(3);
-            this.tbQuailHunts.Size = new System.Drawing.Size(890, 464);
+            this.tbQuailHunts.Size = new System.Drawing.Size(890, 540);
             this.tbQuailHunts.TabIndex = 1;
             this.tbQuailHunts.Text = "Quail Hunts";
             // 
@@ -279,7 +281,7 @@ namespace FA21_Final_Project
             this.tbTraining.Location = new System.Drawing.Point(4, 28);
             this.tbTraining.Name = "tbTraining";
             this.tbTraining.Padding = new System.Windows.Forms.Padding(3);
-            this.tbTraining.Size = new System.Drawing.Size(890, 464);
+            this.tbTraining.Size = new System.Drawing.Size(890, 540);
             this.tbTraining.TabIndex = 2;
             this.tbTraining.Text = "Training Services";
             // 
@@ -287,6 +289,8 @@ namespace FA21_Final_Project
             // 
             this.tbShoppingCart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.tbShoppingCart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbShoppingCart.Controls.Add(this.lblDP);
+            this.tbShoppingCart.Controls.Add(this.lblDiscPercent);
             this.tbShoppingCart.Controls.Add(this.btnReceipt);
             this.tbShoppingCart.Controls.Add(this.cbxCouponCode);
             this.tbShoppingCart.Controls.Add(this.lblCCode);
@@ -316,11 +320,78 @@ namespace FA21_Final_Project
             this.tbShoppingCart.TabIndex = 3;
             this.tbShoppingCart.Text = "Shopping Cart";
             // 
+            // lblDP
+            // 
+            this.lblDP.AutoSize = true;
+            this.lblDP.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDP.Location = new System.Drawing.Point(518, 354);
+            this.lblDP.Name = "lblDP";
+            this.lblDP.Size = new System.Drawing.Size(193, 19);
+            this.lblDP.TabIndex = 23;
+            this.lblDP.Text = "Discount Percentage:";
+            // 
+            // lblDiscPercent
+            // 
+            this.lblDiscPercent.BackColor = System.Drawing.Color.White;
+            this.lblDiscPercent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDiscPercent.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscPercent.Location = new System.Drawing.Point(728, 346);
+            this.lblDiscPercent.Name = "lblDiscPercent";
+            this.lblDiscPercent.Size = new System.Drawing.Size(122, 27);
+            this.lblDiscPercent.TabIndex = 22;
+            // 
+            // btnReceipt
+            // 
+            this.btnReceipt.Location = new System.Drawing.Point(379, 468);
+            this.btnReceipt.Name = "btnReceipt";
+            this.btnReceipt.Size = new System.Drawing.Size(102, 49);
+            this.btnReceipt.TabIndex = 21;
+            this.btnReceipt.Text = "&Print Receipt";
+            this.btnReceipt.UseVisualStyleBackColor = true;
+            // 
+            // cbxCouponCode
+            // 
+            this.cbxCouponCode.FormattingEnabled = true;
+            this.cbxCouponCode.Location = new System.Drawing.Point(23, 346);
+            this.cbxCouponCode.Name = "cbxCouponCode";
+            this.cbxCouponCode.Size = new System.Drawing.Size(121, 27);
+            this.cbxCouponCode.TabIndex = 20;
+            this.cbxCouponCode.SelectedIndexChanged += new System.EventHandler(this.cbxCouponCode_SelectedIndexChanged);
+            // 
+            // lblCCode
+            // 
+            this.lblCCode.AutoSize = true;
+            this.lblCCode.Location = new System.Drawing.Point(19, 312);
+            this.lblCCode.Name = "lblCCode";
+            this.lblCCode.Size = new System.Drawing.Size(129, 19);
+            this.lblCCode.TabIndex = 19;
+            this.lblCCode.Text = "Coupon Code:";
+            // 
+            // lblSubTotalDisc
+            // 
+            this.lblSubTotalDisc.BackColor = System.Drawing.Color.White;
+            this.lblSubTotalDisc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSubTotalDisc.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotalDisc.Location = new System.Drawing.Point(728, 420);
+            this.lblSubTotalDisc.Name = "lblSubTotalDisc";
+            this.lblSubTotalDisc.Size = new System.Drawing.Size(122, 27);
+            this.lblSubTotalDisc.TabIndex = 18;
+            // 
+            // lblSBTD
+            // 
+            this.lblSBTD.AutoSize = true;
+            this.lblSBTD.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSBTD.Location = new System.Drawing.Point(479, 428);
+            this.lblSBTD.Name = "lblSBTD";
+            this.lblSBTD.Size = new System.Drawing.Size(225, 19);
+            this.lblSBTD.TabIndex = 17;
+            this.lblSBTD.Text = "Sub Total After Discount:";
+            // 
             // lblDisc
             // 
             this.lblDisc.AutoSize = true;
             this.lblDisc.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisc.Location = new System.Drawing.Point(613, 354);
+            this.lblDisc.Location = new System.Drawing.Point(613, 389);
             this.lblDisc.Name = "lblDisc";
             this.lblDisc.Size = new System.Drawing.Size(91, 19);
             this.lblDisc.TabIndex = 16;
@@ -331,7 +402,7 @@ namespace FA21_Final_Project
             this.lblDiscount.BackColor = System.Drawing.Color.White;
             this.lblDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDiscount.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscount.Location = new System.Drawing.Point(728, 346);
+            this.lblDiscount.Location = new System.Drawing.Point(728, 381);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(122, 27);
             this.lblDiscount.TabIndex = 15;
@@ -380,6 +451,7 @@ namespace FA21_Final_Project
             this.btnRemove.TabIndex = 10;
             this.btnRemove.Text = "&Remove Item";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnOrder
             // 
@@ -412,7 +484,7 @@ namespace FA21_Final_Project
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTotal.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(728, 490);
+            this.lblTotal.Location = new System.Drawing.Point(728, 505);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(122, 27);
             this.lblTotal.TabIndex = 6;
@@ -421,7 +493,7 @@ namespace FA21_Final_Project
             // 
             this.lblT1.AutoSize = true;
             this.lblT1.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblT1.Location = new System.Drawing.Point(638, 498);
+            this.lblT1.Location = new System.Drawing.Point(638, 513);
             this.lblT1.Name = "lblT1";
             this.lblT1.Size = new System.Drawing.Size(60, 19);
             this.lblT1.TabIndex = 5;
@@ -432,7 +504,7 @@ namespace FA21_Final_Project
             this.lblTaxes.BackColor = System.Drawing.Color.White;
             this.lblTaxes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTaxes.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaxes.Location = new System.Drawing.Point(728, 437);
+            this.lblTaxes.Location = new System.Drawing.Point(728, 463);
             this.lblTaxes.Name = "lblTaxes";
             this.lblTaxes.Size = new System.Drawing.Size(122, 27);
             this.lblTaxes.TabIndex = 4;
@@ -441,7 +513,7 @@ namespace FA21_Final_Project
             // 
             this.lblTx.AutoSize = true;
             this.lblTx.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTx.Location = new System.Drawing.Point(638, 445);
+            this.lblTx.Location = new System.Drawing.Point(638, 471);
             this.lblTx.Name = "lblTx";
             this.lblTx.Size = new System.Drawing.Size(66, 19);
             this.lblTx.TabIndex = 3;
@@ -471,6 +543,7 @@ namespace FA21_Final_Project
             // 
             this.dgvResults.AllowUserToAddRows = false;
             this.dgvResults.AllowUserToDeleteRows = false;
+            this.dgvResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvResults.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvResults.Location = new System.Drawing.Point(253, 34);
             this.dgvResults.Name = "dgvResults";
@@ -478,52 +551,6 @@ namespace FA21_Final_Project
             this.dgvResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResults.Size = new System.Drawing.Size(616, 257);
             this.dgvResults.TabIndex = 0;
-            // 
-            // lblSBTD
-            // 
-            this.lblSBTD.AutoSize = true;
-            this.lblSBTD.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSBTD.Location = new System.Drawing.Point(479, 397);
-            this.lblSBTD.Name = "lblSBTD";
-            this.lblSBTD.Size = new System.Drawing.Size(225, 19);
-            this.lblSBTD.TabIndex = 17;
-            this.lblSBTD.Text = "Sub Total After Discount:";
-            // 
-            // lblSubTotalDisc
-            // 
-            this.lblSubTotalDisc.BackColor = System.Drawing.Color.White;
-            this.lblSubTotalDisc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSubTotalDisc.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSubTotalDisc.Location = new System.Drawing.Point(728, 389);
-            this.lblSubTotalDisc.Name = "lblSubTotalDisc";
-            this.lblSubTotalDisc.Size = new System.Drawing.Size(122, 27);
-            this.lblSubTotalDisc.TabIndex = 18;
-            // 
-            // lblCCode
-            // 
-            this.lblCCode.AutoSize = true;
-            this.lblCCode.Location = new System.Drawing.Point(19, 312);
-            this.lblCCode.Name = "lblCCode";
-            this.lblCCode.Size = new System.Drawing.Size(129, 19);
-            this.lblCCode.TabIndex = 19;
-            this.lblCCode.Text = "Coupon Code:";
-            // 
-            // cbxCouponCode
-            // 
-            this.cbxCouponCode.FormattingEnabled = true;
-            this.cbxCouponCode.Location = new System.Drawing.Point(23, 346);
-            this.cbxCouponCode.Name = "cbxCouponCode";
-            this.cbxCouponCode.Size = new System.Drawing.Size(121, 27);
-            this.cbxCouponCode.TabIndex = 20;
-            // 
-            // btnReceipt
-            // 
-            this.btnReceipt.Location = new System.Drawing.Point(379, 468);
-            this.btnReceipt.Name = "btnReceipt";
-            this.btnReceipt.Size = new System.Drawing.Size(102, 49);
-            this.btnReceipt.TabIndex = 21;
-            this.btnReceipt.Text = "&Print Receipt";
-            this.btnReceipt.UseVisualStyleBackColor = true;
             // 
             // frmCustomer
             // 
@@ -594,5 +621,7 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblCCode;
         private System.Windows.Forms.ComboBox cbxCouponCode;
         private System.Windows.Forms.Button btnReceipt;
+        private System.Windows.Forms.Label lblDiscPercent;
+        private System.Windows.Forms.Label lblDP;
     }
 }

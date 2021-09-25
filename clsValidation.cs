@@ -101,5 +101,47 @@ namespace FA21_Final_Project
             }
             return boolValidEmail;
         }
+        public static bool ValidCreditCard(string strCreditCard)
+        {
+            bool boolCreditCard = false;
+            try
+            {
+                string strCreditCardPattern = @"^\d{4}-\d{4}-\d{4}-\d{4}$";
+                if ((Regex.Match(strCreditCard, strCreditCardPattern).Success))
+                {
+                    boolCreditCard = true;
+                }
+                else
+                {
+                    boolCreditCard = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return boolCreditCard;
+        }
+        public static bool ValidExpiration(string strExpiration)
+        {
+            bool boolExpiration = false;
+            try
+            {
+                string strExpirationPattern = @"^\d{2}/\d{2}$";
+                if ((Regex.Match(strExpiration, strExpirationPattern).Success))
+                {
+                    boolExpiration = true;
+                }
+                else
+                {
+                    boolExpiration = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return boolExpiration;
+        }
     }
 }
