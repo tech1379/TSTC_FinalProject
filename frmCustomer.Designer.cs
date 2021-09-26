@@ -348,6 +348,7 @@ namespace FA21_Final_Project
             this.btnReceipt.TabIndex = 21;
             this.btnReceipt.Text = "&Print Receipt";
             this.btnReceipt.UseVisualStyleBackColor = true;
+            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
             // 
             // cbxCouponCode
             // 

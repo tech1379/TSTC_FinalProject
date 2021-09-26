@@ -31,6 +31,9 @@ namespace FA21_Final_Project
         public static decimal decSubTotalDiscount;
         public static decimal decTaxes = 0;
         public static decimal decTotal = 0;
+        public static bool boolOrderMade = false;
+        public static string strPhoneNumber;
+        public string strMaxOrderID;
         public bool boolHasAccount = frmMain.boolHasAccount;
         List<clsInventory> lstInventory = new List<clsInventory>();
         List<clsCoupon> lstCoupon = new List<clsCoupon>();
@@ -39,6 +42,8 @@ namespace FA21_Final_Project
         List<int> lstShoppingCartInventoryID = new List<int>();
         List<decimal> lstShoppingCartCost = new List<decimal>();
         List<int> lstShoppingCartQuantity = new List<int>();
+        string strFirstName = "";
+        string strLastName = "";
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
             "Please inform the Program Developer that the following error occurred: \n\n\n";
         public frmCustomer()
@@ -98,8 +103,8 @@ namespace FA21_Final_Project
                 //get customer name
                 string strQueryFirstName = "SELECT NameFirst FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
                 string strQueryLastName = "SELECT NameLast FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
-                string strFirstName = clsSQL.DatabaseCommandLogon(strQueryFirstName);
-                string strLastName = clsSQL.DatabaseCommandLogon(strQueryLastName);
+                strFirstName = clsSQL.DatabaseCommandLogon(strQueryFirstName);
+                strLastName = clsSQL.DatabaseCommandLogon(strQueryLastName);
                 lblCustomer.Text = strFirstName + " " + strLastName;
 
                 
@@ -238,11 +243,11 @@ namespace FA21_Final_Project
         {
             try
             {
+                dgvResults.Rows.Add();
                 //load DGV
                 //fill the datagrid view with values from Shop form
                 for (int i = 0; i < lstShoppingCartName.Count(); i++)
                 {
-                    dgvResults.Rows.Add();
                     dgvResults[0, i].Value = lstShoppingCartName[i];
                     dgvResults[1, i].Value = lstShoppingCartQuantity[i];
                     dgvResults[2, i].Value = lstShoppingCartCost[i];
@@ -320,7 +325,7 @@ namespace FA21_Final_Project
                     ", '" + date + "', " + decTotal + ", " + intCouponCode + ");";
                 clsSQL.UpdateDatabase(strInsertOrder);
                 string strMaxOrderIDQuery = "SELECT MAX(OrderID) FROM tekelle21fa2332.Orders;";
-                string strMaxOrderID = clsSQL.DatabaseCommandLogon(strMaxOrderIDQuery);
+                strMaxOrderID = clsSQL.DatabaseCommandLogon(strMaxOrderIDQuery);
                 for (int i = 0; i < lstShoppingCartInventoryID.Count; i++)
                 {
                     string strInsertOrderItems = "INSERT INTO tekelle21fa2332.OrderItems VALUES (" + lstShoppingCartInventoryID[i] + ", " + Convert.ToInt32(strMaxOrderID) +
@@ -329,6 +334,9 @@ namespace FA21_Final_Project
                     string strInsertQuantity = "UPDATE tekelle21fa2332.Inventory SET Quantity = Quantity - " + lstShoppingCartQuantity[i] + " WHERE InventoryID = " + lstShoppingCartInventoryID[i] + ";";
                     clsSQL.UpdateDatabase(strInsertQuantity);
                 }
+                boolOrderMade = true;
+                string strPhoneNumberQuery = "SELECT PhonePrimary FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
+                strPhoneNumber = clsSQL.DatabaseCommandLogon(strPhoneNumberQuery);
                 MessageBox.Show("Order Saved.", "Information Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -488,6 +496,122 @@ namespace FA21_Final_Project
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private StringBuilder GenerateReport()
+        {
+            StringBuilder html = new StringBuilder();
+            StringBuilder css = new StringBuilder();
+            try
+            {
+                // CSS is a way to style the HTML page. Each HTML tag can be customized.
+                // In this example, the H1 and TD tags are customized.
+                // Refer to this website for examples: https://www.w3schools.com/Css/css_syntax.asp
+
+                css.AppendLine("<style>");
+                css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center; font-size: 12px;}");
+                css.AppendLine("h1 {color: orange;}");
+                css.AppendLine("</style>");
+
+                // HTML is used to format the layout of a webpage. This will be the frame
+                // we use to place our data in. CSS is used to style the page to look a
+                // certain way.
+
+                // The <HTML> and </HTML> tags are the start and end of a webpage.
+                // The <HEAD> and </HEAD> tags gives information about the webpage
+                // such as the title and if there is any CSS styles being used.
+                // The text between the <TITLE> and </TITLE> tags are used by the
+                // browser to display the name of the page.
+                // <BODY> and </BODY> is where the data of the page is stored
+                // <H1> and </H1> is the largest font size for headings. These
+                // can be from H1 to H6. H6 is the smallest font. https://www.w3schools.com/tags/tag_hn.asp
+
+                html.AppendLine("<html>");
+                css.AppendLine("<center {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</center>");
+                html.AppendLine($"<head>{css}<title>{"Receipt"}</title></head>");
+                //css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
+                html.Append("<img src= logo.PNG style=' align: center; width: 75px; height: 50px;'>");
+                html.AppendLine("<body>");
+
+                html.AppendLine($"<h1>{" Order Receipt"}</h1>");
+                html.Append($"<br></br>");
+                html.Append($"<p style = 'text-indent: -550px; font-size: 15px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
+                html.Append($"<p style = 'text-indent: -550px; font-size: 15px'><b>{"Order Number: " + strMaxOrderID}</b></p>");
+                html.Append($"<p style = 'text-indent: -550px; font-size: 10px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
+                // Create table of data
+                // <TABLE> and </TABLE> is the start and end of a table of rows and data.
+                // <TR> and </TR> is one row of data. They contain <TD> and </TD> tags.
+                // <TD> and </TD> represents the data inside of the table in a particular row.
+                // https://www.w3schools.com/tags/tag_table.asp
+
+                // I used an <HR /> tag which is a "horizontal rule" as table data.
+                // You can "span" it across multiple columns of data.
+
+                html.AppendLine("<table>");
+                html.AppendLine("<tr><td>Item Name</td><td>Quantity</td><td>Price</td></tr>");
+                html.AppendLine("<tr><td colspan=3><hr /></td></tr>");
+                for (int i = 0; i < lstShoppingCartName.Count; i++)
+                {
+                    html.Append("<tr>");
+                    html.Append($"<td>{lstShoppingCartName[i]}</td>");
+                    html.Append($"<td>{lstShoppingCartQuantity[i]}</td>");
+                    html.Append($"<td>{lstShoppingCartCost[i]}</td>");
+                    html.Append("</tr>");
+                    html.AppendLine("<tr><td colspan=4><hr /></td></tr>");
+                }
+                html.AppendLine("</table>");
+                html.Append($"<br></br><br></br>");
+                html.Append($"<p style = 'align:center; text-indent: 390px; font-size: 10px '><b>{"SubTotal: " + decSubTotal.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 385px; font-size: 10px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 405px; font-size: 10px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 336px; font-size: 10px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 420px; font-size: 10px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 450px; font-size: 20px ' ><b>{"Total: " + decTotal.ToString("C2")}</b></p>");
+                html.Append($"<div><button onClick='window.print()'> {"Print this page"}</ button ></ div >");
+                html.AppendLine("</body></html>");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return html; // The returned value has all the HTML and CSS code to represent a webpage
+        }
+        private void PrintReport(StringBuilder html)
+        {
+            // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+            try
+            {
+                // A "using" statement will automatically close a file after opening it.
+                // It never hurts to include a file.Close() once you are done with a file.
+                using (StreamWriter writer = new StreamWriter("Report.html"))
+                {
+                    writer.WriteLine(html);
+                }
+                System.Diagnostics.Process.Start(@"Report.html"); //Open the report in the default web browser
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReceipt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!boolOrderMade)
+                {
+                    MessageBox.Show("You have to make an Order.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                StringBuilder html = new StringBuilder();
+                html = GenerateReport();
+                PrintReport(html);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
