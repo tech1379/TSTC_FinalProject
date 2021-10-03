@@ -20,6 +20,7 @@ namespace FA21_Final_Project
         private static SqlCommand _sqlUpdateCommand;
         private static string strTableName = "tekelle21fa2332.Inventory";
         private static string strTableName2 = "tekelle21fa2332.Coupons";
+        private static string strTableName3 = "tekelle21fa2332.DayPrice";
 
         public static void ConnectDatabase()
         {
@@ -129,7 +130,7 @@ namespace FA21_Final_Project
         public static List<clsCoupon> LoadCoupons()
         {
             //TODO: Change the SELECT statement to the column names you are trying to use.
-            string strCommand = $"SELECT CouponID, CouponPercent FROM {strTableName2};"; // Query to pull two columns of data from Images table            
+            string strCommand = $"SELECT CouponID, CouponPercent, ExpirationDate FROM {strTableName2};"; // Query to pull two columns of data from Images table            
             SqlCommand SelectCommand = new SqlCommand(strCommand, _cntDatabase);
             SqlDataReader sqlReader;
 
@@ -145,6 +146,7 @@ namespace FA21_Final_Project
                     clsCoupon coupon = new clsCoupon();
                     coupon.intCouponID = sqlReader.GetInt32(0); // MS SQL Datatype int
                     coupon.decCouponPercent = sqlReader.GetDecimal(1);
+                    coupon.dtExpirationDate = sqlReader.GetDateTime(2);
                     lstCoupon.Add(coupon); // Add image object to list
 
                     // You can use a constructor for this class to accept two parameters
@@ -156,10 +158,45 @@ namespace FA21_Final_Project
             }
             catch (Exception)
             {
-                MessageBox.Show("Error reloading images.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loading coupons.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lstCoupon;
         }
+        public static List<clsDayPrice> LoadPrice()
+        {
+            //TODO: Change the SELECT statement to the column names you are trying to use.
+            string strCommand = $"SELECT DayPriceID, DayPrice FROM {strTableName3};"; // Query to pull two columns of data from Images table            
+            SqlCommand SelectCommand = new SqlCommand(strCommand, _cntDatabase);
+            SqlDataReader sqlReader;
+
+            List<clsDayPrice> lstDayPrice = new List<clsDayPrice>();
+            lstDayPrice.Clear();// Empty the list before loading new images to prevent duplications
+            try
+            {
+                _cntDatabase.Open();
+                sqlReader = SelectCommand.ExecuteReader();
+
+                while (sqlReader.Read())
+                {
+                    clsDayPrice dayPrice = new clsDayPrice();
+                    dayPrice.intDayPriceID = sqlReader.GetInt32(0); // MS SQL Datatype int
+                    dayPrice.decDayPrice = sqlReader.GetDecimal(1);
+                    lstDayPrice.Add(dayPrice); // Add image object to list
+                    
+                    // You can use a constructor for this class to accept two parameters
+                    // and add it all at the same time. Just for demo purposes
+
+                    // lstImages.Add(new Images(sqlReader.GetInt32(0), (byte[])sqlReader[1]));
+                }
+                _cntDatabase.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error loading day price.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return lstDayPrice;
+        }
     }
+
 }
 

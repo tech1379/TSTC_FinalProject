@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsCoupon.cs" />
+    <Compile Include="clsDayPrice.cs" />
     <Compile Include="clsInventory.cs" />
     <Compile Include="clsLogon.cs" />
     <Compile Include="clsSQL.cs" />
@@ -81,17 +82,17 @@
     <Compile Include="frmCreateAcct2.Designer.cs">
       <DependentUpon>frmCreateAcct2.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCustomer.Designer.cs">
-      <DependentUpon>frmCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogIn.Designer.cs">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPassword.cs">
       <SubType>Form</SubType>
@@ -113,11 +114,11 @@
     <EmbeddedResource Include="frmCreateAcct2.resx">
       <DependentUpon>frmCreateAcct2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCustomer.resx">
-      <DependentUpon>frmCustomer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogIn.resx">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPassword.resx">
       <DependentUpon>frmPassword.cs</DependentUpon>

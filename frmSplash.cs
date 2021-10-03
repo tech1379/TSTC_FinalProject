@@ -45,7 +45,7 @@ namespace FA21_Final_Project
                 {
                     tmrTime.Stop();
                     this.Hide();
-                    new frmMain().ShowDialog();
+                    new frmLogIn().ShowDialog();
                     
                 }
             }
@@ -55,6 +55,11 @@ namespace FA21_Final_Project
                     "Please inform the Program Developer that the following error occurred: \n\n\n" + ex.Message,
                     "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void pbxSplash_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

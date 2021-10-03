@@ -10,5 +10,7 @@ namespace FA21_Final_Project
     {
         public int intCouponID { get; set; }
         public decimal decCouponPercent { get; set; }
+
+        public DateTime dtExpirationDate { get; set; }
     }
 }

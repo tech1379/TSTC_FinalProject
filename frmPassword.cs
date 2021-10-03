@@ -21,7 +21,7 @@ namespace FA21_Final_Project
 {
     public partial class frmPassword : Form
     {
-        string strLogInName = frmMain.strLogInName;
+        string strLogInName = frmLogIn.strLogInName;
         int intToggle1 = 0;
         int intToggle2 = 0;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
@@ -99,7 +99,7 @@ namespace FA21_Final_Project
                         clsSQL.UpdateDatabase(strUpdateQuery);
                         MessageBox.Show("Password Changed.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
-                        frmMain main = new frmMain();
+                        frmLogIn main = new frmLogIn();
                         main.ShowDialog();
                     }
                     else

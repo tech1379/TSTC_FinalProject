@@ -161,7 +161,7 @@ namespace FA21_Final_Project
                 clsSQL.UpdateDatabase(strInsert);
                 MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                frmMain main = new frmMain();
+                frmLogIn main = new frmLogIn();
                 main.ShowDialog();
             }
             catch(Exception ex)

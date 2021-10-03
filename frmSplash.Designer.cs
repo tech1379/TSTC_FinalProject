@@ -48,6 +48,7 @@ namespace FA21_Final_Project
             this.pbxSplash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxSplash.TabIndex = 0;
             this.pbxSplash.TabStop = false;
+            this.pbxSplash.Click += new System.EventHandler(this.pbxSplash_Click);
             // 
             // frmSplash
             // 
