@@ -128,14 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Course Design Guides\Design Guide - Classroom Program Requirements and Naming Standards%28Final Project%29%282021-03-26%29.pdf" />
     <None Include="Course Design Guides\Notes" />
     <None Include="Course Design Guides\Prefixes%282021-03-26%29.pdf" />
@@ -143,6 +138,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -170,6 +170,9 @@
   <ItemGroup>
     <None Include="bin\Debug\logo.PNG" />
     <None Include="bin\Debug\eye.jpg" />
+    <None Include="bin\Debug\quail.ico" />
+    <None Include="bin\Debug\next.PNG" />
+    <None Include="bin\Debug\previous.PNG" />
     <Content Include="Icons\TSTCLogo.ico" />
     <None Include="Resources\next.PNG" />
     <None Include="Resources\previous.PNG" />

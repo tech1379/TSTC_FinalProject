@@ -29,6 +29,7 @@ namespace FA21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateAcct2));
             this.lblLogOn = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblConfirm = new System.Windows.Forms.Label();
@@ -316,6 +317,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblConfirm);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblLogOn);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmCreateAcct2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

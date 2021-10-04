@@ -134,16 +134,17 @@ namespace FA21_Final_Project
                     MessageBox.Show("Passwords do not match!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if (!clsLogon.PasswordRequirements(strPassword))
-                {
-                    MessageBox.Show("Password not correct format!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 if (!clsLogon.LogOnRequirements(strLogOnName))
                 {
                     MessageBox.Show("LogInName not correct format!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                if (!clsLogon.PasswordRequirements(strPassword))
+                {
+                    MessageBox.Show("Password not correct format!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+               
                 string strLogOnNameQuery = "SELECT COUNT(LogonName) FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogOnName + "';";
                 //MessageBox.Show(strLogOnNameQuery);
                 string strLogOnCount = clsSQL.DatabaseCommandLogon(strLogOnNameQuery);

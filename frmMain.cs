@@ -61,6 +61,7 @@ namespace FA21_Final_Project
         {
             try
             {
+                hlpCustomer.HelpNamespace = Application.StartupPath + "\\CustomerHelp.chm";
                 //load db information and display on form
                 lstInventory.Clear();
                 lstInventory = clsSQL.ReloadImageList();
@@ -341,6 +342,7 @@ namespace FA21_Final_Project
             //get credit card information check and save orders, and order items to db and update quantity in inventory
             try
             {
+                
                 if (lstShoppingCartName.Count == 0)
                 {
                     MessageBox.Show("Nothing to Order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -369,6 +371,47 @@ namespace FA21_Final_Project
                 }
                 boolOrderMade = true;
                 MessageBox.Show("Order Saved.", "Information Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult dialogResult = MessageBox.Show("Would you like to continue shopping?", "Continue SHopping", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    //print receipt
+                    if (!boolOrderMade)
+                    {
+                        MessageBox.Show("You have to make an Order.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    StringBuilder html = new StringBuilder();
+                    html = GenerateReport();
+                    PrintReport(html);
+                    //clear lists 
+                    lstShoppingCartName.Clear();
+                    lstShoppingCartCost.Clear();
+                    lstShoppingCartQuantity.Clear();
+                    lstShoppingCartInventoryID.Clear();
+                    lstIntCurrentIndex.Clear();
+
+                    //clear the datagrid view
+                    dgvResults.Rows.Clear();
+
+                    //reload inventory
+                    lstInventory = clsSQL.ReloadImageList();
+
+                    //move to inventory
+                    tbCustomer.SelectedIndex = 0;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    if (!boolOrderMade)
+                    {
+                        MessageBox.Show("You have to make an Order.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    StringBuilder html = new StringBuilder();
+                    html = GenerateReport();
+                    PrintReport(html);
+                    Application.Exit();
+                }
+
             }
             catch (Exception ex)
             {
@@ -603,11 +646,11 @@ namespace FA21_Final_Project
                 }
                 html.AppendLine("</table>");
                 html.Append($"<br></br><br></br>");
-                html.Append($"<p style = 'align:center; text-indent: 390px; font-size: 10px '><b>{"SubTotal: " + decSubTotal.ToString("C2")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 385px; font-size: 10px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 405px; font-size: 10px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 336px; font-size: 10px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 420px; font-size: 10px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 390px; font-size: 15px '><b>{"SubTotal: " + decSubTotal.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 371px; font-size: 15px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 422px; font-size: 15px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 297px; font-size: 15px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'align:center; text-indent: 430px; font-size: 15px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
                 html.Append($"<p style = 'align:center; text-indent: 450px; font-size: 20px ' ><b>{"Total: " + decTotal.ToString("C2")}</b></p>");
                 html.Append($"<div><button onClick='window.print()'> {"Print this page"}</ button ></ div >");
                 html.AppendLine("</body></html>");
@@ -623,13 +666,15 @@ namespace FA21_Final_Project
             // Write (and overwrite) to the hard drive using the same filename of "Report.html"
             try
             {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 // A "using" statement will automatically close a file after opening it.
                 // It never hurts to include a file.Close() once you are done with a file.
-                using (StreamWriter writer = new StreamWriter("Report.html"))
+                using (StreamWriter writer = new StreamWriter(path + "\\Report.html"))
                 {
                     writer.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@"Report.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(@path + "\\Report.html"); //Open the report in the default web browser
+                
             }
             catch (Exception ex)
             {
@@ -637,25 +682,7 @@ namespace FA21_Final_Project
             }
         }
 
-        private void btnReceipt_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!boolOrderMade)
-                {
-                    MessageBox.Show("You have to make an Order.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                StringBuilder html = new StringBuilder();
-                html = GenerateReport();
-                PrintReport(html);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
+        
 
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
@@ -697,9 +724,15 @@ namespace FA21_Final_Project
                 DateTime dtNow = DateTime.Now;
                 int intResult = DateTime.Compare(dtStartDate, dtNow);
                 int intResult2 = DateTime.Compare(dtEndDate, dtNow);
+                int intResult3 = DateTime.Compare(dtStartDate, dtEndDate);
                 if (intResult <= 0 || intResult2 <= 0)
                 {
                     MessageBox.Show("You cannot book a hunt for today. Please select date in the future.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (intResult3 > 0 )
+                {
+                    MessageBox.Show("End Date cannot be before Start Date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 int intTotalDays = (dtEndDate - dtStartDate).Days;
@@ -772,13 +805,14 @@ namespace FA21_Final_Project
             // Write (and overwrite) to the hard drive using the same filename of "Report.html"
             try
             {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 // A "using" statement will automatically close a file after opening it.
                 // It never hurts to include a file.Close() once you are done with a file.
-                using (StreamWriter writer = new StreamWriter("QuailReport.html"))
+                using (StreamWriter writer = new StreamWriter(path + "\\QuailReport.html"))
                 {
                     writer.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@"QuailReport.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(@path + "\\QuailReport.html"); //Open the report in the default web browser
             }
             catch (Exception ex)
             {
@@ -803,6 +837,53 @@ namespace FA21_Final_Project
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnTrainingOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbxDogName.Text == "")
+                {
+                    MessageBox.Show("You must enter a Dog Name.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if(tbxDogBreed.Text == "")
+                {
+                    MessageBox.Show("You must enter a Dog Breed.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (tbxDescription.Text == "")
+                {
+                    MessageBox.Show("You must enter a Description.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DateTime dtStartDate = mthTraining.SelectionRange.Start;
+                DateTime dtNow = DateTime.Now;
+                int intResult = DateTime.Compare(dtStartDate, dtNow);
+                if (intResult <= 0)
+                {
+                    MessageBox.Show("You cannot book a training services for today. Please select date in the future.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string strStartDateTraining = dtStartDate.ToString("yyyy-MM-dd");
+                string strDogName = tbxDogName.Text.Trim();
+                string strDogBreed = tbxDogBreed.Text.Trim();
+                string strTrainingDesc = tbxDescription.Text.Trim();
+                string strInsertTrainingOrder = "INSERT INTO tekelle21fa2332.TrainingOrders VALUES (" + strPersonID + ", '" +
+                    strDogName + "', '" + strDogBreed + "', '" + strTrainingDesc + "', '" + strStartDateTraining + "', NULL);";
+                clsSQL.UpdateDatabase(strInsertTrainingOrder);
+                MessageBox.Show("Training Services Booked", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lblHelp_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpCustomer.HelpNamespace);
         }
     }
 }

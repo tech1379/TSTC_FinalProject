@@ -29,8 +29,10 @@ namespace FA21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tbCustomer = new System.Windows.Forms.TabControl();
             this.tbInventory = new System.Windows.Forms.TabPage();
+            this.lblHelp = new System.Windows.Forms.Label();
             this.btnCart = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.cbxQuantity = new System.Windows.Forms.ComboBox();
@@ -47,12 +49,30 @@ namespace FA21_Final_Project
             this.lblOne = new System.Windows.Forms.Label();
             this.pbxImage = new System.Windows.Forms.PictureBox();
             this.tbQuailHunts = new System.Windows.Forms.TabPage();
+            this.btnQuailReciept = new System.Windows.Forms.Button();
+            this.btnBookHunt = new System.Windows.Forms.Button();
+            this.lblQuailTotal = new System.Windows.Forms.Label();
+            this.lblTotalQuail = new System.Windows.Forms.Label();
+            this.mthEnd = new System.Windows.Forms.MonthCalendar();
+            this.mthStart = new System.Windows.Forms.MonthCalendar();
+            this.lblDayPrice = new System.Windows.Forms.Label();
+            this.cbxDayPrice = new System.Windows.Forms.ComboBox();
+            this.lblEnDate = new System.Windows.Forms.Label();
+            this.lblStDate = new System.Windows.Forms.Label();
             this.tbTraining = new System.Windows.Forms.TabPage();
+            this.btnTrainingOrder = new System.Windows.Forms.Button();
+            this.mthTraining = new System.Windows.Forms.MonthCalendar();
+            this.tbxDescription = new System.Windows.Forms.TextBox();
+            this.tbxDogBreed = new System.Windows.Forms.TextBox();
+            this.tbxDogName = new System.Windows.Forms.TextBox();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.lblTrainingDesc = new System.Windows.Forms.Label();
+            this.lblDogBreed = new System.Windows.Forms.Label();
+            this.lblDogName = new System.Windows.Forms.Label();
             this.tbShoppingCart = new System.Windows.Forms.TabPage();
             this.btnRemoveAll = new System.Windows.Forms.Button();
             this.lblDP = new System.Windows.Forms.Label();
             this.lblDiscPercent = new System.Windows.Forms.Label();
-            this.btnReceipt = new System.Windows.Forms.Button();
             this.cbxCouponCode = new System.Windows.Forms.ComboBox();
             this.lblCCode = new System.Windows.Forms.Label();
             this.lblSubTotalDisc = new System.Windows.Forms.Label();
@@ -74,22 +94,14 @@ namespace FA21_Final_Project
             this.lblSubTotal = new System.Windows.Forms.Label();
             this.lblST = new System.Windows.Forms.Label();
             this.dgvResults = new System.Windows.Forms.DataGridView();
-            this.lblStDate = new System.Windows.Forms.Label();
-            this.lblEnDate = new System.Windows.Forms.Label();
-            this.cbxDayPrice = new System.Windows.Forms.ComboBox();
-            this.lblDayPrice = new System.Windows.Forms.Label();
-            this.mthStart = new System.Windows.Forms.MonthCalendar();
-            this.mthEnd = new System.Windows.Forms.MonthCalendar();
-            this.lblTotalQuail = new System.Windows.Forms.Label();
-            this.lblQuailTotal = new System.Windows.Forms.Label();
-            this.btnBookHunt = new System.Windows.Forms.Button();
-            this.btnQuailReciept = new System.Windows.Forms.Button();
+            this.hlpCustomer = new System.Windows.Forms.HelpProvider();
             this.tbCustomer.SuspendLayout();
             this.tbInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPrevious)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).BeginInit();
             this.tbQuailHunts.SuspendLayout();
+            this.tbTraining.SuspendLayout();
             this.tbShoppingCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
             this.SuspendLayout();
@@ -110,6 +122,7 @@ namespace FA21_Final_Project
             // tbInventory
             // 
             this.tbInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbInventory.Controls.Add(this.lblHelp);
             this.tbInventory.Controls.Add(this.btnCart);
             this.tbInventory.Controls.Add(this.btnAdd);
             this.tbInventory.Controls.Add(this.cbxQuantity);
@@ -132,6 +145,17 @@ namespace FA21_Final_Project
             this.tbInventory.Size = new System.Drawing.Size(890, 540);
             this.tbInventory.TabIndex = 0;
             this.tbInventory.Text = "Inventory";
+            // 
+            // lblHelp
+            // 
+            this.lblHelp.AutoSize = true;
+            this.lblHelp.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelp.Location = new System.Drawing.Point(15, 14);
+            this.lblHelp.Name = "lblHelp";
+            this.lblHelp.Size = new System.Drawing.Size(49, 19);
+            this.lblHelp.TabIndex = 15;
+            this.lblHelp.Text = "&Help";
+            this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
             // 
             // btnCart
             // 
@@ -297,15 +321,184 @@ namespace FA21_Final_Project
             this.tbQuailHunts.TabIndex = 1;
             this.tbQuailHunts.Text = "Quail Hunts";
             // 
+            // btnQuailReciept
+            // 
+            this.btnQuailReciept.Location = new System.Drawing.Point(244, 461);
+            this.btnQuailReciept.Name = "btnQuailReciept";
+            this.btnQuailReciept.Size = new System.Drawing.Size(84, 56);
+            this.btnQuailReciept.TabIndex = 10;
+            this.btnQuailReciept.Text = "Prin&t Receipt";
+            this.btnQuailReciept.UseVisualStyleBackColor = true;
+            this.btnQuailReciept.Click += new System.EventHandler(this.btnQuailReciept_Click);
+            // 
+            // btnBookHunt
+            // 
+            this.btnBookHunt.Location = new System.Drawing.Point(106, 461);
+            this.btnBookHunt.Name = "btnBookHunt";
+            this.btnBookHunt.Size = new System.Drawing.Size(84, 56);
+            this.btnBookHunt.TabIndex = 9;
+            this.btnBookHunt.Text = "&Book Hunt";
+            this.btnBookHunt.UseVisualStyleBackColor = true;
+            this.btnBookHunt.Click += new System.EventHandler(this.btnBookHunt_Click);
+            // 
+            // lblQuailTotal
+            // 
+            this.lblQuailTotal.BackColor = System.Drawing.Color.White;
+            this.lblQuailTotal.Location = new System.Drawing.Point(665, 453);
+            this.lblQuailTotal.Name = "lblQuailTotal";
+            this.lblQuailTotal.Size = new System.Drawing.Size(160, 32);
+            this.lblQuailTotal.TabIndex = 8;
+            // 
+            // lblTotalQuail
+            // 
+            this.lblTotalQuail.AutoSize = true;
+            this.lblTotalQuail.Location = new System.Drawing.Point(578, 461);
+            this.lblTotalQuail.Name = "lblTotalQuail";
+            this.lblTotalQuail.Size = new System.Drawing.Size(60, 19);
+            this.lblTotalQuail.TabIndex = 7;
+            this.lblTotalQuail.Text = "Total:";
+            // 
+            // mthEnd
+            // 
+            this.mthEnd.Location = new System.Drawing.Point(262, 231);
+            this.mthEnd.MaxSelectionCount = 1;
+            this.mthEnd.Name = "mthEnd";
+            this.mthEnd.TabIndex = 6;
+            // 
+            // mthStart
+            // 
+            this.mthStart.Location = new System.Drawing.Point(262, 38);
+            this.mthStart.MaxSelectionCount = 1;
+            this.mthStart.Name = "mthStart";
+            this.mthStart.TabIndex = 5;
+            // 
+            // lblDayPrice
+            // 
+            this.lblDayPrice.AutoSize = true;
+            this.lblDayPrice.Location = new System.Drawing.Point(536, 46);
+            this.lblDayPrice.Name = "lblDayPrice";
+            this.lblDayPrice.Size = new System.Drawing.Size(123, 19);
+            this.lblDayPrice.TabIndex = 3;
+            this.lblDayPrice.Text = "Day Price ($):";
+            // 
+            // cbxDayPrice
+            // 
+            this.cbxDayPrice.FormattingEnabled = true;
+            this.cbxDayPrice.Location = new System.Drawing.Point(665, 38);
+            this.cbxDayPrice.Name = "cbxDayPrice";
+            this.cbxDayPrice.Size = new System.Drawing.Size(160, 27);
+            this.cbxDayPrice.TabIndex = 2;
+            // 
+            // lblEnDate
+            // 
+            this.lblEnDate.AutoSize = true;
+            this.lblEnDate.Location = new System.Drawing.Point(88, 232);
+            this.lblEnDate.Name = "lblEnDate";
+            this.lblEnDate.Size = new System.Drawing.Size(94, 19);
+            this.lblEnDate.TabIndex = 1;
+            this.lblEnDate.Text = "End Date:";
+            // 
+            // lblStDate
+            // 
+            this.lblStDate.AutoSize = true;
+            this.lblStDate.Location = new System.Drawing.Point(88, 38);
+            this.lblStDate.Name = "lblStDate";
+            this.lblStDate.Size = new System.Drawing.Size(102, 19);
+            this.lblStDate.TabIndex = 0;
+            this.lblStDate.Text = "Start Date:";
+            // 
             // tbTraining
             // 
             this.tbTraining.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbTraining.Controls.Add(this.btnTrainingOrder);
+            this.tbTraining.Controls.Add(this.mthTraining);
+            this.tbTraining.Controls.Add(this.tbxDescription);
+            this.tbTraining.Controls.Add(this.tbxDogBreed);
+            this.tbTraining.Controls.Add(this.tbxDogName);
+            this.tbTraining.Controls.Add(this.lblStartDate);
+            this.tbTraining.Controls.Add(this.lblTrainingDesc);
+            this.tbTraining.Controls.Add(this.lblDogBreed);
+            this.tbTraining.Controls.Add(this.lblDogName);
             this.tbTraining.Location = new System.Drawing.Point(4, 28);
             this.tbTraining.Name = "tbTraining";
             this.tbTraining.Padding = new System.Windows.Forms.Padding(3);
             this.tbTraining.Size = new System.Drawing.Size(890, 540);
             this.tbTraining.TabIndex = 2;
             this.tbTraining.Text = "Training Services";
+            // 
+            // btnTrainingOrder
+            // 
+            this.btnTrainingOrder.Location = new System.Drawing.Point(617, 427);
+            this.btnTrainingOrder.Name = "btnTrainingOrder";
+            this.btnTrainingOrder.Size = new System.Drawing.Size(102, 56);
+            this.btnTrainingOrder.TabIndex = 10;
+            this.btnTrainingOrder.Text = "Boo&k Training";
+            this.btnTrainingOrder.UseVisualStyleBackColor = true;
+            this.btnTrainingOrder.Click += new System.EventHandler(this.btnTrainingOrder_Click);
+            // 
+            // mthTraining
+            // 
+            this.mthTraining.Location = new System.Drawing.Point(282, 321);
+            this.mthTraining.Name = "mthTraining";
+            this.mthTraining.TabIndex = 7;
+            // 
+            // tbxDescription
+            // 
+            this.tbxDescription.Location = new System.Drawing.Point(272, 178);
+            this.tbxDescription.Multiline = true;
+            this.tbxDescription.Name = "tbxDescription";
+            this.tbxDescription.Size = new System.Drawing.Size(440, 122);
+            this.tbxDescription.TabIndex = 6;
+            // 
+            // tbxDogBreed
+            // 
+            this.tbxDogBreed.Location = new System.Drawing.Point(272, 118);
+            this.tbxDogBreed.Name = "tbxDogBreed";
+            this.tbxDogBreed.Size = new System.Drawing.Size(440, 26);
+            this.tbxDogBreed.TabIndex = 5;
+            // 
+            // tbxDogName
+            // 
+            this.tbxDogName.Location = new System.Drawing.Point(272, 62);
+            this.tbxDogName.Name = "tbxDogName";
+            this.tbxDogName.Size = new System.Drawing.Size(440, 26);
+            this.tbxDogName.TabIndex = 4;
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Location = new System.Drawing.Point(90, 321);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(102, 19);
+            this.lblStartDate.TabIndex = 3;
+            this.lblStartDate.Text = "Start Date:";
+            // 
+            // lblTrainingDesc
+            // 
+            this.lblTrainingDesc.AutoSize = true;
+            this.lblTrainingDesc.Location = new System.Drawing.Point(37, 181);
+            this.lblTrainingDesc.Name = "lblTrainingDesc";
+            this.lblTrainingDesc.Size = new System.Drawing.Size(194, 19);
+            this.lblTrainingDesc.TabIndex = 2;
+            this.lblTrainingDesc.Text = "Training Description:";
+            // 
+            // lblDogBreed
+            // 
+            this.lblDogBreed.AutoSize = true;
+            this.lblDogBreed.Location = new System.Drawing.Point(130, 118);
+            this.lblDogBreed.Name = "lblDogBreed";
+            this.lblDogBreed.Size = new System.Drawing.Size(101, 19);
+            this.lblDogBreed.TabIndex = 1;
+            this.lblDogBreed.Text = "Dog Breed:";
+            // 
+            // lblDogName
+            // 
+            this.lblDogName.AutoSize = true;
+            this.lblDogName.Location = new System.Drawing.Point(130, 62);
+            this.lblDogName.Name = "lblDogName";
+            this.lblDogName.Size = new System.Drawing.Size(101, 19);
+            this.lblDogName.TabIndex = 0;
+            this.lblDogName.Text = "Dog Name:";
             // 
             // tbShoppingCart
             // 
@@ -314,7 +507,6 @@ namespace FA21_Final_Project
             this.tbShoppingCart.Controls.Add(this.btnRemoveAll);
             this.tbShoppingCart.Controls.Add(this.lblDP);
             this.tbShoppingCart.Controls.Add(this.lblDiscPercent);
-            this.tbShoppingCart.Controls.Add(this.btnReceipt);
             this.tbShoppingCart.Controls.Add(this.cbxCouponCode);
             this.tbShoppingCart.Controls.Add(this.lblCCode);
             this.tbShoppingCart.Controls.Add(this.lblSubTotalDisc);
@@ -372,16 +564,6 @@ namespace FA21_Final_Project
             this.lblDiscPercent.Name = "lblDiscPercent";
             this.lblDiscPercent.Size = new System.Drawing.Size(122, 27);
             this.lblDiscPercent.TabIndex = 22;
-            // 
-            // btnReceipt
-            // 
-            this.btnReceipt.Location = new System.Drawing.Point(413, 468);
-            this.btnReceipt.Name = "btnReceipt";
-            this.btnReceipt.Size = new System.Drawing.Size(102, 49);
-            this.btnReceipt.TabIndex = 21;
-            this.btnReceipt.Text = "&Print Receipt";
-            this.btnReceipt.UseVisualStyleBackColor = true;
-            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
             // 
             // cbxCouponCode
             // 
@@ -586,92 +768,6 @@ namespace FA21_Final_Project
             this.dgvResults.Size = new System.Drawing.Size(616, 257);
             this.dgvResults.TabIndex = 0;
             // 
-            // lblStDate
-            // 
-            this.lblStDate.AutoSize = true;
-            this.lblStDate.Location = new System.Drawing.Point(88, 38);
-            this.lblStDate.Name = "lblStDate";
-            this.lblStDate.Size = new System.Drawing.Size(102, 19);
-            this.lblStDate.TabIndex = 0;
-            this.lblStDate.Text = "Start Date:";
-            // 
-            // lblEnDate
-            // 
-            this.lblEnDate.AutoSize = true;
-            this.lblEnDate.Location = new System.Drawing.Point(88, 232);
-            this.lblEnDate.Name = "lblEnDate";
-            this.lblEnDate.Size = new System.Drawing.Size(94, 19);
-            this.lblEnDate.TabIndex = 1;
-            this.lblEnDate.Text = "End Date:";
-            // 
-            // cbxDayPrice
-            // 
-            this.cbxDayPrice.FormattingEnabled = true;
-            this.cbxDayPrice.Location = new System.Drawing.Point(665, 38);
-            this.cbxDayPrice.Name = "cbxDayPrice";
-            this.cbxDayPrice.Size = new System.Drawing.Size(160, 27);
-            this.cbxDayPrice.TabIndex = 2;
-            // 
-            // lblDayPrice
-            // 
-            this.lblDayPrice.AutoSize = true;
-            this.lblDayPrice.Location = new System.Drawing.Point(536, 46);
-            this.lblDayPrice.Name = "lblDayPrice";
-            this.lblDayPrice.Size = new System.Drawing.Size(123, 19);
-            this.lblDayPrice.TabIndex = 3;
-            this.lblDayPrice.Text = "Day Price ($):";
-            // 
-            // mthStart
-            // 
-            this.mthStart.Location = new System.Drawing.Point(262, 38);
-            this.mthStart.MaxSelectionCount = 1;
-            this.mthStart.Name = "mthStart";
-            this.mthStart.TabIndex = 5;
-            // 
-            // mthEnd
-            // 
-            this.mthEnd.Location = new System.Drawing.Point(262, 231);
-            this.mthEnd.MaxSelectionCount = 1;
-            this.mthEnd.Name = "mthEnd";
-            this.mthEnd.TabIndex = 6;
-            // 
-            // lblTotalQuail
-            // 
-            this.lblTotalQuail.AutoSize = true;
-            this.lblTotalQuail.Location = new System.Drawing.Point(578, 461);
-            this.lblTotalQuail.Name = "lblTotalQuail";
-            this.lblTotalQuail.Size = new System.Drawing.Size(60, 19);
-            this.lblTotalQuail.TabIndex = 7;
-            this.lblTotalQuail.Text = "Total:";
-            // 
-            // lblQuailTotal
-            // 
-            this.lblQuailTotal.BackColor = System.Drawing.Color.White;
-            this.lblQuailTotal.Location = new System.Drawing.Point(665, 453);
-            this.lblQuailTotal.Name = "lblQuailTotal";
-            this.lblQuailTotal.Size = new System.Drawing.Size(160, 32);
-            this.lblQuailTotal.TabIndex = 8;
-            // 
-            // btnBookHunt
-            // 
-            this.btnBookHunt.Location = new System.Drawing.Point(106, 461);
-            this.btnBookHunt.Name = "btnBookHunt";
-            this.btnBookHunt.Size = new System.Drawing.Size(84, 56);
-            this.btnBookHunt.TabIndex = 9;
-            this.btnBookHunt.Text = "&Book Hunt";
-            this.btnBookHunt.UseVisualStyleBackColor = true;
-            this.btnBookHunt.Click += new System.EventHandler(this.btnBookHunt_Click);
-            // 
-            // btnQuailReciept
-            // 
-            this.btnQuailReciept.Location = new System.Drawing.Point(244, 461);
-            this.btnQuailReciept.Name = "btnQuailReciept";
-            this.btnQuailReciept.Size = new System.Drawing.Size(84, 56);
-            this.btnQuailReciept.TabIndex = 10;
-            this.btnQuailReciept.Text = "Prin&t Receipt";
-            this.btnQuailReciept.UseVisualStyleBackColor = true;
-            this.btnQuailReciept.Click += new System.EventHandler(this.btnQuailReciept_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,6 +775,7 @@ namespace FA21_Final_Project
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(923, 593);
             this.Controls.Add(this.tbCustomer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -692,6 +789,8 @@ namespace FA21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).EndInit();
             this.tbQuailHunts.ResumeLayout(false);
             this.tbQuailHunts.PerformLayout();
+            this.tbTraining.ResumeLayout(false);
+            this.tbTraining.PerformLayout();
             this.tbShoppingCart.ResumeLayout(false);
             this.tbShoppingCart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
@@ -742,7 +841,6 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblSubTotalDisc;
         private System.Windows.Forms.Label lblCCode;
         private System.Windows.Forms.ComboBox cbxCouponCode;
-        private System.Windows.Forms.Button btnReceipt;
         private System.Windows.Forms.Label lblDiscPercent;
         private System.Windows.Forms.Label lblDP;
         private System.Windows.Forms.Button btnRemoveAll;
@@ -756,5 +854,16 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblQuailTotal;
         private System.Windows.Forms.Button btnBookHunt;
         private System.Windows.Forms.Button btnQuailReciept;
+        private System.Windows.Forms.Label lblDogName;
+        private System.Windows.Forms.Label lblDogBreed;
+        private System.Windows.Forms.Label lblTrainingDesc;
+        private System.Windows.Forms.Label lblStartDate;
+        private System.Windows.Forms.TextBox tbxDogName;
+        private System.Windows.Forms.TextBox tbxDogBreed;
+        private System.Windows.Forms.TextBox tbxDescription;
+        private System.Windows.Forms.Button btnTrainingOrder;
+        private System.Windows.Forms.MonthCalendar mthTraining;
+        private System.Windows.Forms.Label lblHelp;
+        private System.Windows.Forms.HelpProvider hlpCustomer;
     }
 }

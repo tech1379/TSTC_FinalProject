@@ -29,6 +29,7 @@ namespace FA21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPassword));
             this.lblNew = new System.Windows.Forms.Label();
             this.lblConfirm = new System.Windows.Forms.Label();
             this.tbxPassword = new System.Windows.Forms.TextBox();
@@ -258,6 +259,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblConfirm);
             this.Controls.Add(this.lblNew);
             this.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
             this.MaximizeBox = false;
             this.Name = "frmPassword";
