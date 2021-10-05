@@ -68,7 +68,7 @@ namespace FA21_Final_Project
             this.lblTitle.Location = new System.Drawing.Point(105, 32);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(55, 19);
-            this.lblTitle.TabIndex = 0;
+            this.lblTitle.TabIndex = 15;
             this.lblTitle.Text = "Title:";
             // 
             // lblFirst
@@ -78,7 +78,7 @@ namespace FA21_Final_Project
             this.lblFirst.Location = new System.Drawing.Point(51, 73);
             this.lblFirst.Name = "lblFirst";
             this.lblFirst.Size = new System.Drawing.Size(109, 19);
-            this.lblFirst.TabIndex = 1;
+            this.lblFirst.TabIndex = 16;
             this.lblFirst.Text = "First Name:";
             // 
             // lblLast
@@ -88,7 +88,7 @@ namespace FA21_Final_Project
             this.lblLast.Location = new System.Drawing.Point(53, 155);
             this.lblLast.Name = "lblLast";
             this.lblLast.Size = new System.Drawing.Size(107, 19);
-            this.lblLast.TabIndex = 2;
+            this.lblLast.TabIndex = 18;
             this.lblLast.Text = "Last Name:";
             // 
             // lblMiddle
@@ -98,7 +98,7 @@ namespace FA21_Final_Project
             this.lblMiddle.Location = new System.Drawing.Point(29, 114);
             this.lblMiddle.Name = "lblMiddle";
             this.lblMiddle.Size = new System.Drawing.Size(131, 19);
-            this.lblMiddle.TabIndex = 3;
+            this.lblMiddle.TabIndex = 17;
             this.lblMiddle.Text = "Middle Name:";
             // 
             // lblSuffix
@@ -108,7 +108,7 @@ namespace FA21_Final_Project
             this.lblSuffix.Location = new System.Drawing.Point(94, 196);
             this.lblSuffix.Name = "lblSuffix";
             this.lblSuffix.Size = new System.Drawing.Size(66, 19);
-            this.lblSuffix.TabIndex = 4;
+            this.lblSuffix.TabIndex = 19;
             this.lblSuffix.Text = "Suffix:";
             // 
             // lblAddress1
@@ -118,7 +118,7 @@ namespace FA21_Final_Project
             this.lblAddress1.Location = new System.Drawing.Point(61, 237);
             this.lblAddress1.Name = "lblAddress1";
             this.lblAddress1.Size = new System.Drawing.Size(99, 19);
-            this.lblAddress1.TabIndex = 5;
+            this.lblAddress1.TabIndex = 20;
             this.lblAddress1.Text = "Address 1:";
             // 
             // lblAddress2
@@ -128,7 +128,7 @@ namespace FA21_Final_Project
             this.lblAddress2.Location = new System.Drawing.Point(61, 278);
             this.lblAddress2.Name = "lblAddress2";
             this.lblAddress2.Size = new System.Drawing.Size(99, 19);
-            this.lblAddress2.TabIndex = 6;
+            this.lblAddress2.TabIndex = 21;
             this.lblAddress2.Text = "Address 2:";
             // 
             // lblAddress3
@@ -138,7 +138,7 @@ namespace FA21_Final_Project
             this.lblAddress3.Location = new System.Drawing.Point(61, 319);
             this.lblAddress3.Name = "lblAddress3";
             this.lblAddress3.Size = new System.Drawing.Size(99, 19);
-            this.lblAddress3.TabIndex = 7;
+            this.lblAddress3.TabIndex = 22;
             this.lblAddress3.Text = "Address 3:";
             // 
             // lblCity
@@ -148,7 +148,7 @@ namespace FA21_Final_Project
             this.lblCity.Location = new System.Drawing.Point(111, 360);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(49, 19);
-            this.lblCity.TabIndex = 8;
+            this.lblCity.TabIndex = 23;
             this.lblCity.Text = "City:";
             // 
             // lblZipCode
@@ -158,7 +158,7 @@ namespace FA21_Final_Project
             this.lblZipCode.Location = new System.Drawing.Point(69, 401);
             this.lblZipCode.Name = "lblZipCode";
             this.lblZipCode.Size = new System.Drawing.Size(91, 19);
-            this.lblZipCode.TabIndex = 9;
+            this.lblZipCode.TabIndex = 25;
             this.lblZipCode.Text = "Zip Code:";
             // 
             // lblState
@@ -168,7 +168,7 @@ namespace FA21_Final_Project
             this.lblState.Location = new System.Drawing.Point(100, 442);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(60, 19);
-            this.lblState.TabIndex = 10;
+            this.lblState.TabIndex = 26;
             this.lblState.Text = "State:";
             // 
             // lblEmail
@@ -178,7 +178,7 @@ namespace FA21_Final_Project
             this.lblEmail.Location = new System.Drawing.Point(93, 483);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(67, 19);
-            this.lblEmail.TabIndex = 11;
+            this.lblEmail.TabIndex = 27;
             this.lblEmail.Text = "Email:";
             // 
             // lblPrimPhone
@@ -188,7 +188,7 @@ namespace FA21_Final_Project
             this.lblPrimPhone.Location = new System.Drawing.Point(12, 524);
             this.lblPrimPhone.Name = "lblPrimPhone";
             this.lblPrimPhone.Size = new System.Drawing.Size(148, 19);
-            this.lblPrimPhone.TabIndex = 12;
+            this.lblPrimPhone.TabIndex = 28;
             this.lblPrimPhone.Text = "Primary Phone:";
             // 
             // lblSecPhone
@@ -198,7 +198,7 @@ namespace FA21_Final_Project
             this.lblSecPhone.Location = new System.Drawing.Point(22, 561);
             this.lblSecPhone.Name = "lblSecPhone";
             this.lblSecPhone.Size = new System.Drawing.Size(138, 19);
-            this.lblSecPhone.TabIndex = 13;
+            this.lblSecPhone.TabIndex = 28;
             this.lblSecPhone.Text = "Second Phone:";
             // 
             // tbxTitle
@@ -207,71 +207,79 @@ namespace FA21_Final_Project
             this.tbxTitle.Location = new System.Drawing.Point(202, 29);
             this.tbxTitle.Name = "tbxTitle";
             this.tbxTitle.Size = new System.Drawing.Size(133, 26);
-            this.tbxTitle.TabIndex = 15;
+            this.tbxTitle.TabIndex = 0;
             // 
             // tbxFirst
             // 
             this.tbxFirst.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxFirst.Location = new System.Drawing.Point(202, 73);
+            this.tbxFirst.MaxLength = 20;
             this.tbxFirst.Name = "tbxFirst";
             this.tbxFirst.Size = new System.Drawing.Size(225, 26);
-            this.tbxFirst.TabIndex = 16;
+            this.tbxFirst.TabIndex = 1;
             // 
             // tbxMiddle
             // 
             this.tbxMiddle.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxMiddle.Location = new System.Drawing.Point(202, 114);
+            this.tbxMiddle.MaxLength = 20;
             this.tbxMiddle.Name = "tbxMiddle";
             this.tbxMiddle.Size = new System.Drawing.Size(225, 26);
-            this.tbxMiddle.TabIndex = 17;
+            this.tbxMiddle.TabIndex = 2;
             // 
             // tbxLast
             // 
             this.tbxLast.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxLast.Location = new System.Drawing.Point(202, 152);
+            this.tbxLast.MaxLength = 20;
             this.tbxLast.Name = "tbxLast";
             this.tbxLast.Size = new System.Drawing.Size(225, 26);
-            this.tbxLast.TabIndex = 18;
+            this.tbxLast.TabIndex = 3;
             // 
             // tbxSuffix
             // 
             this.tbxSuffix.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxSuffix.Location = new System.Drawing.Point(202, 193);
+            this.tbxSuffix.MaxLength = 20;
             this.tbxSuffix.Name = "tbxSuffix";
             this.tbxSuffix.Size = new System.Drawing.Size(225, 26);
-            this.tbxSuffix.TabIndex = 19;
+            this.tbxSuffix.TabIndex = 4;
             // 
             // tbxAddress1
             // 
             this.tbxAddress1.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAddress1.Location = new System.Drawing.Point(202, 234);
+            this.tbxAddress1.MaxLength = 30;
             this.tbxAddress1.Name = "tbxAddress1";
             this.tbxAddress1.Size = new System.Drawing.Size(297, 26);
-            this.tbxAddress1.TabIndex = 20;
+            this.tbxAddress1.TabIndex = 5;
             // 
             // tbxAddress2
             // 
             this.tbxAddress2.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAddress2.Location = new System.Drawing.Point(202, 271);
+            this.tbxAddress2.MaxLength = 30;
             this.tbxAddress2.Name = "tbxAddress2";
             this.tbxAddress2.Size = new System.Drawing.Size(297, 26);
-            this.tbxAddress2.TabIndex = 21;
+            this.tbxAddress2.TabIndex = 6;
             // 
             // tbxAddress3
             // 
             this.tbxAddress3.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAddress3.Location = new System.Drawing.Point(202, 312);
+            this.tbxAddress3.MaxLength = 30;
             this.tbxAddress3.Name = "tbxAddress3";
             this.tbxAddress3.Size = new System.Drawing.Size(297, 26);
-            this.tbxAddress3.TabIndex = 22;
+            this.tbxAddress3.TabIndex = 7;
             // 
             // tbxCity
             // 
             this.tbxCity.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxCity.Location = new System.Drawing.Point(202, 353);
+            this.tbxCity.MaxLength = 30;
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(225, 26);
-            this.tbxCity.TabIndex = 23;
+            this.tbxCity.TabIndex = 8;
             // 
             // tbxZipCode
             // 
@@ -280,24 +288,26 @@ namespace FA21_Final_Project
             this.tbxZipCode.MaxLength = 10;
             this.tbxZipCode.Name = "tbxZipCode";
             this.tbxZipCode.Size = new System.Drawing.Size(225, 26);
-            this.tbxZipCode.TabIndex = 24;
+            this.tbxZipCode.TabIndex = 9;
             this.tbxZipCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxZipCode_KeyPress);
             // 
             // tbxState
             // 
             this.tbxState.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxState.Location = new System.Drawing.Point(202, 439);
+            this.tbxState.MaxLength = 2;
             this.tbxState.Name = "tbxState";
             this.tbxState.Size = new System.Drawing.Size(225, 26);
-            this.tbxState.TabIndex = 25;
+            this.tbxState.TabIndex = 10;
             // 
             // tbxEmail
             // 
             this.tbxEmail.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxEmail.Location = new System.Drawing.Point(202, 476);
+            this.tbxEmail.MaxLength = 40;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(225, 26);
-            this.tbxEmail.TabIndex = 26;
+            this.tbxEmail.TabIndex = 11;
             // 
             // tbxPrimPhone
             // 
@@ -306,7 +316,7 @@ namespace FA21_Final_Project
             this.tbxPrimPhone.MaxLength = 12;
             this.tbxPrimPhone.Name = "tbxPrimPhone";
             this.tbxPrimPhone.Size = new System.Drawing.Size(225, 26);
-            this.tbxPrimPhone.TabIndex = 27;
+            this.tbxPrimPhone.TabIndex = 12;
             this.tbxPrimPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxPrimPhone_KeyPress);
             // 
             // tbxSecPhone
@@ -316,7 +326,7 @@ namespace FA21_Final_Project
             this.tbxSecPhone.MaxLength = 12;
             this.tbxSecPhone.Name = "tbxSecPhone";
             this.tbxSecPhone.Size = new System.Drawing.Size(225, 26);
-            this.tbxSecPhone.TabIndex = 28;
+            this.tbxSecPhone.TabIndex = 13;
             this.tbxSecPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxSecPhone_KeyPress);
             // 
             // btnCreate
@@ -325,7 +335,7 @@ namespace FA21_Final_Project
             this.btnCreate.Location = new System.Drawing.Point(292, 591);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(82, 53);
-            this.btnCreate.TabIndex = 29;
+            this.btnCreate.TabIndex = 14;
             this.btnCreate.Text = "&Add Info";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);

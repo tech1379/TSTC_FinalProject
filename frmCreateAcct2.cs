@@ -124,11 +124,6 @@ namespace FA21_Final_Project
                     MessageBox.Show("Third Question cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if(cbxPosition.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Position Title cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 if (strPassword != strConfirm)
                 {
                     MessageBox.Show("Passwords do not match!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

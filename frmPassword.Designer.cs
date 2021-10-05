@@ -60,7 +60,7 @@ namespace FA21_Final_Project
             this.lblNew.Location = new System.Drawing.Point(50, 24);
             this.lblNew.Name = "lblNew";
             this.lblNew.Size = new System.Drawing.Size(159, 21);
-            this.lblNew.TabIndex = 0;
+            this.lblNew.TabIndex = 10;
             this.lblNew.Text = "New Password:";
             // 
             // lblConfirm
@@ -69,7 +69,7 @@ namespace FA21_Final_Project
             this.lblConfirm.Location = new System.Drawing.Point(15, 82);
             this.lblConfirm.Name = "lblConfirm";
             this.lblConfirm.Size = new System.Drawing.Size(202, 21);
-            this.lblConfirm.TabIndex = 1;
+            this.lblConfirm.TabIndex = 11;
             this.lblConfirm.Text = "Confirm Password:";
             // 
             // tbxPassword
@@ -78,7 +78,7 @@ namespace FA21_Final_Project
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(230, 29);
-            this.tbxPassword.TabIndex = 2;
+            this.tbxPassword.TabIndex = 0;
             // 
             // tbxConfirm
             // 
@@ -86,7 +86,7 @@ namespace FA21_Final_Project
             this.tbxConfirm.Name = "tbxConfirm";
             this.tbxConfirm.PasswordChar = '*';
             this.tbxConfirm.Size = new System.Drawing.Size(230, 29);
-            this.tbxConfirm.TabIndex = 3;
+            this.tbxConfirm.TabIndex = 1;
             // 
             // lblSecurity1
             // 
@@ -94,7 +94,7 @@ namespace FA21_Final_Project
             this.lblSecurity1.Location = new System.Drawing.Point(7, 147);
             this.lblSecurity1.Name = "lblSecurity1";
             this.lblSecurity1.Size = new System.Drawing.Size(210, 21);
-            this.lblSecurity1.TabIndex = 4;
+            this.lblSecurity1.TabIndex = 12;
             this.lblSecurity1.Text = "Security Question 1:";
             // 
             // btnReset
@@ -102,7 +102,7 @@ namespace FA21_Final_Project
             this.btnReset.Location = new System.Drawing.Point(195, 503);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(119, 63);
-            this.btnReset.TabIndex = 10;
+            this.btnReset.TabIndex = 8;
             this.btnReset.Text = "&Reset Password";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -112,7 +112,7 @@ namespace FA21_Final_Project
             this.btnClose.Location = new System.Drawing.Point(403, 503);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(119, 63);
-            this.btnClose.TabIndex = 11;
+            this.btnClose.TabIndex = 9;
             this.btnClose.Text = "&Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -124,7 +124,7 @@ namespace FA21_Final_Project
             this.lblSC1.Location = new System.Drawing.Point(240, 146);
             this.lblSC1.Name = "lblSC1";
             this.lblSC1.Size = new System.Drawing.Size(465, 29);
-            this.lblSC1.TabIndex = 5;
+            this.lblSC1.TabIndex = 2;
             // 
             // lblAn1
             // 
@@ -132,7 +132,7 @@ namespace FA21_Final_Project
             this.lblAn1.Location = new System.Drawing.Point(20, 194);
             this.lblAn1.Name = "lblAn1";
             this.lblAn1.Size = new System.Drawing.Size(197, 21);
-            this.lblAn1.TabIndex = 12;
+            this.lblAn1.TabIndex = 13;
             this.lblAn1.Text = "Security Answer 1:";
             // 
             // tbxAn1
@@ -140,7 +140,7 @@ namespace FA21_Final_Project
             this.tbxAn1.Location = new System.Drawing.Point(240, 191);
             this.tbxAn1.Name = "tbxAn1";
             this.tbxAn1.Size = new System.Drawing.Size(465, 29);
-            this.tbxAn1.TabIndex = 13;
+            this.tbxAn1.TabIndex = 3;
             // 
             // lblSecurity2
             // 
@@ -158,7 +158,7 @@ namespace FA21_Final_Project
             this.lblSC2.Location = new System.Drawing.Point(240, 249);
             this.lblSC2.Name = "lblSC2";
             this.lblSC2.Size = new System.Drawing.Size(465, 29);
-            this.lblSC2.TabIndex = 15;
+            this.lblSC2.TabIndex = 4;
             // 
             // lblAn2
             // 
@@ -166,7 +166,7 @@ namespace FA21_Final_Project
             this.lblAn2.Location = new System.Drawing.Point(20, 309);
             this.lblAn2.Name = "lblAn2";
             this.lblAn2.Size = new System.Drawing.Size(197, 21);
-            this.lblAn2.TabIndex = 16;
+            this.lblAn2.TabIndex = 15;
             this.lblAn2.Text = "Security Answer 2:";
             // 
             // tbxAn2
@@ -174,7 +174,7 @@ namespace FA21_Final_Project
             this.tbxAn2.Location = new System.Drawing.Point(240, 306);
             this.tbxAn2.Name = "tbxAn2";
             this.tbxAn2.Size = new System.Drawing.Size(465, 29);
-            this.tbxAn2.TabIndex = 17;
+            this.tbxAn2.TabIndex = 5;
             // 
             // lblSecurity3
             // 
@@ -182,7 +182,7 @@ namespace FA21_Final_Project
             this.lblSecurity3.Location = new System.Drawing.Point(7, 361);
             this.lblSecurity3.Name = "lblSecurity3";
             this.lblSecurity3.Size = new System.Drawing.Size(210, 21);
-            this.lblSecurity3.TabIndex = 18;
+            this.lblSecurity3.TabIndex = 16;
             this.lblSecurity3.Text = "Security Question 3:";
             // 
             // lblSC3
@@ -192,7 +192,7 @@ namespace FA21_Final_Project
             this.lblSC3.Location = new System.Drawing.Point(240, 360);
             this.lblSC3.Name = "lblSC3";
             this.lblSC3.Size = new System.Drawing.Size(465, 29);
-            this.lblSC3.TabIndex = 19;
+            this.lblSC3.TabIndex = 6;
             // 
             // lblAn3
             // 
@@ -200,7 +200,7 @@ namespace FA21_Final_Project
             this.lblAn3.Location = new System.Drawing.Point(20, 422);
             this.lblAn3.Name = "lblAn3";
             this.lblAn3.Size = new System.Drawing.Size(197, 21);
-            this.lblAn3.TabIndex = 20;
+            this.lblAn3.TabIndex = 17;
             this.lblAn3.Text = "Security Answer 3:";
             // 
             // tbxAn3
@@ -208,7 +208,7 @@ namespace FA21_Final_Project
             this.tbxAn3.Location = new System.Drawing.Point(240, 419);
             this.tbxAn3.Name = "tbxAn3";
             this.tbxAn3.Size = new System.Drawing.Size(465, 29);
-            this.tbxAn3.TabIndex = 21;
+            this.tbxAn3.TabIndex = 7;
             // 
             // pbxPass1
             // 

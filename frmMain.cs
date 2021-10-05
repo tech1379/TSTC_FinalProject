@@ -100,6 +100,8 @@ namespace FA21_Final_Project
                     this.tbCustomer.TabPages.Remove(tbShoppingCart);
                     btnAdd.Enabled = false;
                     btnAdd.Visible = false;
+                    btnCart.Enabled = false;
+                    btnCart.Visible = false;
                 }
 
                 //set dgv for Receipt
@@ -613,16 +615,16 @@ namespace FA21_Final_Project
 
                 html.AppendLine("<html>");
                 css.AppendLine("<center {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</center>");
-                html.AppendLine($"<head>{css}<title>{"Receipt"}</title></head>");
-                //css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
-                html.Append("<img src= logo.PNG style=' align: center; width: 75px; height: 50px;'>");
-                html.AppendLine("<body>");
+                html.AppendLine($"<head style = 'align:center'>{css}<title>{"Receipt"}</title></head>");
+                css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
+                html.Append("<img src= " + clsLogo.strLogo + " style=' align: center; width: 75px; height: 50px;'>");
+                html.AppendLine("<body>"); 
 
                 html.AppendLine($"<h1>{" Order Receipt"}</h1>");
-                html.Append($"<br></br>");
-                html.Append($"<p style = 'text-indent: -550px; font-size: 15px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
-                html.Append($"<p style = 'text-indent: -550px; font-size: 15px'><b>{"Order Number: " + strMaxOrderID}</b></p>");
-                html.Append($"<p style = 'text-indent: -550px; font-size: 10px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
+                html.Append($"<br>{css}</br>");
+                html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
+                html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Order Number: " + strMaxOrderID}</b></p>");
+                html.Append($"<p style = 'text-align: left; font-size: 10px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
                 // Create table of data
                 // <TABLE> and </TABLE> is the start and end of a table of rows and data.
                 // <TR> and </TR> is one row of data. They contain <TD> and </TD> tags.
@@ -646,12 +648,12 @@ namespace FA21_Final_Project
                 }
                 html.AppendLine("</table>");
                 html.Append($"<br></br><br></br>");
-                html.Append($"<p style = 'align:center; text-indent: 390px; font-size: 15px '><b>{"SubTotal: " + decSubTotal.ToString("C2")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 371px; font-size: 15px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 422px; font-size: 15px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 297px; font-size: 15px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 430px; font-size: 15px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 450px; font-size: 20px ' ><b>{"Total: " + decTotal.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"SubTotal: " + decSubTotal.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
+                html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 20px ' ><b>{"Total: " + decTotal.ToString("C2")}</b></p>");
                 html.Append($"<div><button onClick='window.print()'> {"Print this page"}</ button ></ div >");
                 html.AppendLine("</body></html>");
             }
@@ -765,6 +767,7 @@ namespace FA21_Final_Project
             StringBuilder css = new StringBuilder();
             try
             {
+                
                 // CSS is a way to style the HTML page. Each HTML tag can be customized.
                 // In this example, the H1 and TD tags are customized.
                 // Refer to this website for examples: https://www.w3schools.com/Css/css_syntax.asp
@@ -778,19 +781,19 @@ namespace FA21_Final_Project
                 css.AppendLine("<center {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</center>");
                 html.AppendLine($"<head>{css}<title>{"Receipt"}</title></head>");
                 //css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
-                html.Append("<img src= logo.PNG style=' align: center; width: 75px; height: 50px;'>");
+                html.Append("<img src= " + clsLogo.strLogo + " style=' align: center; width: 75px; height: 50px;'>");
                 html.AppendLine("<body>");
 
                 html.AppendLine($"<h1>{" Order Receipt"}</h1>");
                 html.Append($"<br></br>");
-                html.Append($"<p style = 'text-indent: -550px; font-size: 25px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
-                html.Append($"<p style = 'text-indent: -550px; font-size: 25px'><b>{"Order Number: " + strQuailHuntOrderID}</b></p>");
-                html.Append($"<p style = 'text-indent: -550px; font-size: 20px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
+                html.Append($"<p style = 'text-align: left; font-size: 25px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
+                html.Append($"<p style = 'text-align: left; font-size: 25px'><b>{"Order Number: " + strQuailHuntOrderID}</b></p>");
+                html.Append($"<p style = 'text-align: left; font-size: 20px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
                 
                 html.Append($"<br></br><br></br>");
-                html.Append($"<p style = 'align:center; text-indent: 390px; font-size: 25px '><b>{"Start Date: " + strStartDateQuail}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 385px; font-size: 25px '><b>{"End Date: " + strEndDateQuail}</b></p>");
-                html.Append($"<p style = 'align:center; text-indent: 405px; font-size: 25px '><b>{"Total: " + decQuailHuntTotal.ToString("C2")}</b></p>");
+                html.Append($"<p style = 'text-align: right; text-indent: 0px; font-size: 25px '><b>{"Start Date: " + strStartDateQuail}</b></p>");
+                html.Append($"<p style = 'text-align: right; text-indent: 0px; font-size: 25px '><b>{"End Date: " + strEndDateQuail}</b></p>");
+                html.Append($"<p style = 'text-align: right; text-indent: 0px; font-size: 25px '><b>{"Total: " + decQuailHuntTotal.ToString("C2")}</b></p>");
                 html.Append($"<div><button onClick='window.print()'> {"Print this page"}</ button ></ div >");
                 html.AppendLine("</body></html>");
             }

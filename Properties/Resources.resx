@@ -136,7 +136,4 @@
   <data name="quail" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\quail.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TSTCVersionNumber" xml:space="preserve">
-    <value>2021.08.23</value>
-  </data>
 </root>

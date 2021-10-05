@@ -14,33 +14,25 @@ namespace FA21_Final_Project
     "Please inform the Program Developer that the following error occurred: \n\n\n";
         public static bool ValidZip(string strZipCode)
         {
-            bool boolValidZipCode = false;
+            bool boolZipCode = false;
             try
             {
-
-                int intSpecialCharCount = 0;
-                for (int i = 0; i < strZipCode.Length; i++)
+                string strZipCodePattern = @"^\d{5}-\d{4}$";
+                string strZipCodePattern2 = @"^\d{5}$";
+                if ((Regex.Match(strZipCode, strZipCodePattern).Success) || (Regex.Match(strZipCode, strZipCodePattern2).Success))
                 {
-                    if (strZipCode[i] == '-')
-                    {
-                        intSpecialCharCount++;
-                    }
-                }
-                if (intSpecialCharCount > 2)
-                {
-                    boolValidZipCode = false;
+                    boolZipCode = true;
                 }
                 else
                 {
-                    boolValidZipCode = true;
+                    boolZipCode = false;
                 }
-
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return boolValidZipCode;
+            return boolZipCode;
         }
 
         public static bool ValidPhone(string strPhone)
@@ -48,30 +40,14 @@ namespace FA21_Final_Project
             bool boolValidPhone = false;
             try
             {
-                int intSpecialCharCount = 0;
-                int intNumberCount = 0;
-                for (int i = 0; i < strPhone.Length; i++)
+                string strPhonePattern = @"^\d{3}-\d{3}-\d{4}$";
+                if ((Regex.Match(strPhone, strPhonePattern).Success))
                 {
-                    if(strPhone[i] == '-')
-                    {
-                        intSpecialCharCount++;
-                    }
-                    else
-                    {
-                        intNumberCount++;
-                    }
-                }
-                if (intSpecialCharCount > 2)
-                {
-                    boolValidPhone = false;
-                }
-                else if(intNumberCount > 10)
-                {
-                    boolValidPhone = false;
+                    boolValidPhone = true;
                 }
                 else
                 {
-                    boolValidPhone = true;
+                    boolValidPhone = false;
                 }
             }
             catch (Exception ex)

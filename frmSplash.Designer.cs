@@ -30,6 +30,7 @@ namespace FA21_Final_Project
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSplash));
             this.tmrTime = new System.Windows.Forms.Timer(this.components);
             this.pbxSplash = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSplash)).BeginInit();
@@ -41,8 +42,8 @@ namespace FA21_Final_Project
             // 
             // pbxSplash
             // 
-            this.pbxSplash.Image = global::FA21_Final_Project.Properties.Resources.logo;
-            this.pbxSplash.Location = new System.Drawing.Point(-7, -1);
+            this.pbxSplash.Image = ((System.Drawing.Image)(resources.GetObject("pbxSplash.Image")));
+            this.pbxSplash.Location = new System.Drawing.Point(-7, -6);
             this.pbxSplash.Name = "pbxSplash";
             this.pbxSplash.Size = new System.Drawing.Size(657, 307);
             this.pbxSplash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

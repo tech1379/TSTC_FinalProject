@@ -65,7 +65,7 @@ namespace FA21_Final_Project
             this.lblLogOn.Location = new System.Drawing.Point(172, 45);
             this.lblLogOn.Name = "lblLogOn";
             this.lblLogOn.Size = new System.Drawing.Size(104, 19);
-            this.lblLogOn.TabIndex = 1;
+            this.lblLogOn.TabIndex = 12;
             this.lblLogOn.Text = "Username:";
             // 
             // lblPassword
@@ -75,7 +75,7 @@ namespace FA21_Final_Project
             this.lblPassword.Location = new System.Drawing.Point(178, 98);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(98, 19);
-            this.lblPassword.TabIndex = 2;
+            this.lblPassword.TabIndex = 13;
             this.lblPassword.Text = "Password:";
             // 
             // lblConfirm
@@ -85,7 +85,7 @@ namespace FA21_Final_Project
             this.lblConfirm.Location = new System.Drawing.Point(103, 151);
             this.lblConfirm.Name = "lblConfirm";
             this.lblConfirm.Size = new System.Drawing.Size(173, 19);
-            this.lblConfirm.TabIndex = 3;
+            this.lblConfirm.TabIndex = 14;
             this.lblConfirm.Text = "Confirm Password:";
             // 
             // lblFirst
@@ -95,7 +95,7 @@ namespace FA21_Final_Project
             this.lblFirst.Location = new System.Drawing.Point(50, 204);
             this.lblFirst.Name = "lblFirst";
             this.lblFirst.Size = new System.Drawing.Size(226, 19);
-            this.lblFirst.TabIndex = 4;
+            this.lblFirst.TabIndex = 15;
             this.lblFirst.Text = "First Challenge Question:";
             // 
             // lblFirstAns
@@ -105,7 +105,7 @@ namespace FA21_Final_Project
             this.lblFirstAns.Location = new System.Drawing.Point(63, 257);
             this.lblFirstAns.Name = "lblFirstAns";
             this.lblFirstAns.Size = new System.Drawing.Size(213, 19);
-            this.lblFirstAns.TabIndex = 5;
+            this.lblFirstAns.TabIndex = 16;
             this.lblFirstAns.Text = "First Challenge Answer:";
             // 
             // lblSecond
@@ -115,7 +115,7 @@ namespace FA21_Final_Project
             this.lblSecond.Location = new System.Drawing.Point(26, 310);
             this.lblSecond.Name = "lblSecond";
             this.lblSecond.Size = new System.Drawing.Size(250, 19);
-            this.lblSecond.TabIndex = 6;
+            this.lblSecond.TabIndex = 17;
             this.lblSecond.Text = "Second Challenge Question:";
             // 
             // lblSecondAns
@@ -125,7 +125,7 @@ namespace FA21_Final_Project
             this.lblSecondAns.Location = new System.Drawing.Point(39, 363);
             this.lblSecondAns.Name = "lblSecondAns";
             this.lblSecondAns.Size = new System.Drawing.Size(237, 19);
-            this.lblSecondAns.TabIndex = 7;
+            this.lblSecondAns.TabIndex = 18;
             this.lblSecondAns.Text = "Second Challenge Answer:";
             // 
             // lblThird
@@ -135,7 +135,7 @@ namespace FA21_Final_Project
             this.lblThird.Location = new System.Drawing.Point(39, 416);
             this.lblThird.Name = "lblThird";
             this.lblThird.Size = new System.Drawing.Size(240, 19);
-            this.lblThird.TabIndex = 8;
+            this.lblThird.TabIndex = 19;
             this.lblThird.Text = "Third Challenge Question: ";
             // 
             // lblThirdAns
@@ -145,7 +145,7 @@ namespace FA21_Final_Project
             this.lblThirdAns.Location = new System.Drawing.Point(49, 469);
             this.lblThirdAns.Name = "lblThirdAns";
             this.lblThirdAns.Size = new System.Drawing.Size(227, 19);
-            this.lblThirdAns.TabIndex = 9;
+            this.lblThirdAns.TabIndex = 20;
             this.lblThirdAns.Text = "Third Challenge Answer: ";
             // 
             // btnCreate
@@ -165,7 +165,7 @@ namespace FA21_Final_Project
             this.tbxUserName.Location = new System.Drawing.Point(311, 45);
             this.tbxUserName.Name = "tbxUserName";
             this.tbxUserName.Size = new System.Drawing.Size(236, 26);
-            this.tbxUserName.TabIndex = 11;
+            this.tbxUserName.TabIndex = 0;
             // 
             // tbxPassword
             // 
@@ -174,7 +174,7 @@ namespace FA21_Final_Project
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(236, 26);
-            this.tbxPassword.TabIndex = 12;
+            this.tbxPassword.TabIndex = 1;
             // 
             // tbxConfirm
             // 
@@ -183,15 +183,16 @@ namespace FA21_Final_Project
             this.tbxConfirm.Name = "tbxConfirm";
             this.tbxConfirm.PasswordChar = '*';
             this.tbxConfirm.Size = new System.Drawing.Size(236, 26);
-            this.tbxConfirm.TabIndex = 13;
+            this.tbxConfirm.TabIndex = 2;
             // 
             // tbxFirstAns
             // 
             this.tbxFirstAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxFirstAns.Location = new System.Drawing.Point(311, 254);
+            this.tbxFirstAns.MaxLength = 20;
             this.tbxFirstAns.Name = "tbxFirstAns";
             this.tbxFirstAns.Size = new System.Drawing.Size(236, 26);
-            this.tbxFirstAns.TabIndex = 14;
+            this.tbxFirstAns.TabIndex = 4;
             // 
             // cbxFirstQ
             // 
@@ -200,7 +201,7 @@ namespace FA21_Final_Project
             this.cbxFirstQ.Location = new System.Drawing.Point(311, 206);
             this.cbxFirstQ.Name = "cbxFirstQ";
             this.cbxFirstQ.Size = new System.Drawing.Size(446, 27);
-            this.cbxFirstQ.TabIndex = 15;
+            this.cbxFirstQ.TabIndex = 3;
             // 
             // cbxSecondQ
             // 
@@ -209,7 +210,7 @@ namespace FA21_Final_Project
             this.cbxSecondQ.Location = new System.Drawing.Point(311, 302);
             this.cbxSecondQ.Name = "cbxSecondQ";
             this.cbxSecondQ.Size = new System.Drawing.Size(446, 27);
-            this.cbxSecondQ.TabIndex = 16;
+            this.cbxSecondQ.TabIndex = 5;
             // 
             // cbxThirdQ
             // 
@@ -218,23 +219,25 @@ namespace FA21_Final_Project
             this.cbxThirdQ.Location = new System.Drawing.Point(311, 408);
             this.cbxThirdQ.Name = "cbxThirdQ";
             this.cbxThirdQ.Size = new System.Drawing.Size(446, 27);
-            this.cbxThirdQ.TabIndex = 17;
+            this.cbxThirdQ.TabIndex = 7;
             // 
             // tbxSecondAns
             // 
             this.tbxSecondAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxSecondAns.Location = new System.Drawing.Point(311, 356);
+            this.tbxSecondAns.MaxLength = 20;
             this.tbxSecondAns.Name = "tbxSecondAns";
             this.tbxSecondAns.Size = new System.Drawing.Size(236, 26);
-            this.tbxSecondAns.TabIndex = 18;
+            this.tbxSecondAns.TabIndex = 6;
             // 
             // tbxThirdAns
             // 
             this.tbxThirdAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxThirdAns.Location = new System.Drawing.Point(311, 462);
+            this.tbxThirdAns.MaxLength = 20;
             this.tbxThirdAns.Name = "tbxThirdAns";
             this.tbxThirdAns.Size = new System.Drawing.Size(236, 26);
-            this.tbxThirdAns.TabIndex = 19;
+            this.tbxThirdAns.TabIndex = 8;
             // 
             // btnCancel
             // 
@@ -242,13 +245,13 @@ namespace FA21_Final_Project
             this.btnCancel.Location = new System.Drawing.Point(441, 591);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 54);
-            this.btnCancel.TabIndex = 20;
+            this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // pbxPass
             // 
-            this.pbxPass.Image = global::FA21_Final_Project.Properties.Resources.eye;
+            this.pbxPass.Image = ((System.Drawing.Image)(resources.GetObject("pbxPass.Image")));
             this.pbxPass.Location = new System.Drawing.Point(619, 81);
             this.pbxPass.Name = "pbxPass";
             this.pbxPass.Size = new System.Drawing.Size(53, 36);
@@ -259,7 +262,7 @@ namespace FA21_Final_Project
             // 
             // pbxConfirm
             // 
-            this.pbxConfirm.Image = global::FA21_Final_Project.Properties.Resources.eye;
+            this.pbxConfirm.Image = ((System.Drawing.Image)(resources.GetObject("pbxConfirm.Image")));
             this.pbxConfirm.Location = new System.Drawing.Point(619, 138);
             this.pbxConfirm.Name = "pbxConfirm";
             this.pbxConfirm.Size = new System.Drawing.Size(53, 36);
@@ -285,7 +288,7 @@ namespace FA21_Final_Project
             this.cbxPosition.Location = new System.Drawing.Point(311, 520);
             this.cbxPosition.Name = "cbxPosition";
             this.cbxPosition.Size = new System.Drawing.Size(446, 27);
-            this.cbxPosition.TabIndex = 24;
+            this.cbxPosition.TabIndex = 9;
             // 
             // frmCreateAcct2
             // 

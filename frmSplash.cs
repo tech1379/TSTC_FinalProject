@@ -29,6 +29,8 @@ namespace FA21_Final_Project
 
         private void frmSplash_Load(object sender, EventArgs e)
         {
+            //TODO use this for path for image
+            //MessageBox.Show(Application.StartupPath.ToString());
             timeLeft = 15;
             tmrTime.Start();
         }

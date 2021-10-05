@@ -67,6 +67,7 @@
     <Compile Include="clsCoupon.cs" />
     <Compile Include="clsDayPrice.cs" />
     <Compile Include="clsInventory.cs" />
+    <Compile Include="clsLogo.cs" />
     <Compile Include="clsLogon.cs" />
     <Compile Include="clsSQL.cs" />
     <Compile Include="clsValidation.cs" />

@@ -119,14 +119,5 @@ namespace FA21_Final_Project.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2021.08.23.
-        /// </summary>
-        internal static string TSTCVersionNumber {
-            get {
-                return ResourceManager.GetString("TSTCVersionNumber", resourceCulture);
-            }
-        }
     }
 }

@@ -59,7 +59,7 @@ namespace FA21_Final_Project
             this.gbxLogIn.Location = new System.Drawing.Point(126, 64);
             this.gbxLogIn.Name = "gbxLogIn";
             this.gbxLogIn.Size = new System.Drawing.Size(436, 243);
-            this.gbxLogIn.TabIndex = 0;
+            this.gbxLogIn.TabIndex = 2;
             this.gbxLogIn.TabStop = false;
             this.gbxLogIn.Text = "Tek\'s Login";
             // 
@@ -101,7 +101,7 @@ namespace FA21_Final_Project
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
             this.tbxPassword.Size = new System.Drawing.Size(270, 29);
-            this.tbxPassword.TabIndex = 3;
+            this.tbxPassword.TabIndex = 4;
             // 
             // tbxLogIn
             // 
@@ -116,7 +116,7 @@ namespace FA21_Final_Project
             this.lblPassword.Location = new System.Drawing.Point(9, 96);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(113, 21);
-            this.lblPassword.TabIndex = 1;
+            this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Password:";
             // 
             // lblLogIn
@@ -125,7 +125,7 @@ namespace FA21_Final_Project
             this.lblLogIn.Location = new System.Drawing.Point(9, 40);
             this.lblLogIn.Name = "lblLogIn";
             this.lblLogIn.Size = new System.Drawing.Size(121, 21);
-            this.lblLogIn.TabIndex = 0;
+            this.lblLogIn.TabIndex = 1;
             this.lblLogIn.Text = "Username:";
             // 
             // lblWebsite
@@ -135,7 +135,7 @@ namespace FA21_Final_Project
             this.lblWebsite.Location = new System.Drawing.Point(499, 367);
             this.lblWebsite.Name = "lblWebsite";
             this.lblWebsite.Size = new System.Drawing.Size(145, 21);
-            this.lblWebsite.TabIndex = 1;
+            this.lblWebsite.TabIndex = 4;
             this.lblWebsite.Text = "&Tek\'s Website";
             this.lblWebsite.Click += new System.EventHandler(this.lblWebsite_Click);
             // 
@@ -146,7 +146,7 @@ namespace FA21_Final_Project
             this.lblInventory.Location = new System.Drawing.Point(23, 367);
             this.lblInventory.Name = "lblInventory";
             this.lblInventory.Size = new System.Drawing.Size(185, 21);
-            this.lblInventory.TabIndex = 2;
+            this.lblInventory.TabIndex = 3;
             this.lblInventory.Text = "&Browse Inventory";
             this.lblInventory.Click += new System.EventHandler(this.lblInventory_Click);
             // 
@@ -157,7 +157,7 @@ namespace FA21_Final_Project
             this.lblCreate.Location = new System.Drawing.Point(475, 19);
             this.lblCreate.Name = "lblCreate";
             this.lblCreate.Size = new System.Drawing.Size(211, 21);
-            this.lblCreate.TabIndex = 3;
+            this.lblCreate.TabIndex = 1;
             this.lblCreate.Text = "&Create New Account";
             this.lblCreate.Click += new System.EventHandler(this.lblCreate_Click);
             // 
@@ -168,7 +168,7 @@ namespace FA21_Final_Project
             this.lblHelp.Location = new System.Drawing.Point(12, 19);
             this.lblHelp.Name = "lblHelp";
             this.lblHelp.Size = new System.Drawing.Size(122, 21);
-            this.lblHelp.TabIndex = 4;
+            this.lblHelp.TabIndex = 0;
             this.lblHelp.Text = "Need &Help?";
             this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
             // 
@@ -176,7 +176,7 @@ namespace FA21_Final_Project
             // 
             this.hlpMain.HelpNamespace = "C:\\Users\\erict\\Desktop\\Individual\\Individual\\HelpFiles\\LogOnHelp.chm";
             // 
-            // frmMain
+            // frmLogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -189,7 +189,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.gbxLogIn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "frmMain";
+            this.Name = "frmLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tek\'s Kennels & Outfitting Login";
             this.Load += new System.EventHandler(this.frmMain_Load);
