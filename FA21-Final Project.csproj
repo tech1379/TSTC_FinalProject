@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>TSTCLogo.ico</ApplicationIcon>
+    <ApplicationIcon>quail.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -178,6 +178,7 @@
     <None Include="Resources\next.PNG" />
     <None Include="Resources\previous.PNG" />
     <None Include="Resources\next2.gif" />
+    <Content Include="quail.ico" />
     <Content Include="TSTCLogo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

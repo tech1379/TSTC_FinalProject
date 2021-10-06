@@ -1,0 +1,21 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Inventory.chm
+Contents file=HelpFiles\Inventory\Inventory_Table of Contents.hhc
+Default topic=HelpFiles\Inventory\Inventory.htm
+Display compile progress=No
+Language=0x409 English (United States)
+
+
+[FILES]
+HelpFiles\Inventory\AddToCart.htm
+HelpFiles\Inventory\GoToCart.htm
+HelpFiles\Inventory\Help.htm
+HelpFiles\Inventory\Inventory.htm
+HelpFiles\Inventory\Next.htm
+HelpFiles\Inventory\Previous.htm
+HelpFiles\Inventory\Quantity.htm
+HelpFiles\Inventory\Search.htm
+
+[INFOTYPES]
+

@@ -139,9 +139,10 @@ namespace FA21_Final_Project
 
         private void lblCreate_Click(object sender, EventArgs e)
         {
+            this.Hide();
             frmCreateAcct createAcct = new frmCreateAcct();
             createAcct.ShowDialog();
-            this.Hide();
+            
         }
 
         private void lblHelp_Click(object sender, EventArgs e)

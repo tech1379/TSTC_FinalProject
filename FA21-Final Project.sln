@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FA21-Final Project", "FA21-Final Project.csproj", "{F70EBD24-52AE-435B-B376-4356C2B95D57}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Teks Kennels And Outfitting", "..\Teks Kennels And Outfitting\Teks Kennels And Outfitting.vdproj", "{ED329CCC-F6E9-408F-9E7D-459B679D02F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{F70EBD24-52AE-435B-B376-4356C2B95D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F70EBD24-52AE-435B-B376-4356C2B95D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F70EBD24-52AE-435B-B376-4356C2B95D57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED329CCC-F6E9-408F-9E7D-459B679D02F2}.Debug|Any CPU.ActiveCfg = Debug
+		{ED329CCC-F6E9-408F-9E7D-459B679D02F2}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

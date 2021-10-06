@@ -101,6 +101,12 @@ namespace FA21_Final_Project
             this.lblSearch = new System.Windows.Forms.Label();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.lblHelpQuail = new System.Windows.Forms.Label();
+            this.hlpQuail = new System.Windows.Forms.HelpProvider();
+            this.hlpTraining = new System.Windows.Forms.HelpProvider();
+            this.lblHelpTraining = new System.Windows.Forms.Label();
+            this.hlpShoppingCart = new System.Windows.Forms.HelpProvider();
+            this.lblHelpShoppingCart = new System.Windows.Forms.Label();
             this.tbCustomer.SuspendLayout();
             this.tbInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNext)).BeginInit();
@@ -316,6 +322,7 @@ namespace FA21_Final_Project
             // tbQuailHunts
             // 
             this.tbQuailHunts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbQuailHunts.Controls.Add(this.lblHelpQuail);
             this.tbQuailHunts.Controls.Add(this.btnQuailReciept);
             this.tbQuailHunts.Controls.Add(this.btnBookHunt);
             this.tbQuailHunts.Controls.Add(this.lblQuailTotal);
@@ -355,7 +362,7 @@ namespace FA21_Final_Project
             // 
             // lblQuailTotal
             // 
-            this.lblQuailTotal.BackColor = System.Drawing.Color.White;
+            this.lblQuailTotal.BackColor = System.Drawing.Color.LightGray;
             this.lblQuailTotal.Location = new System.Drawing.Point(665, 453);
             this.lblQuailTotal.Name = "lblQuailTotal";
             this.lblQuailTotal.Size = new System.Drawing.Size(160, 32);
@@ -422,6 +429,7 @@ namespace FA21_Final_Project
             // tbTraining
             // 
             this.tbTraining.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbTraining.Controls.Add(this.lblHelpTraining);
             this.tbTraining.Controls.Add(this.btnTrainingOrder);
             this.tbTraining.Controls.Add(this.mthTraining);
             this.tbTraining.Controls.Add(this.tbxDescription);
@@ -516,6 +524,7 @@ namespace FA21_Final_Project
             // 
             this.tbShoppingCart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.tbShoppingCart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbShoppingCart.Controls.Add(this.lblHelpShoppingCart);
             this.tbShoppingCart.Controls.Add(this.btnCoupon);
             this.tbShoppingCart.Controls.Add(this.tbxCouponCode);
             this.tbShoppingCart.Controls.Add(this.btnReceipt);
@@ -581,7 +590,7 @@ namespace FA21_Final_Project
             // 
             // lblDiscPercent
             // 
-            this.lblDiscPercent.BackColor = System.Drawing.Color.White;
+            this.lblDiscPercent.BackColor = System.Drawing.Color.LightGray;
             this.lblDiscPercent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDiscPercent.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscPercent.Location = new System.Drawing.Point(728, 346);
@@ -600,7 +609,7 @@ namespace FA21_Final_Project
             // 
             // lblSubTotalDisc
             // 
-            this.lblSubTotalDisc.BackColor = System.Drawing.Color.White;
+            this.lblSubTotalDisc.BackColor = System.Drawing.Color.LightGray;
             this.lblSubTotalDisc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSubTotalDisc.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotalDisc.Location = new System.Drawing.Point(728, 420);
@@ -630,7 +639,7 @@ namespace FA21_Final_Project
             // 
             // lblDiscount
             // 
-            this.lblDiscount.BackColor = System.Drawing.Color.White;
+            this.lblDiscount.BackColor = System.Drawing.Color.LightGray;
             this.lblDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDiscount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.Location = new System.Drawing.Point(728, 381);
@@ -712,7 +721,7 @@ namespace FA21_Final_Project
             // 
             // lblTotal
             // 
-            this.lblTotal.BackColor = System.Drawing.Color.White;
+            this.lblTotal.BackColor = System.Drawing.Color.LightGray;
             this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(728, 505);
@@ -732,7 +741,7 @@ namespace FA21_Final_Project
             // 
             // lblTaxes
             // 
-            this.lblTaxes.BackColor = System.Drawing.Color.White;
+            this.lblTaxes.BackColor = System.Drawing.Color.LightGray;
             this.lblTaxes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTaxes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxes.Location = new System.Drawing.Point(728, 463);
@@ -752,7 +761,7 @@ namespace FA21_Final_Project
             // 
             // lblSubTotal
             // 
-            this.lblSubTotal.BackColor = System.Drawing.Color.White;
+            this.lblSubTotal.BackColor = System.Drawing.Color.LightGray;
             this.lblSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSubTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.Location = new System.Drawing.Point(728, 304);
@@ -808,7 +817,7 @@ namespace FA21_Final_Project
             this.gbxSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxSearch.Location = new System.Drawing.Point(62, 395);
             this.gbxSearch.Name = "gbxSearch";
-            this.gbxSearch.Size = new System.Drawing.Size(281, 129);
+            this.gbxSearch.Size = new System.Drawing.Size(318, 129);
             this.gbxSearch.TabIndex = 16;
             this.gbxSearch.TabStop = false;
             this.gbxSearch.Text = "Search";
@@ -818,9 +827,9 @@ namespace FA21_Final_Project
             this.lblSearch.AutoSize = true;
             this.lblSearch.Location = new System.Drawing.Point(3, 19);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(272, 15);
+            this.lblSearch.Size = new System.Drawing.Size(305, 15);
             this.lblSearch.TabIndex = 0;
-            this.lblSearch.Text = "Enter the Dog Breed to Search Inventory:";
+            this.lblSearch.Text = "Enter part of Breed Name to Search Inventory:";
             // 
             // tbxSearch
             // 
@@ -839,6 +848,39 @@ namespace FA21_Final_Project
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // lblHelpQuail
+            // 
+            this.lblHelpQuail.AutoSize = true;
+            this.lblHelpQuail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpQuail.Location = new System.Drawing.Point(6, 12);
+            this.lblHelpQuail.Name = "lblHelpQuail";
+            this.lblHelpQuail.Size = new System.Drawing.Size(44, 18);
+            this.lblHelpQuail.TabIndex = 16;
+            this.lblHelpQuail.Text = "&Help";
+            this.lblHelpQuail.Click += new System.EventHandler(this.lblHelpQuail_Click);
+            // 
+            // lblHelpTraining
+            // 
+            this.lblHelpTraining.AutoSize = true;
+            this.lblHelpTraining.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpTraining.Location = new System.Drawing.Point(20, 16);
+            this.lblHelpTraining.Name = "lblHelpTraining";
+            this.lblHelpTraining.Size = new System.Drawing.Size(44, 18);
+            this.lblHelpTraining.TabIndex = 17;
+            this.lblHelpTraining.Text = "&Help";
+            this.lblHelpTraining.Click += new System.EventHandler(this.lblHelpTraining_Click);
+            // 
+            // lblHelpShoppingCart
+            // 
+            this.lblHelpShoppingCart.AutoSize = true;
+            this.lblHelpShoppingCart.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpShoppingCart.Location = new System.Drawing.Point(816, 3);
+            this.lblHelpShoppingCart.Name = "lblHelpShoppingCart";
+            this.lblHelpShoppingCart.Size = new System.Drawing.Size(44, 18);
+            this.lblHelpShoppingCart.TabIndex = 28;
+            this.lblHelpShoppingCart.Text = "&Help";
+            this.lblHelpShoppingCart.Click += new System.EventHandler(this.lblHelpShoppingCart_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -846,6 +888,7 @@ namespace FA21_Final_Project
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(923, 593);
             this.Controls.Add(this.tbCustomer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmMain";
@@ -944,5 +987,11 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox tbxSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lblHelpQuail;
+        private System.Windows.Forms.HelpProvider hlpQuail;
+        private System.Windows.Forms.HelpProvider hlpTraining;
+        private System.Windows.Forms.Label lblHelpTraining;
+        private System.Windows.Forms.HelpProvider hlpShoppingCart;
+        private System.Windows.Forms.Label lblHelpShoppingCart;
     }
 }

@@ -24,7 +24,7 @@ namespace FA21_Final_Project
         public static string strPersonID = frmLogIn.strPersonID;
         private int intSelectedImageID = 0;
         private int intCurrent = 0;
-        public int intCouponCode = 0;
+        public int intCouponCode = 20003;
         public static decimal decSubTotal = 0.0M;
         public static decimal decDiscountPercent = 0.0M;
         public static decimal decDiscount;
@@ -306,7 +306,7 @@ namespace FA21_Final_Project
                     StringBuilder html = new StringBuilder();
                     html = GenerateReport();
                     PrintReport(html);
-
+                    Application.Exit();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -839,7 +839,11 @@ namespace FA21_Final_Project
         {
             try
             {
-                hlpCustomer.HelpNamespace = Application.StartupPath + "\\CustomerHelp.chm";
+                strPersonID = frmLogIn.strPersonID;
+                hlpCustomer.HelpNamespace = Application.StartupPath + "\\Inventory.chm";
+                hlpQuail.HelpNamespace = Application.StartupPath + "\\QuailHunt.chm";
+                hlpTraining.HelpNamespace = Application.StartupPath + "\\Training.chm";
+                hlpShoppingCart.HelpNamespace = Application.StartupPath + "\\ShoppingCart.chm";
                 //load db information and display on form
                 lstInventory.Clear();
                 cbxQuantity.Items.Clear();
@@ -989,10 +993,11 @@ namespace FA21_Final_Project
                 string strBreedName = tbxSearch.Text.Trim();
                 for (int i = 0; i < lstInventory.Count; i++)
                 {
-                    if (lstInventory[i].strItemName.ToUpper() == strBreedName.ToUpper())
+                    if (lstInventory[i].strItemName.ToUpper().Contains(strBreedName.ToUpper()))
                     {
                         intCurrent = i;
                         LoadNext();
+                        tbxSearch.Text = "";
                         return;
                     }
                 }
@@ -1001,6 +1006,21 @@ namespace FA21_Final_Project
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void lblHelpQuail_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpQuail.HelpNamespace);
+        }
+
+        private void lblHelpTraining_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpTraining.HelpNamespace);
+        }
+
+        private void lblHelpShoppingCart_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpShoppingCart.HelpNamespace);
         }
     }
 }
