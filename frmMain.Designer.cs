@@ -70,10 +70,10 @@ namespace FA21_Final_Project
             this.lblDogBreed = new System.Windows.Forms.Label();
             this.lblDogName = new System.Windows.Forms.Label();
             this.tbShoppingCart = new System.Windows.Forms.TabPage();
+            this.btnReceipt = new System.Windows.Forms.Button();
             this.btnRemoveAll = new System.Windows.Forms.Button();
             this.lblDP = new System.Windows.Forms.Label();
             this.lblDiscPercent = new System.Windows.Forms.Label();
-            this.cbxCouponCode = new System.Windows.Forms.ComboBox();
             this.lblCCode = new System.Windows.Forms.Label();
             this.lblSubTotalDisc = new System.Windows.Forms.Label();
             this.lblSBTD = new System.Windows.Forms.Label();
@@ -95,6 +95,12 @@ namespace FA21_Final_Project
             this.lblST = new System.Windows.Forms.Label();
             this.dgvResults = new System.Windows.Forms.DataGridView();
             this.hlpCustomer = new System.Windows.Forms.HelpProvider();
+            this.tbxCouponCode = new System.Windows.Forms.TextBox();
+            this.btnCoupon = new System.Windows.Forms.Button();
+            this.gbxSearch = new System.Windows.Forms.GroupBox();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.tbxSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.tbCustomer.SuspendLayout();
             this.tbInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNext)).BeginInit();
@@ -104,6 +110,7 @@ namespace FA21_Final_Project
             this.tbTraining.SuspendLayout();
             this.tbShoppingCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
+            this.gbxSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCustomer
@@ -112,7 +119,7 @@ namespace FA21_Final_Project
             this.tbCustomer.Controls.Add(this.tbQuailHunts);
             this.tbCustomer.Controls.Add(this.tbTraining);
             this.tbCustomer.Controls.Add(this.tbShoppingCart);
-            this.tbCustomer.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCustomer.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbCustomer.Location = new System.Drawing.Point(13, 9);
             this.tbCustomer.Name = "tbCustomer";
             this.tbCustomer.SelectedIndex = 0;
@@ -122,6 +129,7 @@ namespace FA21_Final_Project
             // tbInventory
             // 
             this.tbInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbInventory.Controls.Add(this.gbxSearch);
             this.tbInventory.Controls.Add(this.lblHelp);
             this.tbInventory.Controls.Add(this.btnCart);
             this.tbInventory.Controls.Add(this.btnAdd);
@@ -139,26 +147,27 @@ namespace FA21_Final_Project
             this.tbInventory.Controls.Add(this.lblOne);
             this.tbInventory.Controls.Add(this.pbxImage);
             this.tbInventory.Font = new System.Drawing.Font("Broadway", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbInventory.Location = new System.Drawing.Point(4, 28);
+            this.tbInventory.Location = new System.Drawing.Point(4, 27);
             this.tbInventory.Name = "tbInventory";
             this.tbInventory.Padding = new System.Windows.Forms.Padding(3);
-            this.tbInventory.Size = new System.Drawing.Size(890, 540);
+            this.tbInventory.Size = new System.Drawing.Size(890, 541);
             this.tbInventory.TabIndex = 0;
             this.tbInventory.Text = "Inventory";
             // 
             // lblHelp
             // 
             this.lblHelp.AutoSize = true;
-            this.lblHelp.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHelp.Location = new System.Drawing.Point(15, 14);
             this.lblHelp.Name = "lblHelp";
-            this.lblHelp.Size = new System.Drawing.Size(49, 19);
+            this.lblHelp.Size = new System.Drawing.Size(44, 18);
             this.lblHelp.TabIndex = 15;
             this.lblHelp.Text = "&Help";
             this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
             // 
             // btnCart
             // 
+            this.btnCart.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCart.Location = new System.Drawing.Point(555, 452);
             this.btnCart.Name = "btnCart";
             this.btnCart.Size = new System.Drawing.Size(90, 58);
@@ -169,6 +178,7 @@ namespace FA21_Final_Project
             // 
             // btnAdd
             // 
+            this.btnAdd.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(412, 452);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(90, 58);
@@ -179,6 +189,7 @@ namespace FA21_Final_Project
             // 
             // cbxQuantity
             // 
+            this.cbxQuantity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxQuantity.FormattingEnabled = true;
             this.cbxQuantity.Location = new System.Drawing.Point(402, 339);
             this.cbxQuantity.Name = "cbxQuantity";
@@ -188,9 +199,10 @@ namespace FA21_Final_Project
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(399, 321);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(305, 15);
+            this.label1.Size = new System.Drawing.Size(277, 15);
             this.label1.TabIndex = 11;
             this.label1.Text = "Please select the amount you want to buy:";
             // 
@@ -219,8 +231,8 @@ namespace FA21_Final_Project
             // lblQuantity
             // 
             this.lblQuantity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblQuantity.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuantity.Location = new System.Drawing.Point(518, 256);
+            this.lblQuantity.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantity.Location = new System.Drawing.Point(517, 288);
             this.lblQuantity.Name = "lblQuantity";
             this.lblQuantity.Size = new System.Drawing.Size(292, 30);
             this.lblQuantity.TabIndex = 8;
@@ -228,8 +240,8 @@ namespace FA21_Final_Project
             // lblCost
             // 
             this.lblCost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblCost.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCost.Location = new System.Drawing.Point(518, 197);
+            this.lblCost.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCost.Location = new System.Drawing.Point(519, 244);
             this.lblCost.Name = "lblCost";
             this.lblCost.Size = new System.Drawing.Size(292, 30);
             this.lblCost.TabIndex = 7;
@@ -237,8 +249,8 @@ namespace FA21_Final_Project
             // lblDescription
             // 
             this.lblDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblDescription.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(517, 138);
+            this.lblDescription.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.Location = new System.Drawing.Point(519, 138);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(292, 76);
             this.lblDescription.TabIndex = 6;
@@ -246,7 +258,7 @@ namespace FA21_Final_Project
             // lblName
             // 
             this.lblName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lblName.Font = new System.Drawing.Font("Broadway", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(517, 61);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(367, 55);
@@ -255,42 +267,42 @@ namespace FA21_Final_Project
             // lbl4
             // 
             this.lbl4.AutoSize = true;
-            this.lbl4.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl4.Location = new System.Drawing.Point(398, 256);
+            this.lbl4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl4.Location = new System.Drawing.Point(399, 288);
             this.lbl4.Name = "lbl4";
-            this.lbl4.Size = new System.Drawing.Size(86, 19);
+            this.lbl4.Size = new System.Drawing.Size(78, 18);
             this.lbl4.TabIndex = 4;
             this.lbl4.Text = "In Stock:";
             // 
             // lbl3
             // 
             this.lbl3.AutoSize = true;
-            this.lbl3.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl3.Location = new System.Drawing.Point(439, 197);
+            this.lbl3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl3.Location = new System.Drawing.Point(409, 244);
             this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(51, 19);
+            this.lbl3.Size = new System.Drawing.Size(50, 18);
             this.lbl3.TabIndex = 3;
             this.lbl3.Text = "Cost:";
             // 
             // lbl2
             // 
             this.lbl2.AutoSize = true;
-            this.lbl2.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl2.Location = new System.Drawing.Point(375, 138);
             this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(115, 19);
+            this.lbl2.Size = new System.Drawing.Size(105, 18);
             this.lbl2.TabIndex = 2;
             this.lbl2.Text = "Description:";
             // 
             // lblOne
             // 
             this.lblOne.AutoSize = true;
-            this.lblOne.Font = new System.Drawing.Font("Broadway", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOne.Font = new System.Drawing.Font("Arial Rounded MT Bold", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOne.Location = new System.Drawing.Point(392, 61);
             this.lblOne.Name = "lblOne";
-            this.lblOne.Size = new System.Drawing.Size(98, 27);
+            this.lblOne.Size = new System.Drawing.Size(91, 28);
             this.lblOne.TabIndex = 1;
-            this.lblOne.Text = "Name:";
+            this.lblOne.Text = "Breed:";
             // 
             // pbxImage
             // 
@@ -314,10 +326,10 @@ namespace FA21_Final_Project
             this.tbQuailHunts.Controls.Add(this.cbxDayPrice);
             this.tbQuailHunts.Controls.Add(this.lblEnDate);
             this.tbQuailHunts.Controls.Add(this.lblStDate);
-            this.tbQuailHunts.Location = new System.Drawing.Point(4, 28);
+            this.tbQuailHunts.Location = new System.Drawing.Point(4, 27);
             this.tbQuailHunts.Name = "tbQuailHunts";
             this.tbQuailHunts.Padding = new System.Windows.Forms.Padding(3);
-            this.tbQuailHunts.Size = new System.Drawing.Size(890, 540);
+            this.tbQuailHunts.Size = new System.Drawing.Size(890, 541);
             this.tbQuailHunts.TabIndex = 1;
             this.tbQuailHunts.Text = "Quail Hunts";
             // 
@@ -354,7 +366,7 @@ namespace FA21_Final_Project
             this.lblTotalQuail.AutoSize = true;
             this.lblTotalQuail.Location = new System.Drawing.Point(578, 461);
             this.lblTotalQuail.Name = "lblTotalQuail";
-            this.lblTotalQuail.Size = new System.Drawing.Size(60, 19);
+            this.lblTotalQuail.Size = new System.Drawing.Size(53, 18);
             this.lblTotalQuail.TabIndex = 7;
             this.lblTotalQuail.Text = "Total:";
             // 
@@ -375,9 +387,9 @@ namespace FA21_Final_Project
             // lblDayPrice
             // 
             this.lblDayPrice.AutoSize = true;
-            this.lblDayPrice.Location = new System.Drawing.Point(536, 46);
+            this.lblDayPrice.Location = new System.Drawing.Point(543, 41);
             this.lblDayPrice.Name = "lblDayPrice";
-            this.lblDayPrice.Size = new System.Drawing.Size(123, 19);
+            this.lblDayPrice.Size = new System.Drawing.Size(116, 18);
             this.lblDayPrice.TabIndex = 3;
             this.lblDayPrice.Text = "Day Price ($):";
             // 
@@ -386,15 +398,15 @@ namespace FA21_Final_Project
             this.cbxDayPrice.FormattingEnabled = true;
             this.cbxDayPrice.Location = new System.Drawing.Point(665, 38);
             this.cbxDayPrice.Name = "cbxDayPrice";
-            this.cbxDayPrice.Size = new System.Drawing.Size(160, 27);
+            this.cbxDayPrice.Size = new System.Drawing.Size(160, 26);
             this.cbxDayPrice.TabIndex = 2;
             // 
             // lblEnDate
             // 
             this.lblEnDate.AutoSize = true;
-            this.lblEnDate.Location = new System.Drawing.Point(88, 232);
+            this.lblEnDate.Location = new System.Drawing.Point(97, 231);
             this.lblEnDate.Name = "lblEnDate";
-            this.lblEnDate.Size = new System.Drawing.Size(94, 19);
+            this.lblEnDate.Size = new System.Drawing.Size(86, 18);
             this.lblEnDate.TabIndex = 1;
             this.lblEnDate.Text = "End Date:";
             // 
@@ -403,7 +415,7 @@ namespace FA21_Final_Project
             this.lblStDate.AutoSize = true;
             this.lblStDate.Location = new System.Drawing.Point(88, 38);
             this.lblStDate.Name = "lblStDate";
-            this.lblStDate.Size = new System.Drawing.Size(102, 19);
+            this.lblStDate.Size = new System.Drawing.Size(95, 18);
             this.lblStDate.TabIndex = 0;
             this.lblStDate.Text = "Start Date:";
             // 
@@ -419,10 +431,10 @@ namespace FA21_Final_Project
             this.tbTraining.Controls.Add(this.lblTrainingDesc);
             this.tbTraining.Controls.Add(this.lblDogBreed);
             this.tbTraining.Controls.Add(this.lblDogName);
-            this.tbTraining.Location = new System.Drawing.Point(4, 28);
+            this.tbTraining.Location = new System.Drawing.Point(4, 27);
             this.tbTraining.Name = "tbTraining";
             this.tbTraining.Padding = new System.Windows.Forms.Padding(3);
-            this.tbTraining.Size = new System.Drawing.Size(890, 540);
+            this.tbTraining.Size = new System.Drawing.Size(890, 541);
             this.tbTraining.TabIndex = 2;
             this.tbTraining.Text = "Training Services";
             // 
@@ -469,25 +481,25 @@ namespace FA21_Final_Project
             this.lblStartDate.AutoSize = true;
             this.lblStartDate.Location = new System.Drawing.Point(90, 321);
             this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(102, 19);
+            this.lblStartDate.Size = new System.Drawing.Size(95, 18);
             this.lblStartDate.TabIndex = 3;
             this.lblStartDate.Text = "Start Date:";
             // 
             // lblTrainingDesc
             // 
             this.lblTrainingDesc.AutoSize = true;
-            this.lblTrainingDesc.Location = new System.Drawing.Point(37, 181);
+            this.lblTrainingDesc.Location = new System.Drawing.Point(51, 178);
             this.lblTrainingDesc.Name = "lblTrainingDesc";
-            this.lblTrainingDesc.Size = new System.Drawing.Size(194, 19);
+            this.lblTrainingDesc.Size = new System.Drawing.Size(174, 18);
             this.lblTrainingDesc.TabIndex = 2;
             this.lblTrainingDesc.Text = "Training Description:";
             // 
             // lblDogBreed
             // 
             this.lblDogBreed.AutoSize = true;
-            this.lblDogBreed.Location = new System.Drawing.Point(130, 118);
+            this.lblDogBreed.Location = new System.Drawing.Point(130, 121);
             this.lblDogBreed.Name = "lblDogBreed";
-            this.lblDogBreed.Size = new System.Drawing.Size(101, 19);
+            this.lblDogBreed.Size = new System.Drawing.Size(98, 18);
             this.lblDogBreed.TabIndex = 1;
             this.lblDogBreed.Text = "Dog Breed:";
             // 
@@ -496,7 +508,7 @@ namespace FA21_Final_Project
             this.lblDogName.AutoSize = true;
             this.lblDogName.Location = new System.Drawing.Point(130, 62);
             this.lblDogName.Name = "lblDogName";
-            this.lblDogName.Size = new System.Drawing.Size(101, 19);
+            this.lblDogName.Size = new System.Drawing.Size(95, 18);
             this.lblDogName.TabIndex = 0;
             this.lblDogName.Text = "Dog Name:";
             // 
@@ -504,10 +516,12 @@ namespace FA21_Final_Project
             // 
             this.tbShoppingCart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.tbShoppingCart.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbShoppingCart.Controls.Add(this.btnCoupon);
+            this.tbShoppingCart.Controls.Add(this.tbxCouponCode);
+            this.tbShoppingCart.Controls.Add(this.btnReceipt);
             this.tbShoppingCart.Controls.Add(this.btnRemoveAll);
             this.tbShoppingCart.Controls.Add(this.lblDP);
             this.tbShoppingCart.Controls.Add(this.lblDiscPercent);
-            this.tbShoppingCart.Controls.Add(this.cbxCouponCode);
             this.tbShoppingCart.Controls.Add(this.lblCCode);
             this.tbShoppingCart.Controls.Add(this.lblSubTotalDisc);
             this.tbShoppingCart.Controls.Add(this.lblSBTD);
@@ -528,12 +542,22 @@ namespace FA21_Final_Project
             this.tbShoppingCart.Controls.Add(this.lblSubTotal);
             this.tbShoppingCart.Controls.Add(this.lblST);
             this.tbShoppingCart.Controls.Add(this.dgvResults);
-            this.tbShoppingCart.Location = new System.Drawing.Point(4, 28);
+            this.tbShoppingCart.Location = new System.Drawing.Point(4, 27);
             this.tbShoppingCart.Name = "tbShoppingCart";
             this.tbShoppingCart.Padding = new System.Windows.Forms.Padding(3);
-            this.tbShoppingCart.Size = new System.Drawing.Size(890, 540);
+            this.tbShoppingCart.Size = new System.Drawing.Size(890, 541);
             this.tbShoppingCart.TabIndex = 3;
             this.tbShoppingCart.Text = "Shopping Cart";
+            // 
+            // btnReceipt
+            // 
+            this.btnReceipt.Location = new System.Drawing.Point(409, 468);
+            this.btnReceipt.Name = "btnReceipt";
+            this.btnReceipt.Size = new System.Drawing.Size(102, 49);
+            this.btnReceipt.TabIndex = 25;
+            this.btnReceipt.Text = "&View Receipts";
+            this.btnReceipt.UseVisualStyleBackColor = true;
+            this.btnReceipt.Click += new System.EventHandler(this.btnReceipt_Click);
             // 
             // btnRemoveAll
             // 
@@ -548,10 +572,10 @@ namespace FA21_Final_Project
             // lblDP
             // 
             this.lblDP.AutoSize = true;
-            this.lblDP.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDP.Location = new System.Drawing.Point(518, 354);
+            this.lblDP.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDP.Location = new System.Drawing.Point(509, 354);
             this.lblDP.Name = "lblDP";
-            this.lblDP.Size = new System.Drawing.Size(193, 19);
+            this.lblDP.Size = new System.Drawing.Size(182, 18);
             this.lblDP.TabIndex = 23;
             this.lblDP.Text = "Discount Percentage:";
             // 
@@ -559,35 +583,26 @@ namespace FA21_Final_Project
             // 
             this.lblDiscPercent.BackColor = System.Drawing.Color.White;
             this.lblDiscPercent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDiscPercent.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscPercent.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscPercent.Location = new System.Drawing.Point(728, 346);
             this.lblDiscPercent.Name = "lblDiscPercent";
             this.lblDiscPercent.Size = new System.Drawing.Size(122, 27);
             this.lblDiscPercent.TabIndex = 22;
-            // 
-            // cbxCouponCode
-            // 
-            this.cbxCouponCode.FormattingEnabled = true;
-            this.cbxCouponCode.Location = new System.Drawing.Point(23, 346);
-            this.cbxCouponCode.Name = "cbxCouponCode";
-            this.cbxCouponCode.Size = new System.Drawing.Size(121, 27);
-            this.cbxCouponCode.TabIndex = 20;
-            this.cbxCouponCode.SelectedIndexChanged += new System.EventHandler(this.cbxCouponCode_SelectedIndexChanged);
             // 
             // lblCCode
             // 
             this.lblCCode.AutoSize = true;
             this.lblCCode.Location = new System.Drawing.Point(19, 312);
             this.lblCCode.Name = "lblCCode";
-            this.lblCCode.Size = new System.Drawing.Size(129, 19);
+            this.lblCCode.Size = new System.Drawing.Size(227, 18);
             this.lblCCode.TabIndex = 19;
-            this.lblCCode.Text = "Coupon Code:";
+            this.lblCCode.Text = "Please Enter Coupon Code:";
             // 
             // lblSubTotalDisc
             // 
             this.lblSubTotalDisc.BackColor = System.Drawing.Color.White;
             this.lblSubTotalDisc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSubTotalDisc.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotalDisc.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotalDisc.Location = new System.Drawing.Point(728, 420);
             this.lblSubTotalDisc.Name = "lblSubTotalDisc";
             this.lblSubTotalDisc.Size = new System.Drawing.Size(122, 27);
@@ -596,20 +611,20 @@ namespace FA21_Final_Project
             // lblSBTD
             // 
             this.lblSBTD.AutoSize = true;
-            this.lblSBTD.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSBTD.Location = new System.Drawing.Point(479, 428);
+            this.lblSBTD.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSBTD.Location = new System.Drawing.Point(484, 428);
             this.lblSBTD.Name = "lblSBTD";
-            this.lblSBTD.Size = new System.Drawing.Size(225, 19);
+            this.lblSBTD.Size = new System.Drawing.Size(207, 18);
             this.lblSBTD.TabIndex = 17;
             this.lblSBTD.Text = "Sub Total After Discount:";
             // 
             // lblDisc
             // 
             this.lblDisc.AutoSize = true;
-            this.lblDisc.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisc.Location = new System.Drawing.Point(613, 389);
+            this.lblDisc.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDisc.Location = new System.Drawing.Point(607, 389);
             this.lblDisc.Name = "lblDisc";
-            this.lblDisc.Size = new System.Drawing.Size(91, 19);
+            this.lblDisc.Size = new System.Drawing.Size(84, 18);
             this.lblDisc.TabIndex = 16;
             this.lblDisc.Text = "Discount:";
             // 
@@ -617,7 +632,7 @@ namespace FA21_Final_Project
             // 
             this.lblDiscount.BackColor = System.Drawing.Color.White;
             this.lblDiscount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDiscount.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiscount.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDiscount.Location = new System.Drawing.Point(728, 381);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(122, 27);
@@ -637,7 +652,7 @@ namespace FA21_Final_Project
             this.lblExp.AutoSize = true;
             this.lblExp.Location = new System.Drawing.Point(6, 208);
             this.lblExp.Name = "lblExp";
-            this.lblExp.Size = new System.Drawing.Size(153, 19);
+            this.lblExp.Size = new System.Drawing.Size(135, 18);
             this.lblExp.TabIndex = 13;
             this.lblExp.Text = "Expiration Date:";
             // 
@@ -655,7 +670,7 @@ namespace FA21_Final_Project
             this.lblCC.AutoSize = true;
             this.lblCC.Location = new System.Drawing.Point(6, 130);
             this.lblCC.Name = "lblCC";
-            this.lblCC.Size = new System.Drawing.Size(191, 19);
+            this.lblCC.Size = new System.Drawing.Size(172, 18);
             this.lblCC.TabIndex = 11;
             this.lblCC.Text = "Credit Card Number:";
             // 
@@ -691,7 +706,7 @@ namespace FA21_Final_Project
             this.lblCust.AutoSize = true;
             this.lblCust.Location = new System.Drawing.Point(6, 17);
             this.lblCust.Name = "lblCust";
-            this.lblCust.Size = new System.Drawing.Size(99, 19);
+            this.lblCust.Size = new System.Drawing.Size(91, 18);
             this.lblCust.TabIndex = 7;
             this.lblCust.Text = "Customer:";
             // 
@@ -699,7 +714,7 @@ namespace FA21_Final_Project
             // 
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTotal.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(728, 505);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(122, 27);
@@ -708,10 +723,10 @@ namespace FA21_Final_Project
             // lblT1
             // 
             this.lblT1.AutoSize = true;
-            this.lblT1.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblT1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblT1.Location = new System.Drawing.Point(638, 513);
             this.lblT1.Name = "lblT1";
-            this.lblT1.Size = new System.Drawing.Size(60, 19);
+            this.lblT1.Size = new System.Drawing.Size(53, 18);
             this.lblT1.TabIndex = 5;
             this.lblT1.Text = "Total:";
             // 
@@ -719,7 +734,7 @@ namespace FA21_Final_Project
             // 
             this.lblTaxes.BackColor = System.Drawing.Color.White;
             this.lblTaxes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTaxes.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxes.Location = new System.Drawing.Point(728, 463);
             this.lblTaxes.Name = "lblTaxes";
             this.lblTaxes.Size = new System.Drawing.Size(122, 27);
@@ -728,10 +743,10 @@ namespace FA21_Final_Project
             // lblTx
             // 
             this.lblTx.AutoSize = true;
-            this.lblTx.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTx.Location = new System.Drawing.Point(638, 471);
+            this.lblTx.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTx.Location = new System.Drawing.Point(631, 471);
             this.lblTx.Name = "lblTx";
-            this.lblTx.Size = new System.Drawing.Size(66, 19);
+            this.lblTx.Size = new System.Drawing.Size(60, 18);
             this.lblTx.TabIndex = 3;
             this.lblTx.Text = "Taxes:";
             // 
@@ -739,7 +754,7 @@ namespace FA21_Final_Project
             // 
             this.lblSubTotal.BackColor = System.Drawing.Color.White;
             this.lblSubTotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSubTotal.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotal.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubTotal.Location = new System.Drawing.Point(728, 304);
             this.lblSubTotal.Name = "lblSubTotal";
             this.lblSubTotal.Size = new System.Drawing.Size(122, 27);
@@ -748,10 +763,10 @@ namespace FA21_Final_Project
             // lblST
             // 
             this.lblST.AutoSize = true;
-            this.lblST.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblST.Location = new System.Drawing.Point(613, 312);
+            this.lblST.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblST.Location = new System.Drawing.Point(603, 312);
             this.lblST.Name = "lblST";
-            this.lblST.Size = new System.Drawing.Size(98, 19);
+            this.lblST.Size = new System.Drawing.Size(88, 18);
             this.lblST.TabIndex = 1;
             this.lblST.Text = "Sub Total:";
             // 
@@ -767,6 +782,62 @@ namespace FA21_Final_Project
             this.dgvResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResults.Size = new System.Drawing.Size(616, 257);
             this.dgvResults.TabIndex = 0;
+            // 
+            // tbxCouponCode
+            // 
+            this.tbxCouponCode.Location = new System.Drawing.Point(23, 344);
+            this.tbxCouponCode.Name = "tbxCouponCode";
+            this.tbxCouponCode.Size = new System.Drawing.Size(100, 26);
+            this.tbxCouponCode.TabIndex = 26;
+            // 
+            // btnCoupon
+            // 
+            this.btnCoupon.Location = new System.Drawing.Point(21, 389);
+            this.btnCoupon.Name = "btnCoupon";
+            this.btnCoupon.Size = new System.Drawing.Size(102, 49);
+            this.btnCoupon.TabIndex = 27;
+            this.btnCoupon.Text = "Enter &Coupon";
+            this.btnCoupon.UseVisualStyleBackColor = true;
+            this.btnCoupon.Click += new System.EventHandler(this.btnCoupon_Click);
+            // 
+            // gbxSearch
+            // 
+            this.gbxSearch.Controls.Add(this.btnSearch);
+            this.gbxSearch.Controls.Add(this.tbxSearch);
+            this.gbxSearch.Controls.Add(this.lblSearch);
+            this.gbxSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxSearch.Location = new System.Drawing.Point(62, 395);
+            this.gbxSearch.Name = "gbxSearch";
+            this.gbxSearch.Size = new System.Drawing.Size(281, 129);
+            this.gbxSearch.TabIndex = 16;
+            this.gbxSearch.TabStop = false;
+            this.gbxSearch.Text = "Search";
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(3, 19);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(272, 15);
+            this.lblSearch.TabIndex = 0;
+            this.lblSearch.Text = "Enter the Dog Breed to Search Inventory:";
+            // 
+            // tbxSearch
+            // 
+            this.tbxSearch.Location = new System.Drawing.Point(6, 47);
+            this.tbxSearch.Name = "tbxSearch";
+            this.tbxSearch.Size = new System.Drawing.Size(248, 23);
+            this.tbxSearch.TabIndex = 1;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(16, 100);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "&Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // frmMain
             // 
@@ -794,6 +865,8 @@ namespace FA21_Final_Project
             this.tbShoppingCart.ResumeLayout(false);
             this.tbShoppingCart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
+            this.gbxSearch.ResumeLayout(false);
+            this.gbxSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -840,7 +913,6 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblSBTD;
         private System.Windows.Forms.Label lblSubTotalDisc;
         private System.Windows.Forms.Label lblCCode;
-        private System.Windows.Forms.ComboBox cbxCouponCode;
         private System.Windows.Forms.Label lblDiscPercent;
         private System.Windows.Forms.Label lblDP;
         private System.Windows.Forms.Button btnRemoveAll;
@@ -865,5 +937,12 @@ namespace FA21_Final_Project
         private System.Windows.Forms.MonthCalendar mthTraining;
         private System.Windows.Forms.Label lblHelp;
         private System.Windows.Forms.HelpProvider hlpCustomer;
+        private System.Windows.Forms.Button btnReceipt;
+        private System.Windows.Forms.TextBox tbxCouponCode;
+        private System.Windows.Forms.Button btnCoupon;
+        private System.Windows.Forms.GroupBox gbxSearch;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.TextBox tbxSearch;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

@@ -25,8 +25,8 @@ namespace FA21_Final_Project
         private int intSelectedImageID = 0;
         private int intCurrent = 0;
         public int intCouponCode = 0;
-        public static decimal decSubTotal = 0;
-        public static decimal decDiscountPercent;
+        public static decimal decSubTotal = 0.0M;
+        public static decimal decDiscountPercent = 0.0M;
         public static decimal decDiscount;
         public static decimal decSubTotalDiscount;
         public static decimal decTaxes = 0;
@@ -59,81 +59,7 @@ namespace FA21_Final_Project
 
         private void frmCustomer_Load(object sender, EventArgs e)
         {
-            try
-            {
-                hlpCustomer.HelpNamespace = Application.StartupPath + "\\CustomerHelp.chm";
-                //load db information and display on form
-                lstInventory.Clear();
-                lstInventory = clsSQL.ReloadImageList();
-                lstCoupon = clsSQL.LoadCoupons();
-                lstDayPrice = clsSQL.LoadPrice();
-                DateTime now = DateTime.Now;
-                for (int i = 0; i < lstCoupon.Count; i++)
-                {
-                    if (lstCoupon[i].dtExpirationDate >= now)
-                    {
-                        cbxCouponCode.Items.Add(lstCoupon[i].intCouponID);
-                    }
-                }
-                if (lstInventory.Count > 0)
-                {
-                    using (MemoryStream ms = new MemoryStream(lstInventory[0].bytImage))
-                    {
-                        Image image = Image.FromStream(ms);
-                        pbxImage.Image = image;
-                    }
-                    intSelectedImageID = lstInventory[0].intInventoryID;
-                    lblName.Text = lstInventory[0].strItemName;
-                    lblDescription.Text = lstInventory[0].strItemDescription;
-                    lblCost.Text = "$" + lstInventory[0].decRetailPrice.ToString();
-                    lblQuantity.Text = lstInventory[0].intQuantity.ToString();
-                    for (int i = 1; i <= lstInventory[0].intQuantity; i++)
-                    {
-                        cbxQuantity.Items.Add(i);
-                    }
-                }
-                if (!boolHasAccount)
-                {
-                    //set up browse inventory form
-                    this.tbCustomer.TabPages.Remove(tbQuailHunts);
-                    this.tbCustomer.TabPages.Remove(tbTraining);
-                    this.tbCustomer.TabPages.Remove(tbShoppingCart);
-                    btnAdd.Enabled = false;
-                    btnAdd.Visible = false;
-                    btnCart.Enabled = false;
-                    btnCart.Visible = false;
-                }
-
-                //set dgv for Receipt
-                dgvResults.Columns.Add("Name", "Name");
-                dgvResults.Columns.Add("Quantity", "Quantity");
-                dgvResults.Columns.Add("Line Item Total", "Line Item Total");
-                //dgvResults.Columns[0].Width = 275;
-                //dgvResults.Columns[1].Width = 100;
-                //dgvResults.Columns[2].Width = 200;
-                //lblCustomer.BorderStyle = BorderStyle.None;
-
-                //get customer name
-                string strQueryFirstName = "SELECT NameFirst FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
-                string strQueryLastName = "SELECT NameLast FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
-                string strPhoneNumberQuery = "SELECT PhonePrimary FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
-                strPhoneNumber = clsSQL.DatabaseCommandLogon(strPhoneNumberQuery);
-                strFirstName = clsSQL.DatabaseCommandLogon(strQueryFirstName);
-                strLastName = clsSQL.DatabaseCommandLogon(strQueryLastName);
-                lblCustomer.Text = strFirstName + " " + strLastName;
-
-                for (int i = 0; i < lstDayPrice.Count; i++)
-                {
-                    cbxDayPrice.Items.Add(lstDayPrice[i].decDayPrice.ToString("N2"));
-                }
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            FormLoad();
         }
 
         private void pbxNext_Click(object sender, EventArgs e)
@@ -291,21 +217,15 @@ namespace FA21_Final_Project
             //fills the information for the textboxes
             try
             {
-                decSubTotal = 0;
-                if (cbxCouponCode.SelectedIndex == -1)
-                {
-                    decDiscountPercent = 0.00M;
-                }
-                else
-                {
-                    decDiscountPercent = lstCoupon[cbxCouponCode.SelectedIndex].decCouponPercent;
-                }
+                decSubTotal = 0.0M;
+        
+                
                 for (int i = 0; i < lstShoppingCartCost.Count; i++)
                 {
                     decSubTotal += lstShoppingCartCost[i];
                 }
                 lblSubTotal.Text = decSubTotal.ToString("C2");
-                lblDiscPercent.Text = decDiscountPercent.ToString("N2");
+                lblDiscPercent.Text = decDiscountPercent.ToString("P2");
                 decDiscount = decSubTotal * decDiscountPercent;
                 lblDiscount.Text = decDiscount.ToString("C2");
                 decSubTotalDiscount = decSubTotal - decDiscount;
@@ -320,31 +240,33 @@ namespace FA21_Final_Project
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public int GetCouponCode()
-        {
-            try
-            {
-                if (cbxCouponCode.SelectedIndex == -1)
-                {
-                    intCouponCode = 20003;
-                }
-                else
-                {
-                    intCouponCode = Convert.ToInt32(cbxCouponCode.SelectedItem);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return intCouponCode;
-        }
+        
         private void btnOrder_Click(object sender, EventArgs e)
         {
             //get credit card information check and save orders, and order items to db and update quantity in inventory
             try
             {
-                
+                //verify quantity is still available to purchase
+                for(int i = 0; i < lstShoppingCartName.Count; i++)
+                {
+                    string strQuantityQuery = "SELECT Quantity FROM tekelle21fa2332.Inventory WHERE ItemName = '" + lstShoppingCartName[i] + "';";
+                    string strQuantityResults = clsSQL.DatabaseCommandLogon(strQuantityQuery);
+                    int intQuantity = Convert.ToInt32(strQuantityResults);
+                    if (intQuantity < lstShoppingCartQuantity[i])
+                    {
+                        MessageBox.Show("Not enough inventory in stock. Removing  " + lstShoppingCartName[i] + " from cart.", "Inventory Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        lstInventory[lstIntCurrentIndex[i]].intQuantity = intQuantity;
+                        dgvResults.Rows.RemoveAt(i);
+                        lstShoppingCartQuantity.RemoveAt(i);
+                        lstShoppingCartName.RemoveAt(i);
+                        lstShoppingCartCost.RemoveAt(i);
+                        lstShoppingCartInventoryID.RemoveAt(i);
+                        lstIntCurrentIndex.RemoveAt(i);
+                        FillInformation();
+                        LoadNext();
+                        return;
+                    }
+                 }
                 if (lstShoppingCartName.Count == 0)
                 {
                     MessageBox.Show("Nothing to Order", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -357,7 +279,6 @@ namespace FA21_Final_Project
                     return;
                 }
                 var date = DateTime.Now.ToString("yyyy-MM-dd");
-                GetCouponCode();
                 string strInsertOrder = "INSERT INTO tekelle21fa2332.Orders VALUES (" + Convert.ToInt32(strPersonID) +
                     ", '" + date + "', " + decTotal + ", " + intCouponCode + ");";
                 clsSQL.UpdateDatabase(strInsertOrder);
@@ -373,7 +294,7 @@ namespace FA21_Final_Project
                 }
                 boolOrderMade = true;
                 MessageBox.Show("Order Saved.", "Information Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult dialogResult = MessageBox.Show("Would you like to continue shopping?", "Continue SHopping", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult dialogResult = MessageBox.Show("Would you like to see a receipt?\nPlease select no to continue shopping.", "Continue Shopping", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.Yes)
                 {
                     //print receipt
@@ -385,6 +306,15 @@ namespace FA21_Final_Project
                     StringBuilder html = new StringBuilder();
                     html = GenerateReport();
                     PrintReport(html);
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //save receipt to my documents
+                    StringBuilder html = new StringBuilder();
+                    html = GenerateReport();
+                    PrintReportNoShow(html);
+
                     //clear lists 
                     lstShoppingCartName.Clear();
                     lstShoppingCartCost.Clear();
@@ -395,23 +325,15 @@ namespace FA21_Final_Project
                     //clear the datagrid view
                     dgvResults.Rows.Clear();
 
-                    //reload inventory
-                    lstInventory = clsSQL.ReloadImageList();
+                    //reload form
+                    FormLoad();
+                    //clear labels
+                    ClearShoppingCartBoxes();
+                    FillInformation();
+
 
                     //move to inventory
                     tbCustomer.SelectedIndex = 0;
-                }
-                else if (dialogResult == DialogResult.No)
-                {
-                    if (!boolOrderMade)
-                    {
-                        MessageBox.Show("You have to make an Order.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    StringBuilder html = new StringBuilder();
-                    html = GenerateReport();
-                    PrintReport(html);
-                    Application.Exit();
                 }
 
             }
@@ -578,6 +500,7 @@ namespace FA21_Final_Project
                 lstShoppingCartCost.RemoveAt(intIndex);
                 lstShoppingCartInventoryID.RemoveAt(intIndex);
                 lstIntCurrentIndex.RemoveAt(intIndex);
+                FillInformation();
                 
             }
             catch(Exception ex)
@@ -671,11 +594,11 @@ namespace FA21_Final_Project
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 // A "using" statement will automatically close a file after opening it.
                 // It never hurts to include a file.Close() once you are done with a file.
-                using (StreamWriter writer = new StreamWriter(path + "\\Report.html"))
+                using (StreamWriter writer = new StreamWriter(path + "\\" + strMaxOrderID + "Report.html"))
                 {
                     writer.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@path + "\\Report.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(@path + "\\" + strMaxOrderID + "Report.html"); //Open the report in the default web browser
                 
             }
             catch (Exception ex)
@@ -683,8 +606,28 @@ namespace FA21_Final_Project
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void PrintReportNoShow(StringBuilder html)
+        {
+            // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+            try
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                // A "using" statement will automatically close a file after opening it.
+                // It never hurts to include a file.Close() once you are done with a file.
+                using (StreamWriter writer = new StreamWriter(path + "\\" + strMaxOrderID + "Report.html")) 
+                {
+                    writer.WriteLine(html);
+                }
+                //System.Diagnostics.Process.Start(@path + "\\Report.html"); //Open the report in the default web browser
 
-        
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
@@ -709,6 +652,9 @@ namespace FA21_Final_Project
                 
                 //clear the datagrid view
                 dgvResults.Rows.Clear();
+
+                //clear labels
+                ClearShoppingCartBoxes();
                
             }
             catch(Exception ex)
@@ -887,6 +833,174 @@ namespace FA21_Final_Project
         private void lblHelp_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, hlpCustomer.HelpNamespace);
+        }
+
+        public void FormLoad()
+        {
+            try
+            {
+                hlpCustomer.HelpNamespace = Application.StartupPath + "\\CustomerHelp.chm";
+                //load db information and display on form
+                lstInventory.Clear();
+                cbxQuantity.Items.Clear();
+                lstInventory = clsSQL.ReloadImageList();
+                lstCoupon = clsSQL.LoadCoupons();
+                lstDayPrice = clsSQL.LoadPrice();
+               
+                if (lstInventory.Count > 0)
+                {
+                    using (MemoryStream ms = new MemoryStream(lstInventory[0].bytImage))
+                    {
+                        Image image = Image.FromStream(ms);
+                        pbxImage.Image = image;
+                    }
+                    intSelectedImageID = lstInventory[0].intInventoryID;
+                    lblName.Text = lstInventory[0].strItemName;
+                    lblDescription.Text = lstInventory[0].strItemDescription;
+                    lblCost.Text = "$" + lstInventory[0].decRetailPrice.ToString();
+                    lblQuantity.Text = lstInventory[0].intQuantity.ToString();
+                    for (int i = 1; i <= lstInventory[0].intQuantity; i++)
+                    {
+                        cbxQuantity.Items.Add(i);
+                    }
+                }
+                if (!boolHasAccount)
+                {
+                    //set up browse inventory form
+                    this.tbCustomer.TabPages.Remove(tbQuailHunts);
+                    this.tbCustomer.TabPages.Remove(tbTraining);
+                    this.tbCustomer.TabPages.Remove(tbShoppingCart);
+                    btnAdd.Enabled = false;
+                    btnAdd.Visible = false;
+                    btnCart.Enabled = false;
+                    btnCart.Visible = false;
+                }
+
+                //set dgv for Receipt
+                dgvResults.Columns.Add("Name", "Name");
+                dgvResults.Columns.Add("Quantity", "Quantity");
+                dgvResults.Columns.Add("Line Item Total", "Line Item Total");
+                //dgvResults.Columns[0].Width = 275;
+                //dgvResults.Columns[1].Width = 100;
+                //dgvResults.Columns[2].Width = 200;
+                //lblCustomer.BorderStyle = BorderStyle.None;
+
+                //get customer name
+                string strQueryFirstName = "SELECT NameFirst FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
+                string strQueryLastName = "SELECT NameLast FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
+                string strPhoneNumberQuery = "SELECT PhonePrimary FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
+                strPhoneNumber = clsSQL.DatabaseCommandLogon(strPhoneNumberQuery);
+                strFirstName = clsSQL.DatabaseCommandLogon(strQueryFirstName);
+                strLastName = clsSQL.DatabaseCommandLogon(strQueryLastName);
+                lblCustomer.Text = strFirstName + " " + strLastName;
+
+                for (int i = 0; i < lstDayPrice.Count; i++)
+                {
+                    cbxDayPrice.Items.Add(lstDayPrice[i].decDayPrice.ToString("N2"));
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ClearShoppingCartBoxes()
+        {
+            tbxCreditCard.Text = "";
+            tbxExpiration.Text = "";
+            lblSubTotal.Text = "";
+            lblDiscPercent.Text = "";
+            lblDiscount.Text = "";
+            lblSubTotalDisc.Text = "";
+            lblTaxes.Text = "";
+            lblTotal.Text = "";
+        }
+
+        private void btnReceipt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                openFileDialog1.InitialDirectory = @path;
+                openFileDialog1.DefaultExt = "html";
+                openFileDialog1.Filter = "html files (*.html)|*.html|All files (*.*)|*.*";
+                openFileDialog1.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCoupon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbxCouponCode.Text == "")
+                {
+                    MessageBox.Show("You must enter a coupon code.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                bool boolCouponCodeValid = false;
+                string strCouponCode = tbxCouponCode.Text;
+                int intCouponCodeTemp = Convert.ToInt32(strCouponCode);
+                DateTime now = DateTime.Now;
+                for (int i = 0; i < lstCoupon.Count; i++)
+                {
+                    if (intCouponCodeTemp == lstCoupon[i].intCouponID && lstCoupon[i].dtExpirationDate >= now)
+                    {
+                        decDiscountPercent = lstCoupon[i].decCouponPercent;
+                        intCouponCode = intCouponCodeTemp;
+                        FillInformation();
+                        boolCouponCodeValid = true;
+                        return;
+                    }
+                    
+                }
+                if(boolCouponCodeValid == false)
+                {
+                    MessageBox.Show("Coupon Code Not Valid", "Coupon Invalid", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    decDiscountPercent = 0.0M;
+                    intCouponCode = 20003;
+                    FillInformation();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbxSearch.Text == "")
+                {
+                    MessageBox.Show("You must enter a Breed.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string strBreedName = tbxSearch.Text.Trim();
+                for (int i = 0; i < lstInventory.Count; i++)
+                {
+                    if (lstInventory[i].strItemName.ToUpper() == strBreedName.ToUpper())
+                    {
+                        intCurrent = i;
+                        LoadNext();
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

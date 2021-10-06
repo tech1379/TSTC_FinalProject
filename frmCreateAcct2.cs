@@ -35,26 +35,27 @@ namespace FA21_Final_Project
         {
             try
             {
-                //load combo boxes
-                string[] strQuestionArray = new string[3];
-                strQuestionArray[0] = "Who is your favorite author?";
-                strQuestionArray[1] = "What is your favorite food?";
-                strQuestionArray[2] = "What is your favorite movie?";
-                string[] strQuestionArray2 = new string[3];
-                strQuestionArray2[0] = "What is your favorite band?";
-                strQuestionArray2[1] = "What is your favorite color?";
-                strQuestionArray2[2] = "Who is your favorite singer?";
-                string[] strQuestionArray3 = new string[3];
-                strQuestionArray3[0] = "What is your favorite song?";
-                strQuestionArray3[1] = "Who is your favorite teacher?";
-                strQuestionArray3[2] = "Where were you born?";
+                LoadQuestions();
+                ////load combo boxes
+                //string[] strQuestionArray = new string[3];
+                //strQuestionArray[0] = "Who is your favorite author?";
+                //strQuestionArray[1] = "What is your favorite food?";
+                //strQuestionArray[2] = "What is your favorite movie?";
+                //string[] strQuestionArray2 = new string[3];
+                //strQuestionArray2[0] = "What is your favorite band?";
+                //strQuestionArray2[1] = "What is your favorite color?";
+                //strQuestionArray2[2] = "Who is your favorite singer?";
+                //string[] strQuestionArray3 = new string[3];
+                //strQuestionArray3[0] = "What is your favorite song?";
+                //strQuestionArray3[1] = "Who is your favorite teacher?";
+                //strQuestionArray3[2] = "Where were you born?";
 
-                for (int i = 0; i < strQuestionArray.Length; i++)
-                {
-                    cbxFirstQ.Items.Add(strQuestionArray[i]);
-                    cbxSecondQ.Items.Add(strQuestionArray2[i]);
-                    cbxThirdQ.Items.Add(strQuestionArray3[i]);
-                }
+                //for (int i = 0; i < strQuestionArray.Length; i++)
+                //{
+                //    cbxFirstQ.Items.Add(strQuestionArray[i]);
+                //    cbxSecondQ.Items.Add(strQuestionArray2[i]);
+                //    cbxThirdQ.Items.Add(strQuestionArray3[i]);
+                //}
 
                 //cbxPosition.Items.Add("Manager");
                 //cbxPosition.Items.Add("Employee");
@@ -99,7 +100,7 @@ namespace FA21_Final_Project
                     MessageBox.Show("First Answer cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if(tbxSecondAns.Text == "")
+                else if (tbxSecondAns.Text == "")
                 {
                     MessageBox.Show("Second Answer cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -109,17 +110,17 @@ namespace FA21_Final_Project
                     MessageBox.Show("Third Answer cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if(cbxFirstQ.SelectedIndex == -1)
+                else if (cbxFirstQ.SelectedIndex == -1)
                 {
                     MessageBox.Show("First Question cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if(cbxSecondQ.SelectedIndex == -1)
+                else if (cbxSecondQ.SelectedIndex == -1)
                 {
                     MessageBox.Show("Second Question cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if(cbxThirdQ.SelectedIndex == -1)
+                else if (cbxThirdQ.SelectedIndex == -1)
                 {
                     MessageBox.Show("Third Question cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -139,12 +140,12 @@ namespace FA21_Final_Project
                     MessageBox.Show("Password not correct format!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-               
+
                 string strLogOnNameQuery = "SELECT COUNT(LogonName) FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogOnName + "';";
                 //MessageBox.Show(strLogOnNameQuery);
                 string strLogOnCount = clsSQL.DatabaseCommandLogon(strLogOnNameQuery);
                 int intLogOnCount = Convert.ToInt32(strLogOnCount);
-                if(intLogOnCount > 0)
+                if (intLogOnCount > 0)
                 {
                     MessageBox.Show("Username already used!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -160,7 +161,7 @@ namespace FA21_Final_Project
                 frmLogIn main = new frmLogIn();
                 main.ShowDialog();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -193,6 +194,34 @@ namespace FA21_Final_Project
                 tbxConfirm.PasswordChar = '*';
                 intToggle2++;
             }
+        }
+        public void LoadQuestions()
+        {
+            for (int i = 22000; i < 22003; i++)
+            {
+                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM tekelle21fa2332.SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
+                string strSecurityQuestion1 = clsSQL.DatabaseCommandLogon(strGetSecurityQuestion);
+                cbxFirstQ.Items.Add(strSecurityQuestion1);
+            }
+            for (int i = 22003; i < 22006; i++)
+            {
+                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM tekelle21fa2332.SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
+                string strSecurityQuestion2 = clsSQL.DatabaseCommandLogon(strGetSecurityQuestion);
+                cbxSecondQ.Items.Add(strSecurityQuestion2);
+            }
+            for (int i = 22006; i < 22009; i++)
+            {
+                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM tekelle21fa2332.SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
+                string strSecurityQuestion3 = clsSQL.DatabaseCommandLogon(strGetSecurityQuestion);
+                cbxThirdQ.Items.Add(strSecurityQuestion3);
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            frmLogIn login = new frmLogIn();
+            this.Hide();
+            login.ShowDialog();
         }
     }
 }

@@ -57,18 +57,20 @@ namespace FA21_Final_Project
             // lblNew
             // 
             this.lblNew.AutoSize = true;
-            this.lblNew.Location = new System.Drawing.Point(50, 24);
+            this.lblNew.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNew.Location = new System.Drawing.Point(51, 24);
             this.lblNew.Name = "lblNew";
-            this.lblNew.Size = new System.Drawing.Size(159, 21);
+            this.lblNew.Size = new System.Drawing.Size(151, 22);
             this.lblNew.TabIndex = 10;
             this.lblNew.Text = "New Password:";
             // 
             // lblConfirm
             // 
             this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Location = new System.Drawing.Point(15, 82);
+            this.lblConfirm.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirm.Location = new System.Drawing.Point(19, 82);
             this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(202, 21);
+            this.lblConfirm.Size = new System.Drawing.Size(183, 22);
             this.lblConfirm.TabIndex = 11;
             this.lblConfirm.Text = "Confirm Password:";
             // 
@@ -91,14 +93,16 @@ namespace FA21_Final_Project
             // lblSecurity1
             // 
             this.lblSecurity1.AutoSize = true;
-            this.lblSecurity1.Location = new System.Drawing.Point(7, 147);
+            this.lblSecurity1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity1.Location = new System.Drawing.Point(8, 147);
             this.lblSecurity1.Name = "lblSecurity1";
-            this.lblSecurity1.Size = new System.Drawing.Size(210, 21);
+            this.lblSecurity1.Size = new System.Drawing.Size(194, 22);
             this.lblSecurity1.TabIndex = 12;
             this.lblSecurity1.Text = "Security Question 1:";
             // 
             // btnReset
             // 
+            this.btnReset.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReset.Location = new System.Drawing.Point(195, 503);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(119, 63);
@@ -109,6 +113,7 @@ namespace FA21_Final_Project
             // 
             // btnClose
             // 
+            this.btnClose.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Location = new System.Drawing.Point(403, 503);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(119, 63);
@@ -129,9 +134,10 @@ namespace FA21_Final_Project
             // lblAn1
             // 
             this.lblAn1.AutoSize = true;
+            this.lblAn1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAn1.Location = new System.Drawing.Point(20, 194);
             this.lblAn1.Name = "lblAn1";
-            this.lblAn1.Size = new System.Drawing.Size(197, 21);
+            this.lblAn1.Size = new System.Drawing.Size(182, 22);
             this.lblAn1.TabIndex = 13;
             this.lblAn1.Text = "Security Answer 1:";
             // 
@@ -145,9 +151,10 @@ namespace FA21_Final_Project
             // lblSecurity2
             // 
             this.lblSecurity2.AutoSize = true;
-            this.lblSecurity2.Location = new System.Drawing.Point(7, 250);
+            this.lblSecurity2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity2.Location = new System.Drawing.Point(8, 250);
             this.lblSecurity2.Name = "lblSecurity2";
-            this.lblSecurity2.Size = new System.Drawing.Size(210, 21);
+            this.lblSecurity2.Size = new System.Drawing.Size(194, 22);
             this.lblSecurity2.TabIndex = 14;
             this.lblSecurity2.Text = "Security Question 2:";
             // 
@@ -163,9 +170,10 @@ namespace FA21_Final_Project
             // lblAn2
             // 
             this.lblAn2.AutoSize = true;
+            this.lblAn2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAn2.Location = new System.Drawing.Point(20, 309);
             this.lblAn2.Name = "lblAn2";
-            this.lblAn2.Size = new System.Drawing.Size(197, 21);
+            this.lblAn2.Size = new System.Drawing.Size(182, 22);
             this.lblAn2.TabIndex = 15;
             this.lblAn2.Text = "Security Answer 2:";
             // 
@@ -179,9 +187,10 @@ namespace FA21_Final_Project
             // lblSecurity3
             // 
             this.lblSecurity3.AutoSize = true;
-            this.lblSecurity3.Location = new System.Drawing.Point(7, 361);
+            this.lblSecurity3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecurity3.Location = new System.Drawing.Point(8, 361);
             this.lblSecurity3.Name = "lblSecurity3";
-            this.lblSecurity3.Size = new System.Drawing.Size(210, 21);
+            this.lblSecurity3.Size = new System.Drawing.Size(194, 22);
             this.lblSecurity3.TabIndex = 16;
             this.lblSecurity3.Text = "Security Question 3:";
             // 
@@ -197,9 +206,10 @@ namespace FA21_Final_Project
             // lblAn3
             // 
             this.lblAn3.AutoSize = true;
+            this.lblAn3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAn3.Location = new System.Drawing.Point(20, 422);
             this.lblAn3.Name = "lblAn3";
-            this.lblAn3.Size = new System.Drawing.Size(197, 21);
+            this.lblAn3.Size = new System.Drawing.Size(182, 22);
             this.lblAn3.TabIndex = 17;
             this.lblAn3.Text = "Security Answer 3:";
             // 

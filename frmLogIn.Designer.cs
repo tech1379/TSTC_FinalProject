@@ -29,6 +29,7 @@ namespace FA21_Final_Project
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogIn));
             this.gbxLogIn = new System.Windows.Forms.GroupBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblForgot = new System.Windows.Forms.Label();
@@ -55,7 +56,7 @@ namespace FA21_Final_Project
             this.gbxLogIn.Controls.Add(this.tbxLogIn);
             this.gbxLogIn.Controls.Add(this.lblPassword);
             this.gbxLogIn.Controls.Add(this.lblLogIn);
-            this.gbxLogIn.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxLogIn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxLogIn.Location = new System.Drawing.Point(126, 64);
             this.gbxLogIn.Name = "gbxLogIn";
             this.gbxLogIn.Size = new System.Drawing.Size(436, 243);
@@ -78,7 +79,7 @@ namespace FA21_Final_Project
             this.lblForgot.AutoSize = true;
             this.lblForgot.Location = new System.Drawing.Point(9, 203);
             this.lblForgot.Name = "lblForgot";
-            this.lblForgot.Size = new System.Drawing.Size(185, 21);
+            this.lblForgot.Size = new System.Drawing.Size(176, 22);
             this.lblForgot.TabIndex = 5;
             this.lblForgot.Text = "&Forgot Password?";
             this.lblForgot.Click += new System.EventHandler(this.lblForgot_Click);
@@ -115,7 +116,7 @@ namespace FA21_Final_Project
             this.lblPassword.AutoSize = true;
             this.lblPassword.Location = new System.Drawing.Point(9, 96);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(113, 21);
+            this.lblPassword.Size = new System.Drawing.Size(106, 22);
             this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Password:";
             // 
@@ -124,17 +125,17 @@ namespace FA21_Final_Project
             this.lblLogIn.AutoSize = true;
             this.lblLogIn.Location = new System.Drawing.Point(9, 40);
             this.lblLogIn.Name = "lblLogIn";
-            this.lblLogIn.Size = new System.Drawing.Size(121, 21);
+            this.lblLogIn.Size = new System.Drawing.Size(109, 22);
             this.lblLogIn.TabIndex = 1;
             this.lblLogIn.Text = "Username:";
             // 
             // lblWebsite
             // 
             this.lblWebsite.AutoSize = true;
-            this.lblWebsite.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWebsite.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWebsite.Location = new System.Drawing.Point(499, 367);
             this.lblWebsite.Name = "lblWebsite";
-            this.lblWebsite.Size = new System.Drawing.Size(145, 21);
+            this.lblWebsite.Size = new System.Drawing.Size(138, 22);
             this.lblWebsite.TabIndex = 4;
             this.lblWebsite.Text = "&Tek\'s Website";
             this.lblWebsite.Click += new System.EventHandler(this.lblWebsite_Click);
@@ -142,10 +143,10 @@ namespace FA21_Final_Project
             // lblInventory
             // 
             this.lblInventory.AutoSize = true;
-            this.lblInventory.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInventory.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInventory.Location = new System.Drawing.Point(23, 367);
             this.lblInventory.Name = "lblInventory";
-            this.lblInventory.Size = new System.Drawing.Size(185, 21);
+            this.lblInventory.Size = new System.Drawing.Size(169, 22);
             this.lblInventory.TabIndex = 3;
             this.lblInventory.Text = "&Browse Inventory";
             this.lblInventory.Click += new System.EventHandler(this.lblInventory_Click);
@@ -153,10 +154,10 @@ namespace FA21_Final_Project
             // lblCreate
             // 
             this.lblCreate.AutoSize = true;
-            this.lblCreate.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCreate.Location = new System.Drawing.Point(475, 19);
             this.lblCreate.Name = "lblCreate";
-            this.lblCreate.Size = new System.Drawing.Size(211, 21);
+            this.lblCreate.Size = new System.Drawing.Size(198, 22);
             this.lblCreate.TabIndex = 1;
             this.lblCreate.Text = "&Create New Account";
             this.lblCreate.Click += new System.EventHandler(this.lblCreate_Click);
@@ -164,10 +165,10 @@ namespace FA21_Final_Project
             // lblHelp
             // 
             this.lblHelp.AutoSize = true;
-            this.lblHelp.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHelp.Location = new System.Drawing.Point(12, 19);
             this.lblHelp.Name = "lblHelp";
-            this.lblHelp.Size = new System.Drawing.Size(122, 21);
+            this.lblHelp.Size = new System.Drawing.Size(116, 22);
             this.lblHelp.TabIndex = 0;
             this.lblHelp.Text = "Need &Help?";
             this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
@@ -188,6 +189,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblWebsite);
             this.Controls.Add(this.gbxLogIn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

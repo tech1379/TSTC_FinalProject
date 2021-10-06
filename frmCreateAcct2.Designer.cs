@@ -61,96 +61,96 @@ namespace FA21_Final_Project
             // lblLogOn
             // 
             this.lblLogOn.AutoSize = true;
-            this.lblLogOn.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogOn.Location = new System.Drawing.Point(172, 45);
+            this.lblLogOn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogOn.Location = new System.Drawing.Point(167, 45);
             this.lblLogOn.Name = "lblLogOn";
-            this.lblLogOn.Size = new System.Drawing.Size(104, 19);
+            this.lblLogOn.Size = new System.Drawing.Size(95, 18);
             this.lblLogOn.TabIndex = 12;
             this.lblLogOn.Text = "Username:";
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(178, 98);
+            this.lblPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassword.Location = new System.Drawing.Point(170, 98);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(98, 19);
+            this.lblPassword.Size = new System.Drawing.Size(92, 18);
             this.lblPassword.TabIndex = 13;
             this.lblPassword.Text = "Password:";
             // 
             // lblConfirm
             // 
             this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirm.Location = new System.Drawing.Point(103, 151);
+            this.lblConfirm.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirm.Location = new System.Drawing.Point(104, 151);
             this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(173, 19);
+            this.lblConfirm.Size = new System.Drawing.Size(158, 18);
             this.lblConfirm.TabIndex = 14;
             this.lblConfirm.Text = "Confirm Password:";
             // 
             // lblFirst
             // 
             this.lblFirst.AutoSize = true;
-            this.lblFirst.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirst.Location = new System.Drawing.Point(50, 204);
+            this.lblFirst.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirst.Location = new System.Drawing.Point(53, 204);
             this.lblFirst.Name = "lblFirst";
-            this.lblFirst.Size = new System.Drawing.Size(226, 19);
+            this.lblFirst.Size = new System.Drawing.Size(209, 18);
             this.lblFirst.TabIndex = 15;
             this.lblFirst.Text = "First Challenge Question:";
             // 
             // lblFirstAns
             // 
             this.lblFirstAns.AutoSize = true;
-            this.lblFirstAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstAns.Location = new System.Drawing.Point(63, 257);
+            this.lblFirstAns.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirstAns.Location = new System.Drawing.Point(64, 257);
             this.lblFirstAns.Name = "lblFirstAns";
-            this.lblFirstAns.Size = new System.Drawing.Size(213, 19);
+            this.lblFirstAns.Size = new System.Drawing.Size(198, 18);
             this.lblFirstAns.TabIndex = 16;
             this.lblFirstAns.Text = "First Challenge Answer:";
             // 
             // lblSecond
             // 
             this.lblSecond.AutoSize = true;
-            this.lblSecond.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSecond.Location = new System.Drawing.Point(26, 310);
+            this.lblSecond.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecond.Location = new System.Drawing.Point(28, 310);
             this.lblSecond.Name = "lblSecond";
-            this.lblSecond.Size = new System.Drawing.Size(250, 19);
+            this.lblSecond.Size = new System.Drawing.Size(234, 18);
             this.lblSecond.TabIndex = 17;
             this.lblSecond.Text = "Second Challenge Question:";
             // 
             // lblSecondAns
             // 
             this.lblSecondAns.AutoSize = true;
-            this.lblSecondAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSecondAns.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSecondAns.Location = new System.Drawing.Point(39, 363);
             this.lblSecondAns.Name = "lblSecondAns";
-            this.lblSecondAns.Size = new System.Drawing.Size(237, 19);
+            this.lblSecondAns.Size = new System.Drawing.Size(223, 18);
             this.lblSecondAns.TabIndex = 18;
             this.lblSecondAns.Text = "Second Challenge Answer:";
             // 
             // lblThird
             // 
             this.lblThird.AutoSize = true;
-            this.lblThird.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThird.Location = new System.Drawing.Point(39, 416);
+            this.lblThird.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThird.Location = new System.Drawing.Point(44, 416);
             this.lblThird.Name = "lblThird";
-            this.lblThird.Size = new System.Drawing.Size(240, 19);
+            this.lblThird.Size = new System.Drawing.Size(218, 18);
             this.lblThird.TabIndex = 19;
             this.lblThird.Text = "Third Challenge Question: ";
             // 
             // lblThirdAns
             // 
             this.lblThirdAns.AutoSize = true;
-            this.lblThirdAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblThirdAns.Location = new System.Drawing.Point(49, 469);
+            this.lblThirdAns.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblThirdAns.Location = new System.Drawing.Point(55, 469);
             this.lblThirdAns.Name = "lblThirdAns";
-            this.lblThirdAns.Size = new System.Drawing.Size(227, 19);
+            this.lblThirdAns.Size = new System.Drawing.Size(207, 18);
             this.lblThirdAns.TabIndex = 20;
             this.lblThirdAns.Text = "Third Challenge Answer: ";
             // 
             // btnCreate
             // 
-            this.btnCreate.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.Location = new System.Drawing.Point(251, 591);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(91, 54);
@@ -161,7 +161,7 @@ namespace FA21_Final_Project
             // 
             // tbxUserName
             // 
-            this.tbxUserName.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxUserName.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxUserName.Location = new System.Drawing.Point(311, 45);
             this.tbxUserName.Name = "tbxUserName";
             this.tbxUserName.Size = new System.Drawing.Size(236, 26);
@@ -169,7 +169,7 @@ namespace FA21_Final_Project
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxPassword.Location = new System.Drawing.Point(311, 91);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
@@ -178,7 +178,7 @@ namespace FA21_Final_Project
             // 
             // tbxConfirm
             // 
-            this.tbxConfirm.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxConfirm.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxConfirm.Location = new System.Drawing.Point(311, 148);
             this.tbxConfirm.Name = "tbxConfirm";
             this.tbxConfirm.PasswordChar = '*';
@@ -187,7 +187,7 @@ namespace FA21_Final_Project
             // 
             // tbxFirstAns
             // 
-            this.tbxFirstAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxFirstAns.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxFirstAns.Location = new System.Drawing.Point(311, 254);
             this.tbxFirstAns.MaxLength = 20;
             this.tbxFirstAns.Name = "tbxFirstAns";
@@ -196,34 +196,34 @@ namespace FA21_Final_Project
             // 
             // cbxFirstQ
             // 
-            this.cbxFirstQ.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxFirstQ.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxFirstQ.FormattingEnabled = true;
             this.cbxFirstQ.Location = new System.Drawing.Point(311, 206);
             this.cbxFirstQ.Name = "cbxFirstQ";
-            this.cbxFirstQ.Size = new System.Drawing.Size(446, 27);
+            this.cbxFirstQ.Size = new System.Drawing.Size(446, 26);
             this.cbxFirstQ.TabIndex = 3;
             // 
             // cbxSecondQ
             // 
-            this.cbxSecondQ.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSecondQ.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSecondQ.FormattingEnabled = true;
             this.cbxSecondQ.Location = new System.Drawing.Point(311, 302);
             this.cbxSecondQ.Name = "cbxSecondQ";
-            this.cbxSecondQ.Size = new System.Drawing.Size(446, 27);
+            this.cbxSecondQ.Size = new System.Drawing.Size(446, 26);
             this.cbxSecondQ.TabIndex = 5;
             // 
             // cbxThirdQ
             // 
-            this.cbxThirdQ.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxThirdQ.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxThirdQ.FormattingEnabled = true;
             this.cbxThirdQ.Location = new System.Drawing.Point(311, 408);
             this.cbxThirdQ.Name = "cbxThirdQ";
-            this.cbxThirdQ.Size = new System.Drawing.Size(446, 27);
+            this.cbxThirdQ.Size = new System.Drawing.Size(446, 26);
             this.cbxThirdQ.TabIndex = 7;
             // 
             // tbxSecondAns
             // 
-            this.tbxSecondAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSecondAns.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxSecondAns.Location = new System.Drawing.Point(311, 356);
             this.tbxSecondAns.MaxLength = 20;
             this.tbxSecondAns.Name = "tbxSecondAns";
@@ -232,7 +232,7 @@ namespace FA21_Final_Project
             // 
             // tbxThirdAns
             // 
-            this.tbxThirdAns.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxThirdAns.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxThirdAns.Location = new System.Drawing.Point(311, 462);
             this.tbxThirdAns.MaxLength = 20;
             this.tbxThirdAns.Name = "tbxThirdAns";
@@ -241,13 +241,14 @@ namespace FA21_Final_Project
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(441, 591);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 54);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // pbxPass
             // 
@@ -274,20 +275,20 @@ namespace FA21_Final_Project
             // lblPosition
             // 
             this.lblPosition.AutoSize = true;
-            this.lblPosition.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPosition.Location = new System.Drawing.Point(146, 528);
+            this.lblPosition.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPosition.Location = new System.Drawing.Point(147, 528);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(130, 19);
+            this.lblPosition.Size = new System.Drawing.Size(115, 18);
             this.lblPosition.TabIndex = 23;
             this.lblPosition.Text = "Position Title:";
             // 
             // cbxPosition
             // 
-            this.cbxPosition.Font = new System.Drawing.Font("Broadway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxPosition.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxPosition.FormattingEnabled = true;
             this.cbxPosition.Location = new System.Drawing.Point(311, 520);
             this.cbxPosition.Name = "cbxPosition";
-            this.cbxPosition.Size = new System.Drawing.Size(446, 27);
+            this.cbxPosition.Size = new System.Drawing.Size(446, 26);
             this.cbxPosition.TabIndex = 9;
             // 
             // frmCreateAcct2

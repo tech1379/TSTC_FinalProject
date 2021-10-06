@@ -31,13 +31,23 @@ namespace FA21_Final_Project
 
         private void frmCreateAcct_Load(object sender, EventArgs e)
         {
-
+            cbxTitle.Items.Add("Mr.");
+            cbxTitle.Items.Add("Ms.");
+            cbxTitle.Items.Add("Dr.");
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            string strTitle = "";
             //insert a new Person record after validating zip, phone and email
-            string strTitle = tbxTitle.Text.Trim();
+            if (cbxTitle.SelectedIndex != -1)
+            {
+                strTitle = cbxTitle.SelectedItem.ToString();
+            }
+            else
+            {
+                strTitle = "";
+            }
             string strFirstName = tbxFirst.Text.Trim();
             string strLastName = tbxLast.Text.Trim();
             string strMiddleName = tbxMiddle.Text.Trim();
