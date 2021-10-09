@@ -78,8 +78,8 @@ namespace FA21_Final_Project
                 { 
                     boolHasAccount = true;
                     this.Hide();
-                    frmMain customer = new frmMain();
-                    customer.ShowDialog();
+                    frmMain frmCustomer = new frmMain();
+                    frmCustomer.ShowDialog();
                 }
                    
             }
@@ -116,8 +116,8 @@ namespace FA21_Final_Project
             if (boolVerify == true)
             {
                 this.Hide();
-                frmPassword password = new frmPassword();
-                password.ShowDialog();
+                frmPassword frmPassword = new frmPassword();
+                frmPassword.ShowDialog();
             }
             else
             {
@@ -140,8 +140,8 @@ namespace FA21_Final_Project
         private void lblCreate_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmCreateAcct createAcct = new frmCreateAcct();
-            createAcct.ShowDialog();
+            frmCreateAcct frmCreateAcct = new frmCreateAcct();
+            frmCreateAcct.ShowDialog();
             
         }
 
@@ -153,8 +153,8 @@ namespace FA21_Final_Project
         private void lblInventory_Click(object sender, EventArgs e)
         {
             boolHasAccount = false;
-            frmMain customer = new frmMain();
-            customer.ShowDialog();
+            frmMain frmCustomer = new frmMain();
+            frmCustomer.ShowDialog();
         }
     }
 }

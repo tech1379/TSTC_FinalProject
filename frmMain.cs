@@ -294,21 +294,8 @@ namespace FA21_Final_Project
                 }
                 boolOrderMade = true;
                 MessageBox.Show("Order Saved.", "Information Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult dialogResult = MessageBox.Show("Would you like to see a receipt?\nPlease select no to continue shopping.", "Continue Shopping", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult dialogResult = MessageBox.Show("Would you like to continue shopping?", "Continue Shopping", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.Yes)
-                {
-                    //print receipt
-                    if (!boolOrderMade)
-                    {
-                        MessageBox.Show("You have to make an Order.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    StringBuilder html = new StringBuilder();
-                    html = GenerateReport();
-                    PrintReport(html);
-                    Application.Exit();
-                }
-                else if (dialogResult == DialogResult.No)
                 {
                     //save receipt to my documents
                     StringBuilder html = new StringBuilder();
@@ -327,6 +314,7 @@ namespace FA21_Final_Project
 
                     //reload form
                     FormLoad();
+                    LoadNext();
                     //clear labels
                     ClearShoppingCartBoxes();
                     FillInformation();
@@ -334,6 +322,19 @@ namespace FA21_Final_Project
 
                     //move to inventory
                     tbCustomer.SelectedIndex = 0;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //print receipt
+                    if (!boolOrderMade)
+                    {
+                        MessageBox.Show("You have to make an Order.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    StringBuilder html = new StringBuilder();
+                    html = GenerateReport();
+                    PrintReport(html);
+                    Application.Exit();
                 }
 
             }
@@ -933,8 +934,13 @@ namespace FA21_Final_Project
                 openFileDialog1.InitialDirectory = @path;
                 openFileDialog1.DefaultExt = "html";
                 openFileDialog1.Filter = "html files (*.html)|*.html|All files (*.*)|*.*";
-                openFileDialog1.ShowDialog();
-
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    var onlyFileName = System.IO.Path.GetFileName(openFileDialog1.FileName);
+                    System.Diagnostics.Process.Start(@path + "\\" + onlyFileName); //Open the report in the default web browser
+                   
+                }
+                
             }
             catch (Exception ex)
             {

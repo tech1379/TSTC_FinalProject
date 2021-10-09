@@ -123,8 +123,8 @@ namespace FA21_Final_Project
                 strPersonID = clsSQL.DatabaseCommandLogon(strPersonIDQuery);
                 //MessageBox.Show(strPersonID);
                 this.Hide();
-                frmCreateAcct2 createAcct2 = new frmCreateAcct2();
-                createAcct2.ShowDialog();
+                frmCreateAcct2 frmCreateAcct2 = new frmCreateAcct2();
+                frmCreateAcct2.ShowDialog();
                 
             }
             catch (Exception ex)

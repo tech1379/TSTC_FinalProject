@@ -76,6 +76,7 @@ namespace FA21_Final_Project
             // 
             // tbxPassword
             // 
+            this.tbxPassword.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxPassword.Location = new System.Drawing.Point(240, 24);
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = '*';
@@ -84,6 +85,7 @@ namespace FA21_Final_Project
             // 
             // tbxConfirm
             // 
+            this.tbxConfirm.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxConfirm.Location = new System.Drawing.Point(240, 82);
             this.tbxConfirm.Name = "tbxConfirm";
             this.tbxConfirm.PasswordChar = '*';
@@ -126,6 +128,7 @@ namespace FA21_Final_Project
             // 
             this.lblSC1.BackColor = System.Drawing.Color.White;
             this.lblSC1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSC1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSC1.Location = new System.Drawing.Point(240, 146);
             this.lblSC1.Name = "lblSC1";
             this.lblSC1.Size = new System.Drawing.Size(465, 29);
@@ -143,7 +146,9 @@ namespace FA21_Final_Project
             // 
             // tbxAn1
             // 
+            this.tbxAn1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAn1.Location = new System.Drawing.Point(240, 191);
+            this.tbxAn1.MaxLength = 20;
             this.tbxAn1.Name = "tbxAn1";
             this.tbxAn1.Size = new System.Drawing.Size(465, 29);
             this.tbxAn1.TabIndex = 3;
@@ -162,6 +167,7 @@ namespace FA21_Final_Project
             // 
             this.lblSC2.BackColor = System.Drawing.Color.White;
             this.lblSC2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSC2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSC2.Location = new System.Drawing.Point(240, 249);
             this.lblSC2.Name = "lblSC2";
             this.lblSC2.Size = new System.Drawing.Size(465, 29);
@@ -179,7 +185,9 @@ namespace FA21_Final_Project
             // 
             // tbxAn2
             // 
+            this.tbxAn2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAn2.Location = new System.Drawing.Point(240, 306);
+            this.tbxAn2.MaxLength = 20;
             this.tbxAn2.Name = "tbxAn2";
             this.tbxAn2.Size = new System.Drawing.Size(465, 29);
             this.tbxAn2.TabIndex = 5;
@@ -198,6 +206,7 @@ namespace FA21_Final_Project
             // 
             this.lblSC3.BackColor = System.Drawing.Color.White;
             this.lblSC3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSC3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSC3.Location = new System.Drawing.Point(240, 360);
             this.lblSC3.Name = "lblSC3";
             this.lblSC3.Size = new System.Drawing.Size(465, 29);
@@ -215,7 +224,9 @@ namespace FA21_Final_Project
             // 
             // tbxAn3
             // 
+            this.tbxAn3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxAn3.Location = new System.Drawing.Point(240, 419);
+            this.tbxAn3.MaxLength = 20;
             this.tbxAn3.Name = "tbxAn3";
             this.tbxAn3.Size = new System.Drawing.Size(465, 29);
             this.tbxAn3.TabIndex = 7;
@@ -269,6 +280,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblConfirm);
             this.Controls.Add(this.lblNew);
             this.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(7, 5, 7, 5);
             this.MaximizeBox = false;

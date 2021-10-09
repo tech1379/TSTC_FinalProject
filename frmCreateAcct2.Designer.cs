@@ -196,6 +196,7 @@ namespace FA21_Final_Project
             // 
             // cbxFirstQ
             // 
+            this.cbxFirstQ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxFirstQ.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxFirstQ.FormattingEnabled = true;
             this.cbxFirstQ.Location = new System.Drawing.Point(311, 206);
@@ -205,6 +206,7 @@ namespace FA21_Final_Project
             // 
             // cbxSecondQ
             // 
+            this.cbxSecondQ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSecondQ.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSecondQ.FormattingEnabled = true;
             this.cbxSecondQ.Location = new System.Drawing.Point(311, 302);
@@ -214,6 +216,7 @@ namespace FA21_Final_Project
             // 
             // cbxThirdQ
             // 
+            this.cbxThirdQ.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxThirdQ.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxThirdQ.FormattingEnabled = true;
             this.cbxThirdQ.Location = new System.Drawing.Point(311, 408);
@@ -284,6 +287,7 @@ namespace FA21_Final_Project
             // 
             // cbxPosition
             // 
+            this.cbxPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPosition.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxPosition.FormattingEnabled = true;
             this.cbxPosition.Location = new System.Drawing.Point(311, 520);
@@ -321,6 +325,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblConfirm);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblLogOn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmCreateAcct2";

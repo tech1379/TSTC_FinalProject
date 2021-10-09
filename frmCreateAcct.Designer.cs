@@ -334,10 +334,11 @@ namespace FA21_Final_Project
             // 
             // cbxTitle
             // 
+            this.cbxTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTitle.FormattingEnabled = true;
             this.cbxTitle.Location = new System.Drawing.Point(202, 33);
             this.cbxTitle.Name = "cbxTitle";
-            this.cbxTitle.Size = new System.Drawing.Size(121, 21);
+            this.cbxTitle.Size = new System.Drawing.Size(121, 26);
             this.cbxTitle.TabIndex = 29;
             // 
             // frmCreateAcct
@@ -375,6 +376,7 @@ namespace FA21_Final_Project
             this.Controls.Add(this.lblLast);
             this.Controls.Add(this.lblFirst);
             this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmCreateAcct";
