@@ -152,6 +152,7 @@ namespace FA21_Final_Project
 
         private void lblInventory_Click(object sender, EventArgs e)
         {
+            this.Hide();
             boolHasAccount = false;
             frmMain frmCustomer = new frmMain();
             frmCustomer.ShowDialog();

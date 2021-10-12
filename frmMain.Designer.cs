@@ -32,6 +32,10 @@ namespace FA21_Final_Project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.tbCustomer = new System.Windows.Forms.TabControl();
             this.tbInventory = new System.Windows.Forms.TabPage();
+            this.gbxSearch = new System.Windows.Forms.GroupBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbxSearch = new System.Windows.Forms.TextBox();
+            this.lblSearch = new System.Windows.Forms.Label();
             this.lblHelp = new System.Windows.Forms.Label();
             this.btnCart = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -49,6 +53,7 @@ namespace FA21_Final_Project
             this.lblOne = new System.Windows.Forms.Label();
             this.pbxImage = new System.Windows.Forms.PictureBox();
             this.tbQuailHunts = new System.Windows.Forms.TabPage();
+            this.lblHelpQuail = new System.Windows.Forms.Label();
             this.btnQuailReciept = new System.Windows.Forms.Button();
             this.btnBookHunt = new System.Windows.Forms.Button();
             this.lblQuailTotal = new System.Windows.Forms.Label();
@@ -60,6 +65,7 @@ namespace FA21_Final_Project
             this.lblEnDate = new System.Windows.Forms.Label();
             this.lblStDate = new System.Windows.Forms.Label();
             this.tbTraining = new System.Windows.Forms.TabPage();
+            this.lblHelpTraining = new System.Windows.Forms.Label();
             this.btnTrainingOrder = new System.Windows.Forms.Button();
             this.mthTraining = new System.Windows.Forms.MonthCalendar();
             this.tbxDescription = new System.Windows.Forms.TextBox();
@@ -70,6 +76,9 @@ namespace FA21_Final_Project
             this.lblDogBreed = new System.Windows.Forms.Label();
             this.lblDogName = new System.Windows.Forms.Label();
             this.tbShoppingCart = new System.Windows.Forms.TabPage();
+            this.lblHelpShoppingCart = new System.Windows.Forms.Label();
+            this.btnCoupon = new System.Windows.Forms.Button();
+            this.tbxCouponCode = new System.Windows.Forms.TextBox();
             this.btnReceipt = new System.Windows.Forms.Button();
             this.btnRemoveAll = new System.Windows.Forms.Button();
             this.lblDP = new System.Windows.Forms.Label();
@@ -95,20 +104,13 @@ namespace FA21_Final_Project
             this.lblST = new System.Windows.Forms.Label();
             this.dgvResults = new System.Windows.Forms.DataGridView();
             this.hlpCustomer = new System.Windows.Forms.HelpProvider();
-            this.tbxCouponCode = new System.Windows.Forms.TextBox();
-            this.btnCoupon = new System.Windows.Forms.Button();
-            this.gbxSearch = new System.Windows.Forms.GroupBox();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.tbxSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.lblHelpQuail = new System.Windows.Forms.Label();
             this.hlpQuail = new System.Windows.Forms.HelpProvider();
             this.hlpTraining = new System.Windows.Forms.HelpProvider();
-            this.lblHelpTraining = new System.Windows.Forms.Label();
             this.hlpShoppingCart = new System.Windows.Forms.HelpProvider();
-            this.lblHelpShoppingCart = new System.Windows.Forms.Label();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.tbCustomer.SuspendLayout();
             this.tbInventory.SuspendLayout();
+            this.gbxSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPrevious)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).BeginInit();
@@ -116,7 +118,6 @@ namespace FA21_Final_Project
             this.tbTraining.SuspendLayout();
             this.tbShoppingCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
-            this.gbxSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCustomer
@@ -159,6 +160,45 @@ namespace FA21_Final_Project
             this.tbInventory.Size = new System.Drawing.Size(890, 541);
             this.tbInventory.TabIndex = 0;
             this.tbInventory.Text = "Inventory";
+            // 
+            // gbxSearch
+            // 
+            this.gbxSearch.Controls.Add(this.btnSearch);
+            this.gbxSearch.Controls.Add(this.tbxSearch);
+            this.gbxSearch.Controls.Add(this.lblSearch);
+            this.gbxSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxSearch.Location = new System.Drawing.Point(62, 395);
+            this.gbxSearch.Name = "gbxSearch";
+            this.gbxSearch.Size = new System.Drawing.Size(318, 129);
+            this.gbxSearch.TabIndex = 16;
+            this.gbxSearch.TabStop = false;
+            this.gbxSearch.Text = "Search";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(16, 100);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "&Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // tbxSearch
+            // 
+            this.tbxSearch.Location = new System.Drawing.Point(6, 47);
+            this.tbxSearch.Name = "tbxSearch";
+            this.tbxSearch.Size = new System.Drawing.Size(248, 23);
+            this.tbxSearch.TabIndex = 1;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(3, 19);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(305, 15);
+            this.lblSearch.TabIndex = 0;
+            this.lblSearch.Text = "Enter part of Breed Name to Search Inventory:";
             // 
             // lblHelp
             // 
@@ -322,6 +362,7 @@ namespace FA21_Final_Project
             // tbQuailHunts
             // 
             this.tbQuailHunts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbQuailHunts.Controls.Add(this.lblInfo);
             this.tbQuailHunts.Controls.Add(this.lblHelpQuail);
             this.tbQuailHunts.Controls.Add(this.btnQuailReciept);
             this.tbQuailHunts.Controls.Add(this.btnBookHunt);
@@ -339,6 +380,17 @@ namespace FA21_Final_Project
             this.tbQuailHunts.Size = new System.Drawing.Size(890, 541);
             this.tbQuailHunts.TabIndex = 1;
             this.tbQuailHunts.Text = "Quail Hunts";
+            // 
+            // lblHelpQuail
+            // 
+            this.lblHelpQuail.AutoSize = true;
+            this.lblHelpQuail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpQuail.Location = new System.Drawing.Point(6, 12);
+            this.lblHelpQuail.Name = "lblHelpQuail";
+            this.lblHelpQuail.Size = new System.Drawing.Size(44, 18);
+            this.lblHelpQuail.TabIndex = 16;
+            this.lblHelpQuail.Text = "&Help";
+            this.lblHelpQuail.Click += new System.EventHandler(this.lblHelpQuail_Click);
             // 
             // btnQuailReciept
             // 
@@ -379,14 +431,14 @@ namespace FA21_Final_Project
             // 
             // mthEnd
             // 
-            this.mthEnd.Location = new System.Drawing.Point(262, 231);
+            this.mthEnd.Location = new System.Drawing.Point(262, 271);
             this.mthEnd.MaxSelectionCount = 1;
             this.mthEnd.Name = "mthEnd";
             this.mthEnd.TabIndex = 6;
             // 
             // mthStart
             // 
-            this.mthStart.Location = new System.Drawing.Point(262, 38);
+            this.mthStart.Location = new System.Drawing.Point(262, 75);
             this.mthStart.MaxSelectionCount = 1;
             this.mthStart.Name = "mthStart";
             this.mthStart.TabIndex = 5;
@@ -402,6 +454,7 @@ namespace FA21_Final_Project
             // 
             // cbxDayPrice
             // 
+            this.cbxDayPrice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDayPrice.FormattingEnabled = true;
             this.cbxDayPrice.Location = new System.Drawing.Point(665, 38);
             this.cbxDayPrice.Name = "cbxDayPrice";
@@ -411,7 +464,7 @@ namespace FA21_Final_Project
             // lblEnDate
             // 
             this.lblEnDate.AutoSize = true;
-            this.lblEnDate.Location = new System.Drawing.Point(97, 231);
+            this.lblEnDate.Location = new System.Drawing.Point(124, 271);
             this.lblEnDate.Name = "lblEnDate";
             this.lblEnDate.Size = new System.Drawing.Size(86, 18);
             this.lblEnDate.TabIndex = 1;
@@ -420,7 +473,7 @@ namespace FA21_Final_Project
             // lblStDate
             // 
             this.lblStDate.AutoSize = true;
-            this.lblStDate.Location = new System.Drawing.Point(88, 38);
+            this.lblStDate.Location = new System.Drawing.Point(115, 75);
             this.lblStDate.Name = "lblStDate";
             this.lblStDate.Size = new System.Drawing.Size(95, 18);
             this.lblStDate.TabIndex = 0;
@@ -445,6 +498,17 @@ namespace FA21_Final_Project
             this.tbTraining.Size = new System.Drawing.Size(890, 541);
             this.tbTraining.TabIndex = 2;
             this.tbTraining.Text = "Training Services";
+            // 
+            // lblHelpTraining
+            // 
+            this.lblHelpTraining.AutoSize = true;
+            this.lblHelpTraining.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpTraining.Location = new System.Drawing.Point(20, 16);
+            this.lblHelpTraining.Name = "lblHelpTraining";
+            this.lblHelpTraining.Size = new System.Drawing.Size(44, 18);
+            this.lblHelpTraining.TabIndex = 17;
+            this.lblHelpTraining.Text = "&Help";
+            this.lblHelpTraining.Click += new System.EventHandler(this.lblHelpTraining_Click);
             // 
             // btnTrainingOrder
             // 
@@ -557,6 +621,34 @@ namespace FA21_Final_Project
             this.tbShoppingCart.Size = new System.Drawing.Size(890, 541);
             this.tbShoppingCart.TabIndex = 3;
             this.tbShoppingCart.Text = "Shopping Cart";
+            // 
+            // lblHelpShoppingCart
+            // 
+            this.lblHelpShoppingCart.AutoSize = true;
+            this.lblHelpShoppingCart.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpShoppingCart.Location = new System.Drawing.Point(816, 3);
+            this.lblHelpShoppingCart.Name = "lblHelpShoppingCart";
+            this.lblHelpShoppingCart.Size = new System.Drawing.Size(44, 18);
+            this.lblHelpShoppingCart.TabIndex = 28;
+            this.lblHelpShoppingCart.Text = "&Help";
+            this.lblHelpShoppingCart.Click += new System.EventHandler(this.lblHelpShoppingCart_Click);
+            // 
+            // btnCoupon
+            // 
+            this.btnCoupon.Location = new System.Drawing.Point(21, 389);
+            this.btnCoupon.Name = "btnCoupon";
+            this.btnCoupon.Size = new System.Drawing.Size(102, 49);
+            this.btnCoupon.TabIndex = 27;
+            this.btnCoupon.Text = "Enter &Coupon";
+            this.btnCoupon.UseVisualStyleBackColor = true;
+            this.btnCoupon.Click += new System.EventHandler(this.btnCoupon_Click);
+            // 
+            // tbxCouponCode
+            // 
+            this.tbxCouponCode.Location = new System.Drawing.Point(23, 344);
+            this.tbxCouponCode.Name = "tbxCouponCode";
+            this.tbxCouponCode.Size = new System.Drawing.Size(100, 26);
+            this.tbxCouponCode.TabIndex = 26;
             // 
             // btnReceipt
             // 
@@ -792,94 +884,14 @@ namespace FA21_Final_Project
             this.dgvResults.Size = new System.Drawing.Size(616, 257);
             this.dgvResults.TabIndex = 0;
             // 
-            // tbxCouponCode
+            // lblInfo
             // 
-            this.tbxCouponCode.Location = new System.Drawing.Point(23, 344);
-            this.tbxCouponCode.Name = "tbxCouponCode";
-            this.tbxCouponCode.Size = new System.Drawing.Size(100, 26);
-            this.tbxCouponCode.TabIndex = 26;
-            // 
-            // btnCoupon
-            // 
-            this.btnCoupon.Location = new System.Drawing.Point(21, 389);
-            this.btnCoupon.Name = "btnCoupon";
-            this.btnCoupon.Size = new System.Drawing.Size(102, 49);
-            this.btnCoupon.TabIndex = 27;
-            this.btnCoupon.Text = "Enter &Coupon";
-            this.btnCoupon.UseVisualStyleBackColor = true;
-            this.btnCoupon.Click += new System.EventHandler(this.btnCoupon_Click);
-            // 
-            // gbxSearch
-            // 
-            this.gbxSearch.Controls.Add(this.btnSearch);
-            this.gbxSearch.Controls.Add(this.tbxSearch);
-            this.gbxSearch.Controls.Add(this.lblSearch);
-            this.gbxSearch.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxSearch.Location = new System.Drawing.Point(62, 395);
-            this.gbxSearch.Name = "gbxSearch";
-            this.gbxSearch.Size = new System.Drawing.Size(318, 129);
-            this.gbxSearch.TabIndex = 16;
-            this.gbxSearch.TabStop = false;
-            this.gbxSearch.Text = "Search";
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(3, 19);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(305, 15);
-            this.lblSearch.TabIndex = 0;
-            this.lblSearch.Text = "Enter part of Breed Name to Search Inventory:";
-            // 
-            // tbxSearch
-            // 
-            this.tbxSearch.Location = new System.Drawing.Point(6, 47);
-            this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(248, 23);
-            this.tbxSearch.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(16, 100);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "&Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // lblHelpQuail
-            // 
-            this.lblHelpQuail.AutoSize = true;
-            this.lblHelpQuail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHelpQuail.Location = new System.Drawing.Point(6, 12);
-            this.lblHelpQuail.Name = "lblHelpQuail";
-            this.lblHelpQuail.Size = new System.Drawing.Size(44, 18);
-            this.lblHelpQuail.TabIndex = 16;
-            this.lblHelpQuail.Text = "&Help";
-            this.lblHelpQuail.Click += new System.EventHandler(this.lblHelpQuail_Click);
-            // 
-            // lblHelpTraining
-            // 
-            this.lblHelpTraining.AutoSize = true;
-            this.lblHelpTraining.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHelpTraining.Location = new System.Drawing.Point(20, 16);
-            this.lblHelpTraining.Name = "lblHelpTraining";
-            this.lblHelpTraining.Size = new System.Drawing.Size(44, 18);
-            this.lblHelpTraining.TabIndex = 17;
-            this.lblHelpTraining.Text = "&Help";
-            this.lblHelpTraining.Click += new System.EventHandler(this.lblHelpTraining_Click);
-            // 
-            // lblHelpShoppingCart
-            // 
-            this.lblHelpShoppingCart.AutoSize = true;
-            this.lblHelpShoppingCart.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHelpShoppingCart.Location = new System.Drawing.Point(816, 3);
-            this.lblHelpShoppingCart.Name = "lblHelpShoppingCart";
-            this.lblHelpShoppingCart.Size = new System.Drawing.Size(44, 18);
-            this.lblHelpShoppingCart.TabIndex = 28;
-            this.lblHelpShoppingCart.Text = "&Help";
-            this.lblHelpShoppingCart.Click += new System.EventHandler(this.lblHelpShoppingCart_Click);
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(103, 12);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(66, 18);
+            this.lblInfo.TabIndex = 17;
+            this.lblInfo.Text = "Please ";
             // 
             // frmMain
             // 
@@ -898,6 +910,8 @@ namespace FA21_Final_Project
             this.tbCustomer.ResumeLayout(false);
             this.tbInventory.ResumeLayout(false);
             this.tbInventory.PerformLayout();
+            this.gbxSearch.ResumeLayout(false);
+            this.gbxSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPrevious)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).EndInit();
@@ -908,8 +922,6 @@ namespace FA21_Final_Project
             this.tbShoppingCart.ResumeLayout(false);
             this.tbShoppingCart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
-            this.gbxSearch.ResumeLayout(false);
-            this.gbxSearch.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -993,5 +1005,6 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblHelpTraining;
         private System.Windows.Forms.HelpProvider hlpShoppingCart;
         private System.Windows.Forms.Label lblHelpShoppingCart;
+        private System.Windows.Forms.Label lblInfo;
     }
 }

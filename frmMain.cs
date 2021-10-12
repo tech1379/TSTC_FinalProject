@@ -879,6 +879,8 @@ namespace FA21_Final_Project
                     btnAdd.Visible = false;
                     btnCart.Enabled = false;
                     btnCart.Visible = false;
+                    cbxQuantity.Visible = false;
+                    cbxQuantity.Enabled = false;
                 }
 
                 //set dgv for Receipt
@@ -991,7 +993,9 @@ namespace FA21_Final_Project
         {
             try
             {
-                if (tbxSearch.Text == "")
+                bool boolFound = false;
+                bool hasAllWhitespace = tbxSearch.Text.Length > 0 && tbxSearch.Text.Trim().Length == 0;
+                if (tbxSearch.Text == "" || hasAllWhitespace == true)
                 {
                     MessageBox.Show("You must enter a Breed.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -1004,8 +1008,16 @@ namespace FA21_Final_Project
                         intCurrent = i;
                         LoadNext();
                         tbxSearch.Text = "";
+                        boolFound = true;
                         return;
                     }
+                }
+
+                if(boolFound == false)
+                {
+                    MessageBox.Show("Dog Breed Not Found. Try Again!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbxSearch.Text = "";
+                    tbxSearch.Focus();
                 }
             }
             catch (Exception ex)

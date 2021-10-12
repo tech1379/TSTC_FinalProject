@@ -63,26 +63,6 @@ namespace FA21_Final_Project
             string strEmail = tbxEmail.Text.Trim();
             try
             {
-                if (!clsValidation.ValidZip(strZipCode))
-                {
-                    MessageBox.Show("Zip Code not entered Correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!clsValidation.ValidEmail(strEmail) && strEmail != "")
-                {
-                    MessageBox.Show("Email not entered Correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!clsValidation.ValidPhone(strPrimPhone) && strPrimPhone != "")
-                {
-                    MessageBox.Show("Primary Phone not entered Correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                if (!clsValidation.ValidPhone(strSecondPhone) && strSecondPhone != "")
-                {
-                    MessageBox.Show("Second Phone not entered Correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
                 if (tbxFirst.Text == "")
                     {
                     MessageBox.Show("First Name cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -111,6 +91,26 @@ namespace FA21_Final_Project
                 else if (tbxState.Text == "")
                 {
                     MessageBox.Show("State cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!clsValidation.ValidZip(strZipCode))
+                {
+                    MessageBox.Show("Zip Code not entered Correctly. Format 99999 or 99999-9999.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!clsValidation.ValidEmail(strEmail) && strEmail != "")
+                {
+                    MessageBox.Show("Email not entered Correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!clsValidation.ValidPhone(strPrimPhone) && strPrimPhone != "")
+                {
+                    MessageBox.Show("Primary Phone not entered Correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!clsValidation.ValidPhone(strSecondPhone) && strSecondPhone != "")
+                {
+                    MessageBox.Show("Second Phone not entered Correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 strInsert = "INSERT INTO tekelle21fa2332.Person VALUES ('" + strTitle + "', '" + strFirstName + "', '" + strMiddleName +

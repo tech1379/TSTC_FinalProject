@@ -132,7 +132,7 @@ namespace FA21_Final_Project
                 }
                 if (!clsLogon.LogOnRequirements(strLogOnName))
                 {
-                    MessageBox.Show("LogInName not correct format!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("UserName not correct format!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!clsLogon.PasswordRequirements(strPassword))

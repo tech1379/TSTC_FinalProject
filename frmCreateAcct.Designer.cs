@@ -334,6 +334,7 @@ namespace FA21_Final_Project
             // 
             // cbxTitle
             // 
+            this.cbxTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTitle.FormattingEnabled = true;
             this.cbxTitle.Location = new System.Drawing.Point(202, 33);
