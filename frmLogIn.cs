@@ -157,5 +157,11 @@ namespace FA21_Final_Project
             frmMain frmCustomer = new frmMain();
             frmCustomer.ShowDialog();
         }
+
+        private void frmLogIn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //this.Close();
+            //Application.Exit();
+        }
     }
 }

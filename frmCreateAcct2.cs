@@ -35,6 +35,7 @@ namespace FA21_Final_Project
         {
             try
             {
+                hlpMain.HelpNamespace = Application.StartupPath + "\\CreateAcct2.chm";
                 LoadQuestions();
                 ////load combo boxes
                 //string[] strQuestionArray = new string[3];
@@ -158,8 +159,8 @@ namespace FA21_Final_Project
                 clsSQL.UpdateDatabase(strInsert);
                 MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
-                frmLogIn frmLoginNew = new frmLogIn();
-               frmLoginNew.ShowDialog();
+               // frmLogIn frmLoginNew = new frmLogIn();
+               //frmLoginNew.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -222,6 +223,25 @@ namespace FA21_Final_Project
             frmLogIn login = new frmLogIn();
             this.Hide();
             login.ShowDialog();
+        }
+
+        private void frmCreateAcct2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                //frmLogIn frmLogInMain = new frmLogIn();
+                //frmLogInMain.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lblHelp_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpMain.HelpNamespace);
         }
     }
 }

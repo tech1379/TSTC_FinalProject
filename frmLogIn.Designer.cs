@@ -194,6 +194,7 @@ namespace FA21_Final_Project
             this.Name = "frmLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tek\'s Kennels & Outfitting Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogIn_FormClosing);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.gbxLogIn.ResumeLayout(false);
             this.gbxLogIn.PerformLayout();

@@ -1,0 +1,21 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=CreateAcct2.chm
+Contents file=CreateAcct2_Table of Contents.hhc
+Default topic=CreateAcct2.htm
+Display compile progress=No
+Language=0x409 English (United States)
+
+
+[FILES]
+CreateAcct2.htm
+CreateAcct2CancelButton.htm
+CreateAcct2CreateAcctButton.htm
+CreateAcct2EyeToggle.htm
+CreateAcct2Password.htm
+CreateAcct2SecurityAnswers.htm
+CreateAcct2SecurityQuestions.htm
+CreateAcct2UserName.htm
+
+[INFOTYPES]
+

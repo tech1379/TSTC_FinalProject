@@ -35,6 +35,7 @@ namespace FA21_Final_Project
         {
             try
             {
+                hlpMain.HelpNamespace = Application.StartupPath + "\\ForgotPassword.chm";
                 lblSC1.Text = clsLogon.GetSecurityQuestion1(strLogInName);
                 lblSC2.Text = clsLogon.GetSecurityQuestion2(strLogInName);
                 lblSC3.Text = clsLogon.GetSecurityQuestion3(strLogInName);
@@ -121,6 +122,11 @@ namespace FA21_Final_Project
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void lblHelp_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpMain.HelpNamespace);
         }
     }
 }

@@ -50,6 +50,8 @@ namespace FA21_Final_Project
             this.tbxAn3 = new System.Windows.Forms.TextBox();
             this.pbxPass1 = new System.Windows.Forms.PictureBox();
             this.pbxPass2 = new System.Windows.Forms.PictureBox();
+            this.hlpMain = new System.Windows.Forms.HelpProvider();
+            this.lblHelp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass2)).BeginInit();
             this.SuspendLayout();
@@ -253,12 +255,24 @@ namespace FA21_Final_Project
             this.pbxPass2.TabStop = false;
             this.pbxPass2.Click += new System.EventHandler(this.pbxPass2_Click);
             // 
+            // lblHelp
+            // 
+            this.lblHelp.AutoSize = true;
+            this.lblHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelp.Location = new System.Drawing.Point(631, 12);
+            this.lblHelp.Name = "lblHelp";
+            this.lblHelp.Size = new System.Drawing.Size(44, 18);
+            this.lblHelp.TabIndex = 24;
+            this.lblHelp.Text = "&Help";
+            this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
+            // 
             // frmPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(717, 578);
+            this.Controls.Add(this.lblHelp);
             this.Controls.Add(this.pbxPass2);
             this.Controls.Add(this.pbxPass1);
             this.Controls.Add(this.tbxAn3);
@@ -317,5 +331,7 @@ namespace FA21_Final_Project
         private System.Windows.Forms.TextBox tbxAn3;
         private System.Windows.Forms.PictureBox pbxPass1;
         private System.Windows.Forms.PictureBox pbxPass2;
+        private System.Windows.Forms.HelpProvider hlpMain;
+        private System.Windows.Forms.Label lblHelp;
     }
 }

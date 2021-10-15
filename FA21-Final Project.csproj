@@ -70,6 +70,7 @@
     <Compile Include="clsLogo.cs" />
     <Compile Include="clsLogon.cs" />
     <Compile Include="clsSQL.cs" />
+    <Compile Include="clsState.cs" />
     <Compile Include="clsValidation.cs" />
     <Compile Include="frmCreateAcct.cs">
       <SubType>Form</SubType>

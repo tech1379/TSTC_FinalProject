@@ -54,6 +54,8 @@ namespace FA21_Final_Project
             this.pbxConfirm = new System.Windows.Forms.PictureBox();
             this.lblPosition = new System.Windows.Forms.Label();
             this.cbxPosition = new System.Windows.Forms.ComboBox();
+            this.hlpMain = new System.Windows.Forms.HelpProvider();
+            this.lblHelp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxConfirm)).BeginInit();
             this.SuspendLayout();
@@ -295,12 +297,24 @@ namespace FA21_Final_Project
             this.cbxPosition.Size = new System.Drawing.Size(446, 26);
             this.cbxPosition.TabIndex = 9;
             // 
+            // lblHelp
+            // 
+            this.lblHelp.AutoSize = true;
+            this.lblHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelp.Location = new System.Drawing.Point(713, 18);
+            this.lblHelp.Name = "lblHelp";
+            this.lblHelp.Size = new System.Drawing.Size(44, 18);
+            this.lblHelp.TabIndex = 24;
+            this.lblHelp.Text = "&Help";
+            this.lblHelp.Click += new System.EventHandler(this.lblHelp_Click);
+            // 
             // frmCreateAcct2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(800, 657);
+            this.Controls.Add(this.lblHelp);
             this.Controls.Add(this.cbxPosition);
             this.Controls.Add(this.lblPosition);
             this.Controls.Add(this.pbxConfirm);
@@ -331,6 +345,7 @@ namespace FA21_Final_Project
             this.Name = "frmCreateAcct2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account Creation";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCreateAcct2_FormClosing);
             this.Load += new System.EventHandler(this.frmCreateAcct2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxConfirm)).EndInit();
@@ -365,5 +380,7 @@ namespace FA21_Final_Project
         private System.Windows.Forms.PictureBox pbxConfirm;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.ComboBox cbxPosition;
+        private System.Windows.Forms.HelpProvider hlpMain;
+        private System.Windows.Forms.Label lblHelp;
     }
 }

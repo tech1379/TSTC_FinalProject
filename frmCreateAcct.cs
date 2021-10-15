@@ -24,6 +24,7 @@ namespace FA21_Final_Project
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
     "Please inform the Program Developer that the following error occurred: \n\n\n";
         public static string strInsert;
+        List<clsState> lstState = new List<clsState>();
         public frmCreateAcct()
         {
             InitializeComponent();
@@ -31,9 +32,22 @@ namespace FA21_Final_Project
 
         private void frmCreateAcct_Load(object sender, EventArgs e)
         {
-            cbxTitle.Items.Add("Mr.");
-            cbxTitle.Items.Add("Ms.");
-            cbxTitle.Items.Add("Dr.");
+            try
+            {
+                hlpMain.HelpNamespace = Application.StartupPath + "\\CreateAcct.chm";
+                cbxTitle.Items.Add("Mr.");
+                cbxTitle.Items.Add("Ms.");
+                cbxTitle.Items.Add("Dr.");
+                lstState = clsSQL.LoadState();
+                for (int i = 0; i < lstState.Count; i++)
+                {
+                    cbxState.Items.Add(lstState[i].strStateName);
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -57,12 +71,13 @@ namespace FA21_Final_Project
             string strAddress3 = tbxAddress3.Text.Trim();
             string strCity = tbxCity.Text.Trim();
             string strZipCode = tbxZipCode.Text.Trim();
-            string strState = tbxState.Text.Trim();
+            
             string strPrimPhone = tbxPrimPhone.Text.Trim();
             string strSecondPhone = tbxSecPhone.Text.Trim();
             string strEmail = tbxEmail.Text.Trim();
             try
             {
+                string strState = lstState[(cbxState.SelectedIndex)].strStateAbbv.ToString();
                 if (tbxFirst.Text == "")
                     {
                     MessageBox.Show("First Name cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -88,7 +103,7 @@ namespace FA21_Final_Project
                     MessageBox.Show("Zip Code cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else if (tbxState.Text == "")
+                else if (cbxState.SelectedIndex == -1)
                 {
                     MessageBox.Show("State cannot be empty.", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -105,7 +120,7 @@ namespace FA21_Final_Project
                 }
                 if (!clsValidation.ValidPhone(strPrimPhone) && strPrimPhone != "")
                 {
-                    MessageBox.Show("Primary Phone not entered Correctly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Primary Phone not entered Correctly. Format 999-999-9999.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (!clsValidation.ValidPhone(strSecondPhone) && strSecondPhone != "")
@@ -172,6 +187,153 @@ namespace FA21_Final_Project
                 e.Handled = false;
             }
             else if ((int)e.KeyChar == '-')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxAddress1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (int)e.KeyChar == 8)
+            { //acceptable keystrokes
+                e.Handled = false;
+            }
+            else if ((char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back) || e.KeyChar == ' ' || e.KeyChar == '.')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxAddress2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (int)e.KeyChar == 8)
+            { //acceptable keystrokes
+                e.Handled = false;
+            }
+            else if ((char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back) || e.KeyChar == ' ' || e.KeyChar == '.')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxAddress3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (int)e.KeyChar == 8)
+            { //acceptable keystrokes
+                e.Handled = false;
+            }
+            else if ((char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back) || e.KeyChar == ' ' || e.KeyChar == '.')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxCity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9'))
+            { //acceptable keystrokes
+                e.Handled = true;
+            }
+            else if((int)e.KeyChar == 8)
+            {
+                e.Handled = false;
+            }
+            else if ((char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back) || e.KeyChar == ' ' || e.KeyChar == '.')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void frmCreateAcct_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                frmLogIn frmLogInMain = new frmLogIn();
+                frmLogInMain.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lblHelp2_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpMain.HelpNamespace);
+        }
+
+        private void tbxFirst_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9'))
+            { //acceptable keystrokes
+                e.Handled = true;
+            }
+            else if ((int)e.KeyChar == 8)
+            {
+                e.Handled = false;
+            }
+            else if ((char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back) || e.KeyChar == ' ' || e.KeyChar == '.')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxMiddle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9'))
+            { //acceptable keystrokes
+                e.Handled = true;
+            }
+            else if ((int)e.KeyChar == 8)
+            {
+                e.Handled = false;
+            }
+            else if ((char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back) || e.KeyChar == ' ' || e.KeyChar == '.')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbxLast_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9'))
+            { //acceptable keystrokes
+                e.Handled = true;
+            }
+            else if ((int)e.KeyChar == 8)
+            {
+                e.Handled = false;
+            }
+            else if ((char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back) || e.KeyChar == ' ' || e.KeyChar == '.')
             {
                 e.Handled = false;
             }

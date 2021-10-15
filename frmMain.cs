@@ -334,7 +334,9 @@ namespace FA21_Final_Project
                     StringBuilder html = new StringBuilder();
                     html = GenerateReport();
                     PrintReport(html);
-                    Application.Exit();
+                    this.Hide();
+                    frmLogIn frmLogInMain = new frmLogIn();
+                    frmLogInMain.ShowDialog();
                 }
 
             }
@@ -599,7 +601,8 @@ namespace FA21_Final_Project
                 {
                     writer.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@path + "\\" + strMaxOrderID + "Report.html"); //Open the report in the default web browser
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyReceipts"));
+                System.Diagnostics.Process.Start(@path + "\\MyReceipts\\" + strMaxOrderID + "Report.html"); //Open the report in the default web browser
                 
             }
             catch (Exception ex)
@@ -613,9 +616,10 @@ namespace FA21_Final_Project
             try
             {
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyReceipts"));
                 // A "using" statement will automatically close a file after opening it.
                 // It never hurts to include a file.Close() once you are done with a file.
-                using (StreamWriter writer = new StreamWriter(path + "\\" + strMaxOrderID + "Report.html")) 
+                using (StreamWriter writer = new StreamWriter(path + "\\MyReceipts\\" + strMaxOrderID + "Report.html")) 
                 {
                     writer.WriteLine(html);
                 }
@@ -685,17 +689,13 @@ namespace FA21_Final_Project
                     return;
                 }
                 int intTotalDays = (dtEndDate - dtStartDate).Days;
-                if (cbxDayPrice.SelectedIndex == -1)
-                {
-                    MessageBox.Show("You must select a day price.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                decQuailHuntTotal = (intTotalDays * Convert.ToDecimal(cbxDayPrice.SelectedItem));
+                
+                decimal decDayPrice = lstDayPrice[0].decDayPrice;
+                decQuailHuntTotal = (intTotalDays * decDayPrice);
                 lblQuailTotal.Text = decQuailHuntTotal.ToString("C2");
                 strStartDateQuail = dtStartDate.ToString("yyyy-MM-dd");
                 strEndDateQuail = dtEndDate.ToString("yyyy-MM-dd");
-                int intDayPriceID = cbxDayPrice.SelectedIndex;
-                string strInsertQuailHunt = "INSERT INTO tekelle21fa2332.QuailHuntOrders VALUES (" + strPersonID + ", '" + strStartDateQuail + "', '" + strEndDateQuail + "', " + decQuailHuntTotal + ", " + lstDayPrice[cbxDayPrice.SelectedIndex].intDayPriceID + ");";
+                string strInsertQuailHunt = "INSERT INTO tekelle21fa2332.QuailHuntOrders VALUES (" + strPersonID + ", '" + strStartDateQuail + "', '" + strEndDateQuail + "', " + decQuailHuntTotal + ", " + lstDayPrice[0].intDayPriceID + ");";
                 clsSQL.UpdateDatabase(strInsertQuailHunt);
                 MessageBox.Show("Quail Hunt Successfully Booked", "Information Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string strQuailHuntOrderQuery = "SELECT MAX(QuailHuntID) FROM tekelle21fa2332.QuailHuntOrders;";
@@ -731,7 +731,7 @@ namespace FA21_Final_Project
                 html.Append("<img src= " + clsLogo.strLogo + " style=' align: center; width: 75px; height: 50px;'>");
                 html.AppendLine("<body>");
 
-                html.AppendLine($"<h1>{" Order Receipt"}</h1>");
+                html.AppendLine($"<h1>{"Quail Hunt Receipt"}</h1>");
                 html.Append($"<br></br>");
                 html.Append($"<p style = 'text-align: left; font-size: 25px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
                 html.Append($"<p style = 'text-align: left; font-size: 25px'><b>{"Order Number: " + strQuailHuntOrderID}</b></p>");
@@ -756,13 +756,14 @@ namespace FA21_Final_Project
             try
             {
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyReceipts"));
                 // A "using" statement will automatically close a file after opening it.
                 // It never hurts to include a file.Close() once you are done with a file.
-                using (StreamWriter writer = new StreamWriter(path + "\\QuailReport.html"))
+                using (StreamWriter writer = new StreamWriter(path + "\\MyReceipts\\" + strQuailHuntOrderID + "QuailReport.html"))
                 {
                     writer.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@path + "\\QuailReport.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(@path + "\\MyReceipts\\"+ strQuailHuntOrderID + "QuailReport.html"); //Open the report in the default web browser
             }
             catch (Exception ex)
             {
@@ -901,13 +902,6 @@ namespace FA21_Final_Project
                 strLastName = clsSQL.DatabaseCommandLogon(strQueryLastName);
                 lblCustomer.Text = strFirstName + " " + strLastName;
 
-                for (int i = 0; i < lstDayPrice.Count; i++)
-                {
-                    cbxDayPrice.Items.Add(lstDayPrice[i].decDayPrice.ToString("N2"));
-                }
-
-
-
             }
             catch (Exception ex)
             {
@@ -933,13 +927,13 @@ namespace FA21_Final_Project
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                openFileDialog1.InitialDirectory = @path;
+                openFileDialog1.InitialDirectory = @path + "\\MyReceipts\\";
                 openFileDialog1.DefaultExt = "html";
                 openFileDialog1.Filter = "html files (*.html)|*.html|All files (*.*)|*.*";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     var onlyFileName = System.IO.Path.GetFileName(openFileDialog1.FileName);
-                    System.Diagnostics.Process.Start(@path + "\\" + onlyFileName); //Open the report in the default web browser
+                    System.Diagnostics.Process.Start(@path + "\\MyReceipts\\" + onlyFileName); //Open the report in the default web browser
                    
                 }
                 
@@ -1039,6 +1033,21 @@ namespace FA21_Final_Project
         private void lblHelpShoppingCart_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, hlpShoppingCart.HelpNamespace);
+        }
+
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                frmLogIn frmLogInMain = new frmLogIn();
+                frmLogInMain.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

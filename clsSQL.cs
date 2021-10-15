@@ -21,6 +21,7 @@ namespace FA21_Final_Project
         private static string strTableName = "tekelle21fa2332.Inventory";
         private static string strTableName2 = "tekelle21fa2332.Coupons";
         private static string strTableName3 = "tekelle21fa2332.DayPrice";
+        private static string strTableName4 = "tekelle21fa2332.State";
 
         public static void ConnectDatabase()
         {
@@ -195,6 +196,40 @@ namespace FA21_Final_Project
                 MessageBox.Show("Error loading day price.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lstDayPrice;
+        }
+        public static List<clsState> LoadState()
+        {
+            //TODO: Change the SELECT statement to the column names you are trying to use.
+            string strCommand = $"SELECT StateName, StateAbbrev FROM {strTableName4};"; // Query to pull two columns of data from Images table            
+            SqlCommand SelectCommand = new SqlCommand(strCommand, _cntDatabase);
+            SqlDataReader sqlReader;
+
+            List<clsState> lstState = new List<clsState>();
+            lstState.Clear();// Empty the list before loading new images to prevent duplications
+            try
+            {
+                _cntDatabase.Open();
+                sqlReader = SelectCommand.ExecuteReader();
+
+                while (sqlReader.Read())
+                {
+                    clsState state = new clsState();
+                    state.strStateName = sqlReader.GetString(0); // MS SQL Datatype int
+                    state.strStateAbbv = sqlReader.GetString(1);
+                    lstState.Add(state); // Add image object to list
+
+                    // You can use a constructor for this class to accept two parameters
+                    // and add it all at the same time. Just for demo purposes
+
+                    // lstImages.Add(new Images(sqlReader.GetInt32(0), (byte[])sqlReader[1]));
+                }
+                _cntDatabase.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error loading day price.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return lstState;
         }
     }
 

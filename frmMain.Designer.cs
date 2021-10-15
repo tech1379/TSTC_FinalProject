@@ -53,6 +53,7 @@ namespace FA21_Final_Project
             this.lblOne = new System.Windows.Forms.Label();
             this.pbxImage = new System.Windows.Forms.PictureBox();
             this.tbQuailHunts = new System.Windows.Forms.TabPage();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.lblHelpQuail = new System.Windows.Forms.Label();
             this.btnQuailReciept = new System.Windows.Forms.Button();
             this.btnBookHunt = new System.Windows.Forms.Button();
@@ -60,11 +61,10 @@ namespace FA21_Final_Project
             this.lblTotalQuail = new System.Windows.Forms.Label();
             this.mthEnd = new System.Windows.Forms.MonthCalendar();
             this.mthStart = new System.Windows.Forms.MonthCalendar();
-            this.lblDayPrice = new System.Windows.Forms.Label();
-            this.cbxDayPrice = new System.Windows.Forms.ComboBox();
             this.lblEnDate = new System.Windows.Forms.Label();
             this.lblStDate = new System.Windows.Forms.Label();
             this.tbTraining = new System.Windows.Forms.TabPage();
+            this.lblInfo1 = new System.Windows.Forms.Label();
             this.lblHelpTraining = new System.Windows.Forms.Label();
             this.btnTrainingOrder = new System.Windows.Forms.Button();
             this.mthTraining = new System.Windows.Forms.MonthCalendar();
@@ -107,7 +107,6 @@ namespace FA21_Final_Project
             this.hlpQuail = new System.Windows.Forms.HelpProvider();
             this.hlpTraining = new System.Windows.Forms.HelpProvider();
             this.hlpShoppingCart = new System.Windows.Forms.HelpProvider();
-            this.lblInfo = new System.Windows.Forms.Label();
             this.tbCustomer.SuspendLayout();
             this.tbInventory.SuspendLayout();
             this.gbxSearch.SuspendLayout();
@@ -370,8 +369,6 @@ namespace FA21_Final_Project
             this.tbQuailHunts.Controls.Add(this.lblTotalQuail);
             this.tbQuailHunts.Controls.Add(this.mthEnd);
             this.tbQuailHunts.Controls.Add(this.mthStart);
-            this.tbQuailHunts.Controls.Add(this.lblDayPrice);
-            this.tbQuailHunts.Controls.Add(this.cbxDayPrice);
             this.tbQuailHunts.Controls.Add(this.lblEnDate);
             this.tbQuailHunts.Controls.Add(this.lblStDate);
             this.tbQuailHunts.Location = new System.Drawing.Point(4, 27);
@@ -380,6 +377,15 @@ namespace FA21_Final_Project
             this.tbQuailHunts.Size = new System.Drawing.Size(890, 541);
             this.tbQuailHunts.TabIndex = 1;
             this.tbQuailHunts.Text = "Quail Hunts";
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(103, 12);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(399, 18);
+            this.lblInfo.TabIndex = 17;
+            this.lblInfo.Text = "Please select your dates to book your Quail Hunt.\r\n";
             // 
             // lblHelpQuail
             // 
@@ -443,24 +449,6 @@ namespace FA21_Final_Project
             this.mthStart.Name = "mthStart";
             this.mthStart.TabIndex = 5;
             // 
-            // lblDayPrice
-            // 
-            this.lblDayPrice.AutoSize = true;
-            this.lblDayPrice.Location = new System.Drawing.Point(543, 41);
-            this.lblDayPrice.Name = "lblDayPrice";
-            this.lblDayPrice.Size = new System.Drawing.Size(116, 18);
-            this.lblDayPrice.TabIndex = 3;
-            this.lblDayPrice.Text = "Day Price ($):";
-            // 
-            // cbxDayPrice
-            // 
-            this.cbxDayPrice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxDayPrice.FormattingEnabled = true;
-            this.cbxDayPrice.Location = new System.Drawing.Point(665, 38);
-            this.cbxDayPrice.Name = "cbxDayPrice";
-            this.cbxDayPrice.Size = new System.Drawing.Size(160, 26);
-            this.cbxDayPrice.TabIndex = 2;
-            // 
             // lblEnDate
             // 
             this.lblEnDate.AutoSize = true;
@@ -482,6 +470,7 @@ namespace FA21_Final_Project
             // tbTraining
             // 
             this.tbTraining.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbTraining.Controls.Add(this.lblInfo1);
             this.tbTraining.Controls.Add(this.lblHelpTraining);
             this.tbTraining.Controls.Add(this.btnTrainingOrder);
             this.tbTraining.Controls.Add(this.mthTraining);
@@ -498,6 +487,16 @@ namespace FA21_Final_Project
             this.tbTraining.Size = new System.Drawing.Size(890, 541);
             this.tbTraining.TabIndex = 2;
             this.tbTraining.Text = "Training Services";
+            // 
+            // lblInfo1
+            // 
+            this.lblInfo1.AutoSize = true;
+            this.lblInfo1.Location = new System.Drawing.Point(81, 3);
+            this.lblInfo1.Name = "lblInfo1";
+            this.lblInfo1.Size = new System.Drawing.Size(448, 36);
+            this.lblInfo1.TabIndex = 18;
+            this.lblInfo1.Text = "If you would like to book Training Services for your dog, \r\nplease enter the info" +
+    "rmation and start date to book.";
             // 
             // lblHelpTraining
             // 
@@ -875,23 +874,16 @@ namespace FA21_Final_Project
             // 
             this.dgvResults.AllowUserToAddRows = false;
             this.dgvResults.AllowUserToDeleteRows = false;
-            this.dgvResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvResults.BackgroundColor = System.Drawing.Color.Silver;
+            this.dgvResults.ColumnHeadersHeight = 30;
             this.dgvResults.Location = new System.Drawing.Point(253, 34);
             this.dgvResults.Name = "dgvResults";
             this.dgvResults.ReadOnly = true;
             this.dgvResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResults.Size = new System.Drawing.Size(616, 257);
             this.dgvResults.TabIndex = 0;
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(103, 12);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(66, 18);
-            this.lblInfo.TabIndex = 17;
-            this.lblInfo.Text = "Please ";
             // 
             // frmMain
             // 
@@ -906,6 +898,7 @@ namespace FA21_Final_Project
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Customer Portal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.frmCustomer_Load);
             this.tbCustomer.ResumeLayout(false);
             this.tbInventory.ResumeLayout(false);
@@ -973,8 +966,6 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Button btnRemoveAll;
         private System.Windows.Forms.Label lblStDate;
         private System.Windows.Forms.Label lblEnDate;
-        private System.Windows.Forms.ComboBox cbxDayPrice;
-        private System.Windows.Forms.Label lblDayPrice;
         private System.Windows.Forms.MonthCalendar mthStart;
         private System.Windows.Forms.MonthCalendar mthEnd;
         private System.Windows.Forms.Label lblTotalQuail;
@@ -1006,5 +997,6 @@ namespace FA21_Final_Project
         private System.Windows.Forms.HelpProvider hlpShoppingCart;
         private System.Windows.Forms.Label lblHelpShoppingCart;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.Label lblInfo1;
     }
 }

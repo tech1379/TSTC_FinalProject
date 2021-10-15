@@ -51,14 +51,16 @@ namespace FA21_Final_Project
             this.tbxAddress1 = new System.Windows.Forms.TextBox();
             this.tbxAddress2 = new System.Windows.Forms.TextBox();
             this.tbxAddress3 = new System.Windows.Forms.TextBox();
-            this.tbxCity = new System.Windows.Forms.TextBox();
             this.tbxZipCode = new System.Windows.Forms.TextBox();
-            this.tbxState = new System.Windows.Forms.TextBox();
             this.tbxEmail = new System.Windows.Forms.TextBox();
             this.tbxPrimPhone = new System.Windows.Forms.TextBox();
             this.tbxSecPhone = new System.Windows.Forms.TextBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.cbxTitle = new System.Windows.Forms.ComboBox();
+            this.tbxCity = new System.Windows.Forms.TextBox();
+            this.cbxState = new System.Windows.Forms.ComboBox();
+            this.lblHelp2 = new System.Windows.Forms.Label();
+            this.hlpMain = new System.Windows.Forms.HelpProvider();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -209,6 +211,7 @@ namespace FA21_Final_Project
             this.tbxFirst.Name = "tbxFirst";
             this.tbxFirst.Size = new System.Drawing.Size(225, 26);
             this.tbxFirst.TabIndex = 1;
+            this.tbxFirst.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxFirst_KeyPress);
             // 
             // tbxMiddle
             // 
@@ -218,6 +221,7 @@ namespace FA21_Final_Project
             this.tbxMiddle.Name = "tbxMiddle";
             this.tbxMiddle.Size = new System.Drawing.Size(225, 26);
             this.tbxMiddle.TabIndex = 2;
+            this.tbxMiddle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxMiddle_KeyPress);
             // 
             // tbxLast
             // 
@@ -227,6 +231,7 @@ namespace FA21_Final_Project
             this.tbxLast.Name = "tbxLast";
             this.tbxLast.Size = new System.Drawing.Size(225, 26);
             this.tbxLast.TabIndex = 3;
+            this.tbxLast.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxLast_KeyPress);
             // 
             // tbxSuffix
             // 
@@ -245,6 +250,7 @@ namespace FA21_Final_Project
             this.tbxAddress1.Name = "tbxAddress1";
             this.tbxAddress1.Size = new System.Drawing.Size(297, 26);
             this.tbxAddress1.TabIndex = 5;
+            this.tbxAddress1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddress1_KeyPress);
             // 
             // tbxAddress2
             // 
@@ -254,6 +260,7 @@ namespace FA21_Final_Project
             this.tbxAddress2.Name = "tbxAddress2";
             this.tbxAddress2.Size = new System.Drawing.Size(297, 26);
             this.tbxAddress2.TabIndex = 6;
+            this.tbxAddress2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddress2_KeyPress);
             // 
             // tbxAddress3
             // 
@@ -263,15 +270,7 @@ namespace FA21_Final_Project
             this.tbxAddress3.Name = "tbxAddress3";
             this.tbxAddress3.Size = new System.Drawing.Size(297, 26);
             this.tbxAddress3.TabIndex = 7;
-            // 
-            // tbxCity
-            // 
-            this.tbxCity.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxCity.Location = new System.Drawing.Point(202, 353);
-            this.tbxCity.MaxLength = 30;
-            this.tbxCity.Name = "tbxCity";
-            this.tbxCity.Size = new System.Drawing.Size(225, 26);
-            this.tbxCity.TabIndex = 8;
+            this.tbxAddress3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxAddress3_KeyPress);
             // 
             // tbxZipCode
             // 
@@ -282,15 +281,6 @@ namespace FA21_Final_Project
             this.tbxZipCode.Size = new System.Drawing.Size(225, 26);
             this.tbxZipCode.TabIndex = 9;
             this.tbxZipCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxZipCode_KeyPress);
-            // 
-            // tbxState
-            // 
-            this.tbxState.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxState.Location = new System.Drawing.Point(202, 439);
-            this.tbxState.MaxLength = 2;
-            this.tbxState.Name = "tbxState";
-            this.tbxState.Size = new System.Drawing.Size(225, 26);
-            this.tbxState.TabIndex = 10;
             // 
             // tbxEmail
             // 
@@ -340,7 +330,37 @@ namespace FA21_Final_Project
             this.cbxTitle.Location = new System.Drawing.Point(202, 33);
             this.cbxTitle.Name = "cbxTitle";
             this.cbxTitle.Size = new System.Drawing.Size(121, 26);
-            this.cbxTitle.TabIndex = 29;
+            this.cbxTitle.TabIndex = 0;
+            // 
+            // tbxCity
+            // 
+            this.tbxCity.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxCity.Location = new System.Drawing.Point(202, 352);
+            this.tbxCity.MaxLength = 30;
+            this.tbxCity.Name = "tbxCity";
+            this.tbxCity.Size = new System.Drawing.Size(225, 26);
+            this.tbxCity.TabIndex = 8;
+            // 
+            // cbxState
+            // 
+            this.cbxState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxState.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxState.FormattingEnabled = true;
+            this.cbxState.Location = new System.Drawing.Point(202, 439);
+            this.cbxState.Name = "cbxState";
+            this.cbxState.Size = new System.Drawing.Size(225, 26);
+            this.cbxState.TabIndex = 10;
+            // 
+            // lblHelp2
+            // 
+            this.lblHelp2.AutoSize = true;
+            this.lblHelp2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelp2.Location = new System.Drawing.Point(570, 19);
+            this.lblHelp2.Name = "lblHelp2";
+            this.lblHelp2.Size = new System.Drawing.Size(44, 18);
+            this.lblHelp2.TabIndex = 32;
+            this.lblHelp2.Text = "Help";
+            this.lblHelp2.Click += new System.EventHandler(this.lblHelp2_Click);
             // 
             // frmCreateAcct
             // 
@@ -348,14 +368,15 @@ namespace FA21_Final_Project
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(655, 656);
+            this.Controls.Add(this.lblHelp2);
+            this.Controls.Add(this.cbxState);
+            this.Controls.Add(this.tbxCity);
             this.Controls.Add(this.cbxTitle);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.tbxSecPhone);
             this.Controls.Add(this.tbxPrimPhone);
             this.Controls.Add(this.tbxEmail);
-            this.Controls.Add(this.tbxState);
             this.Controls.Add(this.tbxZipCode);
-            this.Controls.Add(this.tbxCity);
             this.Controls.Add(this.tbxAddress3);
             this.Controls.Add(this.tbxAddress2);
             this.Controls.Add(this.tbxAddress1);
@@ -383,6 +404,7 @@ namespace FA21_Final_Project
             this.Name = "frmCreateAcct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personal Information";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCreateAcct_FormClosing);
             this.Load += new System.EventHandler(this.frmCreateAcct_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -412,13 +434,15 @@ namespace FA21_Final_Project
         private System.Windows.Forms.TextBox tbxAddress1;
         private System.Windows.Forms.TextBox tbxAddress2;
         private System.Windows.Forms.TextBox tbxAddress3;
-        private System.Windows.Forms.TextBox tbxCity;
         private System.Windows.Forms.TextBox tbxZipCode;
-        private System.Windows.Forms.TextBox tbxState;
         private System.Windows.Forms.TextBox tbxEmail;
         private System.Windows.Forms.TextBox tbxPrimPhone;
         private System.Windows.Forms.TextBox tbxSecPhone;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.ComboBox cbxTitle;
+        private System.Windows.Forms.TextBox tbxCity;
+        private System.Windows.Forms.ComboBox cbxState;
+        private System.Windows.Forms.Label lblHelp2;
+        private System.Windows.Forms.HelpProvider hlpMain;
     }
 }
