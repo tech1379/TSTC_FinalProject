@@ -689,7 +689,16 @@ namespace FA21_Final_Project
                     MessageBox.Show("End Date cannot be before Start Date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                int intTotalDays = (dtEndDate - dtStartDate).Days;
+                int intTotalDays = 0;
+                if (intResult3 == 0)
+                {
+                    intTotalDays = 1;
+                }
+                else
+                {
+                    intTotalDays = (dtEndDate - dtStartDate).Days;
+                }
+                
                 
                 decimal decDayPrice = lstDayPrice[0].decDayPrice;
                 decQuailHuntTotal = (intTotalDays * decDayPrice);
