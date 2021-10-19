@@ -595,14 +595,15 @@ namespace FA21_Final_Project
             try
             {
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TeksReceipts"));
                 // A "using" statement will automatically close a file after opening it.
                 // It never hurts to include a file.Close() once you are done with a file.
-                using (StreamWriter writer = new StreamWriter(path + "\\" + strMaxOrderID + "Report.html"))
+                using (StreamWriter writer = new StreamWriter(path + "\\TeksReceipts\\" + strMaxOrderID + "Report.html"))
                 {
                     writer.WriteLine(html);
                 }
                 Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyReceipts"));
-                System.Diagnostics.Process.Start(@path + "\\MyReceipts\\" + strMaxOrderID + "Report.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(@path + "\\TeksReceipts\\" + strMaxOrderID + "Report.html"); //Open the report in the default web browser
                 
             }
             catch (Exception ex)
@@ -616,10 +617,10 @@ namespace FA21_Final_Project
             try
             {
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyReceipts"));
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TeksReceipts"));
                 // A "using" statement will automatically close a file after opening it.
                 // It never hurts to include a file.Close() once you are done with a file.
-                using (StreamWriter writer = new StreamWriter(path + "\\MyReceipts\\" + strMaxOrderID + "Report.html")) 
+                using (StreamWriter writer = new StreamWriter(path + "\\TeksReceipts\\" + strMaxOrderID + "Report.html")) 
                 {
                     writer.WriteLine(html);
                 }
@@ -756,14 +757,14 @@ namespace FA21_Final_Project
             try
             {
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyReceipts"));
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TeksReceipts"));
                 // A "using" statement will automatically close a file after opening it.
                 // It never hurts to include a file.Close() once you are done with a file.
-                using (StreamWriter writer = new StreamWriter(path + "\\MyReceipts\\" + strQuailHuntOrderID + "QuailReport.html"))
+                using (StreamWriter writer = new StreamWriter(path + "\\TeksReceipts\\" + strQuailHuntOrderID + "QuailReport.html"))
                 {
                     writer.WriteLine(html);
                 }
-                System.Diagnostics.Process.Start(@path + "\\MyReceipts\\"+ strQuailHuntOrderID + "QuailReport.html"); //Open the report in the default web browser
+                System.Diagnostics.Process.Start(@path + "\\TeksReceipts\\"+ strQuailHuntOrderID + "QuailReport.html"); //Open the report in the default web browser
             }
             catch (Exception ex)
             {
@@ -882,6 +883,7 @@ namespace FA21_Final_Project
                     btnCart.Visible = false;
                     cbxQuantity.Visible = false;
                     cbxQuantity.Enabled = false;
+                    label1.Visible = false;
                 }
 
                 //set dgv for Receipt

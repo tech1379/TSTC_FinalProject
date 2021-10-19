@@ -34,7 +34,7 @@ namespace FA21_Final_Project
                 strPersonType = clsSQL.DatabaseCommandLogon(strQueryPersonType);
                 strQueryPersonID = "SELECT PersonID FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "' AND Password = '"
                     + strPassword + "';";
-
+                
                 if (logon == 1)
                 {
                     strPersonID = clsSQL.DatabaseCommandLogon(strQueryPersonID);

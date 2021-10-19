@@ -20,7 +20,7 @@ namespace FA21_Final_Project
 {
     public partial class frmCreateAcct2 : Form
     {
-        string strPersonID = frmCreateAcct.strPersonID;
+        
         string strInsertPerson = frmCreateAcct.strInsert;
         int intToggle1 = 0;
         int intToggle2 = 0;
@@ -153,6 +153,8 @@ namespace FA21_Final_Project
                 }
                 //insert into person then login into db
                 clsSQL.UpdateDatabase(strInsertPerson);
+                string strPersonIDQuery = "SELECT MAX(PersonID) FROM tekelle21fa2332.Person;";
+                string strPersonID = clsSQL.DatabaseCommandLogon(strPersonIDQuery);
                 string strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
                     strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
                     strSecondAnswer + "', '" + cbxThirdQ.SelectedItem + "', '" + strThirdAns + "', 'Customer', NULL, NULL)";
