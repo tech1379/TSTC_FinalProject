@@ -68,7 +68,9 @@ namespace FA21_Final_Project
                 intFormControl = clsLogon.Verify(strUserName, strPassword, ref strPersonID);
                 if (intFormControl == 1)
                 {
-                    MessageBox.Show("Managers");
+                    this.Hide();
+                    frmManager frmManagers = new frmManager();
+                    frmManagers.ShowDialog();
                 }
                 else if (intFormControl == 2)
                 {

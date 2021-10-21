@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace FA21_Final_Project
 {
@@ -18,6 +20,10 @@ namespace FA21_Final_Project
         private static SqlConnection _cntDatabase = new SqlConnection(CONNECT_STRING);
         private static SqlCommand _sqlLogOnCommand;
         private static SqlCommand _sqlUpdateCommand;
+        private static SqlCommand _sqlResultsCommand;
+        private static SqlDataAdapter _daResults = new SqlDataAdapter();
+        //add the data tables
+        private static DataTable _dtResultsTable = new DataTable();
         private static string strTableName = "tekelle21fa2332.Inventory";
         private static string strTableName2 = "tekelle21fa2332.Coupons";
         private static string strTableName3 = "tekelle21fa2332.DayPrice";
@@ -230,6 +236,79 @@ namespace FA21_Final_Project
                 MessageBox.Show("Error loading day price.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lstState;
+        }
+        public static void DatabaseCommand(string query, DataGridView dgvResults)
+        {
+            try 
+            { 
+            SqlConnection _cntDatabase = new SqlConnection(CONNECT_STRING);
+            //OPEN DB
+            _cntDatabase.Open();
+            //set cmd obj to null
+            _sqlResultsCommand = null;
+            //reset data adapter and data table to new
+            _daResults = new SqlDataAdapter();
+            _dtResultsTable = new DataTable();
+
+         
+                //est command obj
+                _sqlResultsCommand = new SqlCommand(query, _cntDatabase);
+                //est data adapter
+                _daResults.SelectCommand = _sqlResultsCommand;
+                //fill data table
+                _daResults.Fill(_dtResultsTable);
+                //bind to dgv to data table
+                dgvResults.DataSource = _dtResultsTable;
+                //dispose of cmd, adapter, and table obj
+                _sqlResultsCommand.Dispose();
+                _daResults.Dispose();
+                _dtResultsTable.Dispose();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error in SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+        public static void DatabaseCommandAddItem(string strItemName, string strItemDesc, decimal decRetailPrice, decimal decCost, int intQuantity)
+        {
+
+            MessageBox.Show("You must add an image to save to the database.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //OpenFileDialog Properties------------------------------------------
+                OpenFileDialog openFile = new OpenFileDialog(); //New instance
+                openFile.ValidateNames = true; //Prevent illegal characters
+                openFile.AddExtension = false; //Auto fixes file extension problems
+                openFile.Filter = "Image File|*.png|Image File|*.jpg"; //Allow types
+                openFile.Title = "File to Upload"; //Title of dialog box
+                                                   //-------------------------------------------------------------------
+
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    //TODO: Add some validation to make sure the file is an image.
+
+                    byte[] image = File.ReadAllBytes(openFile.FileName); //Convert image into a byte array
+                    try
+                    {
+                        _cntDatabase.Open();
+                        //TODO: Change (Image) to the name of your image column [e.g (ProductImages)]
+                        string insertQuery = $"INSERT INTO {strTableName} VALUES('" + strItemName + "', '" + strItemDesc + "', " + decRetailPrice + ", " + decCost + ", " + intQuantity + ", @Image, NULL)"; // @Image is a parameter we will fill in later                        
+                        SqlCommand insertCmd = new SqlCommand(insertQuery, _cntDatabase);
+                        SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
+                        sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
+                        insertCmd.ExecuteNonQuery();
+                        _cntDatabase.Close();
+
+                        MessageBox.Show("File was successfully added to the database.", "File Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            
         }
     }
 
