@@ -119,5 +119,47 @@ namespace FA21_Final_Project
             }
             return boolExpiration;
         }
+        public static bool ValidPosNegInteger(string strExpiration)
+        {
+            bool boolValidInteger = false;
+            try
+            {
+                string strExpirationPattern = @"^\-?[1-9]\d{0,8}$";
+                if ((Regex.Match(strExpiration, strExpirationPattern).Success))
+                {
+                    boolValidInteger = true;
+                }
+                else
+                {
+                    boolValidInteger = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return boolValidInteger;
+        }
+        public static bool ValidDecimal(string strDecimal)
+        {
+            bool boolValidDecimal = false;
+            try
+            {
+                string strDecimalPattern = @"^-?[0-9]*\.?[0-9]+$";
+                if ((Regex.Match(strDecimal, strDecimalPattern).Success))
+                {
+                    boolValidDecimal = true;
+                }
+                else
+                {
+                    boolValidDecimal = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return boolValidDecimal;
+        }
     }
 }

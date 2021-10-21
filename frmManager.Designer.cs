@@ -67,6 +67,7 @@ namespace FA21_Final_Project
             this.tbInventory.Size = new System.Drawing.Size(849, 380);
             this.tbInventory.TabIndex = 0;
             this.tbInventory.Text = "Inventory";
+            this.tbInventory.Click += new System.EventHandler(this.tbInventory_Click);
             // 
             // btnRemove
             // 

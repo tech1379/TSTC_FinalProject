@@ -53,7 +53,15 @@ namespace FA21_Final_Project
                     MessageBox.Show("You must enter a quantity.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                int intQuantity = Convert.ToInt32(tbxInput.Text);
+                string strQuantity = tbxInput.Text;
+                if (!clsValidation.ValidPosNegInteger(strQuantity))
+                {
+                    MessageBox.Show("You must input a positive or negative integer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbxInput.Clear();
+                    tbxInput.Focus();
+                    return;
+                }
+                int intQuantity = Convert.ToInt32(strQuantity);
                 string strQuantityUpdateQuery = "UPDATE tekelle21fa2332.Inventory SET Quantity = Quantity + " + intQuantity + " WHERE InventoryID = " + intInventoryID + ";";
                 clsSQL.UpdateDatabase(strQuantityUpdateQuery);
                 this.Hide();

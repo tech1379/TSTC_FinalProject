@@ -149,5 +149,10 @@ namespace FA21_Final_Project
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void tbInventory_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

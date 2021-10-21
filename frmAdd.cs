@@ -58,6 +58,20 @@ namespace FA21_Final_Project
                     tbxQuantity.Focus();
                     return;
                 }
+                if(!clsValidation.ValidDecimal(tbxRetailPrice.Text))
+                {
+                    MessageBox.Show("Retail Price must be in decimal form.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbxRetailPrice.Clear();
+                    tbxRetailPrice.Focus();
+                    return;
+                }
+                if (!clsValidation.ValidDecimal(tbxCost.Text))
+                {
+                    MessageBox.Show("Cost must be in decimal form.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbxCost.Clear();
+                    tbxCost.Focus();
+                    return;
+                }
                 string strItemName = tbxItemName.Text;
                 string strItemDesc = tbxItemDesc.Text;
                 decimal decRetailPrice = Convert.ToDecimal(tbxRetailPrice.Text);
@@ -153,7 +167,10 @@ namespace FA21_Final_Project
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+            Application.OpenForms["frmManager"].Close();
+            frmManager frmManagerNew = new frmManager();
+            frmManagerNew.ShowDialog();
         }
     }
 }
