@@ -25,6 +25,10 @@ namespace FA21_Final_Project
     "Please inform the Program Developer that the following error occurred: \n\n\n";
         public static string strInsert;
         List<clsState> lstState = new List<clsState>();
+        public static bool boolAddManager = frmManager.boolAddManager;
+        public static bool boolEditManager = frmManager.boolEditManager;
+        public static string strState = frmManager.strState;
+        public static int intPersonID = frmManager.intPersonID;
         public frmCreateAcct()
         {
             InitializeComponent();
@@ -42,6 +46,12 @@ namespace FA21_Final_Project
                 for (int i = 0; i < lstState.Count; i++)
                 {
                     cbxState.Items.Add(lstState[i].strStateName);
+                }
+                if(boolEditManager == true)
+                {
+                    clsSQL.DatabaseCommandManagers(tbxFirst, tbxMiddle, tbxLast, tbxSuffix, tbxAddress1, tbxAddress2,
+                        tbxAddress3, tbxCity, tbxZipCode, tbxEmail, tbxPrimPhone, tbxSecPhone, intPersonID);
+                   
                 }
             }
             catch(Exception ex)
@@ -143,10 +153,22 @@ namespace FA21_Final_Project
                     return;
                 }
                 string strState = lstState[(cbxState.SelectedIndex)].strStateAbbv.ToString();
-                strInsert = "INSERT INTO tekelle21fa2332.Person VALUES ('" + strTitle + "', '" + strFirstName + "', '" + strMiddleName +
-                   "', '" + strLastName + "', '" + strSuffix + "', '" + strAddress1 + "', '" + strAddress2 + "', '" + strAddress3 +
-                   "', '" + strCity + "', '" + strZipCode + "', '" + strState + "', '" + strEmail + "', '" + strPrimPhone + "', '" +
-                   strSecondPhone + "', NULL, NULL, 'Customer');";
+                if(boolAddManager == true)
+                {
+                    strInsert = "INSERT INTO tekelle21fa2332.Person VALUES ('" + strTitle + "', '" + strFirstName + "', '" + strMiddleName +
+                    "', '" + strLastName + "', '" + strSuffix + "', '" + strAddress1 + "', '" + strAddress2 + "', '" + strAddress3 +
+                    "', '" + strCity + "', '" + strZipCode + "', '" + strState + "', '" + strEmail + "', '" + strPrimPhone + "', '" +
+                    strSecondPhone + "', NULL, NULL, 'Manager');";
+
+                }
+                else
+                {
+                    strInsert = "INSERT INTO tekelle21fa2332.Person VALUES ('" + strTitle + "', '" + strFirstName + "', '" + strMiddleName +
+                  "', '" + strLastName + "', '" + strSuffix + "', '" + strAddress1 + "', '" + strAddress2 + "', '" + strAddress3 +
+                  "', '" + strCity + "', '" + strZipCode + "', '" + strState + "', '" + strEmail + "', '" + strPrimPhone + "', '" +
+                  strSecondPhone + "', NULL, NULL, 'Customer');";
+                }
+               
                 
                 this.Hide();
                 frmCreateAcct2 frmCreateAcct2 = new frmCreateAcct2();
@@ -279,9 +301,19 @@ namespace FA21_Final_Project
         {
             try
             {
-                this.Hide();
-                frmLogIn frmLogInMain = new frmLogIn();
-                frmLogInMain.ShowDialog();
+                if (boolAddManager == true || boolEditManager == true)
+                {
+                    this.Hide();
+                    Application.OpenForms["frmManager"].Close();
+                    frmManager frmManagerNew = new frmManager();
+                    frmManagerNew.ShowDialog();
+                }
+                else
+                {
+                    this.Hide();
+                    frmLogIn frmLogInMain = new frmLogIn();
+                    frmLogInMain.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

@@ -34,11 +34,18 @@ namespace FA21_Final_Project
                 strPersonType = clsSQL.DatabaseCommandLogon(strQueryPersonType);
                 strQueryPersonID = "SELECT PersonID FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "' AND Password = '"
                     + strPassword + "';";
+                string strQueryAccountDisabled = "SELECT AccountDisabled FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "';";
+                string strAccountDisabled = clsSQL.DatabaseCommandLogon(strQueryAccountDisabled);
+                if (strAccountDisabled == "True")
+                {
+                    MessageBox.Show("Your account has been disabled.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return 0;
+                }
                 
                 if (logon == 1)
                 {
                     strPersonID = clsSQL.DatabaseCommandLogon(strQueryPersonID);
-                    if(strPersonType == "Owner")
+                    if(strPersonType == "Manager")
                     {
                         intFormControl = 1;
                     }

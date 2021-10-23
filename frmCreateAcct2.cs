@@ -22,6 +22,9 @@ namespace FA21_Final_Project
     {
         
         string strInsertPerson = frmCreateAcct.strInsert;
+        public static bool boolAddManager = frmCreateAcct.boolAddManager;
+        public static bool boolEditManager = frmCreateAcct.boolEditManager;
+        public static int intPersonID = frmCreateAcct.intPersonID;
         int intToggle1 = 0;
         int intToggle2 = 0;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
@@ -37,31 +40,13 @@ namespace FA21_Final_Project
             {
                 hlpMain.HelpNamespace = Application.StartupPath + "\\CreateAcct2.chm";
                 LoadQuestions();
-                ////load combo boxes
-                //string[] strQuestionArray = new string[3];
-                //strQuestionArray[0] = "Who is your favorite author?";
-                //strQuestionArray[1] = "What is your favorite food?";
-                //strQuestionArray[2] = "What is your favorite movie?";
-                //string[] strQuestionArray2 = new string[3];
-                //strQuestionArray2[0] = "What is your favorite band?";
-                //strQuestionArray2[1] = "What is your favorite color?";
-                //strQuestionArray2[2] = "Who is your favorite singer?";
-                //string[] strQuestionArray3 = new string[3];
-                //strQuestionArray3[0] = "What is your favorite song?";
-                //strQuestionArray3[1] = "Who is your favorite teacher?";
-                //strQuestionArray3[2] = "Where were you born?";
-
-                //for (int i = 0; i < strQuestionArray.Length; i++)
-                //{
-                //    cbxFirstQ.Items.Add(strQuestionArray[i]);
-                //    cbxSecondQ.Items.Add(strQuestionArray2[i]);
-                //    cbxThirdQ.Items.Add(strQuestionArray3[i]);
-                //}
-
-                //cbxPosition.Items.Add("Manager");
-                //cbxPosition.Items.Add("Employee");
                 cbxPosition.Visible = false;
                 lblPosition.Visible = false;
+
+                if (boolEditManager == true)
+                {
+                    clsSQL.DatabaseCommandManagersLogin(tbxUserName, tbxPassword, tbxConfirm, tbxFirstAns, tbxSecondAns, tbxThirdAns, intPersonID);
+                }
             }
             catch (Exception ex)
             {
@@ -155,12 +140,34 @@ namespace FA21_Final_Project
                 clsSQL.UpdateDatabase(strInsertPerson);
                 string strPersonIDQuery = "SELECT MAX(PersonID) FROM tekelle21fa2332.Person;";
                 string strPersonID = clsSQL.DatabaseCommandLogon(strPersonIDQuery);
-                string strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
-                    strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
-                    strSecondAnswer + "', '" + cbxThirdQ.SelectedItem + "', '" + strThirdAns + "', 'Customer', NULL, NULL)";
-                clsSQL.UpdateDatabase(strInsert);
-                MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Hide();
+                string strInsert = "";
+                if (boolAddManager == true)
+                {
+                   strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
+    strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
+    strSecondAnswer + "', '" + cbxThirdQ.SelectedItem + "', '" + strThirdAns + "', 'Manager', NULL, NULL)";
+                    clsSQL.UpdateDatabase(strInsert);
+                    MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    Application.OpenForms["frmManager"].Close();
+                    frmManager frmManagerNew = new frmManager();
+                    frmManagerNew.ShowDialog();
+
+                }
+                else
+                {
+                    strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
+                        strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
+                        strSecondAnswer + "', '" + cbxThirdQ.SelectedItem + "', '" + strThirdAns + "', 'Customer', NULL, NULL)";
+                    clsSQL.UpdateDatabase(strInsert);
+                    MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    Application.OpenForms["frmLogIn"].Close();
+                    frmLogIn frmLogInNew = new frmLogIn();
+                    frmLogInNew.ShowDialog();
+
+                }
+                
                // frmLogIn frmLoginNew = new frmLogIn();
                //frmLoginNew.ShowDialog();
             }
@@ -222,18 +229,38 @@ namespace FA21_Final_Project
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            frmLogIn login = new frmLogIn();
-            this.Hide();
-            login.ShowDialog();
+            if (boolAddManager == true)
+            {
+                this.Hide();
+                Application.OpenForms["frmManager"].Close();
+                frmManager frmManagerNew = new frmManager();
+                frmManagerNew.ShowDialog();
+            }
+            else
+            {
+                frmLogIn login = new frmLogIn();
+                this.Hide();
+                login.ShowDialog();
+            }
         }
 
         private void frmCreateAcct2_FormClosing(object sender, FormClosingEventArgs e)
         {
             try
             {
-                this.Hide();
-                //frmLogIn frmLogInMain = new frmLogIn();
-                //frmLogInMain.ShowDialog();
+                if (boolAddManager == true)
+                {
+                    this.Hide();
+                    Application.OpenForms["frmManager"].Close();
+                    frmManager frmManagerNew = new frmManager();
+                    frmManagerNew.ShowDialog();
+                }
+                else
+                {
+                    frmLogIn login = new frmLogIn();
+                    this.Hide();
+                    login.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

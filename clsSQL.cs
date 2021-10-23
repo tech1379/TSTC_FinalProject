@@ -21,9 +21,13 @@ namespace FA21_Final_Project
         private static SqlCommand _sqlLogOnCommand;
         private static SqlCommand _sqlUpdateCommand;
         private static SqlCommand _sqlResultsCommand;
+        private static SqlCommand _sqlManagersCommand;
         private static SqlDataAdapter _daResults = new SqlDataAdapter();
         //add the data tables
         private static DataTable _dtResultsTable = new DataTable();
+        private static SqlDataAdapter _daManagers = new SqlDataAdapter();
+        //add the data tables
+        private static DataTable _dtManagersTable = new DataTable();
         private static string strTableName = "tekelle21fa2332.Inventory";
         private static string strTableName2 = "tekelle21fa2332.Coupons";
         private static string strTableName3 = "tekelle21fa2332.DayPrice";
@@ -309,6 +313,71 @@ namespace FA21_Final_Project
                     }
                 }
             
+        }
+        public static void DatabaseCommandManagers(TextBox tbxFirst, TextBox tbxMiddle, TextBox tbxLast,
+        TextBox tbxSuffix, TextBox tbxAddress1, TextBox tbxAddress2, TextBox tbxAddress3, TextBox tbxCity,
+        TextBox tbxZipCode, TextBox tbxEmail, TextBox tbxPrimPhone, TextBox tbxSecondPhone, int PersonID)
+        {
+            try
+            {
+                //string to build query
+                string query = "SELECT * FROM tekelle21fa2332.Person WHERE PersonID = " + PersonID + ";";
+                //establish command object
+                _sqlManagersCommand = new SqlCommand(query, _cntDatabase);
+                //establish data adapter
+                _daManagers = new SqlDataAdapter();
+                _daManagers.SelectCommand = _sqlManagersCommand;
+                //fill datatable
+                _dtManagersTable = new DataTable();
+                _daManagers.Fill(_dtManagersTable);
+                //bind controls to textboxes
+                tbxFirst.DataBindings.Add("Text", _dtManagersTable, "NameFirst");
+                tbxMiddle.DataBindings.Add("Text", _dtManagersTable, "NameMiddle");
+                tbxLast.DataBindings.Add("Text", _dtManagersTable, "NameLast");
+                tbxSuffix.DataBindings.Add("Text", _dtManagersTable, "Suffix");
+                tbxAddress1.DataBindings.Add("Text", _dtManagersTable, "Address1");
+                tbxAddress2.DataBindings.Add("Text", _dtManagersTable, "Address2");
+                tbxAddress3.DataBindings.Add("Text", _dtManagersTable, "Address3");
+                tbxCity.DataBindings.Add("Text", _dtManagersTable, "City");
+                tbxZipCode.DataBindings.Add("Text", _dtManagersTable, "Zipcode");
+                tbxEmail.DataBindings.Add("Text", _dtManagersTable, "Email");
+                tbxPrimPhone.DataBindings.Add("Text", _dtManagersTable, "PhonePrimary");
+                tbxSecondPhone.DataBindings.Add("Text", _dtManagersTable, "PhoneSecondary");
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public static void DatabaseCommandManagersLogin(TextBox tbxUserName, TextBox tbxPassword, TextBox tbxConfirm,
+TextBox tbxFirstAns, TextBox tbxSecondAns, TextBox tbxThirdAns, int PersonID)
+        {
+            try
+            {
+                //string to build query
+                string query = "SELECT LogonName, Password, FirstChallengeAnswer, SecondChallengeAnswer, ThirdChallengeAnswer FROM tekelle21fa2332.Logon WHERE PersonID = " + PersonID + ";";
+                //establish command object
+                _sqlManagersCommand = new SqlCommand(query, _cntDatabase);
+                //establish data adapter
+                _daManagers = new SqlDataAdapter();
+                _daManagers.SelectCommand = _sqlManagersCommand;
+                //fill datatable
+                _dtManagersTable = new DataTable();
+                _daManagers.Fill(_dtManagersTable);
+                //bind controls to textboxes
+                tbxUserName.DataBindings.Add("Text", _dtManagersTable, "LogonName");
+                tbxPassword.DataBindings.Add("Text", _dtManagersTable, "Password");
+                tbxConfirm.DataBindings.Add("Text", _dtManagersTable, "Password");
+                tbxFirstAns.DataBindings.Add("Text", _dtManagersTable, "FirstChallengeAnswer");
+                tbxSecondAns.DataBindings.Add("Text", _dtManagersTable, "SecondChallengeAnswer");
+                tbxThirdAns.DataBindings.Add("Text", _dtManagersTable, "ThirdChallengeAnswer");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 
