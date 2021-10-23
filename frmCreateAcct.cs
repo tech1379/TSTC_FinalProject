@@ -153,13 +153,20 @@ namespace FA21_Final_Project
                     return;
                 }
                 string strState = lstState[(cbxState.SelectedIndex)].strStateAbbv.ToString();
-                if(boolAddManager == true)
+                if(boolAddManager == true && boolEditManager == false)
                 {
                     strInsert = "INSERT INTO tekelle21fa2332.Person VALUES ('" + strTitle + "', '" + strFirstName + "', '" + strMiddleName +
                     "', '" + strLastName + "', '" + strSuffix + "', '" + strAddress1 + "', '" + strAddress2 + "', '" + strAddress3 +
                     "', '" + strCity + "', '" + strZipCode + "', '" + strState + "', '" + strEmail + "', '" + strPrimPhone + "', '" +
                     strSecondPhone + "', NULL, NULL, 'Manager');";
 
+                }
+                else if(boolEditManager == true)
+                {
+                    strInsert = "UPDATE tekelle21fa2332.Person SET Title = '" + strTitle + "', NameFirst = '" + strFirstName + "', NameMiddle = '" +
+                        strMiddleName + "', NameLast = '" + strLastName + "', Suffix = '" + strSuffix + "', Address1 = '" + strAddress1 + "', Address2 = '" +
+                        strAddress2 + "', Address3 = '" + strAddress3 + "', City = '" + strCity + "', Zipcode = '" + strZipCode + "', State = '" +
+                        strState + "', Email = '" + strEmail + "', PhonePrimary = '" + strPrimPhone + "', PhoneSecondary = '" + strSecondPhone + "' WHERE PersonID = " + intPersonID + ";";
                 }
                 else
                 {

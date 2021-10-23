@@ -42,6 +42,10 @@ namespace FA21_Final_Project
                 LoadQuestions();
                 cbxPosition.Visible = false;
                 lblPosition.Visible = false;
+                if(boolEditManager == true)
+                {
+                    btnCreate.Text = "Save Edits";
+                }
 
                 if (boolEditManager == true)
                 {
@@ -131,7 +135,7 @@ namespace FA21_Final_Project
                 //MessageBox.Show(strLogOnNameQuery);
                 string strLogOnCount = clsSQL.DatabaseCommandLogon(strLogOnNameQuery);
                 int intLogOnCount = Convert.ToInt32(strLogOnCount);
-                if (intLogOnCount > 0)
+                if (intLogOnCount > 0 && boolEditManager == false)
                 {
                     MessageBox.Show("Username already used!", "Entry Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -141,7 +145,7 @@ namespace FA21_Final_Project
                 string strPersonIDQuery = "SELECT MAX(PersonID) FROM tekelle21fa2332.Person;";
                 string strPersonID = clsSQL.DatabaseCommandLogon(strPersonIDQuery);
                 string strInsert = "";
-                if (boolAddManager == true)
+                if (boolAddManager == true && boolEditManager == false)
                 {
                    strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
     strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
@@ -153,6 +157,18 @@ namespace FA21_Final_Project
                     frmManager frmManagerNew = new frmManager();
                     frmManagerNew.ShowDialog();
 
+                }
+                else if (boolEditManager == true)
+                {
+                    strInsert = "UPDATE tekelle21fa2332.Logon SET LogonName = '" + strLogOnName.ToUpper() + "', Password = '" + strPassword + "', FirstChallengeQuestion = '" +
+                        cbxFirstQ.SelectedItem + "', FirstChallengeAnswer = '" + strFirstAnswer + "', SecondChallengeQuestion = '" + cbxSecondQ.SelectedItem + "', ThirdChallengeQuestion = '" +
+                        cbxThirdQ.SelectedItem + "', PositionTitle = 'Manager' WHERE PersonID = " + intPersonID + ";";
+                    clsSQL.UpdateDatabase(strInsert);
+                    MessageBox.Show("Account successfully edited.", "Edit", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
+                    Application.OpenForms["frmManager"].Close();
+                    frmManager frmManagerNew = new frmManager();
+                    frmManagerNew.ShowDialog();
                 }
                 else
                 {
@@ -174,6 +190,7 @@ namespace FA21_Final_Project
             catch (Exception ex)
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
