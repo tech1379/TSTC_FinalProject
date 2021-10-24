@@ -22,6 +22,7 @@ namespace FA21_Final_Project
     public partial class frmMain : Form
     {
         public static string strPersonID = frmLogIn.strPersonID;
+        public static bool boolCustomerOrder = frmManager.boolCustomerOrder;
         private int intSelectedImageID = 0;
         private int intCurrent = 0;
         public int intCouponCode = 20003;
@@ -851,7 +852,15 @@ namespace FA21_Final_Project
         {
             try
             {
-                strPersonID = frmLogIn.strPersonID;
+                if (boolCustomerOrder == true)
+                {
+                    strPersonID = frmManager.strPersonIDCustomer;
+                    boolHasAccount = frmManager.boolHasAccount;
+                }
+                else
+                {
+                    strPersonID = frmLogIn.strPersonID;
+                }
                 hlpCustomer.HelpNamespace = Application.StartupPath + "\\Inventory.chm";
                 hlpQuail.HelpNamespace = Application.StartupPath + "\\QuailHunt.chm";
                 hlpTraining.HelpNamespace = Application.StartupPath + "\\Training.chm";
@@ -1051,9 +1060,19 @@ namespace FA21_Final_Project
         {
             try
             {
-                this.Hide();
-                frmLogIn frmLogInMain = new frmLogIn();
-                frmLogInMain.ShowDialog();
+                if (boolCustomerOrder == true)
+                {
+                    this.Hide();
+                    Application.OpenForms["frmManager"].Close();
+                    frmManager frmManagerNew = new frmManager();
+                    frmManagerNew.ShowDialog();
+                }
+                else
+                {
+                    this.Hide();
+                    frmLogIn frmLogInMain = new frmLogIn();
+                    frmLogInMain.ShowDialog();
+                }
             }
             catch(Exception ex)
             {

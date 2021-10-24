@@ -18,8 +18,18 @@ namespace FA21_Final_Project
         int intMouseCount3 = 0;
         int intMouseCount4 = 0;
         int intMouseCount5 = 0;
+        int intMouseCount6 = 0;
+        int intMouseCount7 = 0;
+        int intMouseCount8 = 0;
+        int intMouseCount9 = 0;
+        int intMouseCount10 = 0;
+        int intMouseCount11 = 0;
         public static bool boolAddManager = false;
         public static bool boolEditManager = false;
+        public static bool boolEditCustomer = false;
+        public static bool boolCustomerOrder = false;
+        public static bool boolHasAccount = false;
+        public static string strPersonIDCustomer;
         public static int intPersonID = 0;
         public static int intInventoryID = 0;
         public static string strState = "";
@@ -37,8 +47,14 @@ namespace FA21_Final_Project
             {
                 LoadInventory();
                 LoadManagers();
+                LoadCustomers();
+                LoadCoupons();
+                tbxCouponPercent.Enabled = true;
+                mthExpiration.Enabled = true;
                 hlpManagerInventory.HelpNamespace = Application.StartupPath + "\\ManagerInventory.chm";
                 hlpManagerManager.HelpNamespace = Application.StartupPath + "\\ManagerManager.chm";
+                hlpManagerCustomer.HelpNamespace = Application.StartupPath + "\\Manager_Customer.chm";
+                hlpManagerCoupon.HelpNamespace = Application.StartupPath + "\\Manager_Coupon.chm";
             }
             catch(Exception ex)
             {
@@ -174,7 +190,32 @@ namespace FA21_Final_Project
             }
 
         }
+        public void LoadCustomers()
+        {
+            try
+            {
+                string strSqlInventoryQuery = "SELECT PersonID, NameFirst, NameLast, Address1, City, ZipCode, State, Email, PhonePrimary, PersonType FROM tekelle21fa2332.Person WHERE PersonType = 'Customer';";
+                clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults3);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
+        }
+
+        public void LoadCoupons()
+        {
+            try
+            {
+                string strSqlInventoryQuery = "SELECT CouponID, CouponPercent, ExpirationDate FROM tekelle21fa2332.Coupons;";
+                clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults4);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public void LoadManagers()
         {
             try
@@ -187,10 +228,11 @@ namespace FA21_Final_Project
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnAddManager_Click(object sender, EventArgs e)
         {
             boolAddManager = true;
+            boolEditManager = false;
+            boolEditCustomer = false;
             this.Hide();
             frmCreateAcct frmNewPerson = new frmCreateAcct();
             frmNewPerson.ShowDialog();
@@ -209,8 +251,9 @@ namespace FA21_Final_Project
                 string strPersonID = dgvResults2.Rows[intIndex].Cells[0].Value.ToString();
                 strState = dgvResults2.Rows[intIndex].Cells[6].Value.ToString();
                 intPersonID = Convert.ToInt32(strPersonID);
-                boolAddManager = true;
+                boolAddManager = false;
                 boolEditManager = true;
+                boolEditCustomer = false;
                 this.Hide();
                 frmCreateAcct frmNewPerson = new frmCreateAcct();
                 frmNewPerson.ShowDialog();
@@ -327,6 +370,324 @@ namespace FA21_Final_Project
         private void btnHelp2_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, hlpManagerManager.HelpNamespace);
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            boolAddManager = false;
+            boolEditManager = false;
+            boolEditCustomer = false;
+            this.Hide();
+            frmCreateAcct frmCreateAcctNew = new frmCreateAcct();
+            frmCreateAcctNew.ShowDialog();
+        }
+
+        private void btnUpdateCustomer_MouseHover(object sender, EventArgs e)
+        {
+            if (intMouseCount6 == 0 || intMouseCount6 == 2)
+            {
+                MessageBox.Show("Please select the customer you would like to update.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            intMouseCount6++;
+        }
+
+        private void btnUpdateCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvResults3.RowCount == 0)
+                {
+                    MessageBox.Show("No Customer Data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int intIndex = dgvResults3.CurrentRow.Index;
+                string strPersonID = dgvResults3.Rows[intIndex].Cells[0].Value.ToString();
+                strState = dgvResults3.Rows[intIndex].Cells[6].Value.ToString();
+                intPersonID = Convert.ToInt32(strPersonID);
+                boolAddManager = false;
+                boolEditManager = false;
+                boolEditCustomer = true;
+                this.Hide();
+                frmCreateAcct frmNewPerson = new frmCreateAcct();
+                frmNewPerson.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRemoveCustomer_MouseHover(object sender, EventArgs e)
+        {
+            if (intMouseCount7 == 0 || intMouseCount7 == 2)
+            {
+                MessageBox.Show("Please select the customer you would like to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            intMouseCount7++;
+        }
+
+        private void btnRemoveCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvResults3.RowCount == 0)
+                {
+                    MessageBox.Show("No Customer Data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int intIndex = dgvResults3.CurrentRow.Index;
+                string strCustomerName = dgvResults3.Rows[intIndex].Cells[1].Value.ToString() + " " + dgvResults3.Rows[intIndex].Cells[2].Value.ToString();
+                DialogResult dialogResult = MessageBox.Show("Are you sure you would like to delete " + strCustomerName + " ?", "Customer Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    string strPersonID = dgvResults3.Rows[intIndex].Cells[0].Value.ToString();
+                    intPersonID = Convert.ToInt32(strPersonID);
+                    string strDeleteLogon = "DELETE FROM tekelle21fa2332.Logon WHERE PersonID = " + intPersonID + ";";
+                    clsSQL.UpdateDatabase(strDeleteLogon);
+                    string strDeletePerson = "DELETE FROM tekelle21fa2332.Person WHERE PersonID = " + intPersonID + ";";
+                    clsSQL.UpdateDatabase(strDeletePerson);
+
+                    MessageBox.Show("Customer successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadCustomers();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDisableCustomer_MouseHover(object sender, EventArgs e)
+        {
+            if (intMouseCount8 == 0 || intMouseCount8 == 2)
+            {
+                MessageBox.Show("Please select the customer you would like to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            intMouseCount8++;
+        }
+
+        private void btnDisableCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvResults3.RowCount == 0)
+                {
+                    MessageBox.Show("No Customer Data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int intIndex = dgvResults3.CurrentRow.Index;
+                string strCustomerName = dgvResults3.Rows[intIndex].Cells[1].Value.ToString() + " " + dgvResults3.Rows[intIndex].Cells[2].Value.ToString();
+                DialogResult dialogResult = MessageBox.Show("Are you sure you would like to disable " + strCustomerName + " ?", "Disable Customer", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    string strPersonID = dgvResults3.Rows[intIndex].Cells[0].Value.ToString();
+                    intPersonID = Convert.ToInt32(strPersonID);
+                    string strUpdateLogon = "UPDATE tekelle21fa2332.Logon SET AccountDisabled = 1 WHERE PersonID = " + intPersonID + ";";
+                    clsSQL.UpdateDatabase(strUpdateLogon);
+
+
+                    MessageBox.Show("Customer successfully disabled.", "Disabled", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadCustomers();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnOrderCustomer_MouseHover(object sender, EventArgs e)
+        {
+            if (intMouseCount9 == 0 || intMouseCount9 == 2)
+            {
+                MessageBox.Show("Please select the customer you would like to make an order for.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            intMouseCount9++;
+        }
+
+        private void btnOrderCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvResults3.RowCount == 0)
+                {
+                    MessageBox.Show("No Customer Data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int intIndex = dgvResults3.CurrentRow.Index;
+                strPersonIDCustomer = dgvResults3.Rows[intIndex].Cells[0].Value.ToString();
+                boolAddManager = false;
+                boolEditManager = false;
+                boolEditCustomer = false;
+                boolCustomerOrder = true;
+                boolHasAccount = true;
+                this.Hide();
+                frmMain frmMainNew = new frmMain();
+                frmMainNew.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tbxCouponPercent_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || (int)e.KeyChar == 8)
+            { //acceptable keystrokes
+                e.Handled = false;
+            }
+            else if (e.KeyChar == '.')
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btnAddCoupon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (tbxCouponPercent.Text == "")
+                {
+                    MessageBox.Show("Coupon Percent cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbxCouponPercent.Focus();
+                    return;
+                }
+                decimal decCouponPercent = Convert.ToDecimal(tbxCouponPercent.Text);
+                DateTime dtStartDate = mthExpiration.SelectionRange.Start;
+                DateTime dtNow = DateTime.Now;
+                int intResult = DateTime.Compare(dtStartDate, dtNow);
+                if (intResult <= 0)
+                {
+                    MessageBox.Show("Expiration Date must be in the future.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string strInsertCoupon = "INSERT INTO tekelle21fa2332.Coupons VALUES(" + decCouponPercent + ", '" + dtStartDate.ToString("yyyy-MM-dd") + "');";
+                clsSQL.UpdateDatabase(strInsertCoupon);
+                MessageBox.Show("Coupon successfully added", "Coupon Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEditCoupon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvResults4.RowCount == 0)
+                {
+                    MessageBox.Show("No Coupon Data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int intIndex = dgvResults4.CurrentRow.Index;
+                string strCouponID = dgvResults4.Rows[intIndex].Cells[0].Value.ToString();
+                int intCouponID = Convert.ToInt32(strCouponID);
+                if (tbxCouponPercent.Text == "")
+                {
+                    MessageBox.Show("Coupon Percent cannot be empty.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbxCouponPercent.Focus();
+                    return;
+                }
+                decimal decCouponPercent = Convert.ToDecimal(tbxCouponPercent.Text);
+                DateTime dtStartDate = mthExpiration.SelectionRange.Start;
+                DateTime dtNow = DateTime.Now;
+                int intResult = DateTime.Compare(dtStartDate, dtNow);
+                if (intResult <= 0)
+                {
+                    MessageBox.Show("Expiration Date must be in the future.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                string strUpdateCoupon = "UPDATE tekelle21fa2332.Coupons SET CouponPercent = " + decCouponPercent + ", ExpirationDate = '" + dtStartDate.ToString("yyyy-MM-dd") + "' WHERE CouponID = " + intCouponID + ";";
+                clsSQL.UpdateDatabase(strUpdateCoupon);
+                MessageBox.Show("Coupon successfully edited", "Coupon Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadCoupons();
+                tbxCouponPercent.Clear();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEditCoupon_MouseHover(object sender, EventArgs e)
+        {
+            if (intMouseCount10 == 0 || intMouseCount10 == 2)
+            {
+                MessageBox.Show("Please select the coupon you would like to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            intMouseCount10++;
+        }
+
+        private void btnRemoveCoupon_MouseHover(object sender, EventArgs e)
+        {
+            if (intMouseCount11 == 0 || intMouseCount11 == 2)
+            {
+                MessageBox.Show("Please select the coupon you would like to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            intMouseCount11++;
+        }
+
+        private void btnRemoveCoupon_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvResults4.RowCount == 0)
+                {
+                    MessageBox.Show("No Coupon Data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int intIndex = dgvResults4.CurrentRow.Index;
+                string strCouponID = dgvResults4.Rows[intIndex].Cells[0].Value.ToString();
+                int intCouponID = Convert.ToInt32(strCouponID);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you would like to delete " + strCouponID + " ?", "Coupon Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+              
+                    string strDeleteCoupon = "DELETE FROM tekelle21fa2332.Coupons WHERE CouponID = " + intCouponID + ";";
+                    clsSQL.UpdateDatabase(strDeleteCoupon);
+                    
+
+                    MessageBox.Show("Coupon successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadCoupons();
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCustomerHelp_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpManagerCustomer.HelpNamespace);
+        }
+
+        private void btnCouponHelp_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, hlpManagerCoupon.HelpNamespace);
         }
     }
 }

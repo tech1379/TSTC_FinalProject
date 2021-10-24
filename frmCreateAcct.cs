@@ -27,6 +27,7 @@ namespace FA21_Final_Project
         List<clsState> lstState = new List<clsState>();
         public static bool boolAddManager = frmManager.boolAddManager;
         public static bool boolEditManager = frmManager.boolEditManager;
+        public static bool boolEditCustomer = frmManager.boolEditCustomer;
         public static string strState = frmManager.strState;
         public static int intPersonID = frmManager.intPersonID;
         public frmCreateAcct()
@@ -47,12 +48,13 @@ namespace FA21_Final_Project
                 {
                     cbxState.Items.Add(lstState[i].strStateName);
                 }
-                if(boolEditManager == true)
+                if(boolEditManager == true || boolEditCustomer == true)
                 {
                     clsSQL.DatabaseCommandManagers(tbxFirst, tbxMiddle, tbxLast, tbxSuffix, tbxAddress1, tbxAddress2,
                         tbxAddress3, tbxCity, tbxZipCode, tbxEmail, tbxPrimPhone, tbxSecPhone, intPersonID);
                    
                 }
+                
             }
             catch(Exception ex)
             {
@@ -153,7 +155,7 @@ namespace FA21_Final_Project
                     return;
                 }
                 string strState = lstState[(cbxState.SelectedIndex)].strStateAbbv.ToString();
-                if(boolAddManager == true && boolEditManager == false)
+                if(boolAddManager == true)
                 {
                     strInsert = "INSERT INTO tekelle21fa2332.Person VALUES ('" + strTitle + "', '" + strFirstName + "', '" + strMiddleName +
                     "', '" + strLastName + "', '" + strSuffix + "', '" + strAddress1 + "', '" + strAddress2 + "', '" + strAddress3 +
@@ -162,6 +164,13 @@ namespace FA21_Final_Project
 
                 }
                 else if(boolEditManager == true)
+                {
+                    strInsert = "UPDATE tekelle21fa2332.Person SET Title = '" + strTitle + "', NameFirst = '" + strFirstName + "', NameMiddle = '" +
+                        strMiddleName + "', NameLast = '" + strLastName + "', Suffix = '" + strSuffix + "', Address1 = '" + strAddress1 + "', Address2 = '" +
+                        strAddress2 + "', Address3 = '" + strAddress3 + "', City = '" + strCity + "', Zipcode = '" + strZipCode + "', State = '" +
+                        strState + "', Email = '" + strEmail + "', PhonePrimary = '" + strPrimPhone + "', PhoneSecondary = '" + strSecondPhone + "' WHERE PersonID = " + intPersonID + ";";
+                }
+                else if(boolEditCustomer == true)
                 {
                     strInsert = "UPDATE tekelle21fa2332.Person SET Title = '" + strTitle + "', NameFirst = '" + strFirstName + "', NameMiddle = '" +
                         strMiddleName + "', NameLast = '" + strLastName + "', Suffix = '" + strSuffix + "', Address1 = '" + strAddress1 + "', Address2 = '" +
@@ -308,7 +317,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                if (boolAddManager == true || boolEditManager == true)
+                if (boolAddManager == true || boolEditManager == true || boolEditCustomer == true)
                 {
                     this.Hide();
                     Application.OpenForms["frmManager"].Close();
