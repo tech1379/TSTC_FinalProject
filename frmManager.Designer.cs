@@ -45,28 +45,37 @@ namespace FA21_Final_Project
             this.btnUpdateManager = new System.Windows.Forms.Button();
             this.btnAddManager = new System.Windows.Forms.Button();
             this.dgvResults2 = new System.Windows.Forms.DataGridView();
+            this.tbManagerCustomer = new System.Windows.Forms.TabPage();
+            this.btnCustomerHelp = new System.Windows.Forms.Label();
+            this.btnOrderCustomer = new System.Windows.Forms.Button();
+            this.btnDisableCustomer = new System.Windows.Forms.Button();
+            this.btnRemoveCustomer = new System.Windows.Forms.Button();
+            this.btnUpdateCustomer = new System.Windows.Forms.Button();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
+            this.dgvResults3 = new System.Windows.Forms.DataGridView();
+            this.tbCoupons = new System.Windows.Forms.TabPage();
+            this.btnCouponHelp = new System.Windows.Forms.Label();
+            this.mthExpiration = new System.Windows.Forms.MonthCalendar();
+            this.tbxCouponPercent = new System.Windows.Forms.TextBox();
+            this.lblCouponExpiration = new System.Windows.Forms.Label();
+            this.lblCouponPercent = new System.Windows.Forms.Label();
+            this.btnEditCoupon = new System.Windows.Forms.Button();
+            this.btnRemoveCoupon = new System.Windows.Forms.Button();
+            this.btnAddCoupon = new System.Windows.Forms.Button();
+            this.dgvResults4 = new System.Windows.Forms.DataGridView();
             this.hlpManagerInventory = new System.Windows.Forms.HelpProvider();
             this.hlpManagerManager = new System.Windows.Forms.HelpProvider();
-            this.tbManagerCustomer = new System.Windows.Forms.TabPage();
-            this.dgvResults3 = new System.Windows.Forms.DataGridView();
-            this.btnAddCustomer = new System.Windows.Forms.Button();
-            this.btnUpdateCustomer = new System.Windows.Forms.Button();
-            this.btnRemoveCustomer = new System.Windows.Forms.Button();
-            this.btnDisableCustomer = new System.Windows.Forms.Button();
-            this.btnOrderCustomer = new System.Windows.Forms.Button();
-            this.tbCoupons = new System.Windows.Forms.TabPage();
-            this.dgvResults4 = new System.Windows.Forms.DataGridView();
-            this.btnAddCoupon = new System.Windows.Forms.Button();
-            this.btnRemoveCoupon = new System.Windows.Forms.Button();
-            this.btnEditCoupon = new System.Windows.Forms.Button();
-            this.lblCouponPercent = new System.Windows.Forms.Label();
-            this.lblCouponExpiration = new System.Windows.Forms.Label();
-            this.tbxCouponPercent = new System.Windows.Forms.TextBox();
-            this.mthExpiration = new System.Windows.Forms.MonthCalendar();
-            this.btnCustomerHelp = new System.Windows.Forms.Label();
-            this.btnCouponHelp = new System.Windows.Forms.Label();
             this.hlpManagerCustomer = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCoupon = new System.Windows.Forms.HelpProvider();
+            this.tbReports = new System.Windows.Forms.TabPage();
+            this.btnDaily = new System.Windows.Forms.Button();
+            this.btnWeekly = new System.Windows.Forms.Button();
+            this.btnMonthly = new System.Windows.Forms.Button();
+            this.btnManagers = new System.Windows.Forms.Button();
+            this.btnInventoryReport = new System.Windows.Forms.Button();
+            this.btnView = new System.Windows.Forms.Button();
+            this.mthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.tbManager.SuspendLayout();
             this.tbInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
@@ -76,6 +85,7 @@ namespace FA21_Final_Project
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults3)).BeginInit();
             this.tbCoupons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults4)).BeginInit();
+            this.tbReports.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbManager
@@ -84,6 +94,7 @@ namespace FA21_Final_Project
             this.tbManager.Controls.Add(this.tbManagerInfo);
             this.tbManager.Controls.Add(this.tbManagerCustomer);
             this.tbManager.Controls.Add(this.tbCoupons);
+            this.tbManager.Controls.Add(this.tbReports);
             this.tbManager.Location = new System.Drawing.Point(23, 48);
             this.tbManager.Name = "tbManager";
             this.tbManager.SelectedIndex = 0;
@@ -266,48 +277,27 @@ namespace FA21_Final_Project
             this.tbManagerCustomer.TabIndex = 2;
             this.tbManagerCustomer.Text = "Customer";
             // 
-            // dgvResults3
+            // btnCustomerHelp
             // 
-            this.dgvResults3.AllowUserToAddRows = false;
-            this.dgvResults3.AllowUserToDeleteRows = false;
-            this.dgvResults3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults3.Location = new System.Drawing.Point(15, 56);
-            this.dgvResults3.Name = "dgvResults3";
-            this.dgvResults3.ReadOnly = true;
-            this.dgvResults3.Size = new System.Drawing.Size(815, 227);
-            this.dgvResults3.TabIndex = 0;
+            this.btnCustomerHelp.AutoSize = true;
+            this.btnCustomerHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomerHelp.Location = new System.Drawing.Point(12, 17);
+            this.btnCustomerHelp.Name = "btnCustomerHelp";
+            this.btnCustomerHelp.Size = new System.Drawing.Size(44, 18);
+            this.btnCustomerHelp.TabIndex = 11;
+            this.btnCustomerHelp.Text = "&Help";
+            this.btnCustomerHelp.Click += new System.EventHandler(this.btnCustomerHelp_Click);
             // 
-            // btnAddCustomer
+            // btnOrderCustomer
             // 
-            this.btnAddCustomer.Location = new System.Drawing.Point(100, 301);
-            this.btnAddCustomer.Name = "btnAddCustomer";
-            this.btnAddCustomer.Size = new System.Drawing.Size(96, 64);
-            this.btnAddCustomer.TabIndex = 6;
-            this.btnAddCustomer.Text = "Add Cus&tomer";
-            this.btnAddCustomer.UseVisualStyleBackColor = true;
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
-            // 
-            // btnUpdateCustomer
-            // 
-            this.btnUpdateCustomer.Location = new System.Drawing.Point(238, 301);
-            this.btnUpdateCustomer.Name = "btnUpdateCustomer";
-            this.btnUpdateCustomer.Size = new System.Drawing.Size(96, 64);
-            this.btnUpdateCustomer.TabIndex = 7;
-            this.btnUpdateCustomer.Text = "&Update Customer";
-            this.btnUpdateCustomer.UseVisualStyleBackColor = true;
-            this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
-            this.btnUpdateCustomer.MouseHover += new System.EventHandler(this.btnUpdateCustomer_MouseHover);
-            // 
-            // btnRemoveCustomer
-            // 
-            this.btnRemoveCustomer.Location = new System.Drawing.Point(376, 301);
-            this.btnRemoveCustomer.Name = "btnRemoveCustomer";
-            this.btnRemoveCustomer.Size = new System.Drawing.Size(96, 64);
-            this.btnRemoveCustomer.TabIndex = 8;
-            this.btnRemoveCustomer.Text = "&Remove Customer";
-            this.btnRemoveCustomer.UseVisualStyleBackColor = true;
-            this.btnRemoveCustomer.Click += new System.EventHandler(this.btnRemoveCustomer_Click);
-            this.btnRemoveCustomer.MouseHover += new System.EventHandler(this.btnRemoveCustomer_MouseHover);
+            this.btnOrderCustomer.Location = new System.Drawing.Point(652, 301);
+            this.btnOrderCustomer.Name = "btnOrderCustomer";
+            this.btnOrderCustomer.Size = new System.Drawing.Size(96, 64);
+            this.btnOrderCustomer.TabIndex = 10;
+            this.btnOrderCustomer.Text = "Customer &Order";
+            this.btnOrderCustomer.UseVisualStyleBackColor = true;
+            this.btnOrderCustomer.Click += new System.EventHandler(this.btnOrderCustomer_Click);
+            this.btnOrderCustomer.MouseHover += new System.EventHandler(this.btnOrderCustomer_MouseHover);
             // 
             // btnDisableCustomer
             // 
@@ -320,16 +310,48 @@ namespace FA21_Final_Project
             this.btnDisableCustomer.Click += new System.EventHandler(this.btnDisableCustomer_Click);
             this.btnDisableCustomer.MouseHover += new System.EventHandler(this.btnDisableCustomer_MouseHover);
             // 
-            // btnOrderCustomer
+            // btnRemoveCustomer
             // 
-            this.btnOrderCustomer.Location = new System.Drawing.Point(652, 301);
-            this.btnOrderCustomer.Name = "btnOrderCustomer";
-            this.btnOrderCustomer.Size = new System.Drawing.Size(96, 64);
-            this.btnOrderCustomer.TabIndex = 10;
-            this.btnOrderCustomer.Text = "Customer &Order";
-            this.btnOrderCustomer.UseVisualStyleBackColor = true;
-            this.btnOrderCustomer.Click += new System.EventHandler(this.btnOrderCustomer_Click);
-            this.btnOrderCustomer.MouseHover += new System.EventHandler(this.btnOrderCustomer_MouseHover);
+            this.btnRemoveCustomer.Location = new System.Drawing.Point(376, 301);
+            this.btnRemoveCustomer.Name = "btnRemoveCustomer";
+            this.btnRemoveCustomer.Size = new System.Drawing.Size(96, 64);
+            this.btnRemoveCustomer.TabIndex = 8;
+            this.btnRemoveCustomer.Text = "&Remove Customer";
+            this.btnRemoveCustomer.UseVisualStyleBackColor = true;
+            this.btnRemoveCustomer.Click += new System.EventHandler(this.btnRemoveCustomer_Click);
+            this.btnRemoveCustomer.MouseHover += new System.EventHandler(this.btnRemoveCustomer_MouseHover);
+            // 
+            // btnUpdateCustomer
+            // 
+            this.btnUpdateCustomer.Location = new System.Drawing.Point(238, 301);
+            this.btnUpdateCustomer.Name = "btnUpdateCustomer";
+            this.btnUpdateCustomer.Size = new System.Drawing.Size(96, 64);
+            this.btnUpdateCustomer.TabIndex = 7;
+            this.btnUpdateCustomer.Text = "&Update Customer";
+            this.btnUpdateCustomer.UseVisualStyleBackColor = true;
+            this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
+            this.btnUpdateCustomer.MouseHover += new System.EventHandler(this.btnUpdateCustomer_MouseHover);
+            // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.Location = new System.Drawing.Point(100, 301);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(96, 64);
+            this.btnAddCustomer.TabIndex = 6;
+            this.btnAddCustomer.Text = "Add Cus&tomer";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+            // 
+            // dgvResults3
+            // 
+            this.dgvResults3.AllowUserToAddRows = false;
+            this.dgvResults3.AllowUserToDeleteRows = false;
+            this.dgvResults3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResults3.Location = new System.Drawing.Point(15, 56);
+            this.dgvResults3.Name = "dgvResults3";
+            this.dgvResults3.ReadOnly = true;
+            this.dgvResults3.Size = new System.Drawing.Size(815, 227);
+            this.dgvResults3.TabIndex = 0;
             // 
             // tbCoupons
             // 
@@ -350,38 +372,48 @@ namespace FA21_Final_Project
             this.tbCoupons.TabIndex = 3;
             this.tbCoupons.Text = "Coupons";
             // 
-            // dgvResults4
+            // btnCouponHelp
             // 
-            this.dgvResults4.AllowUserToAddRows = false;
-            this.dgvResults4.AllowUserToDeleteRows = false;
-            this.dgvResults4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvResults4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResults4.Location = new System.Drawing.Point(376, 19);
-            this.dgvResults4.Name = "dgvResults4";
-            this.dgvResults4.ReadOnly = true;
-            this.dgvResults4.Size = new System.Drawing.Size(454, 212);
-            this.dgvResults4.TabIndex = 0;
+            this.btnCouponHelp.AutoSize = true;
+            this.btnCouponHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCouponHelp.Location = new System.Drawing.Point(15, 19);
+            this.btnCouponHelp.Name = "btnCouponHelp";
+            this.btnCouponHelp.Size = new System.Drawing.Size(44, 18);
+            this.btnCouponHelp.TabIndex = 16;
+            this.btnCouponHelp.Text = "&Help";
+            this.btnCouponHelp.Click += new System.EventHandler(this.btnCouponHelp_Click);
             // 
-            // btnAddCoupon
+            // mthExpiration
             // 
-            this.btnAddCoupon.Location = new System.Drawing.Point(406, 276);
-            this.btnAddCoupon.Name = "btnAddCoupon";
-            this.btnAddCoupon.Size = new System.Drawing.Size(96, 64);
-            this.btnAddCoupon.TabIndex = 7;
-            this.btnAddCoupon.Text = "Add &Coupon";
-            this.btnAddCoupon.UseVisualStyleBackColor = true;
-            this.btnAddCoupon.Click += new System.EventHandler(this.btnAddCoupon_Click);
+            this.mthExpiration.Location = new System.Drawing.Point(18, 193);
+            this.mthExpiration.Name = "mthExpiration";
+            this.mthExpiration.TabIndex = 15;
             // 
-            // btnRemoveCoupon
+            // tbxCouponPercent
             // 
-            this.btnRemoveCoupon.Location = new System.Drawing.Point(734, 276);
-            this.btnRemoveCoupon.Name = "btnRemoveCoupon";
-            this.btnRemoveCoupon.Size = new System.Drawing.Size(96, 64);
-            this.btnRemoveCoupon.TabIndex = 8;
-            this.btnRemoveCoupon.Text = "&Remove Coupon";
-            this.btnRemoveCoupon.UseVisualStyleBackColor = true;
-            this.btnRemoveCoupon.Click += new System.EventHandler(this.btnRemoveCoupon_Click);
-            this.btnRemoveCoupon.MouseHover += new System.EventHandler(this.btnRemoveCoupon_MouseHover);
+            this.tbxCouponPercent.Location = new System.Drawing.Point(18, 116);
+            this.tbxCouponPercent.Name = "tbxCouponPercent";
+            this.tbxCouponPercent.Size = new System.Drawing.Size(100, 26);
+            this.tbxCouponPercent.TabIndex = 14;
+            this.tbxCouponPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxCouponPercent_KeyPress);
+            // 
+            // lblCouponExpiration
+            // 
+            this.lblCouponExpiration.AutoSize = true;
+            this.lblCouponExpiration.Location = new System.Drawing.Point(15, 166);
+            this.lblCouponExpiration.Name = "lblCouponExpiration";
+            this.lblCouponExpiration.Size = new System.Drawing.Size(135, 18);
+            this.lblCouponExpiration.TabIndex = 12;
+            this.lblCouponExpiration.Text = "Expiration Date:";
+            // 
+            // lblCouponPercent
+            // 
+            this.lblCouponPercent.AutoSize = true;
+            this.lblCouponPercent.Location = new System.Drawing.Point(15, 95);
+            this.lblCouponPercent.Name = "lblCouponPercent";
+            this.lblCouponPercent.Size = new System.Drawing.Size(143, 18);
+            this.lblCouponPercent.TabIndex = 11;
+            this.lblCouponPercent.Text = "Coupon Percent:";
             // 
             // btnEditCoupon
             // 
@@ -394,59 +426,129 @@ namespace FA21_Final_Project
             this.btnEditCoupon.Click += new System.EventHandler(this.btnEditCoupon_Click);
             this.btnEditCoupon.MouseHover += new System.EventHandler(this.btnEditCoupon_MouseHover);
             // 
-            // lblCouponPercent
+            // btnRemoveCoupon
             // 
-            this.lblCouponPercent.AutoSize = true;
-            this.lblCouponPercent.Location = new System.Drawing.Point(15, 95);
-            this.lblCouponPercent.Name = "lblCouponPercent";
-            this.lblCouponPercent.Size = new System.Drawing.Size(143, 18);
-            this.lblCouponPercent.TabIndex = 11;
-            this.lblCouponPercent.Text = "Coupon Percent:";
+            this.btnRemoveCoupon.Location = new System.Drawing.Point(734, 276);
+            this.btnRemoveCoupon.Name = "btnRemoveCoupon";
+            this.btnRemoveCoupon.Size = new System.Drawing.Size(96, 64);
+            this.btnRemoveCoupon.TabIndex = 8;
+            this.btnRemoveCoupon.Text = "&Remove Coupon";
+            this.btnRemoveCoupon.UseVisualStyleBackColor = true;
+            this.btnRemoveCoupon.Click += new System.EventHandler(this.btnRemoveCoupon_Click);
+            this.btnRemoveCoupon.MouseHover += new System.EventHandler(this.btnRemoveCoupon_MouseHover);
             // 
-            // lblCouponExpiration
+            // btnAddCoupon
             // 
-            this.lblCouponExpiration.AutoSize = true;
-            this.lblCouponExpiration.Location = new System.Drawing.Point(15, 166);
-            this.lblCouponExpiration.Name = "lblCouponExpiration";
-            this.lblCouponExpiration.Size = new System.Drawing.Size(135, 18);
-            this.lblCouponExpiration.TabIndex = 12;
-            this.lblCouponExpiration.Text = "Expiration Date:";
+            this.btnAddCoupon.Location = new System.Drawing.Point(406, 276);
+            this.btnAddCoupon.Name = "btnAddCoupon";
+            this.btnAddCoupon.Size = new System.Drawing.Size(96, 64);
+            this.btnAddCoupon.TabIndex = 7;
+            this.btnAddCoupon.Text = "Add &Coupon";
+            this.btnAddCoupon.UseVisualStyleBackColor = true;
+            this.btnAddCoupon.Click += new System.EventHandler(this.btnAddCoupon_Click);
             // 
-            // tbxCouponPercent
+            // dgvResults4
             // 
-            this.tbxCouponPercent.Location = new System.Drawing.Point(18, 116);
-            this.tbxCouponPercent.Name = "tbxCouponPercent";
-            this.tbxCouponPercent.Size = new System.Drawing.Size(100, 26);
-            this.tbxCouponPercent.TabIndex = 14;
-            this.tbxCouponPercent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxCouponPercent_KeyPress);
+            this.dgvResults4.AllowUserToAddRows = false;
+            this.dgvResults4.AllowUserToDeleteRows = false;
+            this.dgvResults4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvResults4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvResults4.Location = new System.Drawing.Point(376, 19);
+            this.dgvResults4.Name = "dgvResults4";
+            this.dgvResults4.ReadOnly = true;
+            this.dgvResults4.Size = new System.Drawing.Size(454, 212);
+            this.dgvResults4.TabIndex = 0;
             // 
-            // mthExpiration
+            // tbReports
             // 
-            this.mthExpiration.Location = new System.Drawing.Point(18, 193);
-            this.mthExpiration.Name = "mthExpiration";
-            this.mthExpiration.TabIndex = 15;
+            this.tbReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbReports.Controls.Add(this.lblInfo);
+            this.tbReports.Controls.Add(this.mthCalendar);
+            this.tbReports.Controls.Add(this.btnView);
+            this.tbReports.Controls.Add(this.btnInventoryReport);
+            this.tbReports.Controls.Add(this.btnManagers);
+            this.tbReports.Controls.Add(this.btnMonthly);
+            this.tbReports.Controls.Add(this.btnWeekly);
+            this.tbReports.Controls.Add(this.btnDaily);
+            this.tbReports.Location = new System.Drawing.Point(4, 27);
+            this.tbReports.Name = "tbReports";
+            this.tbReports.Padding = new System.Windows.Forms.Padding(3);
+            this.tbReports.Size = new System.Drawing.Size(849, 380);
+            this.tbReports.TabIndex = 4;
+            this.tbReports.Text = "Reports";
             // 
-            // btnCustomerHelp
+            // btnDaily
             // 
-            this.btnCustomerHelp.AutoSize = true;
-            this.btnCustomerHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomerHelp.Location = new System.Drawing.Point(12, 17);
-            this.btnCustomerHelp.Name = "btnCustomerHelp";
-            this.btnCustomerHelp.Size = new System.Drawing.Size(44, 18);
-            this.btnCustomerHelp.TabIndex = 11;
-            this.btnCustomerHelp.Text = "&Help";
-            this.btnCustomerHelp.Click += new System.EventHandler(this.btnCustomerHelp_Click);
+            this.btnDaily.Location = new System.Drawing.Point(36, 287);
+            this.btnDaily.Name = "btnDaily";
+            this.btnDaily.Size = new System.Drawing.Size(96, 64);
+            this.btnDaily.TabIndex = 8;
+            this.btnDaily.Text = "&Daily Sales Report";
+            this.btnDaily.UseVisualStyleBackColor = true;
+            this.btnDaily.Click += new System.EventHandler(this.btnDaily_Click);
             // 
-            // btnCouponHelp
+            // btnWeekly
             // 
-            this.btnCouponHelp.AutoSize = true;
-            this.btnCouponHelp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCouponHelp.Location = new System.Drawing.Point(15, 19);
-            this.btnCouponHelp.Name = "btnCouponHelp";
-            this.btnCouponHelp.Size = new System.Drawing.Size(44, 18);
-            this.btnCouponHelp.TabIndex = 16;
-            this.btnCouponHelp.Text = "&Help";
-            this.btnCouponHelp.Click += new System.EventHandler(this.btnCouponHelp_Click);
+            this.btnWeekly.Location = new System.Drawing.Point(172, 287);
+            this.btnWeekly.Name = "btnWeekly";
+            this.btnWeekly.Size = new System.Drawing.Size(96, 64);
+            this.btnWeekly.TabIndex = 9;
+            this.btnWeekly.Text = "&Weekly Sales Report";
+            this.btnWeekly.UseVisualStyleBackColor = true;
+            this.btnWeekly.Click += new System.EventHandler(this.btnWeekly_Click);
+            // 
+            // btnMonthly
+            // 
+            this.btnMonthly.Location = new System.Drawing.Point(308, 287);
+            this.btnMonthly.Name = "btnMonthly";
+            this.btnMonthly.Size = new System.Drawing.Size(96, 64);
+            this.btnMonthly.TabIndex = 10;
+            this.btnMonthly.Text = "&Monthly Sales Report";
+            this.btnMonthly.UseVisualStyleBackColor = true;
+            this.btnMonthly.Click += new System.EventHandler(this.btnMonthly_Click);
+            // 
+            // btnManagers
+            // 
+            this.btnManagers.Location = new System.Drawing.Point(444, 287);
+            this.btnManagers.Name = "btnManagers";
+            this.btnManagers.Size = new System.Drawing.Size(96, 64);
+            this.btnManagers.TabIndex = 11;
+            this.btnManagers.Text = "Managers &Info";
+            this.btnManagers.UseVisualStyleBackColor = true;
+            // 
+            // btnInventoryReport
+            // 
+            this.btnInventoryReport.Location = new System.Drawing.Point(580, 287);
+            this.btnInventoryReport.Name = "btnInventoryReport";
+            this.btnInventoryReport.Size = new System.Drawing.Size(96, 64);
+            this.btnInventoryReport.TabIndex = 12;
+            this.btnInventoryReport.Text = "Inventory &Report";
+            this.btnInventoryReport.UseVisualStyleBackColor = true;
+            // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(716, 287);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(96, 64);
+            this.btnView.TabIndex = 13;
+            this.btnView.Text = "&View Reports";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
+            // mthCalendar
+            // 
+            this.mthCalendar.Location = new System.Drawing.Point(281, 81);
+            this.mthCalendar.Name = "mthCalendar";
+            this.mthCalendar.TabIndex = 14;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(17, 54);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(358, 18);
+            this.lblInfo.TabIndex = 15;
+            this.lblInfo.Text = "Please select a start date for Sales Reports:";
             // 
             // frmManager
             // 
@@ -477,6 +579,8 @@ namespace FA21_Final_Project
             this.tbCoupons.ResumeLayout(false);
             this.tbCoupons.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults4)).EndInit();
+            this.tbReports.ResumeLayout(false);
+            this.tbReports.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -520,5 +624,14 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label btnCouponHelp;
         private System.Windows.Forms.HelpProvider hlpManagerCustomer;
         private System.Windows.Forms.HelpProvider hlpManagerCoupon;
+        private System.Windows.Forms.TabPage tbReports;
+        private System.Windows.Forms.Button btnDaily;
+        private System.Windows.Forms.Button btnWeekly;
+        private System.Windows.Forms.Button btnMonthly;
+        private System.Windows.Forms.Button btnManagers;
+        private System.Windows.Forms.Button btnInventoryReport;
+        private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.MonthCalendar mthCalendar;
+        private System.Windows.Forms.Label lblInfo;
     }
 }

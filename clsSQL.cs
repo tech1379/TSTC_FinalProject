@@ -32,6 +32,7 @@ namespace FA21_Final_Project
         private static string strTableName2 = "tekelle21fa2332.Coupons";
         private static string strTableName3 = "tekelle21fa2332.DayPrice";
         private static string strTableName4 = "tekelle21fa2332.State";
+        private static string strTableName5 = "tekelle21fa2332.Orders";
 
         public static void ConnectDatabase()
         {
@@ -378,6 +379,43 @@ TextBox tbxFirstAns, TextBox tbxSecondAns, TextBox tbxThirdAns, int PersonID)
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        public static List<clsOrders> LoadOrders()
+        {
+            //TODO: Change the SELECT statement to the column names you are trying to use.
+            string strCommand = $"SELECT OrderID, PersonID, Date, OrderTotal, CouponID FROM {strTableName5};"; // Query to pull two columns of data from Images table            
+            SqlCommand SelectCommand = new SqlCommand(strCommand, _cntDatabase);
+            SqlDataReader sqlReader;
+
+            List<clsOrders> lstOrders = new List<clsOrders>();
+            lstOrders.Clear();// Empty the list before loading new images to prevent duplications
+            try
+            {
+                _cntDatabase.Open();
+                sqlReader = SelectCommand.ExecuteReader();
+
+                while (sqlReader.Read())
+                {
+                    clsOrders orders = new clsOrders();
+                    orders.intOrderID = sqlReader.GetInt32(0); // MS SQL Datatype int
+                    orders.intPersonID = sqlReader.GetInt32(1);
+                    orders.dtOrderDate = sqlReader.GetDateTime(2);
+                    orders.decOrderTotal = sqlReader.GetDecimal(3);
+                    orders.intCouponID = sqlReader.GetInt32(4);
+                    lstOrders.Add(orders); // Add image object to list
+
+                    // You can use a constructor for this class to accept two parameters
+                    // and add it all at the same time. Just for demo purposes
+
+                    // lstImages.Add(new Images(sqlReader.GetInt32(0), (byte[])sqlReader[1]));
+                }
+                _cntDatabase.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error loading Orders.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return lstOrders;
         }
     }
 

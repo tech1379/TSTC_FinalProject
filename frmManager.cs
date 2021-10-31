@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using System.IO;
 
 namespace FA21_Final_Project
 {
@@ -34,6 +35,12 @@ namespace FA21_Final_Project
         public static int intInventoryID = 0;
         public static string strState = "";
         List<clsInventory> lstInventory = new List<clsInventory>();
+        List<clsOrders> lstOrders = new List<clsOrders>();
+        List<clsOrders> lstOrdersReport = new List<clsOrders>();
+        public decimal decSalesTotal = 0;
+        public string strStartDate;
+        public int intReportNumber;
+        public string strReportDate;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
     "Please inform the Program Developer that the following error occurred: \n\n\n";
         public frmManager()
@@ -55,6 +62,9 @@ namespace FA21_Final_Project
                 hlpManagerManager.HelpNamespace = Application.StartupPath + "\\ManagerManager.chm";
                 hlpManagerCustomer.HelpNamespace = Application.StartupPath + "\\Manager_Customer.chm";
                 hlpManagerCoupon.HelpNamespace = Application.StartupPath + "\\Manager_Coupon.chm";
+                lstOrders = clsSQL.LoadOrders();
+                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
+                intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
             }
             catch(Exception ex)
             {
@@ -657,6 +667,11 @@ namespace FA21_Final_Project
                 int intIndex = dgvResults4.CurrentRow.Index;
                 string strCouponID = dgvResults4.Rows[intIndex].Cells[0].Value.ToString();
                 int intCouponID = Convert.ToInt32(strCouponID);
+                if (intCouponID == 20003)
+                {
+                    MessageBox.Show("You can't delete 20003.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 DialogResult dialogResult = MessageBox.Show("Are you sure you would like to delete " + strCouponID + " ?", "Coupon Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -688,6 +703,207 @@ namespace FA21_Final_Project
         private void btnCouponHelp_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, hlpManagerCoupon.HelpNamespace);
+        }
+
+        private void btnDaily_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decSalesTotal = 0;
+                DateTime dtStartDate = mthCalendar.SelectionRange.Start;
+                strStartDate = dtStartDate.ToString();
+                strReportDate = dtStartDate.ToString("MMddyyyy");
+                intReportNumber++;
+                string strUpdateReportNumber = "INSERT INTO tekelle21fa2332.SalesReports VALUES(" + intReportNumber + ");";
+                clsSQL.UpdateDatabase(strUpdateReportNumber);
+                for (int i = 0; i < lstOrders.Count; i++)
+                {
+                    if (lstOrders[i].dtOrderDate.ToString() == strStartDate)
+                    {
+                        lstOrdersReport.Add(lstOrders[i]);
+                        decSalesTotal += lstOrders[i].decOrderTotal;
+                    }
+                }
+                //save receipt to my documents
+                StringBuilder html = new StringBuilder();
+                html = GenerateReport();
+                PrintReport(html);
+                MessageBox.Show("Sales Report Saved to Documents\\TeksSalesReports.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lstOrdersReport.Clear();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
+        }
+        private StringBuilder GenerateReport()
+        {
+            StringBuilder html = new StringBuilder();
+            StringBuilder css = new StringBuilder();
+            try
+            {
+                css.AppendLine("<style>");
+                css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center; font-size: 12px;}");
+                css.AppendLine("h1 {color: orange;}");
+                css.AppendLine("</style>");
+
+                html.AppendLine("<html>");
+                css.AppendLine("<center {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</center>");
+                html.AppendLine($"<head style = 'align:center'>{css}<title>{"Receipt"}</title></head>");
+                css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
+                html.Append("<img src= " + clsLogo.strLogo + " style=' align: center; width: 75px; height: 50px;'>");
+                html.AppendLine("<body>");
+
+                html.AppendLine($"<h1>{"Sales Report"}</h1>");
+                html.Append($"<br>{css}</br>");
+                //html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
+                //html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Order Number: " + strMaxOrderID}</b></p>");
+                //html.Append($"<p style = 'text-align: left; font-size: 10px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
+                html.AppendLine("<table>");
+       
+                html.AppendLine("<tr><td>OrderID</td><td>PersonID</td><td>Date</td></td><td>OrderTotal</td></td><td>CouponID</td></tr>");
+                html.AppendLine("<tr><td colspan=5><hr /></td></tr>");
+                for (int i = 0; i < lstOrdersReport.Count; i++)
+                {
+                    html.Append("<tr>");
+                    html.Append($"<td>{lstOrdersReport[i].intOrderID}</td>");
+                    html.Append($"<td>{lstOrdersReport[i].intPersonID}</td>");
+                    html.Append($"<td>{lstOrdersReport[i].dtOrderDate}</td>");
+                    html.Append($"<td>{lstOrdersReport[i].decOrderTotal}</td>");
+                    html.Append($"<td>{lstOrdersReport[i].intCouponID}</td>");
+                    html.Append("</tr>");
+                    html.AppendLine("<tr><td colspan=6><hr /></td></tr>");
+                }
+                html.AppendLine("</table>");
+                html.Append($"<br></br><br></br>");
+                html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 25px '><b>{"Sales Total: " + decSalesTotal.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 20px ' ><b>{"Total: " + decTotal.ToString("C2")}</b></p>");
+                html.Append($"<div><button onClick='window.print()'> {"Print this page"}</ button ></ div >");
+                html.AppendLine("</body></html>");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return html; // The returned value has all the HTML and CSS code to represent a webpage
+        }
+        private void PrintReport(StringBuilder html)
+        {
+            // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+            try
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TeksSalesReports"));
+                // A "using" statement will automatically close a file after opening it.
+                // It never hurts to include a file.Close() once you are done with a file.
+               // MessageBox.Show(path);
+                using (StreamWriter writer = new StreamWriter(path + "\\TeksSalesReports\\" + intReportNumber.ToString() + "_" + strReportDate + "SalesReport.html"))
+                {
+                    writer.WriteLine(html);
+                }
+                //System.Diagnostics.Process.Start(@path + "\\TeksSalesReports\\" + strReportDate + "SalesReport.html"); //Open the report in the default web browser
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnWeekly_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decSalesTotal = 0;
+                DateTime dtStartDate = mthCalendar.SelectionRange.Start;
+                DateTime dtEndDate = dtStartDate.AddDays(7.00);
+                strStartDate = dtStartDate.ToString();
+                strReportDate = dtStartDate.ToString("MMddyyyy");
+                intReportNumber++;
+                string strUpdateReportNumber = "INSERT INTO tekelle21fa2332.SalesReports VALUES(" + intReportNumber + ");";
+                clsSQL.UpdateDatabase(strUpdateReportNumber);
+                for (int i = 0; i < lstOrders.Count; i++)
+                {
+                    if (lstOrders[i].dtOrderDate >= dtStartDate && lstOrders[i].dtOrderDate <= dtEndDate)
+                    {
+                        lstOrdersReport.Add(lstOrders[i]);
+                        decSalesTotal += lstOrders[i].decOrderTotal;
+                    }
+                }
+                //save receipt to my documents
+                StringBuilder html = new StringBuilder();
+                html = GenerateReport();
+                PrintReport(html);
+                MessageBox.Show("Sales Report Saved to Documents\\TeksSalesReports.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnMonthly_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                decSalesTotal = 0;
+                DateTime dtStartDate = mthCalendar.SelectionRange.Start;
+                DateTime dtEndDate = dtStartDate.AddDays(30.00);
+                strStartDate = dtStartDate.ToString();
+                strReportDate = dtStartDate.ToString("MMddyyyy");
+                intReportNumber++;
+                string strUpdateReportNumber = "INSERT INTO tekelle21fa2332.SalesReports VALUES(" + intReportNumber + ");";
+                clsSQL.UpdateDatabase(strUpdateReportNumber);
+                for (int i = 0; i < lstOrders.Count; i++)
+                {
+                    if (lstOrders[i].dtOrderDate >= dtStartDate && lstOrders[i].dtOrderDate <= dtEndDate)
+                    {
+                        lstOrdersReport.Add(lstOrders[i]);
+                        decSalesTotal += lstOrders[i].decOrderTotal;
+                    }
+                }
+                //save receipt to my documents
+                StringBuilder html = new StringBuilder();
+                html = GenerateReport();
+                PrintReport(html);
+                MessageBox.Show("Sales Report Saved to Documents\\TeksSalesReports.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                openFileDialog1.InitialDirectory = @path + "\\TeksSalesReports\\";
+                openFileDialog1.DefaultExt = "html";
+                openFileDialog1.Filter = "html files (*.html)|*.html|All files (*.*)|*.*";
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    var onlyFileName = System.IO.Path.GetFileName(openFileDialog1.FileName);
+                    System.Diagnostics.Process.Start(@path + "\\TeksSalesReports\\" + onlyFileName); //Open the report in the default web browser
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

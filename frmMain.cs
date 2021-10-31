@@ -603,7 +603,7 @@ namespace FA21_Final_Project
                 {
                     writer.WriteLine(html);
                 }
-                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyReceipts"));
+                //Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MyReceipts"));
                 System.Diagnostics.Process.Start(@path + "\\TeksReceipts\\" + strMaxOrderID + "Report.html"); //Open the report in the default web browser
                 
             }
@@ -947,13 +947,13 @@ namespace FA21_Final_Project
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                openFileDialog1.InitialDirectory = @path + "\\MyReceipts\\";
+                openFileDialog1.InitialDirectory = @path + "\\TeksReceipts\\";
                 openFileDialog1.DefaultExt = "html";
                 openFileDialog1.Filter = "html files (*.html)|*.html|All files (*.*)|*.*";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     var onlyFileName = System.IO.Path.GetFileName(openFileDialog1.FileName);
-                    System.Diagnostics.Process.Start(@path + "\\MyReceipts\\" + onlyFileName); //Open the report in the default web browser
+                    System.Diagnostics.Process.Start(@path + "\\TeksReceipts\\" + onlyFileName); //Open the report in the default web browser
                    
                 }
                 
