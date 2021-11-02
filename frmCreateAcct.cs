@@ -29,7 +29,7 @@ namespace FA21_Final_Project
         public static bool boolEditManager = frmManager.boolEditManager;
         public static bool boolEditCustomer = frmManager.boolEditCustomer;
         public static string strState = frmManager.strState;
-        public static int intPersonID = frmManager.intPersonID;
+        public static int intPersonID;
         public frmCreateAcct()
         {
             InitializeComponent();
@@ -48,6 +48,7 @@ namespace FA21_Final_Project
                 {
                     cbxState.Items.Add(lstState[i].strStateName);
                 }
+                intPersonID = frmManager.intPersonID;
                 if(boolEditManager == true || boolEditCustomer == true)
                 {
                     clsSQL.DatabaseCommandManagers(tbxFirst, tbxMiddle, tbxLast, tbxSuffix, tbxAddress1, tbxAddress2,

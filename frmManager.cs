@@ -31,6 +31,7 @@ namespace FA21_Final_Project
         public static bool boolCustomerOrder = false;
         public static bool boolHasAccount = false;
         public static string strPersonIDCustomer;
+        public static string strPersonID;
         public static int intPersonID = 0;
         public static int intInventoryID = 0;
         public static string strState = "";
@@ -258,7 +259,7 @@ namespace FA21_Final_Project
                     return;
                 }
                 int intIndex = dgvResults2.CurrentRow.Index;
-                string strPersonID = dgvResults2.Rows[intIndex].Cells[0].Value.ToString();
+                strPersonID = dgvResults2.Rows[intIndex].Cells[0].Value.ToString();
                 strState = dgvResults2.Rows[intIndex].Cells[6].Value.ToString();
                 intPersonID = Convert.ToInt32(strPersonID);
                 boolAddManager = false;
@@ -411,7 +412,7 @@ namespace FA21_Final_Project
                     return;
                 }
                 int intIndex = dgvResults3.CurrentRow.Index;
-                string strPersonID = dgvResults3.Rows[intIndex].Cells[0].Value.ToString();
+                strPersonID = dgvResults3.Rows[intIndex].Cells[0].Value.ToString();
                 strState = dgvResults3.Rows[intIndex].Cells[6].Value.ToString();
                 intPersonID = Convert.ToInt32(strPersonID);
                 boolAddManager = false;
