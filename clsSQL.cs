@@ -22,7 +22,10 @@ namespace FA21_Final_Project
         private static SqlCommand _sqlUpdateCommand;
         private static SqlCommand _sqlResultsCommand;
         private static SqlCommand _sqlManagersCommand;
+        private static SqlCommand _sqlInventoryCommand;
         private static SqlDataAdapter _daResults = new SqlDataAdapter();
+        private static SqlDataAdapter _daInventory = new SqlDataAdapter();
+        private static DataTable _dtInventoryTable = new DataTable();
         //add the data tables
         private static DataTable _dtResultsTable = new DataTable();
         private static SqlDataAdapter _daManagers = new SqlDataAdapter();
@@ -416,6 +419,71 @@ TextBox tbxFirstAns, TextBox tbxSecondAns, TextBox tbxThirdAns, int PersonID)
                 MessageBox.Show("Error loading Orders.", "Error with Loading", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lstOrders;
+        }
+        public static void DatabaseCommandEditInventoryLoad(TextBox tbxItemName, TextBox tbxItemDescription, TextBox tbxRetailPrice,
+            TextBox tbxCost, TextBox tbxQuantity, int intInventoryID)
+        {
+            try
+            {
+                //string to build query
+                string query = "SELECT ItemName, ItemDescription, RetailPrice, Cost, Quantity FROM tekelle21fa2332.Inventory WHERE InventoryID = " + intInventoryID + ";";
+                //establish command object
+                _sqlInventoryCommand = new SqlCommand(query, _cntDatabase);
+                //establish data adapter
+                _daInventory = new SqlDataAdapter();
+                _daInventory.SelectCommand = _sqlInventoryCommand;
+                //fill datatable
+                _dtInventoryTable = new DataTable();
+                _daInventory.Fill(_dtInventoryTable);
+                //bind controls to textboxes
+                tbxItemName.DataBindings.Add("Text", _dtInventoryTable, "ItemName");
+                tbxItemDescription.DataBindings.Add("Text", _dtInventoryTable, "ItemDescription");
+                tbxRetailPrice.DataBindings.Add("Text", _dtInventoryTable, "RetailPrice");
+                tbxCost.DataBindings.Add("Text", _dtInventoryTable, "Cost");
+                tbxQuantity.DataBindings.Add("Text", _dtInventoryTable, "Quantity");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public static void DatabaseCommandEditItem(string strItemName, string strItemDesc, decimal decRetailPrice, decimal decCost, int intQuantity, int intInventoryID)
+        {
+
+            MessageBox.Show("You must add an image to save to the database.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //OpenFileDialog Properties------------------------------------------
+            OpenFileDialog openFile = new OpenFileDialog(); //New instance
+            openFile.ValidateNames = true; //Prevent illegal characters
+            openFile.AddExtension = false; //Auto fixes file extension problems
+            openFile.Filter = "Image File|*.png|Image File|*.jpg"; //Allow types
+            openFile.Title = "File to Upload"; //Title of dialog box
+                                               //-------------------------------------------------------------------
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                //TODO: Add some validation to make sure the file is an image.
+
+                byte[] image = File.ReadAllBytes(openFile.FileName); //Convert image into a byte array
+                try
+                {
+                    _cntDatabase.Open();
+                    //TODO: Change (Image) to the name of your image column [e.g (ProductImages)]
+                    string insertQuery = $"UPDATE {strTableName} SET ItemName = '" + strItemName + "', ItemDescription = '" + strItemDesc + "', RetailPrice = " + decRetailPrice + ", Cost = " + decCost + ", Quantity = " + intQuantity + ", ItemImage = @Image, Discontinued = NULL WHERE InventoryID = " + intInventoryID + ";"; // @Image is a parameter we will fill in later                        
+                    SqlCommand insertCmd = new SqlCommand(insertQuery, _cntDatabase);
+                    SqlParameter sqlParams = insertCmd.Parameters.AddWithValue("@Image", image); // The parameter will be the image as a byte array
+                    sqlParams.DbType = System.Data.DbType.Binary; // The type of data we are sending to the server will be a binary file
+                    insertCmd.ExecuteNonQuery();
+                    _cntDatabase.Close();
+
+                    MessageBox.Show("File was successfully added to the database.", "File Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error During Upload", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
     }
 

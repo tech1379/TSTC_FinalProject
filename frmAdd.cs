@@ -12,6 +12,8 @@ namespace FA21_Final_Project
 {
     public partial class frmAdd : Form
     {
+        public static bool boolEditInventory;
+        public static int intInventoryID;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
     "Please inform the Program Developer that the following error occurred: \n\n\n";
         public frmAdd()
@@ -21,7 +23,13 @@ namespace FA21_Final_Project
 
         private void frmAdd_Load(object sender, EventArgs e)
         {
-
+            boolEditInventory = frmManager.boolEditInventory;
+            intInventoryID = frmManager.intInventoryID;
+            if(boolEditInventory == true)
+            {
+                clsSQL.DatabaseCommandEditInventoryLoad(tbxItemName, tbxItemDesc, tbxRetailPrice, tbxCost, tbxQuantity, intInventoryID);
+                btnAdd.Text = "Save Edits";
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -77,7 +85,15 @@ namespace FA21_Final_Project
                 decimal decRetailPrice = Convert.ToDecimal(tbxRetailPrice.Text);
                 decimal decCost = Convert.ToDecimal(tbxCost.Text);
                 int intQuantity = Convert.ToInt32(tbxQuantity.Text);
-                clsSQL.DatabaseCommandAddItem(strItemName, strItemDesc, decRetailPrice, decCost, intQuantity);
+                if (boolEditInventory == true)
+                {
+                    clsSQL.DatabaseCommandEditItem(strItemName, strItemDesc, decRetailPrice, decCost, intQuantity, intInventoryID);
+                   
+                }
+                else
+                {
+                    clsSQL.DatabaseCommandAddItem(strItemName, strItemDesc, decRetailPrice, decCost, intQuantity);
+                }
                 this.Hide();
                 Application.OpenForms["frmManager"].Close();
                 frmManager frmManagerNew = new frmManager();

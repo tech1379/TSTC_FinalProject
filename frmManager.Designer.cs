@@ -63,19 +63,20 @@ namespace FA21_Final_Project
             this.btnRemoveCoupon = new System.Windows.Forms.Button();
             this.btnAddCoupon = new System.Windows.Forms.Button();
             this.dgvResults4 = new System.Windows.Forms.DataGridView();
+            this.tbReports = new System.Windows.Forms.TabPage();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.mthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.btnView = new System.Windows.Forms.Button();
+            this.btnInventoryReport = new System.Windows.Forms.Button();
+            this.btnManagers = new System.Windows.Forms.Button();
+            this.btnMonthly = new System.Windows.Forms.Button();
+            this.btnWeekly = new System.Windows.Forms.Button();
+            this.btnDaily = new System.Windows.Forms.Button();
             this.hlpManagerInventory = new System.Windows.Forms.HelpProvider();
             this.hlpManagerManager = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCustomer = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCoupon = new System.Windows.Forms.HelpProvider();
-            this.tbReports = new System.Windows.Forms.TabPage();
-            this.btnDaily = new System.Windows.Forms.Button();
-            this.btnWeekly = new System.Windows.Forms.Button();
-            this.btnMonthly = new System.Windows.Forms.Button();
-            this.btnManagers = new System.Windows.Forms.Button();
-            this.btnInventoryReport = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
-            this.mthCalendar = new System.Windows.Forms.MonthCalendar();
-            this.lblInfo = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.tbManager.SuspendLayout();
             this.tbInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
@@ -104,6 +105,7 @@ namespace FA21_Final_Project
             // tbInventory
             // 
             this.tbInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbInventory.Controls.Add(this.btnEdit);
             this.tbInventory.Controls.Add(this.btnHelp1);
             this.tbInventory.Controls.Add(this.btnRestock);
             this.tbInventory.Controls.Add(this.btnRemove);
@@ -130,7 +132,7 @@ namespace FA21_Final_Project
             // 
             // btnRestock
             // 
-            this.btnRestock.Location = new System.Drawing.Point(136, 302);
+            this.btnRestock.Location = new System.Drawing.Point(56, 302);
             this.btnRestock.Name = "btnRestock";
             this.btnRestock.Size = new System.Drawing.Size(96, 64);
             this.btnRestock.TabIndex = 4;
@@ -140,7 +142,7 @@ namespace FA21_Final_Project
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(617, 302);
+            this.btnRemove.Location = new System.Drawing.Point(696, 302);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(96, 64);
             this.btnRemove.TabIndex = 3;
@@ -151,7 +153,7 @@ namespace FA21_Final_Project
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(463, 302);
+            this.btnAdd.Location = new System.Drawing.Point(376, 302);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(96, 64);
             this.btnAdd.TabIndex = 2;
@@ -161,7 +163,7 @@ namespace FA21_Final_Project
             // 
             // btnInventory
             // 
-            this.btnInventory.Location = new System.Drawing.Point(305, 302);
+            this.btnInventory.Location = new System.Drawing.Point(216, 302);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(96, 64);
             this.btnInventory.TabIndex = 1;
@@ -177,8 +179,10 @@ namespace FA21_Final_Project
             this.dgvResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResults.Location = new System.Drawing.Point(33, 34);
+            this.dgvResults.MultiSelect = false;
             this.dgvResults.Name = "dgvResults";
             this.dgvResults.ReadOnly = true;
+            this.dgvResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResults.Size = new System.Drawing.Size(783, 222);
             this.dgvResults.TabIndex = 0;
             // 
@@ -254,9 +258,15 @@ namespace FA21_Final_Project
             // 
             // dgvResults2
             // 
+            this.dgvResults2.AllowUserToAddRows = false;
+            this.dgvResults2.AllowUserToDeleteRows = false;
+            this.dgvResults2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvResults2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResults2.Location = new System.Drawing.Point(32, 43);
+            this.dgvResults2.MultiSelect = false;
             this.dgvResults2.Name = "dgvResults2";
+            this.dgvResults2.ReadOnly = true;
+            this.dgvResults2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResults2.Size = new System.Drawing.Size(790, 225);
             this.dgvResults2.TabIndex = 0;
             // 
@@ -346,10 +356,13 @@ namespace FA21_Final_Project
             // 
             this.dgvResults3.AllowUserToAddRows = false;
             this.dgvResults3.AllowUserToDeleteRows = false;
+            this.dgvResults3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvResults3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResults3.Location = new System.Drawing.Point(15, 56);
+            this.dgvResults3.MultiSelect = false;
             this.dgvResults3.Name = "dgvResults3";
             this.dgvResults3.ReadOnly = true;
+            this.dgvResults3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResults3.Size = new System.Drawing.Size(815, 227);
             this.dgvResults3.TabIndex = 0;
             // 
@@ -454,8 +467,10 @@ namespace FA21_Final_Project
             this.dgvResults4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvResults4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResults4.Location = new System.Drawing.Point(376, 19);
+            this.dgvResults4.MultiSelect = false;
             this.dgvResults4.Name = "dgvResults4";
             this.dgvResults4.ReadOnly = true;
+            this.dgvResults4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResults4.Size = new System.Drawing.Size(454, 212);
             this.dgvResults4.TabIndex = 0;
             // 
@@ -477,53 +492,20 @@ namespace FA21_Final_Project
             this.tbReports.TabIndex = 4;
             this.tbReports.Text = "Reports";
             // 
-            // btnDaily
+            // lblInfo
             // 
-            this.btnDaily.Location = new System.Drawing.Point(36, 287);
-            this.btnDaily.Name = "btnDaily";
-            this.btnDaily.Size = new System.Drawing.Size(96, 64);
-            this.btnDaily.TabIndex = 8;
-            this.btnDaily.Text = "&Daily Sales Report";
-            this.btnDaily.UseVisualStyleBackColor = true;
-            this.btnDaily.Click += new System.EventHandler(this.btnDaily_Click);
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(17, 54);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(358, 18);
+            this.lblInfo.TabIndex = 15;
+            this.lblInfo.Text = "Please select a start date for Sales Reports:";
             // 
-            // btnWeekly
+            // mthCalendar
             // 
-            this.btnWeekly.Location = new System.Drawing.Point(172, 287);
-            this.btnWeekly.Name = "btnWeekly";
-            this.btnWeekly.Size = new System.Drawing.Size(96, 64);
-            this.btnWeekly.TabIndex = 9;
-            this.btnWeekly.Text = "&Weekly Sales Report";
-            this.btnWeekly.UseVisualStyleBackColor = true;
-            this.btnWeekly.Click += new System.EventHandler(this.btnWeekly_Click);
-            // 
-            // btnMonthly
-            // 
-            this.btnMonthly.Location = new System.Drawing.Point(308, 287);
-            this.btnMonthly.Name = "btnMonthly";
-            this.btnMonthly.Size = new System.Drawing.Size(96, 64);
-            this.btnMonthly.TabIndex = 10;
-            this.btnMonthly.Text = "&Monthly Sales Report";
-            this.btnMonthly.UseVisualStyleBackColor = true;
-            this.btnMonthly.Click += new System.EventHandler(this.btnMonthly_Click);
-            // 
-            // btnManagers
-            // 
-            this.btnManagers.Location = new System.Drawing.Point(444, 287);
-            this.btnManagers.Name = "btnManagers";
-            this.btnManagers.Size = new System.Drawing.Size(96, 64);
-            this.btnManagers.TabIndex = 11;
-            this.btnManagers.Text = "Managers &Info";
-            this.btnManagers.UseVisualStyleBackColor = true;
-            // 
-            // btnInventoryReport
-            // 
-            this.btnInventoryReport.Location = new System.Drawing.Point(580, 287);
-            this.btnInventoryReport.Name = "btnInventoryReport";
-            this.btnInventoryReport.Size = new System.Drawing.Size(96, 64);
-            this.btnInventoryReport.TabIndex = 12;
-            this.btnInventoryReport.Text = "Inventory &Report";
-            this.btnInventoryReport.UseVisualStyleBackColor = true;
+            this.mthCalendar.Location = new System.Drawing.Point(281, 81);
+            this.mthCalendar.Name = "mthCalendar";
+            this.mthCalendar.TabIndex = 14;
             // 
             // btnView
             // 
@@ -535,20 +517,64 @@ namespace FA21_Final_Project
             this.btnView.UseVisualStyleBackColor = true;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
-            // mthCalendar
+            // btnInventoryReport
             // 
-            this.mthCalendar.Location = new System.Drawing.Point(281, 81);
-            this.mthCalendar.Name = "mthCalendar";
-            this.mthCalendar.TabIndex = 14;
+            this.btnInventoryReport.Location = new System.Drawing.Point(580, 287);
+            this.btnInventoryReport.Name = "btnInventoryReport";
+            this.btnInventoryReport.Size = new System.Drawing.Size(96, 64);
+            this.btnInventoryReport.TabIndex = 12;
+            this.btnInventoryReport.Text = "Inventory &Report";
+            this.btnInventoryReport.UseVisualStyleBackColor = true;
             // 
-            // lblInfo
+            // btnManagers
             // 
-            this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(17, 54);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(358, 18);
-            this.lblInfo.TabIndex = 15;
-            this.lblInfo.Text = "Please select a start date for Sales Reports:";
+            this.btnManagers.Location = new System.Drawing.Point(444, 287);
+            this.btnManagers.Name = "btnManagers";
+            this.btnManagers.Size = new System.Drawing.Size(96, 64);
+            this.btnManagers.TabIndex = 11;
+            this.btnManagers.Text = "Managers &Info";
+            this.btnManagers.UseVisualStyleBackColor = true;
+            // 
+            // btnMonthly
+            // 
+            this.btnMonthly.Location = new System.Drawing.Point(308, 287);
+            this.btnMonthly.Name = "btnMonthly";
+            this.btnMonthly.Size = new System.Drawing.Size(96, 64);
+            this.btnMonthly.TabIndex = 10;
+            this.btnMonthly.Text = "&Monthly Sales Report";
+            this.btnMonthly.UseVisualStyleBackColor = true;
+            this.btnMonthly.Click += new System.EventHandler(this.btnMonthly_Click);
+            // 
+            // btnWeekly
+            // 
+            this.btnWeekly.Location = new System.Drawing.Point(172, 287);
+            this.btnWeekly.Name = "btnWeekly";
+            this.btnWeekly.Size = new System.Drawing.Size(96, 64);
+            this.btnWeekly.TabIndex = 9;
+            this.btnWeekly.Text = "&Weekly Sales Report";
+            this.btnWeekly.UseVisualStyleBackColor = true;
+            this.btnWeekly.Click += new System.EventHandler(this.btnWeekly_Click);
+            // 
+            // btnDaily
+            // 
+            this.btnDaily.Location = new System.Drawing.Point(36, 287);
+            this.btnDaily.Name = "btnDaily";
+            this.btnDaily.Size = new System.Drawing.Size(96, 64);
+            this.btnDaily.TabIndex = 8;
+            this.btnDaily.Text = "&Daily Sales Report";
+            this.btnDaily.UseVisualStyleBackColor = true;
+            this.btnDaily.Click += new System.EventHandler(this.btnDaily_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(536, 302);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(96, 64);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "&Edit Product";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.MouseHover += new System.EventHandler(this.btnEdit_MouseHover);
             // 
             // frmManager
             // 
@@ -564,7 +590,7 @@ namespace FA21_Final_Project
             this.MaximizeBox = false;
             this.Name = "frmManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmManager";
+            this.Text = "Manager Portal";
             this.Load += new System.EventHandler(this.frmManager_Load);
             this.tbManager.ResumeLayout(false);
             this.tbInventory.ResumeLayout(false);
@@ -633,5 +659,6 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.MonthCalendar mthCalendar;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

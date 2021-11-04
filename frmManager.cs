@@ -25,11 +25,13 @@ namespace FA21_Final_Project
         int intMouseCount9 = 0;
         int intMouseCount10 = 0;
         int intMouseCount11 = 0;
+        int intMouseCount12 = 0;
         public static bool boolAddManager = false;
         public static bool boolEditManager = false;
         public static bool boolEditCustomer = false;
         public static bool boolCustomerOrder = false;
         public static bool boolHasAccount = false;
+        public static bool boolEditInventory = false;
         public static string strPersonIDCustomer;
         public static string strPersonID;
         public static int intPersonID = 0;
@@ -192,7 +194,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSqlInventoryQuery = "SELECT InventoryID, ItemName, ItemDescription, RetailPrice, Cost, Quantity, Discontinued FROM tekelle21fa2332.Inventory;";
+                string strSqlInventoryQuery = "SELECT InventoryID AS 'Inventory ID', ItemName AS 'Item Name', ItemDescription AS 'Item Description', RetailPrice AS 'Retail Price', Cost, Quantity, Discontinued FROM tekelle21fa2332.Inventory;";
                 clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults);
             }
             catch (Exception ex)
@@ -205,7 +207,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSqlInventoryQuery = "SELECT PersonID, NameFirst, NameLast, Address1, City, ZipCode, State, Email, PhonePrimary, PersonType FROM tekelle21fa2332.Person WHERE PersonType = 'Customer';";
+                string strSqlInventoryQuery = "SELECT PersonID AS 'Person ID', NameFirst AS 'First Name', NameLast AS 'Last Name', Address1 AS 'Address 1', Address2 AS 'Address 2', Address3 AS 'Address 3', City, ZipCode AS 'Zip Code', State, Email, PhonePrimary AS 'Phone Primary', PersonType AS 'Person Type' FROM tekelle21fa2332.Person WHERE PersonType = 'Customer';";
                 clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults3);
             }
             catch (Exception ex)
@@ -219,7 +221,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSqlInventoryQuery = "SELECT CouponID, CouponPercent, ExpirationDate FROM tekelle21fa2332.Coupons;";
+                string strSqlInventoryQuery = "SELECT CouponID AS 'Coupon ID', FORMAT(CouponPercent,'#,##0.0%') AS 'Coupon Percent', ExpirationDate AS 'Expiration Date' FROM tekelle21fa2332.Coupons;";
                 clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults4);
             }
             catch (Exception ex)
@@ -231,7 +233,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSqlInventoryQuery = "SELECT PersonID, NameFirst, NameLast, Address1, City, ZipCode, State, Email, PhonePrimary, PersonType FROM tekelle21fa2332.Person WHERE PersonType = 'Manager';";
+                string strSqlInventoryQuery = "SELECT PersonID AS 'Person ID', NameFirst AS 'First Name', NameLast AS 'Last Name', Address1 AS 'Address 1', Address2 AS 'Address 2', Address3 AS 'Address 3', City, ZipCode AS 'Zip Code', State, Email, PhonePrimary AS 'Phone Primary', PersonType AS 'Person Type' FROM tekelle21fa2332.Person WHERE PersonType = 'Manager';";
                 clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults2);
             }
             catch (Exception ex)
@@ -857,7 +859,24 @@ namespace FA21_Final_Project
             {
                 decSalesTotal = 0;
                 DateTime dtStartDate = mthCalendar.SelectionRange.Start;
-                DateTime dtEndDate = dtStartDate.AddDays(30.00);
+                MessageBox.Show(dtStartDate.ToString());
+                int month = dtStartDate.Month;
+                int day = 1;
+                int year = dtStartDate.Year;
+                dtStartDate = new DateTime(year, month, day);
+                DateTime dtEndDate;
+                if (month == 11 || month == 4 || month == 9 || month == 6)
+                {
+                    dtEndDate = dtStartDate.AddDays(30.00);
+                }
+                else if(month == 2)
+                {
+                    dtEndDate = dtStartDate.AddDays(28.00);
+                }
+                else
+                {
+                    dtEndDate = dtStartDate.AddDays(31.00);
+                }
                 strStartDate = dtStartDate.ToString();
                 strReportDate = dtStartDate.ToString("MMddyyyy");
                 intReportNumber++;
@@ -905,6 +924,38 @@ namespace FA21_Final_Project
             {
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvResults.RowCount == 0)
+                {
+                    MessageBox.Show("No Inventory Data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                int intIndex = dgvResults.CurrentRow.Index;
+                string strInventoryID = dgvResults.Rows[intIndex].Cells[0].Value.ToString();
+                intInventoryID = Convert.ToInt32(strInventoryID);
+                boolEditInventory = true;
+                this.Hide();
+                frmAdd frmAddNewItem = new frmAdd();
+                frmAddNewItem.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEdit_MouseHover(object sender, EventArgs e)
+        {
+            if (intMouseCount12 == 0)
+            {
+                MessageBox.Show("Please select the item you would like to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            intMouseCount12++;
         }
     }
 }
