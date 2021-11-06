@@ -37,9 +37,11 @@ namespace FA21_Final_Project
         public static int intPersonID = 0;
         public static int intInventoryID = 0;
         public static string strState = "";
-        List<clsInventory> lstInventory = new List<clsInventory>();
+        public static string strRestock;
+        List<clsInventory> lstInventory = new List<clsInventory>(clsSQL.ReloadImageList());
         List<clsOrders> lstOrders = new List<clsOrders>();
         List<clsOrders> lstOrdersReport = new List<clsOrders>();
+        List<clsPerson> lstManagerReport = new List<clsPerson>();
         public decimal decSalesTotal = 0;
         public string strStartDate;
         public int intReportNumber;
@@ -164,12 +166,15 @@ namespace FA21_Final_Project
         {
             try
             {
+                string strQueryRestock = "SELECT RestockLevel FROM tekelle21fa2332.Restock ORDER BY RestockID DESC;";
+                strRestock = clsSQL.DatabaseCommandLogon(strQueryRestock);
+                int intRestock = Convert.ToInt32(strRestock);
                 bool boolNeedRestock = false;
                 string strMessage = "";
-                lstInventory = clsSQL.ReloadImageList();
+                //lstInventory = clsSQL.ReloadImageList();
                 for (int i = 0; i < lstInventory.Count; i++)
                 {
-                    if (lstInventory[i].intQuantity < 5)
+                    if (lstInventory[i].intQuantity < intRestock)
                     {
                         strMessage += lstInventory[i].intInventoryID.ToString() + " " + lstInventory[i].strItemName + " " + lstInventory[i].intQuantity.ToString() + "\n";
                         boolNeedRestock = true;
@@ -544,6 +549,7 @@ namespace FA21_Final_Project
                 boolEditCustomer = false;
                 boolCustomerOrder = true;
                 boolHasAccount = true;
+                strPersonID = frmLogIn.strPersonID;
                 this.Hide();
                 frmMain frmMainNew = new frmMain();
                 frmMainNew.ShowDialog();
@@ -755,7 +761,7 @@ namespace FA21_Final_Project
 
                 html.AppendLine("<html>");
                 css.AppendLine("<center {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</center>");
-                html.AppendLine($"<head style = 'align:center'>{css}<title>{"Receipt"}</title></head>");
+                html.AppendLine($"<head style = 'align:center'>{css}<title>{"Sales Report"}</title></head>");
                 css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
                 html.Append("<img src= " + clsLogo.strLogo + " style=' align: center; width: 75px; height: 50px;'>");
                 html.AppendLine("<body>");
@@ -956,6 +962,204 @@ namespace FA21_Final_Project
                 MessageBox.Show("Please select the item you would like to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             intMouseCount12++;
+        }
+
+        private void btnManagers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lstManagerReport = clsSQL.LoadManagerSalary();
+                StringBuilder html = new StringBuilder();
+                html = GenerateReportManagers();
+                PrintReportManagers(html);
+                MessageBox.Show("Sales Report Saved to Documents\\TeksManagersReports.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private StringBuilder GenerateReportManagers()
+        {
+            StringBuilder html = new StringBuilder();
+            StringBuilder css = new StringBuilder();
+            try
+            {
+                css.AppendLine("<style>");
+                css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center; font-size: 12px;}");
+                css.AppendLine("h1 {color: orange;}");
+                css.AppendLine("</style>");
+
+                html.AppendLine("<html>");
+                css.AppendLine("<center {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</center>");
+                html.AppendLine($"<head style = 'align:center'>{css}<title>{"Manager Report"}</title></head>");
+                css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
+                html.Append("<img src= " + clsLogo.strLogo + " style=' align: center; width: 75px; height: 50px;'>");
+                html.AppendLine("<body>");
+
+                html.AppendLine($"<h1>{"Managers Report"}</h1>");
+                html.Append($"<br>{css}</br>");
+                //html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
+                //html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Order Number: " + strMaxOrderID}</b></p>");
+                //html.Append($"<p style = 'text-align: left; font-size: 10px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
+                html.AppendLine("<table>");
+
+                html.AppendLine("<tr><td>First Name</td><td>Last Name</td></td><td>Phone</td></td><td>Email</td><td>Position</td><td>Salary</td></tr>");
+                html.AppendLine("<tr><td colspan=6><hr /></td></tr>");
+                for (int i = 0; i < lstManagerReport.Count; i++)
+                {
+                    html.Append("<tr>");
+                    html.Append($"<td>{lstManagerReport[i].strPersonFirstName}</td>");
+                    html.Append($"<td>{lstManagerReport[i].strPersonLastName}</td>");
+                    html.Append($"<td>{lstManagerReport[i].strPhoneNumber}</td>");
+                    html.Append($"<td>{lstManagerReport[i].strEmail}</td>");
+                    html.Append($"<td>{lstManagerReport[i].strPosition}</td>");
+                    html.Append($"<td>{lstManagerReport[i].decSalary.ToString("C2")}</td>");
+                    html.Append("</tr>");
+                    html.AppendLine("<tr><td colspan=7><hr /></td></tr>");
+                }
+                html.AppendLine("</table>");
+                html.Append($"<br></br><br></br>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 25px '><b>{"Sales Total: " + decSalesTotal.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 20px ' ><b>{"Total: " + decTotal.ToString("C2")}</b></p>");
+                html.Append($"<div><button onClick='window.print()'> {"Print this page"}</ button ></ div >");
+                html.AppendLine("</body></html>");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return html; // The returned value has all the HTML and CSS code to represent a webpage
+        }
+        private void PrintReportManagers(StringBuilder html)
+        {
+            // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+            try
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TeksManagersReports"));
+                // A "using" statement will automatically close a file after opening it.
+                // It never hurts to include a file.Close() once you are done with a file.
+                // MessageBox.Show(path);
+                string strDate = DateTime.Now.ToString("MMddyyyy");
+                using (StreamWriter writer = new StreamWriter(path + "\\TeksManagersReports\\" + strDate + "ManagerReport.html"))
+                {
+                    writer.WriteLine(html);
+                }
+                //System.Diagnostics.Process.Start(@path + "\\TeksSalesReports\\" + strReportDate + "SalesReport.html"); //Open the report in the default web browser
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEditRestock_Click(object sender, EventArgs e)
+        {
+            frmRestock frmRestockNew = new frmRestock();
+            frmRestockNew.ShowDialog();
+        }
+
+        private void btnInventoryReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string strQueryRestock = "SELECT RestockLevel FROM tekelle21fa2332.Restock ORDER BY RestockID DESC;";
+                strRestock = clsSQL.DatabaseCommandLogon(strQueryRestock);
+                StringBuilder html = new StringBuilder();
+                html = GenerateReportInventory();
+                PrintReportInventory(html);
+                MessageBox.Show("Inventory Report Saved to Documents\\TeksManagersReports.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private StringBuilder GenerateReportInventory()
+        {
+            StringBuilder html = new StringBuilder();
+            StringBuilder css = new StringBuilder();
+            try
+            {
+                css.AppendLine("<style>");
+                css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center; font-size: 12px;}");
+                css.AppendLine("h1 {color: orange;}");
+                css.AppendLine("</style>");
+
+                html.AppendLine("<html>");
+                css.AppendLine("<center {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</center>");
+                html.AppendLine($"<head style = 'align:center'>{css}<title>{"Inventory Report"}</title></head>");
+                css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
+                html.Append("<img src= " + clsLogo.strLogo + " style=' align: center; width: 75px; height: 50px;'>");
+                html.AppendLine("<body>");
+
+                html.AppendLine($"<h1>{"Inventory Report"}</h1>");
+                html.Append($"<br>{css}</br>");
+
+                html.Append($"<p style = 'text-align: left; font-size: 25px'><b>{"Restock Threshold: " + strRestock}</b></p>");
+                //html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Order Number: " + strMaxOrderID}</b></p>");
+                //html.Append($"<p style = 'text-align: left; font-size: 10px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
+                html.AppendLine("<table>");
+
+                html.AppendLine("<tr><td>Inventory ID</td><td>Inventory Name</td></td><td>Cost</td></td><td>Price</td><td>Quantity</td></tr>");
+                html.AppendLine("<tr><td colspan=5><hr /></td></tr>");
+                for (int i = 0; i < lstInventory.Count; i++)
+                {
+                    html.Append("<tr>");
+                    html.Append($"<td>{lstInventory[i].intInventoryID.ToString()}</td>");
+                    html.Append($"<td>{lstInventory[i].strItemName}</td>");
+                    html.Append($"<td>{lstInventory[i].decCost.ToString("C2")}</td>");
+                    html.Append($"<td>{lstInventory[i].decRetailPrice.ToString("C2")}</td>");
+                    html.Append($"<td>{lstInventory[i].intQuantity.ToString()}</td>");
+                    html.Append("</tr>");
+                    html.AppendLine("<tr><td colspan=6><hr /></td></tr>");
+                }
+                html.AppendLine("</table>");
+                html.Append($"<br></br><br></br>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 25px '><b>{"Sales Total: " + decSalesTotal.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 20px ' ><b>{"Total: " + decTotal.ToString("C2")}</b></p>");
+                html.Append($"<div><button onClick='window.print()'> {"Print this page"}</ button ></ div >");
+                html.AppendLine("</body></html>");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return html; // The returned value has all the HTML and CSS code to represent a webpage
+        }
+        private void PrintReportInventory(StringBuilder html)
+        {
+            // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+            try
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TeksManagersReports"));
+                // A "using" statement will automatically close a file after opening it.
+                // It never hurts to include a file.Close() once you are done with a file.
+                // MessageBox.Show(path);
+                string strDate = DateTime.Now.ToString("MMddyyyy");
+                using (StreamWriter writer = new StreamWriter(path + "\\TeksManagersReports\\" + strDate + "InventoryReport.html"))
+                {
+                    writer.WriteLine(html);
+                }
+                //System.Diagnostics.Process.Start(@path + "\\TeksSalesReports\\" + strReportDate + "SalesReport.html"); //Open the report in the default web browser
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

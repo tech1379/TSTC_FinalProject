@@ -36,6 +36,8 @@ namespace FA21_Final_Project
         private static string strTableName3 = "tekelle21fa2332.DayPrice";
         private static string strTableName4 = "tekelle21fa2332.State";
         private static string strTableName5 = "tekelle21fa2332.Orders";
+        private static string strTableName6 = "tekelle21fa2332.Person";
+        private static string strTableName7 = "tekelle21fa2332.Salary";
 
         public static void ConnectDatabase()
         {
@@ -484,6 +486,45 @@ TextBox tbxFirstAns, TextBox tbxSecondAns, TextBox tbxThirdAns, int PersonID)
                 }
             }
 
+        }
+        public static List<clsPerson> LoadManagerSalary()
+        {
+            //TODO: Change the SELECT statement to the column names you are trying to use.
+            string strCommand = $"SELECT p.PersonID, NameFirst, NameLast, PhonePrimary, Email, PersonType, Salary FROM {strTableName6} p JOIN {strTableName7} s ON p.PersonID = s.PersonID WHERE PersonType = 'Manager';"; // Query to pull two columns of data from Images table            
+            SqlCommand SelectCommand = new SqlCommand(strCommand, _cntDatabase);
+            SqlDataReader sqlReader;
+
+            List<clsPerson> lstPerson = new List<clsPerson>();
+            lstPerson.Clear();// Empty the list before loading new images to prevent duplications
+            try
+            {
+                _cntDatabase.Open();
+                sqlReader = SelectCommand.ExecuteReader();
+
+                while (sqlReader.Read())
+                {
+                   clsPerson person = new clsPerson();
+                    person.intPersonID = sqlReader.GetInt32(0); // MS SQL Datatype int
+                    person.strPersonFirstName = sqlReader.GetString(1);
+                    person.strPersonLastName = sqlReader.GetString(2);
+                    person.strPhoneNumber = sqlReader.GetString(3);
+                    person.strEmail = sqlReader.GetString(4);
+                    person.strPosition = sqlReader.GetString(5);
+                    person.decSalary = sqlReader.GetDecimal(6);
+                    lstPerson.Add(person); // Add image object to list
+
+                    // You can use a constructor for this class to accept two parameters
+                    // and add it all at the same time. Just for demo purposes
+
+                    // lstImages.Add(new Images(sqlReader.GetInt32(0), (byte[])sqlReader[1]));
+                }
+                _cntDatabase.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return lstPerson;
         }
     }
 

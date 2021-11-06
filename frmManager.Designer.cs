@@ -32,6 +32,7 @@ namespace FA21_Final_Project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManager));
             this.tbManager = new System.Windows.Forms.TabControl();
             this.tbInventory = new System.Windows.Forms.TabPage();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnHelp1 = new System.Windows.Forms.Label();
             this.btnRestock = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -76,7 +77,7 @@ namespace FA21_Final_Project
             this.hlpManagerManager = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCustomer = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCoupon = new System.Windows.Forms.HelpProvider();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnEditRestock = new System.Windows.Forms.Button();
             this.tbManager.SuspendLayout();
             this.tbInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
@@ -105,6 +106,7 @@ namespace FA21_Final_Project
             // tbInventory
             // 
             this.tbInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbInventory.Controls.Add(this.btnEditRestock);
             this.tbInventory.Controls.Add(this.btnEdit);
             this.tbInventory.Controls.Add(this.btnHelp1);
             this.tbInventory.Controls.Add(this.btnRestock);
@@ -119,6 +121,17 @@ namespace FA21_Final_Project
             this.tbInventory.TabIndex = 0;
             this.tbInventory.Text = "Inventory";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(574, 302);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(96, 64);
+            this.btnEdit.TabIndex = 6;
+            this.btnEdit.Text = "&Edit Product";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.MouseHover += new System.EventHandler(this.btnEdit_MouseHover);
+            // 
             // btnHelp1
             // 
             this.btnHelp1.AutoSize = true;
@@ -132,7 +145,7 @@ namespace FA21_Final_Project
             // 
             // btnRestock
             // 
-            this.btnRestock.Location = new System.Drawing.Point(56, 302);
+            this.btnRestock.Location = new System.Drawing.Point(46, 302);
             this.btnRestock.Name = "btnRestock";
             this.btnRestock.Size = new System.Drawing.Size(96, 64);
             this.btnRestock.TabIndex = 4;
@@ -142,7 +155,7 @@ namespace FA21_Final_Project
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(696, 302);
+            this.btnRemove.Location = new System.Drawing.Point(706, 302);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(96, 64);
             this.btnRemove.TabIndex = 3;
@@ -153,7 +166,7 @@ namespace FA21_Final_Project
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(376, 302);
+            this.btnAdd.Location = new System.Drawing.Point(442, 302);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(96, 64);
             this.btnAdd.TabIndex = 2;
@@ -163,7 +176,7 @@ namespace FA21_Final_Project
             // 
             // btnInventory
             // 
-            this.btnInventory.Location = new System.Drawing.Point(216, 302);
+            this.btnInventory.Location = new System.Drawing.Point(310, 302);
             this.btnInventory.Name = "btnInventory";
             this.btnInventory.Size = new System.Drawing.Size(96, 64);
             this.btnInventory.TabIndex = 1;
@@ -525,6 +538,7 @@ namespace FA21_Final_Project
             this.btnInventoryReport.TabIndex = 12;
             this.btnInventoryReport.Text = "Inventory &Report";
             this.btnInventoryReport.UseVisualStyleBackColor = true;
+            this.btnInventoryReport.Click += new System.EventHandler(this.btnInventoryReport_Click);
             // 
             // btnManagers
             // 
@@ -534,6 +548,7 @@ namespace FA21_Final_Project
             this.btnManagers.TabIndex = 11;
             this.btnManagers.Text = "Managers &Info";
             this.btnManagers.UseVisualStyleBackColor = true;
+            this.btnManagers.Click += new System.EventHandler(this.btnManagers_Click);
             // 
             // btnMonthly
             // 
@@ -565,16 +580,15 @@ namespace FA21_Final_Project
             this.btnDaily.UseVisualStyleBackColor = true;
             this.btnDaily.Click += new System.EventHandler(this.btnDaily_Click);
             // 
-            // btnEdit
+            // btnEditRestock
             // 
-            this.btnEdit.Location = new System.Drawing.Point(536, 302);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(96, 64);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "&Edit Product";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            this.btnEdit.MouseHover += new System.EventHandler(this.btnEdit_MouseHover);
+            this.btnEditRestock.Location = new System.Drawing.Point(178, 302);
+            this.btnEditRestock.Name = "btnEditRestock";
+            this.btnEditRestock.Size = new System.Drawing.Size(96, 64);
+            this.btnEditRestock.TabIndex = 7;
+            this.btnEditRestock.Text = "Edit Re&stock";
+            this.btnEditRestock.UseVisualStyleBackColor = true;
+            this.btnEditRestock.Click += new System.EventHandler(this.btnEditRestock_Click);
             // 
             // frmManager
             // 
@@ -660,5 +674,6 @@ namespace FA21_Final_Project
         private System.Windows.Forms.MonthCalendar mthCalendar;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnEditRestock;
     }
 }

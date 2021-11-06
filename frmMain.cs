@@ -21,8 +21,9 @@ namespace FA21_Final_Project
 {
     public partial class frmMain : Form
     {
-        public static string strPersonID = frmLogIn.strPersonID;
-        public static bool boolCustomerOrder = frmManager.boolCustomerOrder;
+        public static string strPersonID;
+        public static string strManagerID;
+        public static bool boolCustomerOrder;
         private int intSelectedImageID = 0;
         private int intCurrent = 0;
         public int intCouponCode = 20003;
@@ -549,6 +550,10 @@ namespace FA21_Final_Project
 
                 html.AppendLine($"<h1>{" Order Receipt"}</h1>");
                 html.Append($"<br>{css}</br>");
+                if(boolCustomerOrder == true)
+                {
+                    html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"ManagerID: " + strManagerID }</b></p>");
+                }
                 html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Customer: " + strFirstName + " " + strLastName}</b></p>");
                 html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Order Number: " + strMaxOrderID}</b></p>");
                 html.Append($"<p style = 'text-align: left; font-size: 10px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
@@ -852,10 +857,12 @@ namespace FA21_Final_Project
         {
             try
             {
+                boolCustomerOrder = frmManager.boolCustomerOrder;
                 if (boolCustomerOrder == true)
                 {
                     strPersonID = frmManager.strPersonIDCustomer;
                     boolHasAccount = frmManager.boolHasAccount;
+                    strManagerID = frmManager.strPersonID;
                 }
                 else
                 {
