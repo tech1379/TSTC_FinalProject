@@ -207,7 +207,7 @@ namespace FA21_Final_Project
                     else
                     {
                         this.Hide();
-                        Application.OpenForms["frmLogIn"].Close();
+                        Application.OpenForms["frmLogIn"].Hide();
                         frmLogIn frmLogInNew = new frmLogIn();
                         frmLogInNew.ShowDialog();
                     }
