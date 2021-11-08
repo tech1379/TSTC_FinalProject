@@ -1300,5 +1300,13 @@ namespace FA21_Final_Project
                 MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void frmManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            Application.OpenForms["frmLogIn"].Close();
+            frmLogIn frmLogInNew = new frmLogIn();
+            frmLogInNew.ShowDialog();
+        }
     }
 }

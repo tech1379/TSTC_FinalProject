@@ -66,6 +66,7 @@ namespace FA21_Final_Project
             this.btnAddCoupon = new System.Windows.Forms.Button();
             this.dgvResults4 = new System.Windows.Forms.DataGridView();
             this.tbReports = new System.Windows.Forms.TabPage();
+            this.lblHelpReports = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
             this.mthCalendar = new System.Windows.Forms.MonthCalendar();
             this.btnView = new System.Windows.Forms.Button();
@@ -78,7 +79,6 @@ namespace FA21_Final_Project
             this.hlpManagerManager = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCustomer = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCoupon = new System.Windows.Forms.HelpProvider();
-            this.lblHelpReports = new System.Windows.Forms.Label();
             this.helpManagerReport = new System.Windows.Forms.HelpProvider();
             this.tbManager.SuspendLayout();
             this.tbInventory.SuspendLayout();
@@ -519,6 +519,17 @@ namespace FA21_Final_Project
             this.tbReports.TabIndex = 4;
             this.tbReports.Text = "Reports";
             // 
+            // lblHelpReports
+            // 
+            this.lblHelpReports.AutoSize = true;
+            this.lblHelpReports.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpReports.Location = new System.Drawing.Point(17, 12);
+            this.lblHelpReports.Name = "lblHelpReports";
+            this.lblHelpReports.Size = new System.Drawing.Size(44, 18);
+            this.lblHelpReports.TabIndex = 16;
+            this.lblHelpReports.Text = "&Help";
+            this.lblHelpReports.Click += new System.EventHandler(this.lblHelpReports_Click);
+            // 
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
@@ -594,17 +605,6 @@ namespace FA21_Final_Project
             this.btnDaily.UseVisualStyleBackColor = true;
             this.btnDaily.Click += new System.EventHandler(this.btnDaily_Click);
             // 
-            // lblHelpReports
-            // 
-            this.lblHelpReports.AutoSize = true;
-            this.lblHelpReports.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHelpReports.Location = new System.Drawing.Point(17, 12);
-            this.lblHelpReports.Name = "lblHelpReports";
-            this.lblHelpReports.Size = new System.Drawing.Size(44, 18);
-            this.lblHelpReports.TabIndex = 16;
-            this.lblHelpReports.Text = "&Help";
-            this.lblHelpReports.Click += new System.EventHandler(this.lblHelpReports_Click);
-            // 
             // frmManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -620,6 +620,7 @@ namespace FA21_Final_Project
             this.Name = "frmManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manager Portal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmManager_FormClosing);
             this.Load += new System.EventHandler(this.frmManager_Load);
             this.tbManager.ResumeLayout(false);
             this.tbInventory.ResumeLayout(false);

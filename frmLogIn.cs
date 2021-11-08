@@ -162,8 +162,8 @@ namespace FA21_Final_Project
 
         private void frmLogIn_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //this.Close();
-            //Application.Exit();
+           
+            Application.Exit();
         }
     }
 }
