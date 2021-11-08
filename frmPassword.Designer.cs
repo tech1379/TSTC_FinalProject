@@ -301,6 +301,7 @@ namespace FA21_Final_Project
             this.Name = "frmPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Password Reset";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPassword_FormClosing);
             this.Load += new System.EventHandler(this.frmPassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass2)).EndInit();

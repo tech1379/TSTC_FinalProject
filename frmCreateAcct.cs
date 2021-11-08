@@ -333,8 +333,9 @@ namespace FA21_Final_Project
                 else
                 {
                     this.Hide();
-                    frmLogIn frmLogInMain = new frmLogIn();
-                    frmLogInMain.ShowDialog();
+                    Application.OpenForms["frmLogIn"].Hide();
+                    frmLogIn frmLogInNew = new frmLogIn();
+                    frmLogInNew.ShowDialog();
                 }
             }
             catch (Exception ex)

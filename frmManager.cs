@@ -1304,7 +1304,7 @@ namespace FA21_Final_Project
         private void frmManager_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Hide();
-            Application.OpenForms["frmLogIn"].Close();
+            Application.OpenForms["frmLogIn"].Hide();
             frmLogIn frmLogInNew = new frmLogIn();
             frmLogInNew.ShowDialog();
         }

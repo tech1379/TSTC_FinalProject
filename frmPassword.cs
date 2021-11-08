@@ -128,5 +128,13 @@ namespace FA21_Final_Project
         {
             Help.ShowHelp(this, hlpMain.HelpNamespace);
         }
+
+        private void frmPassword_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            Application.OpenForms["frmLogIn"].Hide();
+            frmLogIn frmLogInNew = new frmLogIn();
+            frmLogInNew.ShowDialog();
+        }
     }
 }
