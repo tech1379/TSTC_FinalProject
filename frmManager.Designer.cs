@@ -32,6 +32,7 @@ namespace FA21_Final_Project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManager));
             this.tbManager = new System.Windows.Forms.TabControl();
             this.tbInventory = new System.Windows.Forms.TabPage();
+            this.btnEditRestock = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnHelp1 = new System.Windows.Forms.Label();
             this.btnRestock = new System.Windows.Forms.Button();
@@ -77,7 +78,8 @@ namespace FA21_Final_Project
             this.hlpManagerManager = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCustomer = new System.Windows.Forms.HelpProvider();
             this.hlpManagerCoupon = new System.Windows.Forms.HelpProvider();
-            this.btnEditRestock = new System.Windows.Forms.Button();
+            this.lblHelpReports = new System.Windows.Forms.Label();
+            this.helpManagerReport = new System.Windows.Forms.HelpProvider();
             this.tbManager.SuspendLayout();
             this.tbInventory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
@@ -120,6 +122,17 @@ namespace FA21_Final_Project
             this.tbInventory.Size = new System.Drawing.Size(849, 380);
             this.tbInventory.TabIndex = 0;
             this.tbInventory.Text = "Inventory";
+            // 
+            // btnEditRestock
+            // 
+            this.btnEditRestock.Location = new System.Drawing.Point(178, 302);
+            this.btnEditRestock.Name = "btnEditRestock";
+            this.btnEditRestock.Size = new System.Drawing.Size(96, 64);
+            this.btnEditRestock.TabIndex = 7;
+            this.btnEditRestock.Text = "Edit Re&stock";
+            this.btnEditRestock.UseVisualStyleBackColor = true;
+            this.btnEditRestock.Click += new System.EventHandler(this.btnEditRestock_Click);
+            this.btnEditRestock.MouseHover += new System.EventHandler(this.btnEditRestock_MouseHover);
             // 
             // btnEdit
             // 
@@ -490,6 +503,7 @@ namespace FA21_Final_Project
             // tbReports
             // 
             this.tbReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.tbReports.Controls.Add(this.lblHelpReports);
             this.tbReports.Controls.Add(this.lblInfo);
             this.tbReports.Controls.Add(this.mthCalendar);
             this.tbReports.Controls.Add(this.btnView);
@@ -580,15 +594,16 @@ namespace FA21_Final_Project
             this.btnDaily.UseVisualStyleBackColor = true;
             this.btnDaily.Click += new System.EventHandler(this.btnDaily_Click);
             // 
-            // btnEditRestock
+            // lblHelpReports
             // 
-            this.btnEditRestock.Location = new System.Drawing.Point(178, 302);
-            this.btnEditRestock.Name = "btnEditRestock";
-            this.btnEditRestock.Size = new System.Drawing.Size(96, 64);
-            this.btnEditRestock.TabIndex = 7;
-            this.btnEditRestock.Text = "Edit Re&stock";
-            this.btnEditRestock.UseVisualStyleBackColor = true;
-            this.btnEditRestock.Click += new System.EventHandler(this.btnEditRestock_Click);
+            this.lblHelpReports.AutoSize = true;
+            this.lblHelpReports.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHelpReports.Location = new System.Drawing.Point(17, 12);
+            this.lblHelpReports.Name = "lblHelpReports";
+            this.lblHelpReports.Size = new System.Drawing.Size(44, 18);
+            this.lblHelpReports.TabIndex = 16;
+            this.lblHelpReports.Text = "&Help";
+            this.lblHelpReports.Click += new System.EventHandler(this.lblHelpReports_Click);
             // 
             // frmManager
             // 
@@ -675,5 +690,7 @@ namespace FA21_Final_Project
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnEditRestock;
+        private System.Windows.Forms.Label lblHelpReports;
+        private System.Windows.Forms.HelpProvider helpManagerReport;
     }
 }

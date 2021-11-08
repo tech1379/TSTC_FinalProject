@@ -40,9 +40,9 @@ namespace FA21_Final_Project
                 string strQuantityUpdateQuery = "INSERT INTO tekelle21fa2332.Restock VALUES(" + intQuantity + ");";
                 clsSQL.UpdateDatabase(strQuantityUpdateQuery);
                 this.Hide();
-                Application.OpenForms["frmManager"].Close();
-                frmManager frmManagerNew = new frmManager();
-                frmManagerNew.ShowDialog();
+                //Application.OpenForms["frmManager"].Show();
+                //frmManager frmManagerNew = new frmManager();
+                //frmManagerNew.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -54,6 +54,11 @@ namespace FA21_Final_Project
         {
             this.Close();
             Application.OpenForms["frmManager"].Show();
+        }
+
+        private void frmRestock_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

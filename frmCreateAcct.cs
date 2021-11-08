@@ -25,9 +25,10 @@ namespace FA21_Final_Project
     "Please inform the Program Developer that the following error occurred: \n\n\n";
         public static string strInsert;
         List<clsState> lstState = new List<clsState>();
-        public static bool boolAddManager = frmManager.boolAddManager;
-        public static bool boolEditManager = frmManager.boolEditManager;
-        public static bool boolEditCustomer = frmManager.boolEditCustomer;
+        public static bool boolAddManager;
+        public static bool boolEditManager;
+        public static bool boolEditCustomer;
+        public static bool boolAddCustomer;
         public static string strState = frmManager.strState;
         public static int intPersonID;
         public frmCreateAcct()
@@ -48,6 +49,10 @@ namespace FA21_Final_Project
                 {
                     cbxState.Items.Add(lstState[i].strStateName);
                 }
+                boolAddManager = frmManager.boolAddManager;
+                boolEditManager = frmManager.boolEditManager;
+                boolEditCustomer = frmManager.boolEditCustomer;
+                boolAddCustomer = frmManager.boolAddCustomer;
                 intPersonID = frmManager.intPersonID;
                 if(boolEditManager == true || boolEditCustomer == true)
                 {

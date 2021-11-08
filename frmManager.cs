@@ -1,4 +1,12 @@
-﻿using System;
+﻿//******************************************
+//******************************************
+//Programmer: Eric Tekell
+//Course: INEW 2332.7Z1
+//Program Description: This program handles Tek's Kennels and Outfitting business operations.
+//Form Purpose: This form is my manager screen
+//******************************************
+//***
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,12 +34,14 @@ namespace FA21_Final_Project
         int intMouseCount10 = 0;
         int intMouseCount11 = 0;
         int intMouseCount12 = 0;
+        int intMouseCount13 = 0;
         public static bool boolAddManager = false;
         public static bool boolEditManager = false;
         public static bool boolEditCustomer = false;
         public static bool boolCustomerOrder = false;
         public static bool boolHasAccount = false;
         public static bool boolEditInventory = false;
+        public static bool boolAddCustomer = false;
         public static string strPersonIDCustomer;
         public static string strPersonID;
         public static int intPersonID = 0;
@@ -39,6 +49,7 @@ namespace FA21_Final_Project
         public static string strState = "";
         public static string strRestock;
         List<clsInventory> lstInventory = new List<clsInventory>(clsSQL.ReloadImageList());
+        List<clsInventory> lstInventoryRestock = new List<clsInventory>();
         List<clsOrders> lstOrders = new List<clsOrders>();
         List<clsOrders> lstOrdersReport = new List<clsOrders>();
         List<clsPerson> lstManagerReport = new List<clsPerson>();
@@ -67,6 +78,7 @@ namespace FA21_Final_Project
                 hlpManagerManager.HelpNamespace = Application.StartupPath + "\\ManagerManager.chm";
                 hlpManagerCustomer.HelpNamespace = Application.StartupPath + "\\Manager_Customer.chm";
                 hlpManagerCoupon.HelpNamespace = Application.StartupPath + "\\Manager_Coupon.chm";
+                helpManagerReport.HelpNamespace = Application.StartupPath + "\\Manager_Reports.chm";
                 lstOrders = clsSQL.LoadOrders();
                 string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
                 intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
@@ -95,6 +107,7 @@ namespace FA21_Final_Project
                 this.Hide();
                 frmQuantity frmQuantityChange = new frmQuantity();
                 frmQuantityChange.ShowDialog();
+                intMouseCount = 0;
             }
             catch (Exception ex)
             {
@@ -105,7 +118,7 @@ namespace FA21_Final_Project
 
         private void btnInventory_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount == 0 || intMouseCount == 2)
+            if (intMouseCount == 0)
             {
                 MessageBox.Show("Please select the inventory item you would like to change the inventory amount of.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -114,6 +127,7 @@ namespace FA21_Final_Project
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            boolEditInventory = false;
             this.Hide();
             frmAdd frmAddNewItem = new frmAdd();
             frmAddNewItem.ShowDialog();
@@ -141,9 +155,11 @@ namespace FA21_Final_Project
                     MessageBox.Show("Item successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     string strSqlInventoryQuery = "SELECT InventoryID, ItemName, ItemDescription, RetailPrice, Cost, Quantity, Discontinued FROM tekelle21fa2332.Inventory;";
                     clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults);
+                    intMouseCount1 = 0;
                 }
                 else
                 {
+                    intMouseCount1 = 0;
                     return;
                 }
             }
@@ -155,7 +171,7 @@ namespace FA21_Final_Project
 
         private void btnRemove_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount1 == 0 || intMouseCount1 == 2)
+            if (intMouseCount1 == 0)
             {
                 MessageBox.Show("Please select the inventory item you would like to remove.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -166,6 +182,7 @@ namespace FA21_Final_Project
         {
             try
             {
+                //check restock levels, check threshold from db, then check levels, it below save ones below to report and output the ones to screen
                 string strQueryRestock = "SELECT RestockLevel FROM tekelle21fa2332.Restock ORDER BY RestockID DESC;";
                 strRestock = clsSQL.DatabaseCommandLogon(strQueryRestock);
                 int intRestock = Convert.ToInt32(strRestock);
@@ -178,11 +195,16 @@ namespace FA21_Final_Project
                     {
                         strMessage += lstInventory[i].intInventoryID.ToString() + " " + lstInventory[i].strItemName + " " + lstInventory[i].intQuantity.ToString() + "\n";
                         boolNeedRestock = true;
+                        lstInventoryRestock.Add(lstInventory[i]);
                     }
                 }
                 if (boolNeedRestock == true)
                 {
                     MessageBox.Show("These items need restocking: \n\n InventoryID\tItemName\tItemQuantity\n" + strMessage, "Inventory Restock", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    StringBuilder html = new StringBuilder();
+                    html = GenerateReportInventoryRestock();
+                    PrintReportInventoryRestock(html);
+                    MessageBox.Show("Inventory Report Saved to Documents\\TeksManagersReports.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -272,6 +294,7 @@ namespace FA21_Final_Project
                 boolAddManager = false;
                 boolEditManager = true;
                 boolEditCustomer = false;
+                intMouseCount3 = 0;
                 this.Hide();
                 frmCreateAcct frmNewPerson = new frmCreateAcct();
                 frmNewPerson.ShowDialog();
@@ -284,7 +307,7 @@ namespace FA21_Final_Project
 
         private void btnUpdateManager_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount3 == 0 || intMouseCount3 == 2)
+            if (intMouseCount3 == 0)
             {
                 MessageBox.Show("Please select the manager you would like to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -315,9 +338,11 @@ namespace FA21_Final_Project
                     
                     MessageBox.Show("Manager successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadManagers();
+                    intMouseCount4 = 0;
                 }
                 else
                 {
+                    intMouseCount4 = 0;
                     return;
                 }
             }
@@ -329,7 +354,7 @@ namespace FA21_Final_Project
 
         private void btnRemoveManager_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount4 == 0 || intMouseCount4 == 2)
+            if (intMouseCount4 == 0)
             {
                 MessageBox.Show("Please select the manager you would like to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -338,7 +363,7 @@ namespace FA21_Final_Project
 
         private void btnDisable_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount5 == 0 || intMouseCount5 == 2)
+            if (intMouseCount5 == 0)
             {
                 MessageBox.Show("Please select the manager you would like to disable.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -368,9 +393,11 @@ namespace FA21_Final_Project
 
                     MessageBox.Show("Manager successfully disabled.", "Disabled", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadManagers();
+                    intMouseCount5 = 0;
                 }
                 else
                 {
+                    intMouseCount5 = 0;
                     return;
                 }
             }
@@ -395,6 +422,7 @@ namespace FA21_Final_Project
             boolAddManager = false;
             boolEditManager = false;
             boolEditCustomer = false;
+            boolAddCustomer = true;
             this.Hide();
             frmCreateAcct frmCreateAcctNew = new frmCreateAcct();
             frmCreateAcctNew.ShowDialog();
@@ -402,7 +430,7 @@ namespace FA21_Final_Project
 
         private void btnUpdateCustomer_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount6 == 0 || intMouseCount6 == 2)
+            if (intMouseCount6 == 0)
             {
                 MessageBox.Show("Please select the customer you would like to update.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -425,6 +453,7 @@ namespace FA21_Final_Project
                 boolAddManager = false;
                 boolEditManager = false;
                 boolEditCustomer = true;
+                intMouseCount6 = 0;
                 this.Hide();
                 frmCreateAcct frmNewPerson = new frmCreateAcct();
                 frmNewPerson.ShowDialog();
@@ -437,7 +466,7 @@ namespace FA21_Final_Project
 
         private void btnRemoveCustomer_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount7 == 0 || intMouseCount7 == 2)
+            if (intMouseCount7 == 0)
             {
                 MessageBox.Show("Please select the customer you would like to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -468,9 +497,11 @@ namespace FA21_Final_Project
 
                     MessageBox.Show("Customer successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadCustomers();
+                    intMouseCount7 = 0;
                 }
                 else
                 {
+                    intMouseCount7 = 0;
                     return;
                 }
             }
@@ -482,9 +513,9 @@ namespace FA21_Final_Project
 
         private void btnDisableCustomer_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount8 == 0 || intMouseCount8 == 2)
+            if (intMouseCount8 == 0)
             {
-                MessageBox.Show("Please select the customer you would like to delete.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please select the customer you would like to disable.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             intMouseCount8++;
         }
@@ -512,9 +543,11 @@ namespace FA21_Final_Project
 
                     MessageBox.Show("Customer successfully disabled.", "Disabled", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadCustomers();
+                    intMouseCount8 = 0;
                 }
                 else
                 {
+                    intMouseCount8 = 0;
                     return;
                 }
             }
@@ -526,7 +559,7 @@ namespace FA21_Final_Project
 
         private void btnOrderCustomer_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount9 == 0 || intMouseCount9 == 2)
+            if (intMouseCount9 == 0)
             {
                 MessageBox.Show("Please select the customer you would like to make an order for.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -550,6 +583,7 @@ namespace FA21_Final_Project
                 boolCustomerOrder = true;
                 boolHasAccount = true;
                 strPersonID = frmLogIn.strPersonID;
+                intMouseCount9 = 0;
                 this.Hide();
                 frmMain frmMainNew = new frmMain();
                 frmMainNew.ShowDialog();
@@ -598,6 +632,7 @@ namespace FA21_Final_Project
                 string strInsertCoupon = "INSERT INTO tekelle21fa2332.Coupons VALUES(" + decCouponPercent + ", '" + dtStartDate.ToString("yyyy-MM-dd") + "');";
                 clsSQL.UpdateDatabase(strInsertCoupon);
                 MessageBox.Show("Coupon successfully added", "Coupon Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadCoupons();
                
             }
             catch(Exception ex)
@@ -637,6 +672,7 @@ namespace FA21_Final_Project
                 clsSQL.UpdateDatabase(strUpdateCoupon);
                 MessageBox.Show("Coupon successfully edited", "Coupon Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadCoupons();
+                intMouseCount10 = 0;
                 tbxCouponPercent.Clear();
 
             }
@@ -648,7 +684,7 @@ namespace FA21_Final_Project
 
         private void btnEditCoupon_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount10 == 0 || intMouseCount10 == 2)
+            if (intMouseCount10 == 0)
             {
                 MessageBox.Show("Please select the coupon you would like to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -657,7 +693,7 @@ namespace FA21_Final_Project
 
         private void btnRemoveCoupon_MouseHover(object sender, EventArgs e)
         {
-            if (intMouseCount11 == 0 || intMouseCount11 == 2)
+            if (intMouseCount11 == 0)
             {
                 MessageBox.Show("Please select the coupon you would like to edit.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -685,16 +721,18 @@ namespace FA21_Final_Project
                 if (dialogResult == DialogResult.Yes)
                 {
 
-              
                     string strDeleteCoupon = "DELETE FROM tekelle21fa2332.Coupons WHERE CouponID = " + intCouponID + ";";
                     clsSQL.UpdateDatabase(strDeleteCoupon);
+
                     
 
                     MessageBox.Show("Coupon successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadCoupons();
+                    intMouseCount11 = 0;
                 }
                 else
                 {
+                    intMouseCount11 = 0;
                     return;
                 }
             }
@@ -718,6 +756,8 @@ namespace FA21_Final_Project
         {
             try
             {
+                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
+                intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
                 decSalesTotal = 0;
                 DateTime dtStartDate = mthCalendar.SelectionRange.Start;
                 strStartDate = dtStartDate.ToString();
@@ -830,6 +870,8 @@ namespace FA21_Final_Project
         {
             try
             {
+                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
+                intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
                 decSalesTotal = 0;
                 DateTime dtStartDate = mthCalendar.SelectionRange.Start;
                 DateTime dtEndDate = dtStartDate.AddDays(7.00);
@@ -863,9 +905,10 @@ namespace FA21_Final_Project
         {
             try
             {
+                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
+                intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
                 decSalesTotal = 0;
                 DateTime dtStartDate = mthCalendar.SelectionRange.Start;
-                MessageBox.Show(dtStartDate.ToString());
                 int month = dtStartDate.Month;
                 int day = 1;
                 int year = dtStartDate.Year;
@@ -915,13 +958,14 @@ namespace FA21_Final_Project
             {
                 OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                openFileDialog1.InitialDirectory = @path + "\\TeksSalesReports\\";
+                openFileDialog1.InitialDirectory = @path;
                 openFileDialog1.DefaultExt = "html";
                 openFileDialog1.Filter = "html files (*.html)|*.html|All files (*.*)|*.*";
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    var onlyFileName = System.IO.Path.GetFileName(openFileDialog1.FileName);
-                    System.Diagnostics.Process.Start(@path + "\\TeksSalesReports\\" + onlyFileName); //Open the report in the default web browser
+                    //path = Environment.GetFolderPath(openFileDialog1.InitialDirectory);
+                    var onlyFileName = System.IO.Path.GetFullPath(openFileDialog1.FileName);
+                    System.Diagnostics.Process.Start(onlyFileName); //Open the report in the default web browser
 
                 }
 
@@ -945,6 +989,7 @@ namespace FA21_Final_Project
                 string strInventoryID = dgvResults.Rows[intIndex].Cells[0].Value.ToString();
                 intInventoryID = Convert.ToInt32(strInventoryID);
                 boolEditInventory = true;
+                intMouseCount12 = 0;
                 this.Hide();
                 frmAdd frmAddNewItem = new frmAdd();
                 frmAddNewItem.ShowDialog();
@@ -1062,6 +1107,7 @@ namespace FA21_Final_Project
 
         private void btnEditRestock_Click(object sender, EventArgs e)
         {
+            intMouseCount13 = 0;
             frmRestock frmRestockNew = new frmRestock();
             frmRestockNew.ShowDialog();
         }
@@ -1150,6 +1196,99 @@ namespace FA21_Final_Project
                 // MessageBox.Show(path);
                 string strDate = DateTime.Now.ToString("MMddyyyy");
                 using (StreamWriter writer = new StreamWriter(path + "\\TeksManagersReports\\" + strDate + "InventoryReport.html"))
+                {
+                    writer.WriteLine(html);
+                }
+                //System.Diagnostics.Process.Start(@path + "\\TeksSalesReports\\" + strReportDate + "SalesReport.html"); //Open the report in the default web browser
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lblHelpReports_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, helpManagerReport.HelpNamespace);
+        }
+
+        private void btnEditRestock_MouseHover(object sender, EventArgs e)
+        {
+            if (intMouseCount13 == 0)
+            {
+                MessageBox.Show("You can change restock threshold here.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            intMouseCount13++;
+        }
+        private StringBuilder GenerateReportInventoryRestock()
+        {
+            StringBuilder html = new StringBuilder();
+            StringBuilder css = new StringBuilder();
+            try
+            {
+                css.AppendLine("<style>");
+                css.AppendLine("td {padding: 5px; text-align:center; font-weight: bold; text-align: center; font-size: 12px;}");
+                css.AppendLine("h1 {color: orange;}");
+                css.AppendLine("</style>");
+
+                html.AppendLine("<html>");
+                css.AppendLine("<center {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</center>");
+                html.AppendLine($"<head style = 'align:center'>{css}<title>{"Inventory Restock Report"}</title></head>");
+                css.AppendLine("<left {display: block;margin - left: auto;margin - right: auto;width: 50 %;}</left>");
+                html.Append("<img src= " + clsLogo.strLogo + " style=' align: center; width: 75px; height: 50px;'>");
+                html.AppendLine("<body>");
+
+                html.AppendLine($"<h1>{"Inventory Restock Report"}</h1>");
+                html.Append($"<br>{css}</br>");
+
+                html.Append($"<p style = 'text-align: left; font-size: 25px'><b>{"Restock Threshold: " + strRestock}</b></p>");
+                //html.Append($"<p style = 'text-align: left; font-size: 15px'><b>{"Order Number: " + strMaxOrderID}</b></p>");
+                //html.Append($"<p style = 'text-align: left; font-size: 10px'><b>{"Phone Number: " + strPhoneNumber}</b></p>");
+                html.AppendLine("<table>");
+
+                html.AppendLine("<tr><td>Inventory ID</td><td>Inventory Name</td></td><td>Cost</td></td><td>Price</td><td>Quantity</td></tr>");
+                html.AppendLine("<tr><td colspan=5><hr /></td></tr>");
+                for (int i = 0; i < lstInventoryRestock.Count; i++)
+                {
+                    html.Append("<tr>");
+                    html.Append($"<td>{lstInventoryRestock[i].intInventoryID.ToString()}</td>");
+                    html.Append($"<td>{lstInventoryRestock[i].strItemName}</td>");
+                    html.Append($"<td>{lstInventoryRestock[i].decCost.ToString("C2")}</td>");
+                    html.Append($"<td>{lstInventoryRestock[i].decRetailPrice.ToString("C2")}</td>");
+                    html.Append($"<td>{lstInventoryRestock[i].intQuantity.ToString()}</td>");
+                    html.Append("</tr>");
+                    html.AppendLine("<tr><td colspan=6><hr /></td></tr>");
+                }
+                html.AppendLine("</table>");
+                html.Append($"<br></br><br></br>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 25px '><b>{"Sales Total: " + decSalesTotal.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount Percent: " + decDiscountPercent.ToString("N3")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Discount: " + decDiscount.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"SubTotal After Discount: " + decSubTotalDiscount.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 15px '><b>{"Taxes: " + decTaxes.ToString("C2")}</b></p>");
+                //html.Append($"<p style = 'text-align:right; text-indent: 0px; font-size: 20px ' ><b>{"Total: " + decTotal.ToString("C2")}</b></p>");
+                html.Append($"<div><button onClick='window.print()'> {"Print this page"}</ button ></ div >");
+                html.AppendLine("</body></html>");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(message + ex.Message, "Program Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return html; // The returned value has all the HTML and CSS code to represent a webpage
+        }
+        private void PrintReportInventoryRestock(StringBuilder html)
+        {
+            // Write (and overwrite) to the hard drive using the same filename of "Report.html"
+            try
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TeksManagersReports"));
+                // A "using" statement will automatically close a file after opening it.
+                // It never hurts to include a file.Close() once you are done with a file.
+                // MessageBox.Show(path);
+                string strDate = DateTime.Now.ToString("MMddyyyy");
+                using (StreamWriter writer = new StreamWriter(path + "\\TeksManagersReports\\" + strDate + "InventoryRestockReport.html"))
                 {
                     writer.WriteLine(html);
                 }

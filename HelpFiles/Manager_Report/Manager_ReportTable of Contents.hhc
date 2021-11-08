@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="ManagerReport">
+		<param name="Local" value="ManagerReports.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MonthlyCalendar">
+			<param name="Local" value="ManagerReportMonthlyCalendar.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="DailyButton">
+			<param name="Local" value="ManagerReportDailyButton.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="WeeklyButton">
+			<param name="Local" value="ManagerReportWeeklyReport.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="MonthlyButton">
+			<param name="Local" value="ManagerReportMonthlyButton.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ManagerInfo">
+			<param name="Local" value="ManagerReportManagerInfo.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="InventoryReport">
+			<param name="Local" value="ManagerReportInventoryButton.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ViewReport">
+			<param name="Local" value="ManagerReportViewReports.htm">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

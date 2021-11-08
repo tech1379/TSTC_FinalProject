@@ -91,6 +91,7 @@ namespace FA21_Final_Project
             this.Name = "frmRestock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmRestock";
+            this.Load += new System.EventHandler(this.frmRestock_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

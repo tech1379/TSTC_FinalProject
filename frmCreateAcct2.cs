@@ -22,10 +22,11 @@ namespace FA21_Final_Project
     {
         
         string strInsertPerson = frmCreateAcct.strInsert;
-        public static bool boolAddManager = frmCreateAcct.boolAddManager;
-        public static bool boolEditManager = frmCreateAcct.boolEditManager;
-        public static bool boolEditCustomer = frmCreateAcct.boolEditCustomer;
-        public static int intPersonID = frmCreateAcct.intPersonID;
+        public static bool boolAddManager;
+        public static bool boolEditManager;
+        public static bool boolEditCustomer;
+        public static bool boolAddCustomer;
+        public static int intPersonID;
         int intToggle1 = 0;
         int intToggle2 = 0;
         public string message = "I'm sorry an error has occurred in the program. \n\n" +
@@ -39,6 +40,11 @@ namespace FA21_Final_Project
         {
             try
             {
+                boolAddManager = frmCreateAcct.boolAddManager;
+                boolEditManager = frmCreateAcct.boolEditManager;
+                boolEditCustomer = frmCreateAcct.boolEditCustomer;
+                boolAddCustomer = frmCreateAcct.boolAddCustomer;
+                intPersonID = frmCreateAcct.intPersonID;
                 hlpMain.HelpNamespace = Application.StartupPath + "\\CreateAcct2.chm";
                 LoadQuestions();
                 cbxPosition.Visible = false;
@@ -191,9 +197,20 @@ namespace FA21_Final_Project
                     clsSQL.UpdateDatabase(strInsert);
                     MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    Application.OpenForms["frmLogIn"].Close();
-                    frmLogIn frmLogInNew = new frmLogIn();
-                    frmLogInNew.ShowDialog();
+                    if (boolAddCustomer == true)
+                    {
+                        this.Hide();
+                        Application.OpenForms["frmManager"].Close();
+                        frmManager frmManagerNew = new frmManager();
+                        frmManagerNew.ShowDialog();
+                    }
+                    else
+                    {
+                        this.Hide();
+                        Application.OpenForms["frmLogIn"].Close();
+                        frmLogIn frmLogInNew = new frmLogIn();
+                        frmLogInNew.ShowDialog();
+                    }
 
                 }
                 
