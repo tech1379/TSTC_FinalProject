@@ -95,7 +95,7 @@ namespace FA21_Final_Project
                     clsSQL.DatabaseCommandAddItem(strItemName, strItemDesc, decRetailPrice, decCost, intQuantity);
                 }
                 this.Hide();
-                Application.OpenForms["frmManager"].Close();
+                Application.OpenForms["frmManager"].Hide();
                 frmManager frmManagerNew = new frmManager();
                 frmManagerNew.ShowDialog();
             }
@@ -184,7 +184,7 @@ namespace FA21_Final_Project
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Application.OpenForms["frmManager"].Close();
+            Application.OpenForms["frmManager"].Hide();
             frmManager frmManagerNew = new frmManager();
             frmManagerNew.ShowDialog();
         }

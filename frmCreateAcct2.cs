@@ -160,7 +160,7 @@ namespace FA21_Final_Project
                     clsSQL.UpdateDatabase(strInsert);
                     MessageBox.Show("Account Created Successfully!", "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    Application.OpenForms["frmManager"].Close();
+                    Application.OpenForms["frmManager"].Hide();
                     frmManager frmManagerNew = new frmManager();
                     frmManagerNew.ShowDialog();
 
@@ -173,7 +173,7 @@ namespace FA21_Final_Project
                     clsSQL.UpdateDatabase(strInsert);
                     MessageBox.Show("Account successfully edited.", "Edit", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    Application.OpenForms["frmManager"].Close();
+                    Application.OpenForms["frmManager"].Hide();
                     frmManager frmManagerNew = new frmManager();
                     frmManagerNew.ShowDialog();
                 }
@@ -185,7 +185,7 @@ namespace FA21_Final_Project
                     clsSQL.UpdateDatabase(strInsert);
                     MessageBox.Show("Account successfully edited.", "Edit", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Hide();
-                    Application.OpenForms["frmManager"].Close();
+                    Application.OpenForms["frmManager"].Hide();
                     frmManager frmManagerNew = new frmManager();
                     frmManagerNew.ShowDialog();
                 }
@@ -200,7 +200,7 @@ namespace FA21_Final_Project
                     if (boolAddCustomer == true)
                     {
                         this.Hide();
-                        Application.OpenForms["frmManager"].Close();
+                        Application.OpenForms["frmManager"].Hide();
                         frmManager frmManagerNew = new frmManager();
                         frmManagerNew.ShowDialog();
                     }
@@ -279,7 +279,7 @@ namespace FA21_Final_Project
             if (boolAddManager == true)
             {
                 this.Hide();
-                Application.OpenForms["frmManager"].Close();
+                Application.OpenForms["frmManager"].Hide();
                 frmManager frmManagerNew = new frmManager();
                 frmManagerNew.ShowDialog();
             }
@@ -298,7 +298,7 @@ namespace FA21_Final_Project
                 if (boolAddManager == true || boolEditManager == true || boolEditCustomer == true)
                 {
                     this.Hide();
-                    Application.OpenForms["frmManager"].Close();
+                    Application.OpenForms["frmManager"].Hide();
                     frmManager frmManagerNew = new frmManager();
                     frmManagerNew.ShowDialog();
                 }
