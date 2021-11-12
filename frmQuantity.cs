@@ -65,7 +65,7 @@ namespace FA21_Final_Project
                 string strQuantityUpdateQuery = "UPDATE tekelle21fa2332.Inventory SET Quantity = Quantity + " + intQuantity + " WHERE InventoryID = " + intInventoryID + ";";
                 clsSQL.UpdateDatabase(strQuantityUpdateQuery);
                 this.Hide();
-                Application.OpenForms["frmManager"].Hide();
+                Application.OpenForms["frmManager"].Close();
                 frmManager frmManagerNew = new frmManager();
                 frmManagerNew.ShowDialog();
             }
