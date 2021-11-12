@@ -326,7 +326,7 @@ namespace FA21_Final_Project
                 if (boolAddManager == true || boolEditManager == true || boolEditCustomer == true)
                 {
                     this.Hide();
-                    Application.OpenForms["frmManager"].Close();
+                    Application.OpenForms["frmManager"].Hide();
                     frmManager frmManagerNew = new frmManager();
                     frmManagerNew.ShowDialog();
                 }

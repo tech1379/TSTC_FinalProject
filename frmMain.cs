@@ -1070,7 +1070,7 @@ namespace FA21_Final_Project
                 if (boolCustomerOrder == true)
                 {
                     this.Hide();
-                    Application.OpenForms["frmManager"].Close();
+                    Application.OpenForms["frmManager"].Hide();
                     frmManager frmManagerNew = new frmManager();
                     frmManagerNew.ShowDialog();
                 }
