@@ -72,7 +72,7 @@ Include any essential instructions for:
 Contact | Information
 --------|------
 Name | Eric Tekell
-Email | eltekell@mymail.tstc.edu
+Email | eric.tekell@yahoo.com
 Social Media Link | https://www.linkedin.com/in/erictekell/
 Google Group/mailing list | [Your mail distribution list (if applicable)]
 
