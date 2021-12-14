@@ -1,7 +1,7 @@
 Readme.md Version# 2021.08.23
 
 
-![Teks Logo](https://github.com/TSTC-CPT/21FA-FinalProject-TekellEric/blob/main/logo.PNG "Teks Logo")
+![Teks Logo](https://github.com/tech1379/TSTC_FinalProject/blob/main/bin/Debug/logo.PNG "Teks Logo")
 
 # Tek's Kennels & Outfitting 
 A Quail Outfitter, Training Services, and Bird Dog Supplier
