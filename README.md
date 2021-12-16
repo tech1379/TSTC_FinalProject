@@ -3,6 +3,8 @@ Readme.md Version# 2021.08.23
 
 ![Teks Logo](https://github.com/tech1379/TSTC_FinalProject/blob/main/bin/Debug/logo.PNG "Teks Logo")
 
+***The SQL Server db was on a school server. As of now the server is no longer accessible to me, I am in the process of migrating my db to another host server.***
+
 # Tek's Kennels & Outfitting 
 A Quail Outfitter, Training Services, and Bird Dog Supplier
 
