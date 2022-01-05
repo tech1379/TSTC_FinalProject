@@ -96,7 +96,7 @@ namespace FA21_Final_Project
 
                     if (tbxAn1.Text.ToUpper() == strSecurityAnswer1.ToUpper() && tbxAn2.Text.ToUpper() == strSecurityAnswer2.ToUpper() && tbxAn3.Text.ToUpper() == strSecurityAnswer3.ToUpper())
                     {
-                        string strUpdateQuery = "UPDATE tekelle21fa2332.Logon SET Password = '" + strPassword + "' WHERE LogonName = '" + strLogInName + "';";
+                        string strUpdateQuery = "UPDATE Logon SET Password = '" + strPassword + "' WHERE LogonName = '" + strLogInName + "';";
                         clsSQL.UpdateDatabase(strUpdateQuery);
                         MessageBox.Show("Password Changed.", "Reset", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();

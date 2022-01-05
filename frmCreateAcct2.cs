@@ -138,7 +138,7 @@ namespace FA21_Final_Project
                     return;
                 }
 
-                string strLogOnNameQuery = "SELECT COUNT(LogonName) FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogOnName + "';";
+                string strLogOnNameQuery = "SELECT COUNT(LogonName) FROM Logon WHERE LogonName = '" + strLogOnName + "';";
                 //MessageBox.Show(strLogOnNameQuery);
                 string strLogOnCount = clsSQL.DatabaseCommandLogon(strLogOnNameQuery);
                 int intLogOnCount = Convert.ToInt32(strLogOnCount);
@@ -149,12 +149,12 @@ namespace FA21_Final_Project
                 }
                 //insert into person then login into db
                 clsSQL.UpdateDatabase(strInsertPerson);
-                string strPersonIDQuery = "SELECT MAX(PersonID) FROM tekelle21fa2332.Person;";
+                string strPersonIDQuery = "SELECT MAX(PersonID) FROM Person;";
                 string strPersonID = clsSQL.DatabaseCommandLogon(strPersonIDQuery);
                 string strInsert = "";
                 if (boolAddManager == true)
                 {
-                   strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
+                   strInsert = "INSERT INTO Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
     strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
     strSecondAnswer + "', '" + cbxThirdQ.SelectedItem + "', '" + strThirdAns + "', 'Manager', NULL, NULL)";
                     clsSQL.UpdateDatabase(strInsert);
@@ -167,7 +167,7 @@ namespace FA21_Final_Project
                 }
                 else if (boolEditManager == true)
                 {
-                    strInsert = "UPDATE tekelle21fa2332.Logon SET LogonName = '" + strLogOnName.ToUpper() + "', Password = '" + strPassword + "', FirstChallengeQuestion = '" +
+                    strInsert = "UPDATE Logon SET LogonName = '" + strLogOnName.ToUpper() + "', Password = '" + strPassword + "', FirstChallengeQuestion = '" +
                         cbxFirstQ.SelectedItem + "', FirstChallengeAnswer = '" + strFirstAnswer + "', SecondChallengeQuestion = '" + cbxSecondQ.SelectedItem + "', ThirdChallengeQuestion = '" +
                         cbxThirdQ.SelectedItem + "', PositionTitle = 'Manager' WHERE PersonID = " + intPersonID + ";";
                     clsSQL.UpdateDatabase(strInsert);
@@ -179,7 +179,7 @@ namespace FA21_Final_Project
                 }
                 else if(boolEditCustomer == true)
                 {
-                    strInsert = "UPDATE tekelle21fa2332.Logon SET LogonName = '" + strLogOnName.ToUpper() + "', Password = '" + strPassword + "', FirstChallengeQuestion = '" +
+                    strInsert = "UPDATE Logon SET LogonName = '" + strLogOnName.ToUpper() + "', Password = '" + strPassword + "', FirstChallengeQuestion = '" +
                         cbxFirstQ.SelectedItem + "', FirstChallengeAnswer = '" + strFirstAnswer + "', SecondChallengeQuestion = '" + cbxSecondQ.SelectedItem + "', ThirdChallengeQuestion = '" +
                         cbxThirdQ.SelectedItem + "', PositionTitle = 'Customer' WHERE PersonID = " + intPersonID + ";";
                     clsSQL.UpdateDatabase(strInsert);
@@ -191,7 +191,7 @@ namespace FA21_Final_Project
                 }
                 else
                 {
-                    strInsert = "INSERT INTO tekelle21fa2332.Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
+                    strInsert = "INSERT INTO Logon VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strLogOnName.ToUpper() + "', '" +
                         strPassword + "', '" + cbxFirstQ.SelectedItem + "', '" + strFirstAnswer + "', '" + cbxSecondQ.SelectedItem + "', '" +
                         strSecondAnswer + "', '" + cbxThirdQ.SelectedItem + "', '" + strThirdAns + "', 'Customer', NULL, NULL)";
                     clsSQL.UpdateDatabase(strInsert);
@@ -256,19 +256,19 @@ namespace FA21_Final_Project
         {
             for (int i = 22000; i < 22003; i++)
             {
-                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM tekelle21fa2332.SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
+                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
                 string strSecurityQuestion1 = clsSQL.DatabaseCommandLogon(strGetSecurityQuestion);
                 cbxFirstQ.Items.Add(strSecurityQuestion1);
             }
             for (int i = 22003; i < 22006; i++)
             {
-                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM tekelle21fa2332.SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
+                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
                 string strSecurityQuestion2 = clsSQL.DatabaseCommandLogon(strGetSecurityQuestion);
                 cbxSecondQ.Items.Add(strSecurityQuestion2);
             }
             for (int i = 22006; i < 22009; i++)
             {
-                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM tekelle21fa2332.SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
+                string strGetSecurityQuestion = "SELECT SecurityQuestion FROM SecurityQuestions WHERE SecurityQuestionID = " + i + ";";
                 string strSecurityQuestion3 = clsSQL.DatabaseCommandLogon(strGetSecurityQuestion);
                 cbxThirdQ.Items.Add(strSecurityQuestion3);
             }

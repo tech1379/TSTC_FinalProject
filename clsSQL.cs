@@ -15,7 +15,8 @@ namespace FA21_Final_Project
         public static string message = "I'm sorry an error has occurred in the program. \n\n" +
     "Please inform the Program Developer that the following error occurred: \n\n\n";
         //connection string
-        private const string CONNECT_STRING = @"Server=cstnt.tstc.edu;Database= inew2332fa21;User Id=tekelle21fa2332;password=1517940";
+        //private const string CONNECT_STRING = @"Server=cstnt.tstc.edu;Database= inew2332fa21;User Id=password=1517940";
+        private const string CONNECT_STRING = @"Server=192.185.6.136;Database= erictell_TekellE21Fa2332;User Id=erictell_erictell;password=Tech55#@!";
         //build a connection to database
         private static SqlConnection _cntDatabase = new SqlConnection(CONNECT_STRING);
         private static SqlCommand _sqlLogOnCommand;
@@ -31,13 +32,13 @@ namespace FA21_Final_Project
         private static SqlDataAdapter _daManagers = new SqlDataAdapter();
         //add the data tables
         private static DataTable _dtManagersTable = new DataTable();
-        private static string strTableName = "tekelle21fa2332.Inventory";
-        private static string strTableName2 = "tekelle21fa2332.Coupons";
-        private static string strTableName3 = "tekelle21fa2332.DayPrice";
-        private static string strTableName4 = "tekelle21fa2332.State";
-        private static string strTableName5 = "tekelle21fa2332.Orders";
-        private static string strTableName6 = "tekelle21fa2332.Person";
-        private static string strTableName7 = "tekelle21fa2332.Salary";
+        private static string strTableName = "Inventory";
+        private static string strTableName2 = "Coupons";
+        private static string strTableName3 = "DayPrice";
+        private static string strTableName4 = "State";
+        private static string strTableName5 = "Orders";
+        private static string strTableName6 = "Person";
+        private static string strTableName7 = "Salary";
 
         public static void ConnectDatabase()
         {
@@ -327,7 +328,7 @@ namespace FA21_Final_Project
             try
             {
                 //string to build query
-                string query = "SELECT * FROM tekelle21fa2332.Person WHERE PersonID = " + PersonID + ";";
+                string query = "SELECT * FROM Person WHERE PersonID = " + PersonID + ";";
                 //establish command object
                 _sqlManagersCommand = new SqlCommand(query, _cntDatabase);
                 //establish data adapter
@@ -363,7 +364,7 @@ TextBox tbxFirstAns, TextBox tbxSecondAns, TextBox tbxThirdAns, int PersonID)
             try
             {
                 //string to build query
-                string query = "SELECT LogonName, Password, FirstChallengeAnswer, SecondChallengeAnswer, ThirdChallengeAnswer FROM tekelle21fa2332.Logon WHERE PersonID = " + PersonID + ";";
+                string query = "SELECT LogonName, Password, FirstChallengeAnswer, SecondChallengeAnswer, ThirdChallengeAnswer FROM Logon WHERE PersonID = " + PersonID + ";";
                 //establish command object
                 _sqlManagersCommand = new SqlCommand(query, _cntDatabase);
                 //establish data adapter
@@ -428,7 +429,7 @@ TextBox tbxFirstAns, TextBox tbxSecondAns, TextBox tbxThirdAns, int PersonID)
             try
             {
                 //string to build query
-                string query = "SELECT ItemName, ItemDescription, RetailPrice, Cost, Quantity FROM tekelle21fa2332.Inventory WHERE InventoryID = " + intInventoryID + ";";
+                string query = "SELECT ItemName, ItemDescription, RetailPrice, Cost, Quantity FROM Inventory WHERE InventoryID = " + intInventoryID + ";";
                 //establish command object
                 _sqlInventoryCommand = new SqlCommand(query, _cntDatabase);
                 //establish data adapter

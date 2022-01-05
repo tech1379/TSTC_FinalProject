@@ -80,7 +80,7 @@ namespace FA21_Final_Project
                 hlpManagerCoupon.HelpNamespace = Application.StartupPath + "\\Manager_Coupon.chm";
                 helpManagerReport.HelpNamespace = Application.StartupPath + "\\Manager_Reports.chm";
                 lstOrders = clsSQL.LoadOrders();
-                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
+                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM SalesReports;";
                 intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
             }
             catch(Exception ex)
@@ -150,10 +150,10 @@ namespace FA21_Final_Project
                     
                     string strInventoryID = dgvResults.Rows[intIndex].Cells[0].Value.ToString();
                     intInventoryID = Convert.ToInt32(strInventoryID);
-                    string strDeleteInventory = "DELETE FROM tekelle21fa2332.Inventory WHERE InventoryID = " + intInventoryID + ";";
+                    string strDeleteInventory = "DELETE FROM Inventory WHERE InventoryID = " + intInventoryID + ";";
                     clsSQL.UpdateDatabase(strDeleteInventory);
                     MessageBox.Show("Item successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    string strSqlInventoryQuery = "SELECT InventoryID, ItemName, ItemDescription, RetailPrice, Cost, Quantity, Discontinued FROM tekelle21fa2332.Inventory;";
+                    string strSqlInventoryQuery = "SELECT InventoryID, ItemName, ItemDescription, RetailPrice, Cost, Quantity, Discontinued FROM Inventory;";
                     clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults);
                     intMouseCount1 = 0;
                 }
@@ -183,7 +183,7 @@ namespace FA21_Final_Project
             try
             {
                 //check restock levels, check threshold from db, then check levels, it below save ones below to report and output the ones to screen
-                string strQueryRestock = "SELECT RestockLevel FROM tekelle21fa2332.Restock ORDER BY RestockID DESC;";
+                string strQueryRestock = "SELECT RestockLevel FROM Restock ORDER BY RestockID DESC;";
                 strRestock = clsSQL.DatabaseCommandLogon(strQueryRestock);
                 int intRestock = Convert.ToInt32(strRestock);
                 bool boolNeedRestock = false;
@@ -221,7 +221,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSqlInventoryQuery = "SELECT InventoryID AS 'Inventory ID', ItemName AS 'Item Name', ItemDescription AS 'Item Description', RetailPrice AS 'Retail Price', Cost, Quantity, Discontinued FROM tekelle21fa2332.Inventory;";
+                string strSqlInventoryQuery = "SELECT InventoryID AS 'Inventory ID', ItemName AS 'Item Name', ItemDescription AS 'Item Description', RetailPrice AS 'Retail Price', Cost, Quantity, Discontinued FROM Inventory;";
                 clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults);
             }
             catch (Exception ex)
@@ -234,7 +234,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSqlInventoryQuery = "SELECT PersonID AS 'Person ID', NameFirst AS 'First Name', NameLast AS 'Last Name', Address1 AS 'Address 1', Address2 AS 'Address 2', Address3 AS 'Address 3', City, ZipCode AS 'Zip Code', State, Email, PhonePrimary AS 'Phone Primary', PersonType AS 'Person Type' FROM tekelle21fa2332.Person WHERE PersonType = 'Customer';";
+                string strSqlInventoryQuery = "SELECT PersonID AS 'Person ID', NameFirst AS 'First Name', NameLast AS 'Last Name', Address1 AS 'Address 1', Address2 AS 'Address 2', Address3 AS 'Address 3', City, ZipCode AS 'Zip Code', State, Email, PhonePrimary AS 'Phone Primary', PersonType AS 'Person Type' FROM Person WHERE PersonType = 'Customer';";
                 clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults3);
             }
             catch (Exception ex)
@@ -248,7 +248,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSqlInventoryQuery = "SELECT CouponID AS 'Coupon ID', FORMAT(CouponPercent,'#,##0.0%') AS 'Coupon Percent', ExpirationDate AS 'Expiration Date' FROM tekelle21fa2332.Coupons;";
+                string strSqlInventoryQuery = "SELECT CouponID AS 'Coupon ID', FORMAT(CouponPercent,'#,##0.0%') AS 'Coupon Percent', ExpirationDate AS 'Expiration Date' FROM Coupons;";
                 clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults4);
             }
             catch (Exception ex)
@@ -260,7 +260,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSqlInventoryQuery = "SELECT PersonID AS 'Person ID', NameFirst AS 'First Name', NameLast AS 'Last Name', Address1 AS 'Address 1', Address2 AS 'Address 2', Address3 AS 'Address 3', City, ZipCode AS 'Zip Code', State, Email, PhonePrimary AS 'Phone Primary', PersonType AS 'Person Type' FROM tekelle21fa2332.Person WHERE PersonType = 'Manager';";
+                string strSqlInventoryQuery = "SELECT PersonID AS 'Person ID', NameFirst AS 'First Name', NameLast AS 'Last Name', Address1 AS 'Address 1', Address2 AS 'Address 2', Address3 AS 'Address 3', City, ZipCode AS 'Zip Code', State, Email, PhonePrimary AS 'Phone Primary', PersonType AS 'Person Type' FROM Person WHERE PersonType = 'Manager';";
                 clsSQL.DatabaseCommand(strSqlInventoryQuery, dgvResults2);
             }
             catch (Exception ex)
@@ -331,9 +331,9 @@ namespace FA21_Final_Project
 
                     string strPersonID = dgvResults2.Rows[intIndex].Cells[0].Value.ToString();
                     intPersonID = Convert.ToInt32(strPersonID);
-                    string strDeleteLogon = "DELETE FROM tekelle21fa2332.Logon WHERE PersonID = " + intPersonID + ";";
+                    string strDeleteLogon = "DELETE FROM Logon WHERE PersonID = " + intPersonID + ";";
                     clsSQL.UpdateDatabase(strDeleteLogon);
-                    string strDeletePerson = "DELETE FROM tekelle21fa2332.Person WHERE PersonID = " + intPersonID + ";";
+                    string strDeletePerson = "DELETE FROM Person WHERE PersonID = " + intPersonID + ";";
                     clsSQL.UpdateDatabase(strDeletePerson);
                     
                     MessageBox.Show("Manager successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -387,7 +387,7 @@ namespace FA21_Final_Project
 
                     string strPersonID = dgvResults2.Rows[intIndex].Cells[0].Value.ToString();
                     intPersonID = Convert.ToInt32(strPersonID);
-                    string strUpdateLogon = "UPDATE tekelle21fa2332.Logon SET AccountDisabled = 1 WHERE PersonID = " + intPersonID + ";";
+                    string strUpdateLogon = "UPDATE Logon SET AccountDisabled = 1 WHERE PersonID = " + intPersonID + ";";
                     clsSQL.UpdateDatabase(strUpdateLogon);
                    
 
@@ -490,9 +490,9 @@ namespace FA21_Final_Project
 
                     string strPersonID = dgvResults3.Rows[intIndex].Cells[0].Value.ToString();
                     intPersonID = Convert.ToInt32(strPersonID);
-                    string strDeleteLogon = "DELETE FROM tekelle21fa2332.Logon WHERE PersonID = " + intPersonID + ";";
+                    string strDeleteLogon = "DELETE FROM Logon WHERE PersonID = " + intPersonID + ";";
                     clsSQL.UpdateDatabase(strDeleteLogon);
-                    string strDeletePerson = "DELETE FROM tekelle21fa2332.Person WHERE PersonID = " + intPersonID + ";";
+                    string strDeletePerson = "DELETE FROM Person WHERE PersonID = " + intPersonID + ";";
                     clsSQL.UpdateDatabase(strDeletePerson);
 
                     MessageBox.Show("Customer successfully deleted.", "Deletion", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -537,7 +537,7 @@ namespace FA21_Final_Project
 
                     string strPersonID = dgvResults3.Rows[intIndex].Cells[0].Value.ToString();
                     intPersonID = Convert.ToInt32(strPersonID);
-                    string strUpdateLogon = "UPDATE tekelle21fa2332.Logon SET AccountDisabled = 1 WHERE PersonID = " + intPersonID + ";";
+                    string strUpdateLogon = "UPDATE Logon SET AccountDisabled = 1 WHERE PersonID = " + intPersonID + ";";
                     clsSQL.UpdateDatabase(strUpdateLogon);
 
 
@@ -629,7 +629,7 @@ namespace FA21_Final_Project
                     MessageBox.Show("Expiration Date must be in the future.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                string strInsertCoupon = "INSERT INTO tekelle21fa2332.Coupons VALUES(" + decCouponPercent + ", '" + dtStartDate.ToString("yyyy-MM-dd") + "');";
+                string strInsertCoupon = "INSERT INTO Coupons VALUES(" + decCouponPercent + ", '" + dtStartDate.ToString("yyyy-MM-dd") + "');";
                 clsSQL.UpdateDatabase(strInsertCoupon);
                 MessageBox.Show("Coupon successfully added", "Coupon Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadCoupons();
@@ -668,7 +668,7 @@ namespace FA21_Final_Project
                     MessageBox.Show("Expiration Date must be in the future.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                string strUpdateCoupon = "UPDATE tekelle21fa2332.Coupons SET CouponPercent = " + decCouponPercent + ", ExpirationDate = '" + dtStartDate.ToString("yyyy-MM-dd") + "' WHERE CouponID = " + intCouponID + ";";
+                string strUpdateCoupon = "UPDATE Coupons SET CouponPercent = " + decCouponPercent + ", ExpirationDate = '" + dtStartDate.ToString("yyyy-MM-dd") + "' WHERE CouponID = " + intCouponID + ";";
                 clsSQL.UpdateDatabase(strUpdateCoupon);
                 MessageBox.Show("Coupon successfully edited", "Coupon Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadCoupons();
@@ -721,7 +721,7 @@ namespace FA21_Final_Project
                 if (dialogResult == DialogResult.Yes)
                 {
 
-                    string strDeleteCoupon = "DELETE FROM tekelle21fa2332.Coupons WHERE CouponID = " + intCouponID + ";";
+                    string strDeleteCoupon = "DELETE FROM Coupons WHERE CouponID = " + intCouponID + ";";
                     clsSQL.UpdateDatabase(strDeleteCoupon);
 
                     
@@ -756,14 +756,14 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
+                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM SalesReports;";
                 intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
                 decSalesTotal = 0;
                 DateTime dtStartDate = mthCalendar.SelectionRange.Start;
                 strStartDate = dtStartDate.ToString();
                 strReportDate = dtStartDate.ToString("MMddyyyy");
                 intReportNumber++;
-                string strUpdateReportNumber = "INSERT INTO tekelle21fa2332.SalesReports VALUES(" + intReportNumber + ");";
+                string strUpdateReportNumber = "INSERT INTO SalesReports VALUES(" + intReportNumber + ");";
                 clsSQL.UpdateDatabase(strUpdateReportNumber);
                 for (int i = 0; i < lstOrders.Count; i++)
                 {
@@ -870,7 +870,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
+                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM SalesReports;";
                 intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
                 decSalesTotal = 0;
                 DateTime dtStartDate = mthCalendar.SelectionRange.Start;
@@ -878,7 +878,7 @@ namespace FA21_Final_Project
                 strStartDate = dtStartDate.ToString();
                 strReportDate = dtStartDate.ToString("MMddyyyy");
                 intReportNumber++;
-                string strUpdateReportNumber = "INSERT INTO tekelle21fa2332.SalesReports VALUES(" + intReportNumber + ");";
+                string strUpdateReportNumber = "INSERT INTO SalesReports VALUES(" + intReportNumber + ");";
                 clsSQL.UpdateDatabase(strUpdateReportNumber);
                 for (int i = 0; i < lstOrders.Count; i++)
                 {
@@ -905,7 +905,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM tekelle21fa2332.SalesReports;";
+                string strSQLReportNumber = "SELECT MAX(SalesReportNumber) FROM SalesReports;";
                 intReportNumber = Convert.ToInt32(clsSQL.DatabaseCommandLogon(strSQLReportNumber));
                 decSalesTotal = 0;
                 DateTime dtStartDate = mthCalendar.SelectionRange.Start;
@@ -929,7 +929,7 @@ namespace FA21_Final_Project
                 strStartDate = dtStartDate.ToString();
                 strReportDate = dtStartDate.ToString("MMddyyyy");
                 intReportNumber++;
-                string strUpdateReportNumber = "INSERT INTO tekelle21fa2332.SalesReports VALUES(" + intReportNumber + ");";
+                string strUpdateReportNumber = "INSERT INTO SalesReports VALUES(" + intReportNumber + ");";
                 clsSQL.UpdateDatabase(strUpdateReportNumber);
                 for (int i = 0; i < lstOrders.Count; i++)
                 {
@@ -1116,7 +1116,7 @@ namespace FA21_Final_Project
         {
             try
             {
-                string strQueryRestock = "SELECT RestockLevel FROM tekelle21fa2332.Restock ORDER BY RestockID DESC;";
+                string strQueryRestock = "SELECT RestockLevel FROM Restock ORDER BY RestockID DESC;";
                 strRestock = clsSQL.DatabaseCommandLogon(strQueryRestock);
                 StringBuilder html = new StringBuilder();
                 html = GenerateReportInventory();

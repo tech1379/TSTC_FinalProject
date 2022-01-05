@@ -24,17 +24,17 @@ namespace FA21_Final_Project
                 string strQueryPersonID;
                 string strPersonType;
                 string strResult;
-                strQueryLogOnPass = "SELECT COUNT(*) FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "' AND Password = '"
+                strQueryLogOnPass = "SELECT COUNT(*) FROM Logon WHERE LogonName = '" + strUserName + "' AND Password = '"
                     + strPassword + "';";
                 strResult = clsSQL.DatabaseCommandLogon(strQueryLogOnPass);
                 int logon = Int32.Parse(strResult);
-                strQueryPersonType = "SELECT PersonType FROM tekelle21fa2332.Person p JOIN tekelle21fa2332.Logon l ON "
+                strQueryPersonType = "SELECT PersonType FROM Person p JOIN Logon l ON "
                     + "p.PersonID = l.PersonID " + "WHERE LogonName = '" + strUserName + "' AND Password = '" +
                     strPassword + "';";
                 strPersonType = clsSQL.DatabaseCommandLogon(strQueryPersonType);
-                strQueryPersonID = "SELECT PersonID FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "' AND Password = '"
+                strQueryPersonID = "SELECT PersonID FROM Logon WHERE LogonName = '" + strUserName + "' AND Password = '"
                     + strPassword + "';";
-                string strQueryAccountDisabled = "SELECT AccountDisabled FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "';";
+                string strQueryAccountDisabled = "SELECT AccountDisabled FROM Logon WHERE LogonName = '" + strUserName + "';";
                 string strAccountDisabled = clsSQL.DatabaseCommandLogon(strQueryAccountDisabled);
                 if (strAccountDisabled == "True")
                 {
@@ -77,7 +77,7 @@ namespace FA21_Final_Project
             try
             {
                 
-                string strQueryLogOnName = "SELECT LogOnName FROM tekelle21fa2332.Logon WHERE LogonName = '" + strUserName + "';";
+                string strQueryLogOnName = "SELECT LogOnName FROM Logon WHERE LogonName = '" + strUserName + "';";
                 string strLogInName = clsSQL.DatabaseCommandLogon(strQueryLogOnName);
                 if (strLogInName == strUserName)
                 {
@@ -175,7 +175,7 @@ namespace FA21_Final_Project
             string strSecurityQuery1 = "";
             try
             {
-                strSecurityQuestion1 = "SELECT FirstChallengeQuestion FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
+                strSecurityQuestion1 = "SELECT FirstChallengeQuestion FROM Logon WHERE LogonName = '" + strLogInName + "';";
                 strSecurityQuery1 = clsSQL.DatabaseCommandLogon(strSecurityQuestion1);
                 
             }
@@ -192,7 +192,7 @@ namespace FA21_Final_Project
             string strSecurityQuery2 = "";
             try
             {
-                strSecurityQuestion2 = "SELECT SecondChallengeQuestion FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
+                strSecurityQuestion2 = "SELECT SecondChallengeQuestion FROM Logon WHERE LogonName = '" + strLogInName + "';";
                 strSecurityQuery2 = clsSQL.DatabaseCommandLogon(strSecurityQuestion2);
 
             }
@@ -209,7 +209,7 @@ namespace FA21_Final_Project
             string strSecurityQuery3 = "";
             try
             {
-                strSecurityQuestion3 = "SELECT ThirdChallengeQuestion FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
+                strSecurityQuestion3 = "SELECT ThirdChallengeQuestion FROM Logon WHERE LogonName = '" + strLogInName + "';";
                 strSecurityQuery3 = clsSQL.DatabaseCommandLogon(strSecurityQuestion3);
 
             }
@@ -226,7 +226,7 @@ namespace FA21_Final_Project
             string strSecurityQuery1 = "";
             try
             {
-                strSecurityAnswer1 = "SELECT FirstChallengeAnswer FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
+                strSecurityAnswer1 = "SELECT FirstChallengeAnswer FROM Logon WHERE LogonName = '" + strLogInName + "';";
                 strSecurityQuery1 = clsSQL.DatabaseCommandLogon(strSecurityAnswer1);
 
             }
@@ -243,7 +243,7 @@ namespace FA21_Final_Project
             string strSecurityQuery2 = "";
             try
             {
-                strSecurityAnswer2 = "SELECT SecondChallengeAnswer FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
+                strSecurityAnswer2 = "SELECT SecondChallengeAnswer FROM Logon WHERE LogonName = '" + strLogInName + "';";
                 strSecurityQuery2 = clsSQL.DatabaseCommandLogon(strSecurityAnswer2);
 
             }
@@ -260,7 +260,7 @@ namespace FA21_Final_Project
             string strSecurityQuery3 = "";
             try
             {
-                strSecurityAnswer3 = "SELECT ThirdChallengeAnswer FROM tekelle21fa2332.Logon WHERE LogonName = '" + strLogInName + "';";
+                strSecurityAnswer3 = "SELECT ThirdChallengeAnswer FROM Logon WHERE LogonName = '" + strLogInName + "';";
                 strSecurityQuery3 = clsSQL.DatabaseCommandLogon(strSecurityAnswer3);
 
             }

@@ -251,7 +251,7 @@ namespace FA21_Final_Project
                 //verify quantity is still available to purchase
                 for(int i = 0; i < lstShoppingCartName.Count; i++)
                 {
-                    string strQuantityQuery = "SELECT Quantity FROM tekelle21fa2332.Inventory WHERE ItemName = '" + lstShoppingCartName[i] + "';";
+                    string strQuantityQuery = "SELECT Quantity FROM Inventory WHERE ItemName = '" + lstShoppingCartName[i] + "';";
                     string strQuantityResults = clsSQL.DatabaseCommandLogon(strQuantityQuery);
                     int intQuantity = Convert.ToInt32(strQuantityResults);
                     if (intQuantity < lstShoppingCartQuantity[i])
@@ -281,17 +281,17 @@ namespace FA21_Final_Project
                     return;
                 }
                 var date = DateTime.Now.ToString("yyyy-MM-dd");
-                string strInsertOrder = "INSERT INTO tekelle21fa2332.Orders VALUES (" + Convert.ToInt32(strPersonID) +
+                string strInsertOrder = "INSERT INTO Orders VALUES (" + Convert.ToInt32(strPersonID) +
                     ", '" + date + "', " + decTotal + ", " + intCouponCode + ");";
                 clsSQL.UpdateDatabase(strInsertOrder);
-                string strMaxOrderIDQuery = "SELECT MAX(OrderID) FROM tekelle21fa2332.Orders;";
+                string strMaxOrderIDQuery = "SELECT MAX(OrderID) FROM Orders;";
                 strMaxOrderID = clsSQL.DatabaseCommandLogon(strMaxOrderIDQuery);
                 for (int i = 0; i < lstShoppingCartInventoryID.Count; i++)
                 {
-                    string strInsertOrderItems = "INSERT INTO tekelle21fa2332.OrderItems VALUES (" + lstShoppingCartInventoryID[i] + ", " + Convert.ToInt32(strMaxOrderID) +
+                    string strInsertOrderItems = "INSERT INTO OrderItems VALUES (" + lstShoppingCartInventoryID[i] + ", " + Convert.ToInt32(strMaxOrderID) +
                         ", " + lstShoppingCartQuantity[i] + ", " + lstShoppingCartCost[i] + ");";
                     clsSQL.UpdateDatabase(strInsertOrderItems);
-                    string strInsertQuantity = "UPDATE tekelle21fa2332.Inventory SET Quantity = Quantity - " + lstShoppingCartQuantity[i] + " WHERE InventoryID = " + lstShoppingCartInventoryID[i] + ";";
+                    string strInsertQuantity = "UPDATE Inventory SET Quantity = Quantity - " + lstShoppingCartQuantity[i] + " WHERE InventoryID = " + lstShoppingCartInventoryID[i] + ";";
                     clsSQL.UpdateDatabase(strInsertQuantity);
                 }
                 boolOrderMade = true;
@@ -473,7 +473,7 @@ namespace FA21_Final_Project
                 }
                 else
                 {
-                    string strInsertCreditCardQuery = "INSERT INTO tekelle21fa2332.CreditCard VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strCreditCard +
+                    string strInsertCreditCardQuery = "INSERT INTO CreditCard VALUES (" + Convert.ToInt32(strPersonID) + ", '" + strCreditCard +
                         "', '" + strExpiration + "');";
                     clsSQL.UpdateDatabase(strInsertCreditCardQuery);
                     boolCreditCardUpdate = true;
@@ -711,10 +711,10 @@ namespace FA21_Final_Project
                 lblQuailTotal.Text = decQuailHuntTotal.ToString("C2");
                 strStartDateQuail = dtStartDate.ToString("yyyy-MM-dd");
                 strEndDateQuail = dtEndDate.ToString("yyyy-MM-dd");
-                string strInsertQuailHunt = "INSERT INTO tekelle21fa2332.QuailHuntOrders VALUES (" + strPersonID + ", '" + strStartDateQuail + "', '" + strEndDateQuail + "', " + decQuailHuntTotal + ", " + lstDayPrice[0].intDayPriceID + ");";
+                string strInsertQuailHunt = "INSERT INTO QuailHuntOrders VALUES (" + strPersonID + ", '" + strStartDateQuail + "', '" + strEndDateQuail + "', " + decQuailHuntTotal + ", " + lstDayPrice[0].intDayPriceID + ");";
                 clsSQL.UpdateDatabase(strInsertQuailHunt);
                 MessageBox.Show("Quail Hunt Successfully Booked", "Information Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                string strQuailHuntOrderQuery = "SELECT MAX(QuailHuntID) FROM tekelle21fa2332.QuailHuntOrders;";
+                string strQuailHuntOrderQuery = "SELECT MAX(QuailHuntID) FROM QuailHuntOrders;";
                 strQuailHuntOrderID = clsSQL.DatabaseCommandLogon(strQuailHuntOrderQuery);
                 boolQuailOrderMade = true;
             }
@@ -837,7 +837,7 @@ namespace FA21_Final_Project
                 string strDogName = tbxDogName.Text.Trim();
                 string strDogBreed = tbxDogBreed.Text.Trim();
                 string strTrainingDesc = tbxDescription.Text.Trim();
-                string strInsertTrainingOrder = "INSERT INTO tekelle21fa2332.TrainingOrders VALUES (" + strPersonID + ", '" +
+                string strInsertTrainingOrder = "INSERT INTO TrainingOrders VALUES (" + strPersonID + ", '" +
                     strDogName + "', '" + strDogBreed + "', '" + strTrainingDesc + "', '" + strStartDateTraining + "', NULL);";
                 clsSQL.UpdateDatabase(strInsertTrainingOrder);
                 MessageBox.Show("Training Services Booked", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -921,9 +921,9 @@ namespace FA21_Final_Project
                 //lblCustomer.BorderStyle = BorderStyle.None;
 
                 //get customer name
-                string strQueryFirstName = "SELECT NameFirst FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
-                string strQueryLastName = "SELECT NameLast FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
-                string strPhoneNumberQuery = "SELECT PhonePrimary FROM tekelle21fa2332.Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
+                string strQueryFirstName = "SELECT NameFirst FROM Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
+                string strQueryLastName = "SELECT NameLast FROM Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
+                string strPhoneNumberQuery = "SELECT PhonePrimary FROM Person WHERE PersonID = " + Convert.ToInt32(strPersonID) + ";";
                 strPhoneNumber = clsSQL.DatabaseCommandLogon(strPhoneNumberQuery);
                 strFirstName = clsSQL.DatabaseCommandLogon(strQueryFirstName);
                 strLastName = clsSQL.DatabaseCommandLogon(strQueryLastName);

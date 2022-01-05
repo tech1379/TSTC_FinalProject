@@ -37,7 +37,7 @@ namespace FA21_Final_Project
                     return;
                 }
                 int intQuantity = Convert.ToInt32(strQuantity);
-                string strQuantityUpdateQuery = "INSERT INTO tekelle21fa2332.Restock VALUES(" + intQuantity + ");";
+                string strQuantityUpdateQuery = "INSERT INTO Restock VALUES(" + intQuantity + ");";
                 clsSQL.UpdateDatabase(strQuantityUpdateQuery);
                 this.Hide();
                 //Application.OpenForms["frmManager"].Show();

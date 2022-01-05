@@ -62,7 +62,7 @@ namespace FA21_Final_Project
                     return;
                 }
                 int intQuantity = Convert.ToInt32(strQuantity);
-                string strQuantityUpdateQuery = "UPDATE tekelle21fa2332.Inventory SET Quantity = Quantity + " + intQuantity + " WHERE InventoryID = " + intInventoryID + ";";
+                string strQuantityUpdateQuery = "UPDATE Inventory SET Quantity = Quantity + " + intQuantity + " WHERE InventoryID = " + intInventoryID + ";";
                 clsSQL.UpdateDatabase(strQuantityUpdateQuery);
                 this.Hide();
                 Application.OpenForms["frmManager"].Hide();
