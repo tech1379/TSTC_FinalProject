@@ -2,6 +2,7 @@ Readme.md Version# 2021.08.23
 
 
 ![Teks Logo](https://github.com/tech1379/TSTC_FinalProject/blob/main/bin/Debug/logo.PNG "Teks Logo")
+
 The Database is up and running.
 
 # Tek's Kennels & Outfitting 
